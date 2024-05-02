@@ -1,5 +1,5 @@
 import { SocialLinksProps } from "@/data/social-nav-data";
-import { SocialLinkMolecule } from "../molecules/social-link-molecule";
+import { SocialLinkMolecule } from "@/components/molecules/social-link-molecule";
 import { cn } from "@/lib/utils";
 
 export interface SocialLinkNavProps

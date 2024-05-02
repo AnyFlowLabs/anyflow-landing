@@ -1,3 +1,10 @@
+import Root from "@/components/molecules/root";
+import HomePage from "@/pages/Home";
+
 export default function App() {
-  return <h1>AnyFlow</h1>;
+  return (
+    <Root>
+      <HomePage />
+    </Root>
+  );
 }
