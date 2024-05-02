@@ -7,12 +7,11 @@ export const Container = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn(
-      "mx-auto flex h-screen w-full max-w-7xl flex-col bg-grey-2 px-8",
-      className,
-    )}
+    className={cn("mx-auto flex w-full max-w-7xl flex-col px-8", className)}
     {...props}
   />
 ));
 Container.displayName = "Container";
 export default Container;
+
+// bg-grey-2
