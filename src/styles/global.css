@@ -101,8 +101,7 @@
 
   .bg {
     animation: slide 3s ease-in-out infinite alternate;
-    /* background-image: linear-gradient(-60deg, #6c3 50%, #09f 50%); */
-    background-image: linear-gradient(-60deg, #260c13 50%, #712035 50%);
+    background-image: linear-gradient(-60deg, #0b0c0f 50%, #2b2d39 50%);
     bottom: 0;
     left: -50%;
     opacity: 0.5;
