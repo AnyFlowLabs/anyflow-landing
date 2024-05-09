@@ -2,6 +2,7 @@ import Container from "@/components/organisms/container";
 import FooterTemplate from "@/components/template/footer-template";
 import HeaderTemplate from "@/components/template/header-template";
 import MainTemplate from "@/components/template/main-template";
+import LanguageChange from "@/components/ui/LanguageChange";
 
 export default function HomePage() {
   return (
@@ -12,6 +13,7 @@ export default function HomePage() {
       <HeaderTemplate />
       <MainTemplate />
       <FooterTemplate />
+      <LanguageChange />
     </Container>
   );
 }
