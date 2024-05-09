@@ -1,3 +1,6 @@
+import '@/locales/i18n';
+import { useTranslation } from 'react-i18next';
+
 export function GlassCard() {
   return (
     <div className="glass">
@@ -13,11 +16,14 @@ export function GlassCard() {
 }
 
 export default function MainTemplate() {
+  
+  const { t } = useTranslation();
+
   return (
     <div className="flex flex-grow flex-col pb-10">
       <section className="w-full">
         <h1 className="text-center text-5xl text-white">AnyFlow</h1>
-        <h3 className="text-center text-3xl text-white">AnyFlow Subtitle</h3>
+        <h3 className="text-center text-3xl text-white">{t('subtitle')}</h3>
       </section>
       <section className="flex gap-10 p-8">
         <div className="border">
