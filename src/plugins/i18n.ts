@@ -8,10 +8,10 @@ i18n.use(initReactI18next).init({
   debug: false,
   resources: {
     pt_BR: {
-      translation: pt_BR,
+      ...pt_BR,
     },
     en_US: {
-      translation: en_US,
+      ...en_US,
     },
   },
 });
