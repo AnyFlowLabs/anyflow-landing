@@ -9,5 +9,3 @@ export const Root = React.forwardRef<
 ));
 Root.displayName = "Root";
 export default Root;
-
-//  bg-grey-2"

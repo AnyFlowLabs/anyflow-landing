@@ -13,7 +13,7 @@ export function SocialNavOrganism({
   ...props
 }: SocialLinkNavProps) {
   return (
-    <nav className={cn("flex gap-10", className)} {...props}>
+    <nav className={cn("flex items-center gap-10", className)} {...props}>
       {links.map((link) => (
         <SocialLinkMolecule
           key={link.href}

@@ -1,4 +1,3 @@
-import { cn } from "@/lib/utils";
 import NavigationLinkAtom from "@/components/atoms/navigation-link-atom";
 
 export interface NavigationLinkMoleculeProps
