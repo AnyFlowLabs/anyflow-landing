@@ -5,7 +5,7 @@ import { en_US } from "@/locales/en_US/en-US";
 
 i18n.use(initReactI18next).init({
   fallbackLng: "en_US",
-  debug: false,
+  debug: true,
   resources: {
     pt_BR: {
       ...pt_BR,

@@ -1,8 +1,10 @@
+import { useTranslation } from "react-i18next";
 import { GlassCard } from "../molecules/glass-card";
 import { SectionContentMolecule } from "../molecules/section-content-molecule";
-import { t } from "i18next";
 
 export function GlassCardContentOrganism() {
+  const { t } = useTranslation();
+
   return (
     <section className="grid grid-cols-1 gap-10 text-center">
       <GlassCard>

@@ -1,12 +1,15 @@
 import { PageTitleMolecule } from "@/components/molecules/page-title-molecule";
-import { t } from "i18next";
 import { chains } from "@/data/chains";
 import { BadgeChainOrganism } from "@/components/organisms/badge-chains-organism";
 import { GlassCardContentOrganism } from "../organisms/glass-card-content-organism";
+import { BackedByMolecule } from "../molecules/backed-molecule";
+import { useTranslation } from "react-i18next";
 
 export default function MainTemplate() {
+  const { t } = useTranslation();
+
   return (
-    <div className="my-40 flex flex-grow flex-col gap-32 pb-10">
+    <div className="mb-10 mt-40 flex flex-grow flex-col gap-32 pb-5">
       <PageTitleMolecule
         title={t("header.title")}
         subTitle={t("header.subtitle")}
@@ -19,6 +22,7 @@ export default function MainTemplate() {
 
       <BadgeChainOrganism chains={chains} className="m-auto" />
       <GlassCardContentOrganism />
+      <BackedByMolecule />
     </div>
   );
 }
