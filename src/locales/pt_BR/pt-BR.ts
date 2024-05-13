@@ -8,7 +8,7 @@ export const pt_BR = {
     secondSection: {
       title: "Redefinição do Deploy de Smart Contracts",
       subtitle:
-        "AnyFlow permite que líderes técnicos e desenvolvedores web3 implementem contratos inteligentes de forma ágil.",
+        "AnyFlow permite que líderes técnicos e desenvolvedores web3 implementem contratos inteligentes de forma ágil. Essa ferramenta otimiza a automação e aprimora os processos DevOps, garantindo qualidade de código excepcional em diversas blockchains. Além disso, é possível usar testnets para testes de precisão pré-produção sem o incômodo de faucets ou chaves de API.",
     },
     features: {
       continuousIntegration: {

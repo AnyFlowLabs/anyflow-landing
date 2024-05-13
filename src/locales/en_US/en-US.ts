@@ -8,7 +8,7 @@ export const en_US = {
     secondSection: {
       title: "Redefine Smart Contract Deployment",
       subtitle:
-        "AnyFlow empowers tech leads and solo web3 developers to achieve agile smart contract deployment.",
+        "AnyFlow empowers tech leads and solo web3 developers to achieve agile smart contract deployment. This robust tool streamlines automation and enhances DevOps processes, ensuring exceptional code quality across diverse blockchains. Leverage testnets for pre-production accuracy testing and enjoy seamless deployment to multiple testnets without the hassle of faucets or API keys.",
     },
     features: {
       continuousIntegration: {
