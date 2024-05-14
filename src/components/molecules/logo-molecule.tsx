@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
-import { LogoAtom } from "../atoms/logo-atom";
-import { LanguageChange } from "@/components/ui/language-change";
+import { LogoAtom } from "@/components/atoms/logo-atom";
+import { ChangeLanguageMolecule } from "@/components/molecules/change-language-molecule";
 
 export interface LogoMoleculeProps
   extends React.HTMLAttributes<HTMLDivElement> {
@@ -15,7 +15,7 @@ export function LogoMolecule({
   return (
     <div className={cn("flex items-center gap-5", className)} {...props}>
       <LogoAtom />
-      {showLanguage && <LanguageChange />}
+      {showLanguage && <ChangeLanguageMolecule />}
     </div>
   );
 }
