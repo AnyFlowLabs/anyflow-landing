@@ -1,4 +1,10 @@
-export type IconType = "github" | "instagram" | "discord" | "twitter" | "app";
+export type IconType =
+  | "github"
+  | "instagram"
+  | "linkedin"
+  | "discord"
+  | "twitter"
+  | "app";
 
 export interface SocialLinksProps {
   href: string;
@@ -7,17 +13,29 @@ export interface SocialLinksProps {
 }
 
 export const socialLinks: SocialLinksProps[] = [
-  { href: "https://www.github.com/", iconType: "github", text: "Facebook" },
   {
-    href: "https://www.instagram.com/",
-    iconType: "instagram",
-    text: "Instagram",
+    href: "https://github.com/AnyFlowLabs",
+    iconType: "github",
+    text: "Github",
   },
-  { href: "https://discord.com/", iconType: "discord", text: "Discord" },
   {
-    href: "https://twitter.com/?lang=en",
+    href: "https://www.linkedin.com/company/anyflowtool/",
+    iconType: "linkedin",
+    text: "LinkedIn",
+  },
+  {
+    href: "https://discord.gg/aCygGwBWya",
+    iconType: "discord",
+    text: "Discord",
+  },
+  {
+    href: "https://twitter.com/anyflow_",
     iconType: "twitter",
     text: "Twitter",
   },
-  { href: "https://www.anyflow.com/", iconType: "app", text: "AnyFlow" },
+  {
+    href: "https://forms.gle/KXNpERyCnyurQWpQ6",
+    iconType: "app",
+    text: "AnyFlow",
+  },
 ];

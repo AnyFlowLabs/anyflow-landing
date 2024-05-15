@@ -1,6 +1,7 @@
 import { BadgeChainMolecule } from "@/components/molecules/badge-chain-molecule";
 import { cn } from "@/lib/utils";
 import { useTranslation } from "react-i18next";
+import Slider from "../ui/slide";
 
 export interface BadgeChainOrganismProps
   extends React.HTMLAttributes<HTMLDivElement> {
@@ -15,13 +16,18 @@ export function BadgeChainOrganism({
   const { t } = useTranslation();
 
   return (
-    <section className={cn("m-auto flex flex-col gap-5", className)} {...props}>
-      <h2 className="text-center text-3xl text-white">{t("chains")}</h2>
-      <div className={"grid grid-cols-4 gap-5"}>
+    <section
+      className={cn("m-auto flex w-full flex-col ", className)}
+      {...props}
+    >
+      <h2 className="mb-10 text-center text-3xl text-white">{t("chains")}</h2>
+      <Slider>
         {chains.map((chain) => (
-          <BadgeChainMolecule key={chain} text={chain} />
+          <Slider.Slide key={chain}>
+            <BadgeChainMolecule text={chain} />
+          </Slider.Slide>
         ))}
-      </div>
+      </Slider>
     </section>
   );
 }
