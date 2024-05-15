@@ -11,7 +11,7 @@ export function DescriptionSectionAtom({
   ...props
 }: DescriptionSectionAtomProps) {
   return (
-    <p className={cn("text-2xl text-white", className)} {...props}>
+    <p className={cn("text-xl text-white", className)} {...props}>
       {text}
     </p>
   );

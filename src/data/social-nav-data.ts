@@ -10,7 +10,7 @@ export const socialLinks: SocialLinksProps[] = [
   {
     href: "https://github.com/AnyFlowLabs",
     iconType: "github",
-    text: "Facebook",
+    text: "Github",
   },
   // {
   //   href: "https://www.instagram.com/",

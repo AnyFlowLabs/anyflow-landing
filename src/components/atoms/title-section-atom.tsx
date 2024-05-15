@@ -11,7 +11,7 @@ export function TitleSectionAtom({
   ...props
 }: TitleSectionAtomProps) {
   return (
-    <h2 className={cn("text-3xl text-white", className)} {...props}>
+    <h2 className={cn("text-4xl text-white", className)} {...props}>
       {text}
     </h2>
   );
