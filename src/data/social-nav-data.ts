@@ -7,17 +7,29 @@ export interface SocialLinksProps {
 }
 
 export const socialLinks: SocialLinksProps[] = [
-  { href: "https://www.github.com/", iconType: "github", text: "Facebook" },
   {
-    href: "https://www.instagram.com/",
-    iconType: "instagram",
-    text: "Instagram",
+    href: "https://github.com/AnyFlowLabs",
+    iconType: "github",
+    text: "Facebook",
   },
-  { href: "https://discord.com/", iconType: "discord", text: "Discord" },
+  // {
+  //   href: "https://www.instagram.com/",
+  //   iconType: "instagram",
+  //   text: "Instagram",
+  // },
   {
-    href: "https://twitter.com/?lang=en",
+    href: "https://discord.gg/aCygGwBWya",
+    iconType: "discord",
+    text: "Discord",
+  },
+  {
+    href: "https://twitter.com/anyflow_",
     iconType: "twitter",
     text: "Twitter",
   },
-  { href: "https://www.anyflow.com/", iconType: "app", text: "AnyFlow" },
+  {
+    href: "https://forms.gle/KXNpERyCnyurQWpQ6",
+    iconType: "app",
+    text: "AnyFlow",
+  },
 ];
