@@ -1,9 +1,6 @@
 import { BadgeChainMolecule } from "@/components/molecules/badge-chain-molecule";
 import { cn } from "@/lib/utils";
 import { useTranslation } from "react-i18next";
-import useMeasure from "react-use-measure";
-import { animate, useMotionValue, motion } from "framer-motion";
-import { useEffect } from "react";
 import Slider from "../ui/slide";
 
 export interface BadgeChainOrganismProps

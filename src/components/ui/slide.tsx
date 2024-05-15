@@ -1,39 +1,24 @@
 import { cn } from "@/lib/utils";
-import React, { useEffect, useState } from "react";
+import React, { ReactElement, useEffect } from "react";
 
 export interface SlideProps extends React.HTMLAttributes<HTMLDivElement> {}
 
-export interface SliderProps extends React.HTMLAttributes<HTMLDivElement> {}
+export interface SliderProps extends React.HTMLAttributes<HTMLDivElement> {
+  children: ReactElement[];
+  width?: string;
+  duration?: number;
+  toRight?: boolean;
+}
 
 const Slider = ({
   children,
   width = "200px",
   duration = 40,
   toRight = false,
-}) => {
-  const [idNanoid, setIdNanoid] = useState("");
-
-  const generarCadenaAleatoria = () => {
-    let cadena = "";
-    const caracteres =
-      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-
-    for (let i = 0; i < 10; i++) {
-      cadena += caracteres.charAt(
-        Math.floor(Math.random() * caracteres.length),
-      );
-    }
-
-    return cadena;
-  };
-
-  useEffect(() => {
-    setIdNanoid(generarCadenaAleatoria());
-  }, []);
-
+}: SliderProps) => {
   useEffect(() => {
     const style = document.createElement("style");
-    style.type = "text/css";
+
     const keyFrames =
       "\
         @-webkit-keyframes slider_logo_slider {\
@@ -54,8 +39,9 @@ const Slider = ({
         }";
     style.innerHTML = keyFrames.replace(
       /A_DYNAMIC_VALUE/g,
-      `calc(${toRight ? "" : "-"}${width} * ${children?.length})`,
+      `calc(${toRight ? "" : "-"}${width} * ${children!.length})`,
     );
+
     document.getElementsByTagName("head")[0].appendChild(style);
   }, [toRight, width, children]);
 
@@ -69,7 +55,6 @@ const Slider = ({
           top: 0,
           overflow: "hidden",
         }}
-        id={`slider_wrapper_${idNanoid}`}
       >
         <div
           style={{
@@ -78,7 +63,6 @@ const Slider = ({
             animation: `slider_logo_slider ${duration}s linear infinite`,
             top: 0,
           }}
-          id={`slider_${idNanoid}`}
         >
           {children?.map((child, i) => (
             <React.Fragment key={i}>

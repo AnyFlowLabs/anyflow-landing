@@ -5,6 +5,7 @@ import {
   InstagramLogoIcon,
   Link2Icon,
   TwitterLogoIcon,
+  LinkedInLogoIcon,
 } from "@radix-ui/react-icons";
 
 export interface IconAtomProps {
@@ -13,6 +14,8 @@ export interface IconAtomProps {
 
 export function IconAtom({ iconType }: IconAtomProps) {
   switch (iconType) {
+    case "linkedin":
+      return <LinkedInLogoIcon className="size-10" color={"#FFF"} />;
     case "discord":
       return <DiscordLogoIcon className="size-10" color={"#FFF"} />;
     case "github":
