@@ -1,4 +1,4 @@
-import { Card } from "../ui/card";
+// import { Card } from "../ui/card";
 
 export function GlassCard() {
   return (
@@ -36,52 +36,49 @@ export default function MainTemplate() {
 
       <GlassCard />
 
-      {/* Testing section - Just comment it out in order to visualize the results */}
-      <section className="mt-10">
+      {/* Testing section - Just comment  out the below section and import statement at line 1 in order to visualize the results */}
+
+      {/* <section className="mt-10">
         <h1 className="mb-10 text-4xl text-white">Cards</h1>
         <div className="">
           <Card
             title="My Title"
             description="lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas laborum eum, nihil totam incidunt hic perspiciatis animi sed doloremque itaque temporibus voluptates voluptatum tenetur at nam. Debitis dicta quo neque?"
-            color="blue"
-            shade="900"
-            blurr="25"
-            opacity={35}
+            color="foreground"
+            blurr="35"
+            opacity={0.3}
             width={85}
+            padding={5}
+          />
+          <Card
+            title="My Title"
+            description="lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas laborum eum, nihil totam incidunt hic perspiciatis animi sed doloremque itaque temporibus voluptates voluptatum tenetur at nam. Debitis dicta quo neque?"
+            color="default"
+            blurr="45"
+            opacity={0.3}
+            width={75}
+            padding={2}
+          />
+          <Card
+            title="My Title"
+            description="lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas laborum eum, nihil totam incidunt hic perspiciatis animi sed doloremque itaque temporibus voluptates voluptatum tenetur at nam. Debitis dicta quo neque?"
+            color="foreground"
+            blurr="55"
+            opacity={0.5}
+            width={45}
             padding={3}
           />
           <Card
             title="My Title"
             description="lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas laborum eum, nihil totam incidunt hic perspiciatis animi sed doloremque itaque temporibus voluptates voluptatum tenetur at nam. Debitis dicta quo neque?"
-            color="red"
-            shade="700"
-            blurr="25"
-            opacity={45}
+            color="default"
+            blurr="65"
+            opacity={0.8}
             width={25}
-            padding={3}
-          />
-          <Card
-            title="My Title"
-            description="lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas laborum eum, nihil totam incidunt hic perspiciatis animi sed doloremque itaque temporibus voluptates voluptatum tenetur at nam. Debitis dicta quo neque?"
-            color="green"
-            shade="900"
-            blurr="25"
-            opacity={55}
-            width={25}
-            padding={3}
-          />
-          <Card
-            title="My Title"
-            description="lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas laborum eum, nihil totam incidunt hic perspiciatis animi sed doloremque itaque temporibus voluptates voluptatum tenetur at nam. Debitis dicta quo neque?"
-            color="white"
-            shade="900"
-            blurr="25"
-            opacity={25}
-            width={25}
-            padding={3}
+            padding={4}
           />
         </div>
-      </section>
+      </section> */}
     </div>
   );
 }
