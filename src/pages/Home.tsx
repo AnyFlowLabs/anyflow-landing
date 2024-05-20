@@ -7,7 +7,7 @@ import MainTemplate from "@/components/template/main-template";
 export default function HomePage() {
   return (
     <Container>
-      <BackgroundAnimated />
+      {/* <BackgroundAnimated /> */}
       <HeaderTemplate />
       <MainTemplate />
       <FooterTemplate />
