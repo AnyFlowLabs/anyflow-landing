@@ -9,6 +9,7 @@ import DiscordIcon from "@/assets/discord.svg";
 import LogoHeader from "@/assets/logo-header.svg";
 import FooterTemplate from "@/components/template/footer-template";
 import FooterContent from "@/components/organisms/footer-content";
+import TryItNowSection from "@/components/template/try-it-now-section";
 
 export default function HomePage() {
   return (
@@ -114,14 +115,7 @@ export default function HomePage() {
           </div>
         </div>
 
-        <div className="bg-blue-0 mx-auto  mt-[82px] flex w-full max-w-[1040px] flex-col items-center gap-6 py-[62px]">
-          <h3 className="text-[28px] text-white">
-            Try it right now! Click the button to be one of the first users.
-          </h3>
-          <button className="bg-brand-6 px-6 py-3 text-white">
-            Request access
-          </button>
-        </div>
+        <TryItNowSection />
       </Container>
       <FooterContent />
     </main>
