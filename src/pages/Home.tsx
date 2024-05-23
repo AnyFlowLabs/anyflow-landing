@@ -10,6 +10,7 @@ import LogoHeader from "@/assets/logo-header.svg";
 import FooterTemplate from "@/components/template/footer-template";
 import FooterContent from "@/components/organisms/footer-content";
 import TryItNowSection from "@/components/template/try-it-now-section";
+import IntegrationSection from "@/components/template/integration-section";
 
 export default function HomePage() {
   return (
@@ -54,66 +55,8 @@ export default function HomePage() {
           <img src={Group} alt="App image" className="col-span-3" />
         </div>
         <BadgeChainOrganism chains={chains} className="m-auto" />
-        <div className="mx-auto flex max-w-[1232px] justify-between gap-[100px] border-b border-white">
-          <div className="max-w-[525px]">
-            <h2 className="max-w-[378px] text-[32px] text-white">
-              Continuous Integration Made Easy
-            </h2>
-          </div>
-          <div className="max-w-[693px] px-[20px] py-[30px]">
-            <p className="text-blue-8">
-              Integrate AnyFlow with your CI tools like GitHub Actions or
-              Jenkins for seamless smart contract deployments. Automate the
-              tedious parts of deployment and focus more on innovation and less
-              on infrastructure.
-            </p>
-          </div>
-        </div>
-        <div className="mx-auto flex max-w-[1232px] justify-between gap-[100px] border-b border-white">
-          <div className="max-w-[525px]">
-            <h2 className="max-w-[378px] text-[32px] text-white">
-              Continuous Integration Made Easy
-            </h2>
-          </div>
-          <div className="max-w-[693px] px-[20px] py-[30px]">
-            <p className="text-blue-8">
-              Integrate AnyFlow with your CI tools like GitHub Actions or
-              Jenkins for seamless smart contract deployments. Automate the
-              tedious parts of deployment and focus more on innovation and less
-              on infrastructure.
-            </p>
-          </div>
-        </div>
-        <div className="mx-auto flex max-w-[1232px] justify-between gap-[100px] border-b border-white">
-          <div className="max-w-[525px]">
-            <h2 className="max-w-[378px] text-[32px] text-white">
-              Continuous Integration Made Easy
-            </h2>
-          </div>
-          <div className="max-w-[693px] px-[20px] py-[30px]">
-            <p className="text-blue-8">
-              Integrate AnyFlow with your CI tools like GitHub Actions or
-              Jenkins for seamless smart contract deployments. Automate the
-              tedious parts of deployment and focus more on innovation and less
-              on infrastructure.
-            </p>
-          </div>
-        </div>
-        <div className="mx-auto flex max-w-[1232px] justify-between gap-[100px] border-b border-white">
-          <div className="max-w-[525px]">
-            <h2 className="max-w-[378px] text-[32px] text-white">
-              Continuous Integration Made Easy
-            </h2>
-          </div>
-          <div className="max-w-[693px] px-[20px] py-[30px]">
-            <p className="text-blue-8">
-              Integrate AnyFlow with your CI tools like GitHub Actions or
-              Jenkins for seamless smart contract deployments. Automate the
-              tedious parts of deployment and focus more on innovation and less
-              on infrastructure.
-            </p>
-          </div>
-        </div>
+
+        <IntegrationSection />
 
         <TryItNowSection />
       </Container>
