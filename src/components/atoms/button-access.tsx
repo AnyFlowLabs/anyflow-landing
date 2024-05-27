@@ -7,7 +7,7 @@ export interface ButtonAcessProps
 
 // [TODO] -> Verificar para onde enviar
 
-export function ButtonAcess({
+export default function ButtonAcess({
   url,
   className,
   children,
@@ -18,17 +18,12 @@ export function ButtonAcess({
   };
 
   return (
-    <div>
-      <button
-        className={cn(
-          "inline-block transform rounded-lg bg-gradient-to-r from-[#63D3E3] to-[#69E1B0] p-5 text-center text-2xl font-bold text-black transition duration-300 ease-in-out hover:scale-105",
-          className,
-        )}
-        onClick={() => handleClick(url)}
-        {...props}
-      >
-        {children}
-      </button>
-    </div>
+    <button
+      className={cn("rounded-lg bg-brand-6 px-6 py-3 text-white", className)}
+      onClick={() => handleClick(url)}
+      {...props}
+    >
+      {children}
+    </button>
   );
 }

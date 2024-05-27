@@ -15,16 +15,16 @@ export interface IconAtomProps {
 export function IconAtom({ iconType }: IconAtomProps) {
   switch (iconType) {
     case "linkedin":
-      return <LinkedInLogoIcon className="size-10" color={"#FFF"} />;
+      return <LinkedInLogoIcon className="size-8" color={"#FFF"} />;
     case "discord":
-      return <DiscordLogoIcon className="size-10" color={"#FFF"} />;
+      return <DiscordLogoIcon className="size-8" color={"#FFF"} />;
     case "github":
-      return <GitHubLogoIcon className="size-10" color={"#FFF"} />;
+      return <GitHubLogoIcon className="size-8" color={"#FFF"} />;
     case "twitter":
-      return <TwitterLogoIcon className="size-10" color={"#FFF"} />;
+      return <TwitterLogoIcon className="size-8" color={"#FFF"} />;
     case "instagram":
-      return <InstagramLogoIcon className="size-10" color={"#FFF"} />;
+      return <InstagramLogoIcon className="size-8" color={"#FFF"} />;
     case "app":
-      return <Link2Icon className="size-10" color={"#FFF"} />;
+      return <Link2Icon className="size-8" color={"#FFF"} />;
   }
 }

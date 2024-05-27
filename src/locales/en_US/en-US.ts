@@ -1,11 +1,13 @@
 export const en_US = {
   translation: {
     header: {
-      title: "Smart Contract Deployment in 5 Minutes",
+      title1: "Smart Contract Deployment",
+      title2: "in 1'57''minutes",
       subtitle: "Effortless and secure automation for web3 DevOps",
-      button: "Request access",
+      button: "Get early access",
     },
     secondSection: {
+      info: "Optimize your deploy",
       title: "Redefine Smart Contract Deployment",
       subtitle:
         "AnyFlow empowers tech leads and solo web3 developers to achieve agile smart contract deployment. This robust tool streamlines automation and enhances DevOps processes, ensuring exceptional code quality across diverse blockchains. Leverage testnets for pre-production accuracy testing and enjoy seamless deployment to multiple testnets without the hassle of faucets or API keys.",
@@ -33,6 +35,8 @@ export const en_US = {
           "Simplify your billing with AnyFlow’s straightforward financial model. All deployment costs are consolidated and billed in USD, freeing you from managing multiple native tokens across blockchains.",
       },
     },
+    callToAction:
+      "Try it right now! Click the button to be one of the first users.",
     footer: {
       backedBy: {
         text: "Backed by Khiza",

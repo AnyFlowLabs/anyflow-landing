@@ -17,6 +17,9 @@ module.exports = {
       },
     },
     extend: {
+      backgroundImage: {
+        hero: "url('/Back_Anyflow.png')",
+      },
       colors: {
         brand: {
           1: "#260C13",
@@ -26,15 +29,18 @@ module.exports = {
           5: "#BF2F55",
           6: "#E83664",
         },
-        grey: {
-          1: "#101017",
-          2: "#1C1E28",
-          3: "#2B2E3B",
-          4: "#323949",
-          5: "#3F4356",
-          6: "#A3ABC1",
-          7: "#E3E7F3",
-          8: "#EEF1F8",
+        blue: {
+          0: "#0B0C0F",
+          1: "#16171D",
+          2: "#20222B",
+          3: "#2B2D39",
+          4: "#353848",
+          5: "#424656",
+          6: "#5F6271",
+          7: "#7E818D",
+          8: "#9E9FA8",
+          9: "#DCDDE0",
+          10: "#FBFBFC",
         },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

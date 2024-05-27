@@ -17,10 +17,10 @@ export function BadgeChainOrganism({
 
   return (
     <section
-      className={cn("m-auto flex w-full flex-col ", className)}
+      className={cn("m-auto mb-10 flex w-full flex-col", className)}
       {...props}
     >
-      <h2 className="mb-10 text-center text-3xl text-white">{t("chains")}</h2>
+      <h2 className="mb-10 text-center text-2xl text-white">{t("chains")}</h2>
       <Slider>
         {chains.map((chain) => (
           <Slider.Slide key={chain}>

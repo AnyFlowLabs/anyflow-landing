@@ -13,7 +13,7 @@ export function BadgeChainMolecule({
   return (
     <div
       className={cn(
-        "flex items-center justify-center rounded-lg border border-white bg-white/20 p-4 text-2xl text-white",
+        "flex items-center justify-center rounded-lg bg-blue-2 p-4 text-2xl text-blue-8",
         className,
       )}
       {...props}
