@@ -9,7 +9,6 @@ import IntegrationSection from "@/components/template/integration-section";
 import ButtonAccess from "@/components/atoms/button-access";
 import BUTTON_ACCESS from "@/data/button-access";
 import SocialMediaLinks from "@/components/molecules/social-media-links";
-import BackAnyflow from "@/assets/Back_Anyflow.png";
 
 export default function HomePage() {
   return (
