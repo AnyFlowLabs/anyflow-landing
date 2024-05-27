@@ -8,7 +8,7 @@ const FooterContent = () => (
     <img src={Logo} alt="Anyflow" />
     <BackedByMolecule />
     <div className="mx-auto flex w-full max-w-[1280px] justify-between">
-      <CopyrightNotice text={"© 2050 Anyflow. All rights reserved."} />
+      <CopyrightNotice text={"© 2024 Anyflow. All rights reserved."} />
       <SocialMediaLinks />
     </div>
   </div>

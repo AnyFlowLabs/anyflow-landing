@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import ArrowDown from "@/assets/arrow-down.svg";
 
 export function ChangeLanguageMolecule() {
   const { i18n } = useTranslation();
@@ -26,8 +27,12 @@ export function ChangeLanguageMolecule() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" className="border-none bg-grey-5 text-white">
+        <Button
+          variant="outline"
+          className="flex gap-3 border-none bg-transparent text-white hover:bg-transparent hover:text-white focus-visible:border-none focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-opacity-50"
+        >
           {showLanguage}
+          <img src={ArrowDown} alt="Arrow down" />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="bg-grey-6">
@@ -35,10 +40,18 @@ export function ChangeLanguageMolecule() {
           value={showLanguage}
           onValueChange={setShowLanguage}
         >
-          <DropdownMenuRadioItem value="EN-US" onClick={toggleLanguage}>
+          <DropdownMenuRadioItem
+            value="EN-US"
+            onClick={toggleLanguage}
+            className="bg-transparent text-white hover:bg-transparent hover:text-white"
+          >
             EN-US
           </DropdownMenuRadioItem>
-          <DropdownMenuRadioItem value="PT-BR" onClick={toggleLanguage}>
+          <DropdownMenuRadioItem
+            className="bg-transparent text-white hover:bg-transparent hover:text-white"
+            value="PT-BR"
+            onClick={toggleLanguage}
+          >
             PT-BR
           </DropdownMenuRadioItem>
         </DropdownMenuRadioGroup>
