@@ -1,11 +1,13 @@
 export const pt_BR = {
   translation: {
     header: {
-      title: "Deploy de Smart Contracts em 5 Minutos",
+      title1: "Deploy de Smart Contracts em 5 Minutos",
+      title2: "em 1'57''minutos",
       subtitle: "Automação segura e fácil para DevOps em web3",
       button: "Solicitar acesso",
     },
     secondSection: {
+      info: "Otimize seu deploy",
       title: "Redefinição do Deploy de Smart Contracts",
       subtitle:
         "AnyFlow permite que líderes técnicos e desenvolvedores web3 implementem contratos inteligentes de forma ágil. Essa ferramenta otimiza a automação e aprimora os processos DevOps, garantindo qualidade de código excepcional em diversas blockchains. Além disso, é possível usar testnets para testes de precisão pré-produção sem o incômodo de faucets ou chaves de API.",
@@ -33,6 +35,8 @@ export const pt_BR = {
           "Simplifique os pagamentos com o modelo financeiro direto do AnyFlow. Todos os custos de implementação são consolidados e faturados em USD, liberando você da gestão de múltiplos tokens nativos entre as blockchains.",
       },
     },
+    callToAction:
+      "Não perca tempo! Seja um dos primeiros a experimentar clicando no botão.",
     footer: {
       backedBy: {
         text: "Suportado pela Khiza",
