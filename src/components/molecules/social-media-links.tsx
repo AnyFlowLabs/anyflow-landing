@@ -13,10 +13,26 @@ const SocialMediaLinks: React.FC<SocialMediaLinksProps> = ({
   ...props
 }) => (
   <div className={cn("flex gap-6", className)} {...props}>
-    <Icon src={GithubIcon} alt="Github" />
-    <Icon src={LinkedinIcon} alt="Linkedin" />
-    <Icon src={DiscordIcon} alt="Discord" />
-    <Icon src={TwitterIcon} alt="Twitter" />
+    <Icon
+      src={GithubIcon}
+      alt="Github"
+      url={"https://github.com/AnyFlowLabs"}
+    />
+    <Icon
+      src={LinkedinIcon}
+      alt="Linkedin"
+      url={"https://www.linkedin.com/company/anyflowtool/"}
+    />
+    <Icon
+      src={DiscordIcon}
+      alt="Discord"
+      url={"https://discord.gg/aCygGwBWya"}
+    />
+    <Icon
+      src={TwitterIcon}
+      alt="Twitter"
+      url={"https://twitter.com/anyflow_"}
+    />
   </div>
 );
 

@@ -3,8 +3,20 @@ import React from "react";
 interface IconProps {
   src: string;
   alt: string;
+  url: string;
 }
 
-const Icon: React.FC<IconProps> = ({ src, alt }) => <img src={src} alt={alt} />;
+function handleClick(url: string) {
+  window.open(url, "_blank");
+}
+
+const Icon: React.FC<IconProps> = ({ src, alt, url }) => (
+  <img
+    src={src}
+    alt={alt}
+    className="cursor-pointer"
+    onClick={() => handleClick(url)}
+  />
+);
 
 export default Icon;

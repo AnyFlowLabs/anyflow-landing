@@ -17,6 +17,9 @@ module.exports = {
       },
     },
     extend: {
+      backgroundImage: {
+        hero: "url('src/assets/Back_Anyflow.png')",
+      },
       colors: {
         brand: {
           1: "#260C13",
