@@ -19,8 +19,9 @@ export default function HomePage() {
           <SocialMediaLinks />
         </header>
         <div className="mx-auto flex max-w-[1029px] flex-col items-center gap-7 py-[170px]">
-          <h1 className="flex text-center text-[79px] leading-[80px] text-white">
-            Smart Contract Deployment in 1'57''minutes
+          <h1 className="text-center text-[79px] leading-[80px] text-white">
+            Smart Contract Deployment{" "}
+            <span className="text-brand-6">in 1'57''minutes</span>
           </h1>
           <h3 className="text-2xl text-blue-9">
             Effortless and secure automation for web3 DevOps
