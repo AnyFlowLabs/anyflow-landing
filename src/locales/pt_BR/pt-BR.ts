@@ -1,7 +1,7 @@
 export const pt_BR = {
   translation: {
     header: {
-      title1: "Deploy de Smart Contracts em 5 Minutos",
+      title1: "Deploy de Smart Contracts",
       title2: "em 1'57''minutos",
       subtitle: "Automação segura e fácil para DevOps em web3",
       button: "Solicitar acesso",
