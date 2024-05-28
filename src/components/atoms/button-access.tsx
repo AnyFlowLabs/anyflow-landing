@@ -19,7 +19,10 @@ export default function ButtonAcess({
 
   return (
     <button
-      className={cn("rounded-lg bg-brand-6 px-6 py-3 text-white", className)}
+      className={cn(
+        "transform rounded-lg bg-brand-6 px-6 py-3 text-white transition duration-300 ease-in-out hover:scale-110",
+        className,
+      )}
       onClick={() => handleClick(url)}
       {...props}
     >
