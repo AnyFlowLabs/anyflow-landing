@@ -12,7 +12,7 @@ const SocialMediaLinks: React.FC<SocialMediaLinksProps> = ({
   className,
   ...props
 }) => (
-  <div className={cn("flex gap-6", className)} {...props}>
+  <div className={cn("flex w-auto gap-6", className)} {...props}>
     <Icon
       src={GithubIcon}
       alt="Github"
