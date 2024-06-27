@@ -5,6 +5,7 @@ export const en_US = {
       title2: "in 1'57''minutes",
       subtitle: "Effortless and secure automation for web3 DevOps",
       button: "Get early access",
+      button_github: "Log in with Github",
     },
     secondSection: {
       info: "Optimize your deploy",
@@ -12,7 +13,7 @@ export const en_US = {
       subtitle:
         "AnyFlow empowers tech leads and solo web3 developers to achieve agile smart contract deployment. This robust tool streamlines automation and enhances DevOps processes, ensuring exceptional code quality across diverse blockchains. Leverage testnets for pre-production accuracy testing and enjoy seamless deployment to multiple testnets without the hassle of faucets or API keys.",
     },
-    chains: "Supported Chains",
+    chains: "{{q}} Supported Chains",
     features: {
       continuousIntegration: {
         title: "Continuous Integration Made Easy",

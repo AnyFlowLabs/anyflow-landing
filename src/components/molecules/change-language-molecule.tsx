@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import LanguageIcon from "@/assets/language-icon.svg";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -31,6 +32,7 @@ export function ChangeLanguageMolecule() {
           variant="outline"
           className="flex gap-3 border-none bg-transparent text-white hover:bg-transparent hover:text-white focus-visible:border-none focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-opacity-50"
         >
+          <img src={LanguageIcon} />
           {showLanguage}
           <img src={ArrowDown} alt="Arrow down" />
         </Button>
