@@ -13,7 +13,7 @@ export const IntegrationDisplay: React.FC<IntegrationDisplayProps> = ({
 }) => {
   return (
     <div>
-      <div className="mx-auto flex max-w-[1230px] justify-between gap-[100px] border-b border-blue-6">
+      <div className="mx-auto flex py-[38px] max-w-[1230px] justify-between gap-[100px] border-b border-blue-6">
         <TextSection title={title} description={description} />
       </div>
     </div>
