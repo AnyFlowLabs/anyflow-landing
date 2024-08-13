@@ -8,7 +8,7 @@ import TryItNowSection from "@/components/template/try-it-now-section";
 import IntegrationSection from "@/components/template/integration-section";
 import ButtonAccess from "@/components/atoms/button-access";
 import ButtonGithub from "@/components/atoms/button-github";
-import BUTTON_ACCESS from "@/data/button-access";
+import BUTTON_ACCESS, { DOCS_URL } from "@/data/button-access";
 import BUTTON_GITHUB from "@/data/button-github";
 // import SocialMediaLinks from "@/components/molecules/social-media-links";
 import { ChangeLanguageMolecule } from "@/components/molecules/change-language-molecule";
@@ -22,9 +22,15 @@ export default function HomePage() {
     <main>
       <Container className="bg-hero bg-cover bg-center ">
         <header className="flex max-w-[1280px] px-3 md:px-6 flex-col-reverse items-center gap-5 py-5 lg:mx-auto lg:flex-row lg:justify-between">
-          <img src={LogoHeader} alt="Logo" className="w-full max-w-[230px]" />
+          <div className="flex items-center gap-5">
+            <img src={LogoHeader} alt="Logo" className="w-full max-w-[230px]" />
+            <a target="_blank" className="text-white hidden lg:inline" href={DOCS_URL}>Docs</a>
+          </div>
           <div className="flex w-full lg:w-auto justify-between">
-            <ChangeLanguageMolecule />
+            <div className="flex items-center gap-3">
+              <ChangeLanguageMolecule />
+              <a target="_blank" className="text-white lg:hidden" href={DOCS_URL}>Docs</a>
+            </div>
             {/* <SocialMediaLinks className="flex w-full justify-end lg:justify-normal" /> */}
             <ButtonGithub url={BUTTON_GITHUB} />
           </div>
