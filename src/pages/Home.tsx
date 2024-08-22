@@ -8,10 +8,10 @@ import TryItNowSection from "@/components/template/try-it-now-section";
 import IntegrationSection from "@/components/template/integration-section";
 import ButtonAccess from "@/components/atoms/button-access";
 import ButtonGithub from "@/components/atoms/button-github";
-import BUTTON_ACCESS, { DOCS_URL } from "@/data/button-access";
+import { DOCS_URL } from "@/data/button-access";
 import BUTTON_GITHUB from "@/data/button-github";
 // import SocialMediaLinks from "@/components/molecules/social-media-links";
-import { ChangeLanguageMolecule } from "@/components/molecules/change-language-molecule";
+// import { ChangeLanguageMolecule } from "@/components/molecules/change-language-molecule";
 
 import { useTranslation } from "react-i18next";
 

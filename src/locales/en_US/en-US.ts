@@ -5,6 +5,7 @@ export const en_US = {
       title2: "Smart Contract Deployments",
       subtitle1: "Effortless",
       subtitle2: ", fast and secure. Multichain ready.",
+      button: "Request access",
       docs: "Check our docs",
       button_github: "Log in with Github",
     },
@@ -27,11 +28,11 @@ export const en_US = {
         description:
           "Forget about gas calculations and private key management. AnyFlow automates these complexities, allowing you to deploy without directly handling sensitive elements or wasting time with configuration.",
       },
-      // trustAndControl: {
-      //   title: "Trust and Control in Your Hands",
-      //   description:
-      //     "Every deployment through AnyFlow requires explicit approval from your team, ensuring a trustless operation where only authorized actions are executed, and maintaining the integrity and security of your deployments.",
-      // },
+      trustAndControl: {
+        title: "Trust and Control in Your Hands",
+        description:
+          "Every deployment through AnyFlow requires explicit approval from your team, ensuring a trustless operation where only authorized actions are executed, and maintaining the integrity and security of your deployments.",
+      },
       unifiedCosts: {
         title: "Unified Operational Costs",
         description:
