@@ -28,7 +28,7 @@ export default function HomePage() {
           </div>
           <div className="flex w-full lg:w-auto justify-between">
             <div className="flex items-center gap-3">
-              <ChangeLanguageMolecule />
+              {/* <ChangeLanguageMolecule /> */}
               <a target="_blank" className="text-white lg:hidden" href={DOCS_URL}>Docs</a>
             </div>
             {/* <SocialMediaLinks className="flex w-full justify-end lg:justify-normal" /> */}
@@ -37,17 +37,20 @@ export default function HomePage() {
         </header>
         <div className="mx-auto flex max-w-[1029px] flex-col items-center gap-7 py-[100px] lg:py-[170px] px-3 md:px-6">
           <h2 className="text-center text-[50px] leading-[80px] text-white lg:text-[79px]">
-            {t("header.title1")}{" "}
-            <span className="text-brand-6">{t("header.title2")}</span>
+            {/* <span className="">{t("header.title1")}</span>{" "} */}
+            {t("header.title2")}
           </h2>
-          <h3 className="text-blue-9 lg:text-2xl">{t("header.subtitle")}</h3>
+          <h3 className="text-blue-9 lg:text-2xl">
+            <span className="text-brand-6">{t("header.subtitle1")}</span>
+            {t("header.subtitle2")}
+          </h3>
           {/* Smart Contract Deployment in 1 57" minutes 
               Smart Contract Deployment in Continuous Integration
               Smart Contract Deployment without gas
               Smart Contract Deployment without RPC providers
               Smart Contract Deployment without PK custody 
               */}
-          <ButtonAccess url={BUTTON_ACCESS}>{t("header.button")}</ButtonAccess>
+          {/* <ButtonAccess url={BUTTON_ACCESS}>{t("header.button")}</ButtonAccess> */}
         </div>
       </Container>
 
@@ -60,8 +63,8 @@ export default function HomePage() {
             </h3>
             <p className="text-blue-8">{t("secondSection.subtitle")}</p>
             <div>
-              <ButtonAccess url={BUTTON_ACCESS}>
-                {t("header.button")}
+              <ButtonAccess url={DOCS_URL}>
+                {t("header.docs")}
               </ButtonAccess>
             </div>
           </div>
