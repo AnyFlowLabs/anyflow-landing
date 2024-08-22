@@ -14,10 +14,10 @@ const IntegrationSection = () => {
         title={t("features.handsOffDeployment.title")}
         description={t("features.handsOffDeployment.description")}
       />
-      <IntegrationDisplay
+      {/* <IntegrationDisplay
         title={t("features.trustAndControl.title")}
         description={t("features.trustAndControl.description")}
-      />
+      /> */}
       <IntegrationDisplay
         title={t("features.unifiedCosts.title")}
         description={t("features.unifiedCosts.description")}

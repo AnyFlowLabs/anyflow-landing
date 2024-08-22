@@ -5,7 +5,7 @@ import { LogoMolecule } from "@/components/molecules/logo-molecule";
 export default function HeaderTemplate() {
   return (
     <header className="flex justify-between py-5">
-      <LogoMolecule showLanguage={true} />
+      <LogoMolecule showLanguage={false} />
       <SocialNavOrganism links={socialLinks} />
     </header>
   );
