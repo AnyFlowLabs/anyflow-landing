@@ -20,24 +20,6 @@ export default function HomePage() {
 
   return (
     <main>
-      <div className="bg-brand-6">
-        <div className="mx-auto flex flex-col md:flex-row max-w-[1280px] gap-4 p-4">
-          <div className="flex flex-1 flex-col gap-0">
-            <div className="text-lg text-white font-bold">
-              Stay tuned! Support for Solana is coming soon to AnyFlow!
-            </div>
-            <div className="text-sm text-white">
-              We are currently in the alpha stage, and we want you to be part of
-              this journey. Request early access and help us shape the future of
-              our platform!
-            </div>
-          </div>
-          <ButtonAccess url="https://docs.google.com/forms/d/e/1FAIpQLSdBLFsdjxCJPuc8X7yEqzrwd-i8cloKxNUkcMMzPY1m6OMb5Q/viewform" className="bg-white text-brand-6">
-            Request Access
-          </ButtonAccess>
-        </div>
-      </div>
-
       <Container className="bg-hero bg-cover bg-center ">
         <header className="flex max-w-[1280px] flex-col-reverse items-center gap-5 px-3 py-5 md:px-6 lg:mx-auto lg:flex-row lg:justify-between">
           <div className="flex items-center gap-5">
@@ -83,6 +65,27 @@ export default function HomePage() {
           {/* <ButtonAccess url={BUTTON_ACCESS}>{t("header.button")}</ButtonAccess> */}
         </div>
       </Container>
+
+      <div className="bg-brand-6">
+        <div className="mx-auto flex max-w-[1280px] flex-col gap-4 p-4 md:flex-row">
+          <div className="flex flex-1 flex-col gap-0">
+            <div className="text-lg font-bold text-white">
+              Stay tuned! Support for Solana is coming soon to AnyFlow!
+            </div>
+            <div className="text-sm text-white">
+              We are currently in the alpha stage, and we want you to be part of
+              this journey. Request early access and help us shape the future of
+              our platform!
+            </div>
+          </div>
+          <ButtonAccess
+            url="https://docs.google.com/forms/d/e/1FAIpQLSdBLFsdjxCJPuc8X7yEqzrwd-i8cloKxNUkcMMzPY1m6OMb5Q/viewform"
+            className="bg-white text-brand-6"
+          >
+            Request Access
+          </ButtonAccess>
+        </div>
+      </div>
 
       <Container className="flex flex-col bg-blue-1 px-3 pb-[82px] md:px-6">
         <div className="mx-auto flex max-w-[1232px] flex-col gap-[50px] py-[100px] lg:grid lg:grid-cols-5">
