@@ -21,7 +21,7 @@ export default function HomePage() {
   return (
     <main>
       <div className="bg-brand-6">
-        <div className="mx-auto flex flex-col md:flex-row max-w-[1280px] gap-4 p-4">
+        <div className="mx-auto flex flex-col md:flex-row max-w-[1280px] gap-4 p-4 items-center justify-center">
           <div className="flex flex-1 flex-col gap-0">
             <div className="text-lg text-white font-bold">
               Stay tuned! Support for Solana is coming soon to AnyFlow!
@@ -32,7 +32,7 @@ export default function HomePage() {
               our platform!
             </div>
           </div>
-          <ButtonAccess url="https://docs.google.com/forms/d/e/1FAIpQLSdBLFsdjxCJPuc8X7yEqzrwd-i8cloKxNUkcMMzPY1m6OMb5Q/viewform" className="bg-white text-brand-6">
+          <ButtonAccess url="https://docs.google.com/forms/d/e/1FAIpQLSdBLFsdjxCJPuc8X7yEqzrwd-i8cloKxNUkcMMzPY1m6OMb5Q/viewform" className="bg-white text-brand-6 w-full md:w-auto">
             Request Access
           </ButtonAccess>
         </div>
