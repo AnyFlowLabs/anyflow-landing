@@ -21,7 +21,7 @@ export default function HomePage() {
   return (
     <main>
       <div className="bg-brand-6">
-        <div className="mx-auto flex max-w-[1280px] gap-4 p-4">
+        <div className="mx-auto flex flex-col md:flex-row max-w-[1280px] gap-4 p-4">
           <div className="flex flex-1 flex-col gap-0">
             <div className="text-lg text-white font-bold">
               Stay tuned! Support for Solana is coming soon to AnyFlow!
