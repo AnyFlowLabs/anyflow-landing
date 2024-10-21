@@ -10,7 +10,6 @@ export const router = createBrowserRouter([
   },
   {
     path: "/chains",
-    // element: <Chains />,
     children: [
       {
         index: true,
