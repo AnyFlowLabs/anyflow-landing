@@ -10,10 +10,9 @@ import ButtonAccess from "@/components/atoms/button-access";
 import ButtonGithub from "@/components/atoms/button-github";
 import { DOCS_URL } from "@/data/button-access";
 import BUTTON_GITHUB from "@/data/button-github";
-// import SocialMediaLinks from "@/components/molecules/social-media-links";
-// import { ChangeLanguageMolecule } from "@/components/molecules/change-language-molecule";
 
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 
 export default function HomePage() {
   const { t } = useTranslation();
@@ -31,10 +30,10 @@ export default function HomePage() {
             >
               Docs
             </a>
+            <Link to={"/chains"}>Chains</Link>
           </div>
           <div className="flex w-full justify-between lg:w-auto">
             <div className="flex items-center gap-3">
-              {/* <ChangeLanguageMolecule /> */}
               <a
                 target="_blank"
                 className="text-white lg:hidden"
@@ -43,28 +42,19 @@ export default function HomePage() {
                 Docs
               </a>
             </div>
-            {/* <SocialMediaLinks className="flex w-full justify-end lg:justify-normal" /> */}
             <ButtonGithub url={BUTTON_GITHUB} />
           </div>
         </header>
         <div className="mx-auto flex max-w-[1029px] flex-col items-center gap-7 px-3 py-[100px] md:px-6 lg:py-[170px]">
           <h2 className="text-center text-[50px] leading-[80px] text-white lg:text-[79px]">
-            {/* <span className="">{t("header.title1")}</span>{" "} */}
             {t("header.title2")}
           </h2>
           <h3 className="text-blue-9 lg:text-2xl">
             <span className="text-brand-6">{t("header.subtitle1")}</span>
             {t("header.subtitle2")}
           </h3>
-          {/* Smart Contract Deployment in 1 57" minutes 
-              Smart Contract Deployment in Continuous Integration
-              Smart Contract Deployment without gas
-              Smart Contract Deployment without RPC providers
-              Smart Contract Deployment without PK custody 
-              */}
-          {/* <ButtonAccess url={BUTTON_ACCESS}>{t("header.button")}</ButtonAccess> */}
 
-          <div className="mx-auto flex w-full mt-4 md:mt-16 flex-col gap-16 rounded-md bg-black p-6 md:flex-row items-center justify-center">
+          <div className="mx-auto mt-4 flex w-full flex-col items-center justify-center gap-16 rounded-md bg-black p-6 md:mt-16 md:flex-row">
             <div className="flex flex-1 flex-col gap-0">
               <div className="text-lg font-bold text-white">
                 Stay tuned! Support for Solana is coming soon to AnyFlow!
@@ -75,10 +65,7 @@ export default function HomePage() {
                 future of our platform!
               </div>
             </div>
-            <ButtonAccess
-              url="https://docs.google.com/forms/d/e/1FAIpQLSdBLFsdjxCJPuc8X7yEqzrwd-i8cloKxNUkcMMzPY1m6OMb5Q/viewform"
-              
-            >
+            <ButtonAccess url="https://docs.google.com/forms/d/e/1FAIpQLSdBLFsdjxCJPuc8X7yEqzrwd-i8cloKxNUkcMMzPY1m6OMb5Q/viewform">
               Request Access
             </ButtonAccess>
           </div>
