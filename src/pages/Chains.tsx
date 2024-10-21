@@ -16,8 +16,8 @@ import { useNavigate } from "react-router-dom";
 export default function Chains() {
   const navigate = useNavigate();
 
-  const handleChainDetails = (chainName: string) => {
-    navigate(`/chains/${chainName.toLocaleLowerCase()}`);
+  const handleChainDetails = (chainId: number, chainName: string) => {
+    navigate(`/chains/${chainId}/${chainName.toLocaleLowerCase()}`);
   };
 
   return (
@@ -31,7 +31,7 @@ export default function Chains() {
           <Thead>
             <Tr>
               <Th>Name</Th>
-              <Th>ID</Th>
+              <Th>Chain ID</Th>
               <Th isNumeric>TICKER</Th>
             </Tr>
           </Thead>
@@ -40,10 +40,10 @@ export default function Chains() {
               <Tr
                 key={chain.id}
                 cursor="pointer"
-                onClick={() => handleChainDetails(chain.name)}
+                onClick={() => handleChainDetails(chain.id, chain.name)}
               >
                 <Td>{chain.name}</Td>
-                <Td>{chain.id}</Td>
+                <Td>{chain.chain_id}</Td>
                 <Td isNumeric>{chain.ticker}</Td>
               </Tr>
             ))}
