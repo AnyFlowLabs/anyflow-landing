@@ -29,7 +29,7 @@ const Pagination: React.FC<PaginationProps> = ({
     return pages.map((page) => (
       <Button
         key={page}
-        size="sm"
+        size="md"
         variant={page === currentPage ? "solid" : "outline"}
         colorScheme="blue"
         onClick={() => onPageChange(page)}
@@ -42,6 +42,7 @@ const Pagination: React.FC<PaginationProps> = ({
   return (
     <HStack spacing={4} justify="center" mt={4}>
       <IconButton
+        size={"lg"}
         aria-label="Previous"
         icon={<ChevronLeftIcon />}
         isDisabled={isFirstPage}
@@ -49,6 +50,7 @@ const Pagination: React.FC<PaginationProps> = ({
       />
       <HStack>{renderPageButtons()}</HStack>
       <IconButton
+        size={"lg"}
         aria-label="Next"
         icon={<ChevronRightIcon />}
         isDisabled={isLastPage}

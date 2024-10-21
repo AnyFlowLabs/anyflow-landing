@@ -27,6 +27,17 @@ export default function ChainDetails() {
     startIndex + ITEMS_PER_PAGE,
   );
 
+  const getStatusColor = (status: string) => {
+    switch (status) {
+      case "online":
+        return "green.400";
+      case "offline":
+        return "red.400";
+      default:
+        return "gray";
+    }
+  };
+
   return (
     <Container maxW={"container.xl"} my={5}>
       <Heading>{data?.name}</Heading>
@@ -45,7 +56,9 @@ export default function ChainDetails() {
               <Tr key={provider.id}>
                 <Td>{provider.name}</Td>
                 <Td>{provider.id}</Td>
-                <Td isNumeric>{provider.status}</Td>
+                <Td isNumeric color={getStatusColor(provider.status)}>
+                  {provider.status}
+                </Td>
               </Tr>
             ))}
           </Tbody>
