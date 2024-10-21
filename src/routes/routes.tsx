@@ -17,7 +17,7 @@ export const router = createBrowserRouter([
         element: <Chains />,
       },
       {
-        path: ":chainName",
+        path: ":chainId/:chainName",
         element: <ChainDetails />,
       },
     ],
