@@ -17,6 +17,7 @@ import {
   InputGroup,
   InputLeftElement,
   Flex,
+  Icon,
 } from "@chakra-ui/react";
 import { ChainDef } from "@/const/chainsApi";
 import { Search2Icon } from "@chakra-ui/icons";
@@ -56,6 +57,10 @@ export default function Chains() {
     navigate(`/chains/${id}/${name.toLowerCase()}`);
   };
 
+  const isTrue = (value: number) => {
+    return value === 1;
+  };
+
   return (
     <Container maxW="container.xl" my={5}>
       <Box mb={5}>
@@ -83,6 +88,8 @@ export default function Chains() {
             <Tr>
               <Th>Name</Th>
               <Th>Chain ID</Th>
+              <Th isNumeric>Mainnet</Th>
+              <Th isNumeric>Testnet</Th>
               <Th isNumeric>Ticker</Th>
             </Tr>
           </Thead>
@@ -106,6 +113,19 @@ export default function Chains() {
                       {chain.name}
                     </Td>
                     <Td>{chain.chain_id}</Td>
+                    <Td
+                      isNumeric
+                      color={!isTrue(chain.is_testnet) ? "green" : "red"}
+                    >
+                      {!isTrue(chain.is_testnet) ? "Yes" : "No"}
+                    </Td>
+                    <Td
+                      isNumeric
+                      color={isTrue(chain.is_testnet) ? "green" : "red"}
+                    >
+                      {isTrue(chain.is_testnet) ? "Yes" : "No"}
+                    </Td>
+
                     <Td isNumeric>{chain.ticker}</Td>
                   </Tr>
                 ),
