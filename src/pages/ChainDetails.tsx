@@ -1,6 +1,13 @@
 import {
+  Box,
+  Center,
   Container,
+  Flex,
   Heading,
+  Input,
+  InputGroup,
+  InputLeftElement,
+  Spinner,
   Table,
   TableContainer,
   Tbody,
@@ -8,62 +15,130 @@ import {
   Th,
   Thead,
   Tr,
+  Text,
 } from "@chakra-ui/react";
+import { Search2Icon } from "@chakra-ui/icons";
 import { useParams } from "react-router-dom";
-import { CHAINS_API } from "@/const/chainsApi";
-import Pagination from "@/components/pagination/Pagination";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 
-const ITEMS_PER_PAGE = 5;
+import Pagination from "@/components/pagination/Pagination";
+import useChain from "@/hooks/useChain";
+
+const ITEMS_PER_PAGE = 10;
+
 export default function ChainDetails() {
   const { chainId } = useParams();
+  const { chain, isLoading } = useChain(Number(chainId));
   const [currentPage, setCurrentPage] = useState(1);
-  const data = CHAINS_API.data.find((chain) => chain.id === Number(chainId));
-  const totalPages = Math.ceil(data!.providers.length / 5) || 1;
+  const [searchValue, setSearchValue] = useState("");
 
-  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
-  const paginatedItems = data!.providers.slice(
-    startIndex,
-    startIndex + ITEMS_PER_PAGE,
+  const providers = useMemo(() => chain?.providers || [], [chain]);
+
+  const filteredProviders = useMemo(() => {
+    const query = searchValue.toLowerCase();
+    return providers.filter(
+      (provider) =>
+        provider.name.toLowerCase().includes(query) ||
+        provider.id.toString().includes(query),
+    );
+  }, [providers, searchValue]);
+
+  const totalPages = Math.max(
+    1,
+    Math.ceil(filteredProviders.length / ITEMS_PER_PAGE),
   );
 
-  const getStatusColor = (status: string) => {
-    switch (status) {
-      case "online":
-        return "green.400";
-      case "offline":
-        return "red.400";
-      default:
-        return "gray";
-    }
+  const paginatedItems = useMemo(() => {
+    const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+    return filteredProviders.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+  }, [filteredProviders, currentPage]);
+
+  const getStatusColor = (status: string) =>
+    status === "online"
+      ? "green.400"
+      : status === "offline"
+        ? "red.400"
+        : "gray";
+
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchValue(e.target.value);
+    setCurrentPage(1);
   };
 
+  if (isLoading) {
+    return (
+      <Center h="100vh">
+        <Spinner size="xl" />
+      </Center>
+    );
+  }
+
+  if (!chain) {
+    return (
+      <Center h="100vh">
+        <Heading size="lg" color="red.500">
+          Error loading chain details
+        </Heading>
+      </Center>
+    );
+  }
+
   return (
-    <Container maxW={"container.xl"} my={5}>
-      <Heading>{data?.name}</Heading>
+    <Container maxW="container.xl" my={8}>
+      <Flex mb={5} gap={5} align="center">
+        <Box>
+          <Heading size="lg">Name - {chain.name}</Heading>
+          <Heading size="lg">Chain ID - {chain.chain_id}</Heading>
+        </Box>
+        <InputGroup width="300px">
+          <InputLeftElement pointerEvents="none">
+            <Search2Icon color="gray.300" />
+          </InputLeftElement>
+          <Input
+            type="text"
+            placeholder="Search by name or ID"
+            value={searchValue}
+            onChange={handleSearchChange}
+            aria-label="Search chains"
+          />
+        </InputGroup>
+      </Flex>
 
       <TableContainer>
-        <Table variant="striped">
+        <Table variant="striped" colorScheme="blackAlpha">
           <Thead>
             <Tr>
               <Th>Name</Th>
-              <Th>ID</Th>
-              <Th isNumeric>STATUS</Th>
+              <Th>Chain ID</Th>
+              <Th isNumeric>Latency</Th>
+              <Th isNumeric>Status</Th>
             </Tr>
           </Thead>
           <Tbody>
-            {paginatedItems.map((provider) => (
-              <Tr key={provider.id}>
-                <Td>{provider.name}</Td>
-                <Td>{provider.id}</Td>
-                <Td isNumeric color={getStatusColor(provider.status)}>
-                  {provider.status}
+            {paginatedItems.length > 0 ? (
+              paginatedItems.map((provider) => (
+                <Tr key={provider.id}>
+                  <Td>{provider.name}</Td>
+                  <Td>{provider.id}</Td>
+                  <Td isNumeric>{provider.latency}</Td>
+                  <Td isNumeric color={getStatusColor(provider.status)}>
+                    {provider.status}
+                  </Td>
+                </Tr>
+              ))
+            ) : (
+              <Tr>
+                <Td colSpan={4}>
+                  <Text align="center" color="gray.500">
+                    No matching providers found.
+                  </Text>
                 </Td>
               </Tr>
-            ))}
+            )}
           </Tbody>
         </Table>
       </TableContainer>
+
       <Pagination
         currentPage={currentPage}
         totalPages={totalPages}
