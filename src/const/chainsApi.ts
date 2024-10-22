@@ -48,7 +48,7 @@ export interface LinkDef {
   label: string;
   active: boolean;
 }
-export interface ChainsApiProps {
+export interface ChainsApiResponse {
   current_page: number;
   data: ChainDef[];
   first_page_url: string;
@@ -64,7 +64,7 @@ export interface ChainsApiProps {
   total: number;
 }
 
-export const CHAINS_API: ChainsApiProps = {
+export const CHAINS_API: ChainsApiResponse = {
   current_page: 1,
   data: [
     {
@@ -93,89 +93,8 @@ export const CHAINS_API: ChainsApiProps = {
         },
       ],
       providers: [
-        // id correto = 5
         {
-          id: 55,
-          created_at: "2024-10-15T23:09:17.000000Z",
-          updated_at: "2024-10-21T13:35:15.000000Z",
-          name: "alchemy",
-          public_url: null,
-          chain_id: 11155111,
-          order: 0,
-          is_private: 1,
-          is_enabled: 1,
-          is_default: 0,
-          last_block: 6916567,
-          latency: 260.68,
-          status: "online",
-          last_monitored_at: "2024-10-21 13:35:15",
-        },
-        {
-          id: 56,
-          created_at: "2024-10-15T23:09:17.000000Z",
-          updated_at: "2024-10-21T13:35:15.000000Z",
-          name: "alchemy",
-          public_url: null,
-          chain_id: 11155111,
-          order: 0,
-          is_private: 1,
-          is_enabled: 1,
-          is_default: 0,
-          last_block: 6916567,
-          latency: 260.68,
-          status: "online",
-          last_monitored_at: "2024-10-21 13:35:15",
-        },
-        {
-          id: 57,
-          created_at: "2024-10-15T23:09:17.000000Z",
-          updated_at: "2024-10-21T13:35:15.000000Z",
-          name: "alchemy",
-          public_url: null,
-          chain_id: 11155111,
-          order: 0,
-          is_private: 1,
-          is_enabled: 1,
-          is_default: 0,
-          last_block: 6916567,
-          latency: 260.68,
-          status: "online",
-          last_monitored_at: "2024-10-21 13:35:15",
-        },
-        {
-          id: 588,
-          created_at: "2024-10-15T23:09:17.000000Z",
-          updated_at: "2024-10-21T13:35:15.000000Z",
-          name: "alchemy",
-          public_url: null,
-          chain_id: 11155111,
-          order: 0,
-          is_private: 1,
-          is_enabled: 1,
-          is_default: 0,
-          last_block: 6916567,
-          latency: 260.68,
-          status: "online",
-          last_monitored_at: "2024-10-21 13:35:15",
-        },
-        {
-          id: 59,
-          created_at: "2024-10-15T23:09:17.000000Z",
-          updated_at: "2024-10-21T13:35:15.000000Z",
-          name: "alchemy",
-          public_url: null,
-          chain_id: 11155111,
-          order: 0,
-          is_private: 1,
-          is_enabled: 1,
-          is_default: 0,
-          last_block: 6916567,
-          latency: 260.68,
-          status: "online",
-          last_monitored_at: "2024-10-21 13:35:15",
-        },
-        {
-          id: 511,
+          id: 5,
           created_at: "2024-10-15T23:09:17.000000Z",
           updated_at: "2024-10-21T13:35:15.000000Z",
           name: "alchemy",
