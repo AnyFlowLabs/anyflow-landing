@@ -12,9 +12,6 @@ import {
   Thead,
   Tr,
   Spinner,
-  Button,
-  HStack,
-  Text,
   Center,
   Input,
   InputGroup,
@@ -24,34 +21,8 @@ import {
 import { ChainDef } from "@/const/chainsApi";
 import { Search2Icon } from "@chakra-ui/icons";
 import useDebounce from "@/hooks/useDebounce";
-
-function useChains(page: number) {
-  const [chains, setChains] = useState<ChainDef[]>([]);
-  const [lastPage, setLastPage] = useState(1);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchChains = async () => {
-      setIsLoading(true);
-      try {
-        const response = await fetch(
-          `https://api-staging.anyflow.pro/api/chains?page=${page}`,
-        );
-        const data = await response.json();
-        setChains(data.data);
-        setLastPage(data.last_page);
-      } catch (error) {
-        console.error("Failed to fetch chains:", error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchChains();
-  }, [page]);
-
-  return { chains, lastPage, isLoading };
-}
+import Pagination from "@/components/pagination/Pagination";
+import useChains from "@/hooks/useChains";
 
 export default function Chains() {
   const navigate = useNavigate();
@@ -84,9 +55,6 @@ export default function Chains() {
   const handleChainDetails = (id: number, name: string) => {
     navigate(`/chains/${id}/${name.toLowerCase()}`);
   };
-
-  const isPreviousDisabled = currentPage === 1;
-  const isNextDisabled = currentPage === lastPage;
 
   return (
     <Container maxW="container.xl" my={5}>
@@ -147,23 +115,11 @@ export default function Chains() {
         </Table>
       </TableContainer>
 
-      <HStack justify="space-between" mt={5}>
-        <Button
-          onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-          isDisabled={isPreviousDisabled}
-        >
-          Previous
-        </Button>
-        <Text>
-          Page {currentPage} of {lastPage}
-        </Text>
-        <Button
-          onClick={() => setCurrentPage((prev) => Math.min(prev + 1, lastPage))}
-          isDisabled={isNextDisabled}
-        >
-          Next
-        </Button>
-      </HStack>
+      <Pagination
+        currentPage={currentPage}
+        totalPages={lastPage}
+        onPageChange={setCurrentPage}
+      />
     </Container>
   );
 }
