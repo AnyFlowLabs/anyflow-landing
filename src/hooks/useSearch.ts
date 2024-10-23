@@ -9,8 +9,6 @@ const useSearch = (filter: string) => {
     const fetchChain = async () => {
       const isNumeric = (value: string) =>
         !isNaN(parseFloat(value)) && isFinite(+value);
-
-      console.log(isNumeric(filter));
       setIsLoading(true);
       try {
         const queryParam = isNumeric(filter as string)
