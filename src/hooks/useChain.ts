@@ -8,6 +8,7 @@ const useChain = (chainId: number) => {
   useEffect(() => {
     const fetchChain = async () => {
       setIsLoading(true);
+
       try {
         const response = await fetch(
           `https://api-staging.anyflow.pro/api/chains/${chainId}`,

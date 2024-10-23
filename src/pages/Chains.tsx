@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   Box,
@@ -18,7 +18,6 @@ import {
   InputLeftElement,
   Flex,
 } from "@chakra-ui/react";
-import { ChainDef } from "@/const/chainsApi";
 import { Search2Icon } from "@chakra-ui/icons";
 import useDebounce from "@/hooks/useDebounce";
 import Pagination from "@/components/pagination/Pagination";
@@ -28,23 +27,13 @@ export default function Chains() {
   const navigate = useNavigate();
   const [searchValue, setSearchValue] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const { chains, lastPage, isLoading } = useChains(currentPage);
+  const [searchHook, setSearchHook] = useState<string>("");
+  const { chains, lastPage, isLoading } = useChains(searchHook);
 
   const debouncedSearch = useDebounce((value: string) => {
+    setSearchHook(value);
     if (!chains) return;
-    const filtered = chains.filter(
-      (chain) =>
-        chain.name.toLowerCase().includes(value.toLowerCase()) ||
-        chain.chain_id.toString().includes(value),
-    );
-    setFilteredChains(filtered);
-  }, 300);
-
-  const [filteredChains, setFilteredChains] = useState<ChainDef[]>(chains);
-
-  useEffect(() => {
-    setFilteredChains(chains);
-  }, [chains]);
+  }, 500);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
@@ -102,33 +91,31 @@ export default function Chains() {
                 </Td>
               </Tr>
             ) : (
-              (filteredChains.length > 0 ? filteredChains : chains).map(
-                (chain) => (
-                  <Tr key={chain.id}>
-                    <Td
-                      cursor="pointer"
-                      onClick={() => handleChainDetails(chain.id, chain.name)}
-                    >
-                      {chain.name}
-                    </Td>
-                    <Td>{chain.chain_id}</Td>
-                    <Td
-                      isNumeric
-                      color={!isTrue(chain.is_testnet) ? "green" : "red"}
-                    >
-                      {!isTrue(chain.is_testnet) ? "Yes" : "No"}
-                    </Td>
-                    <Td
-                      isNumeric
-                      color={isTrue(chain.is_testnet) ? "green" : "red"}
-                    >
-                      {isTrue(chain.is_testnet) ? "Yes" : "No"}
-                    </Td>
+              chains.map((chain) => (
+                <Tr key={chain.id}>
+                  <Td
+                    cursor="pointer"
+                    onClick={() => handleChainDetails(chain.id, chain.name)}
+                  >
+                    {chain.name}
+                  </Td>
+                  <Td>{chain.chain_id}</Td>
+                  <Td
+                    isNumeric
+                    color={!isTrue(chain.is_testnet) ? "green" : "red"}
+                  >
+                    {!isTrue(chain.is_testnet) ? "Yes" : "No"}
+                  </Td>
+                  <Td
+                    isNumeric
+                    color={isTrue(chain.is_testnet) ? "green" : "red"}
+                  >
+                    {isTrue(chain.is_testnet) ? "Yes" : "No"}
+                  </Td>
 
-                    <Td isNumeric>{chain.ticker}</Td>
-                  </Tr>
-                ),
-              )
+                  <Td isNumeric>{chain.ticker}</Td>
+                </Tr>
+              ))
             )}
           </Tbody>
         </Table>
