@@ -14,6 +14,7 @@ import {
   Skeleton,
   Badge,
   Tooltip,
+  useClipboard,
 } from "@chakra-ui/react";
 import { CheckIcon, CopyIcon, Search2Icon } from "@chakra-ui/icons";
 import useDebounce from "@/hooks/useDebounce";
@@ -22,25 +23,14 @@ import useAllChains from "@/hooks/useAllChains";
 import { ChainLogo } from "@api3/logos";
 
 const CopyChain = ({ chainId }: { chainId: string }) => {
-  const [copied, setCopied] = useState<boolean>(false);
-
-  const onCopy = () => {
-    setCopied(true);
-
-    // clipboard chainId
-
-    setTimeout(() => {
-      setCopied(false);
-    }, 2000);
-  };
+  const { onCopy, hasCopied } = useClipboard(chainId);
 
   return (
     <Tooltip label="Chain ID">
-      <Box onClick={onCopy}>
+      <Flex onClick={onCopy} alignItems={"center"}>
         <Text w="100px">{chainId}</Text>
-
-        {copied ? <CheckIcon /> : <CopyIcon />}
-      </Box>
+        {hasCopied ? <CheckIcon /> : <CopyIcon />}
+      </Flex>
     </Tooltip>
   );
 };
