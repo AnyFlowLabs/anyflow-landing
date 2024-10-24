@@ -22,13 +22,15 @@ import { Search2Icon } from "@chakra-ui/icons";
 import useDebounce from "@/hooks/useDebounce";
 import Pagination from "@/components/pagination/Pagination";
 import useChains from "@/hooks/useChains";
+import useAllChains from "@/hooks/useAllChains";
 
 export default function Chains() {
   const navigate = useNavigate();
   const [searchValue, setSearchValue] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [searchHook, setSearchHook] = useState<string>("");
-  const { chains, lastPage, isLoading } = useChains(searchHook);
+  const { chains, lastPage, isLoading } = useAllChains(currentPage);
+  const { chain } = useChains(searchHook);
 
   const debouncedSearch = useDebounce((value: string) => {
     setSearchHook(value);
@@ -84,12 +86,37 @@ export default function Chains() {
           <Tbody>
             {isLoading ? (
               <Tr>
-                <Td colSpan={3}>
+                <Td colSpan={5}>
                   <Center>
                     <Spinner size="xl" />
                   </Center>
                 </Td>
               </Tr>
+            ) : searchHook && chain ? (
+              chain.map((chain) => (
+                <Tr key={chain.id}>
+                  <Td
+                    cursor="pointer"
+                    onClick={() => handleChainDetails(chain.id, chain.name)}
+                  >
+                    {chain.name}
+                  </Td>
+                  <Td>{chain.chain_id}</Td>
+                  <Td
+                    isNumeric
+                    color={!isTrue(chain.is_testnet) ? "green" : "red"}
+                  >
+                    {!isTrue(chain.is_testnet) ? "Yes" : "No"}
+                  </Td>
+                  <Td
+                    isNumeric
+                    color={isTrue(chain.is_testnet) ? "green" : "red"}
+                  >
+                    {isTrue(chain.is_testnet) ? "Yes" : "No"}
+                  </Td>
+                  <Td isNumeric>{chain.ticker}</Td>
+                </Tr>
+              ))
             ) : (
               chains.map((chain) => (
                 <Tr key={chain.id}>
@@ -112,7 +139,6 @@ export default function Chains() {
                   >
                     {isTrue(chain.is_testnet) ? "Yes" : "No"}
                   </Td>
-
                   <Td isNumeric>{chain.ticker}</Td>
                 </Tr>
               ))
