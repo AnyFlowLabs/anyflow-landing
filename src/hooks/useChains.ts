@@ -2,7 +2,7 @@ import { ChainDef } from "@/const/chainsApi";
 import { useEffect, useState } from "react";
 
 const useChains = (filter: string) => {
-  const [chains, setChains] = useState<ChainDef[]>([]);
+  const [chain, setChains] = useState<ChainDef[]>([]);
   const [lastPage, setLastPage] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -32,7 +32,7 @@ const useChains = (filter: string) => {
     fetchChains();
   }, [filter]);
 
-  return { chains, lastPage, isLoading };
+  return { chain, lastPage, isLoading };
 };
 
 export default useChains;
