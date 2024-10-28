@@ -23,6 +23,7 @@ import { useState, useMemo } from "react";
 
 import Pagination from "@/components/pagination/Pagination";
 import useChain from "@/hooks/useChain";
+import { CopyChain } from "./components/CopyChain";
 
 const ITEMS_PER_PAGE = 10;
 
@@ -87,8 +88,8 @@ export default function ChainDetails() {
     <Container maxW="container.xl" my={8}>
       <Flex mb={5} gap={5} align="center">
         <Box>
-          <Heading size="lg">Name - {chain.name}</Heading>
-          <Heading size="lg">Chain ID - {chain.chain_id}</Heading>
+          <Heading size="lg">{chain.name}</Heading>
+          <CopyChain chainId={chain.chain_id.toString()} />
         </Box>
         <InputGroup width="300px">
           <InputLeftElement pointerEvents="none">
