@@ -59,13 +59,14 @@ export default function HomePage() {
 
           <Flex
             w="full"
-            bg="black"
+            bgGradient="linear(to-tl, gray.900, gray.800)"
             p={6}
             mt={{ base: 4, md: 16 }}
             rounded="md"
             flexDir={["column", null, "row"]}
             gap={{ base: 4, md: 16 }}
             alignItems="center"
+            boxShadow="lg"
           >
             <VStack flex={1} align="stretch" spacing={2}>
               <Heading color="white" fontSize="lg">

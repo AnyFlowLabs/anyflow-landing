@@ -49,7 +49,7 @@ const Slider = ({
     <Box pos="relative">
       <Box w="full" h="auto" margin="auto" top={0} overflow="hidden">
         <Flex
-          gap={24}
+          gap={4}
           top={0}
           style={{
             animation: `slider_logo_slider ${duration}s linear infinite`,

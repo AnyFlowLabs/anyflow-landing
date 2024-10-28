@@ -24,7 +24,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   const { t } = useTranslation();
 
   return (
-    <>
+    <Box bgGradient="linear(to-l, gray.800, gray.900)">
       <HStack
         flexDir={{ base: "column", md: "row" }}
         bg="gray.800"
@@ -107,6 +107,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           </HStack>
         </Grid>
       </VStack>
-    </>
+    </Box>
   );
 }
