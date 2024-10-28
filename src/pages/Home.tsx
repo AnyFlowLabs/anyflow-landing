@@ -11,35 +11,50 @@ import {
 } from "@chakra-ui/react";
 import Group from "@/assets/group.svg";
 import { chains } from "@/data/chains";
-import { DOCS_URL } from "@/data/button-access";
-
 import { useTranslation } from "react-i18next";
-import Template from "./components/Layout";
-import Slider from "@/components/ui/slide";
+import Slider from "@/components/Slider";
+import { BUTTON_GITHUB, DOCS_URL } from "@/const";
 
 export default function HomePage() {
   const { t } = useTranslation();
 
   return (
-    <Template>
+    <>
       <Container maxW="container.lg">
-        <VStack spacing={8} py={{ base: 16, md: 32 }}>
+        <VStack
+          h={{ base: "100%", md: "75vh" }}
+          py={{ base: 8, md: "auto" }}
+          align="center"
+          justify="center"
+        >
           <Heading
             as="h2"
             size="2xl"
             color="white"
             textAlign="center"
-            fontSize={["50px", null, "79px"]}
-            lineHeight={["80px"]}
+            fontSize={{ base: "5xl", md: "7xl" }}
           >
             {t("header.title2")}
           </Heading>
 
-          <Heading fontWeight="light" as="h3" color="white" fontSize="lg">
-            <Text as="span" color="brand.600">
+          <Heading
+            fontWeight="light"
+            as="h3"
+            color="white"
+            fontSize="2xl"
+            my={8}
+            textAlign="center"
+          >
+            <Text as="span" color="brand.500">
               {t("header.subtitle1")}
             </Text>
-            {t("header.subtitle2")}
+            <Text as="span" color="white">
+              {t("header.subtitle2")}
+            </Text>
+            <Text as="span" color="white" fontWeight="bold">
+              {" "}
+              {t("header.subtitle3")}
+            </Text>
           </Heading>
 
           <Flex
@@ -105,7 +120,7 @@ export default function HomePage() {
         </Flex>
       </Container>
 
-      <Container maxW="container.lg" my={12}>
+      <Container maxW="container.lg" mb={12} mt={24}>
         <Heading as="h2" textAlign="center" fontSize="2xl" color="white">
           {t("chains", { q: chains.length })}
         </Heading>
@@ -153,8 +168,26 @@ export default function HomePage() {
             description={t("features.unifiedCosts.description")}
           />
         </HStack>
+
+        <HStack
+          my={12}
+          flexDir={{ base: "column", md: "row" }}
+          gap={{ base: 4, md: 8 }}
+        >
+          <Heading flex={1} fontSize="2xl">
+            {t("callToAction")}
+          </Heading>
+          <Button
+            variant="solid"
+            as="a"
+            href={BUTTON_GITHUB}
+            w={{ base: "full", md: "auto" }}
+          >
+            {t("githubButton")}
+          </Button>
+        </HStack>
       </Container>
-    </Template>
+    </>
   );
 }
 

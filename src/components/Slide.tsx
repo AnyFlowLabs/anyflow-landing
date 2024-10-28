@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import { Box, Flex } from "@chakra-ui/react";
 import React, { ReactElement, useEffect } from "react";
 
 export interface SlideProps extends React.HTMLAttributes<HTMLDivElement> {}
@@ -46,22 +46,13 @@ const Slider = ({
   }, [toRight, width, children]);
 
   return (
-    <div style={{ position: "relative" }}>
-      <div
-        style={{
-          width: "100%",
-          height: "auto",
-          margin: "auto",
-          top: 0,
-          overflow: "hidden",
-        }}
-      >
-        <div
+    <Box pos="relative">
+      <Box w="full" h="auto" margin="auto" top={0} overflow="hidden">
+        <Flex
+          gap={24}
+          top={0}
           style={{
-            display: "flex",
-            gap: "30px",
             animation: `slider_logo_slider ${duration}s linear infinite`,
-            top: 0,
           }}
         >
           {children?.map((child, i) => (
@@ -79,18 +70,14 @@ const Slider = ({
               {React.cloneElement(child, { width })}
             </React.Fragment>
           ))}
-        </div>
-      </div>
-    </div>
+        </Flex>
+      </Box>
+    </Box>
   );
 };
 
-const Slide = ({ className, children, ...props }: SlideProps) => {
-  return (
-    <div className={cn("", className)} {...props}>
-      {children}
-    </div>
-  );
+const Slide = ({ children, ...props }: SlideProps) => {
+  return <Box {...props}>{children}</Box>;
 };
 
 Slider.Slide = Slide;

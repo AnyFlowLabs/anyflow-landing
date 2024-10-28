@@ -21,9 +21,9 @@ import { Search2Icon } from "@chakra-ui/icons";
 import { useParams } from "react-router-dom";
 import { useState, useMemo } from "react";
 
-import Pagination from "@/components/pagination/Pagination";
+import Pagination from "@/components/Pagination";
 import useChain from "@/hooks/useChain";
-import { CopyChain } from "./components/CopyChain";
+import { CopyChain } from "../components/CopyChain";
 
 const ITEMS_PER_PAGE = 10;
 

@@ -17,11 +17,10 @@ import {
 } from "@chakra-ui/react";
 import { Search2Icon } from "@chakra-ui/icons";
 import useDebounce from "@/hooks/useDebounce";
-import Pagination from "@/components/pagination/Pagination";
+import Pagination from "@/components/Pagination";
 import useAllChains from "@/hooks/useAllChains";
 import { ChainLogo } from "@api3/logos";
-import { CopyChain } from "./components/CopyChain";
-import Template from "./components/Layout";
+import { CopyChain } from "../components/CopyChain";
 
 export default function Chains() {
   const navigate = useNavigate();
@@ -60,7 +59,7 @@ export default function Chains() {
   }, [searchParam, chains]);
 
   return (
-    <Template>
+    <>
       <Container maxW="container.xl" my={5}>
         <Box mb={5}>
           <Flex justify="space-between" align="center">
@@ -159,6 +158,6 @@ export default function Chains() {
           onPageChange={setCurrentPage}
         />
       </Container>
-    </Template>
+    </>
   );
 }

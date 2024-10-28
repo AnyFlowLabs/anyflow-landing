@@ -4,7 +4,8 @@ export const en_US = {
       title1: "Effortless",
       title2: "Smart Contract Deployments",
       subtitle1: "Effortless",
-      subtitle2: ", fast and secure. Multichain ready.",
+      subtitle2: ", fast and secure.",
+      subtitle3: "Multichain ready.",
       button: "Request access",
       docs: "Check our docs",
       button_github: "Log in with Github",
@@ -41,6 +42,7 @@ export const en_US = {
     },
     callToAction:
       "Try it right now! Click the button to be one of the first users.",
+    githubButton: "Log in with Github",
     footer: {
       backedBy: {
         text: "Backed by Khiza",
