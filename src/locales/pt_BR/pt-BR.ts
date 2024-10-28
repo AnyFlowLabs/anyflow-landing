@@ -38,6 +38,7 @@ export const pt_BR = {
     },
     callToAction:
       "Não perca tempo! Seja um dos primeiros a experimentar clicando no botão.",
+    githubButton: "Entrar com Github",
     footer: {
       backedBy: {
         text: "Suportado pela Khiza",

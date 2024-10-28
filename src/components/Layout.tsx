@@ -1,4 +1,3 @@
-import LogoHeader from "@/assets/logo-header.svg";
 import {
   VStack,
   Image,
@@ -9,19 +8,19 @@ import {
   Box,
   Button,
 } from "@chakra-ui/react";
-import Logo from "@/assets/logo-footer.svg";
+import LogoFooter from "@/assets/logo-footer.svg";
 import KhizaLogo from "@/assets/khiza.svg";
 import LinkedinIcon from "@/assets/linkedin.svg";
 import TwitterIcon from "@/assets/twitter.svg";
 import DiscordIcon from "@/assets/discord.svg";
 import GithubIcon from "@/assets/github.svg";
-import Icon from "@/components/atoms/icon";
-import { DOCS_URL } from "@/data/button-access";
-import BUTTON_GITHUB from "@/data/button-github";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { BUTTON_GITHUB, DOCS_URL } from "@/const";
+import LinkIcon from "@/components/LinkIcon";
+import { Logo } from "./Logo";
 
-export default function Template({ children }: { children: React.ReactNode }) {
+export default function Layout({ children }: { children: React.ReactNode }) {
   const { t } = useTranslation();
 
   return (
@@ -33,9 +32,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
         p={4}
         gap={{ base: 4, md: 0 }}
       >
-        <Link to="/">
-          <Image src={LogoHeader} alt="Logo" className="w-full max-w-[230px]" />
-        </Link>
+        <Logo />
         <HStack gap={{ base: 4, md: 8 }}>
           <a
             target="_blank"
@@ -64,7 +61,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
         pb={16}
         pt={32}
       >
-        <Image src={Logo} alt="Anyflow" />
+        <Image src={LogoFooter} alt="Anyflow" />
         <Flex alignItems="center" justifyContent="center" gap={4}>
           <Text color="gray.400" fontSize="sm">
             Backed By
@@ -87,22 +84,22 @@ export default function Template({ children }: { children: React.ReactNode }) {
           <Text fontSize="small">© 2024 Anyflow. All rights reserved.</Text>
 
           <HStack justify={{ base: "center", md: "end" }} gap={4}>
-            <Icon
+            <LinkIcon
               src={GithubIcon}
               alt="Github"
               url={"https://github.com/AnyFlowLabs"}
             />
-            <Icon
+            <LinkIcon
               src={LinkedinIcon}
               alt="Linkedin"
               url={"https://www.linkedin.com/company/anyflowtool/"}
             />
-            <Icon
+            <LinkIcon
               src={DiscordIcon}
               alt="Discord"
               url={"https://discord.gg/aCygGwBWya"}
             />
-            <Icon
+            <LinkIcon
               src={TwitterIcon}
               alt="Twitter"
               url={"https://twitter.com/anyflow_"}
