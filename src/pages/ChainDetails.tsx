@@ -16,6 +16,7 @@ import {
   Thead,
   Tr,
   Text,
+  Button,
 } from "@chakra-ui/react";
 import { Search2Icon } from "@chakra-ui/icons";
 import { useParams } from "react-router-dom";
@@ -104,6 +105,8 @@ export default function ChainDetails() {
           />
         </InputGroup>
       </Flex>
+
+      <Button>Add to MetaMask</Button>
 
       <TableContainer>
         <Table variant="striped" colorScheme="blackAlpha">
