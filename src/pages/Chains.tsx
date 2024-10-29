@@ -42,7 +42,7 @@ export default function Chains() {
   );
 
   const debouncedSearch = useDebounce((value: string) => {
-    if (value.length >= 3) {
+    if (value.length >= 2) {
       setSearchParam(value);
     }
 
