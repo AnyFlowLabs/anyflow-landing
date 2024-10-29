@@ -7,7 +7,6 @@ import {
   Input,
   InputGroup,
   InputLeftElement,
-  Flex,
   Text,
   HStack,
   VStack,
@@ -26,12 +25,17 @@ import { ChainLogo } from "@api3/logos";
 import { CopyChain } from "../components/CopyChain";
 import { Grid3x3Icon, ListIcon } from "lucide-react";
 
+import { useTranslation } from "react-i18next";
+
 export default function Chains() {
   const navigate = useNavigate();
+
+  const { t } = useTranslation();
+
   const [searchValue, setSearchValue] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [searchParam, setSearchParam] = useState<string>("");
-  const [viewMode, setViewMode] = useState<'list' | 'grid'>('list');
+  const [viewMode, setViewMode] = useState<"list" | "grid">("list");
   const { chains, lastPage, isLoading } = useAllChains(
     currentPage,
     searchParam,
@@ -66,139 +70,145 @@ export default function Chains() {
   return (
     <>
       <Container maxW="container.lg" my={12}>
-        <Box mb={4}>
-          <Flex justify="space-between" align="center">
-            <Heading>Chainlist</Heading>
-            <HStack spacing={2}>
-              <Button
-                variant={viewMode === 'list' ? "solid" : "ghost"}
-                onClick={() => setViewMode('list')}
-              >
-                <ListIcon />
-              </Button>
-              <Button
-                variant={viewMode === 'grid' ? 'solid' : 'ghost'}
-                onClick={() => setViewMode('grid')}
-              >
-                <Grid3x3Icon />
-              </Button>
-              <InputGroup width="300px">
-                <InputLeftElement pointerEvents="none">
-                  <Search2Icon color="gray.300" />
-                </InputLeftElement>
-                <Input
-                  type="text"
-                  placeholder="Search by name or ID"
-                  value={searchValue}
-                  onChange={handleSearch}
-                  aria-label="Search chains"
-                />
-              </InputGroup>
-            </HStack>
-          </Flex>
-        </Box>
+        <VStack flex={1} align="flex-start">
+          <Heading>{t("chainlist.title")}</Heading>
+          <Text fontSize="smaller">{t("chainlist.description")}</Text>
+        </VStack>
+
+        <HStack spacing={2} justify="flex-end" my={4}>
+          <Button
+            variant={viewMode === "list" ? "solid" : "ghost"}
+            onClick={() => setViewMode("list")}
+          >
+            <ListIcon />
+          </Button>
+          <Button
+            variant={viewMode === "grid" ? "solid" : "ghost"}
+            onClick={() => setViewMode("grid")}
+          >
+            <Grid3x3Icon />
+          </Button>
+          <InputGroup width="300px">
+            <InputLeftElement pointerEvents="none">
+              <Search2Icon color="gray.300" />
+            </InputLeftElement>
+            <Input
+              type="text"
+              placeholder={t("chainlist.search")}
+              value={searchValue}
+              onChange={handleSearch}
+              aria-label={t("chainlist.search")}
+            />
+          </InputGroup>
+        </HStack>
 
         {isLoading ? (
-          <SimpleGrid columns={viewMode === 'grid' ? 4 : 1} spacing={4}>
+          <SimpleGrid
+            columns={viewMode === "grid" ? 4 : 1}
+            spacing={viewMode === "grid" ? 4 : "1px"}
+          >
             {[...Array(10)].map((_, index) => (
-              <Skeleton key={index} h={viewMode === 'grid' ? "200px" : "48px"} />
+              <Skeleton
+                key={index}
+                h={viewMode === "grid" ? "200px" : "61px"}
+              />
             ))}
           </SimpleGrid>
-        ) : (
-          viewMode === 'list' ? (
-            <VStack
-              w="full"
-              align="flex-start"
-              borderWidth={1}
-              borderColor="gray.500"
-              borderRadius={8}
-              overflow="hidden"
-              gap={0}
-            >
-              {notFound ? (
-                <HStack py={3} px={4}>
-                  <Text>Chain not found, try again.</Text>
-                </HStack>
-              ) : (
-                chains.map((chain) => (
-                  <HStack
-                    key={chain.id}
-                    w="full"
-                    gap={8}
-                    py={3}
-                    px={4}
-                    borderBottomWidth={1}
-                    borderColor="gray.500"
-                  >
-                    <HStack flex={1} gap={8}>
-                      <img
-                        src={ChainLogo(chain.chain_id.toString())}
-                        alt={chain.name}
-                        width={24}
-                        height={24}
-                      />
-                      <Tooltip label="Chain Name">
-                        <Text
-                          role="button"
-                          cursor="pointer"
-                          onClick={() => handleChainDetails(chain.id, chain.name)}
-                          w="200px"
-                        >
-                          {chain.name}
-                        </Text>
-                      </Tooltip>
-
-                      <CopyChain chainId={chain.chain_id.toString()} />
-
-                      <Tooltip label="Native Token">
-                        <Text>{chain.ticker.replace("USDT", "")}</Text>
-                      </Tooltip>
-                    </HStack>
-
-                    <Badge
-                      color={
-                        chain.is_testnet.toString() === "1"
-                          ? "gray.100"
-                          : "success.300"
-                      }
-                    >
-                      {chain.is_testnet.toString() === "1"
-                        ? "TESTNET"
-                        : "MAINNET"}
-                    </Badge>
-                  </HStack>
-                ))
-              )}
-            </VStack>
-          ) : (
-            <SimpleGrid columns={4} spacing={4}>
-              {chains.map((chain) => (
-                <Box
+        ) : viewMode === "list" ? (
+          <VStack
+            w="full"
+            align="flex-start"
+            borderWidth={1}
+            borderColor="gray.500"
+            borderRadius={8}
+            overflow="hidden"
+            gap={0}
+          >
+            {notFound ? (
+              <HStack py={3} px={4}>
+                <Text>{t("chainlist.chainNotFound")}</Text>
+              </HStack>
+            ) : (
+              chains.map((chain) => (
+                <HStack
                   key={chain.id}
-                  borderWidth={1}
+                  w="full"
+                  gap={8}
+                  py={3}
+                  px={4}
+                  borderBottomWidth={1}
                   borderColor="gray.500"
-                  borderRadius={8}
-                  p={4}
-                  cursor="pointer"
-                  onClick={() => handleChainDetails(chain.id, chain.name)}
-                  _hover={{ borderColor: 'gray.300' }}
                 >
-                  <VStack align="flex-start">
-                    <Image
+                  <HStack flex={1} gap={8}>
+                    <img
                       src={ChainLogo(chain.chain_id.toString())}
                       alt={chain.name}
-                      width="48px"
-                      height="48px"
-                      mx="auto"
+                      width={24}
+                      height={24}
                     />
-                    <VStack spacing={2} align="flex-start">
-                      <Text fontWeight="bold">{chain.name}</Text>
-                      <HStack>
-                        <CopyChain chainId={chain.chain_id.toString()} />
-                        
-                      </HStack>
-                      <HStack>
-                      <Text fontSize="sm">{chain.ticker.replace("USDT", "")}</Text>
+                    <Tooltip label={t("chainlist.chainName")}>
+                      <Text
+                        role="button"
+                        cursor="pointer"
+                        onClick={() => handleChainDetails(chain.id, chain.name)}
+                        w="200px"
+                      >
+                        {chain.name}
+                      </Text>
+                    </Tooltip>
+
+                    <CopyChain chainId={chain.chain_id.toString()} />
+
+                    <Tooltip label={t("chainlist.nativeToken")}>
+                      <Text>{chain.ticker.replace("USDT", "")}</Text>
+                    </Tooltip>
+                  </HStack>
+
+                  <Badge
+                    color={
+                      chain.is_testnet.toString() === "1"
+                        ? "gray.100"
+                        : "success.300"
+                    }
+                  >
+                    {chain.is_testnet.toString() === "1"
+                      ? "TESTNET"
+                      : "MAINNET"}
+                  </Badge>
+                </HStack>
+              ))
+            )}
+          </VStack>
+        ) : (
+          <SimpleGrid columns={4} spacing={4}>
+            {chains.map((chain) => (
+              <Box
+                key={chain.id}
+                borderWidth={1}
+                borderColor="gray.500"
+                borderRadius={8}
+                p={4}
+                cursor="pointer"
+                onClick={() => handleChainDetails(chain.id, chain.name)}
+                _hover={{ borderColor: "gray.300" }}
+              >
+                <VStack align="flex-start">
+                  <Image
+                    src={ChainLogo(chain.chain_id.toString())}
+                    alt={chain.name}
+                    width="48px"
+                    height="48px"
+                    mx="auto"
+                  />
+                  <VStack spacing={2} align="flex-start">
+                    <Text fontWeight="bold">{chain.name}</Text>
+                    <HStack>
+                      <CopyChain chainId={chain.chain_id.toString()} />
+                    </HStack>
+                    <HStack>
+                      <Text fontSize="sm">
+                        {chain.ticker.replace("USDT", "")}
+                      </Text>
                       <Badge
                         color={
                           chain.is_testnet.toString() === "1"
@@ -210,13 +220,12 @@ export default function Chains() {
                           ? "TESTNET"
                           : "MAINNET"}
                       </Badge>
-                      </HStack>
-                    </VStack>
+                    </HStack>
                   </VStack>
-                </Box>
-              ))}
-            </SimpleGrid>
-          )
+                </VStack>
+              </Box>
+            ))}
+          </SimpleGrid>
         )}
 
         <Pagination

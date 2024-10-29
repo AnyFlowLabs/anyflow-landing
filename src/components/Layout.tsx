@@ -10,15 +10,17 @@ import {
 } from "@chakra-ui/react";
 import LogoFooter from "@/assets/logo-footer.svg";
 import KhizaLogo from "@/assets/khiza.svg";
+import GithubIconSvg from "@/assets/github.svg";
 import LinkedinIcon from "@/assets/linkedin.svg";
 import TwitterIcon from "@/assets/twitter.svg";
 import DiscordIcon from "@/assets/discord.svg";
-import GithubIcon from "@/assets/github.svg";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { BUTTON_GITHUB, DOCS_URL } from "@/const";
 import LinkIcon from "@/components/LinkIcon";
 import { Logo } from "./Logo";
+import GithubIcon from "./Icons/Github";
+import { ChangeLanguageMenu } from "./ChangeLanguageMenu";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const { t } = useTranslation();
@@ -44,7 +46,11 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           </a>
           <Link to={"/chains"}>Chains</Link>
 
-          <Button as="a" href={BUTTON_GITHUB}>
+          <Button
+            as="a"
+            href={BUTTON_GITHUB}
+            leftIcon={<GithubIcon width={18} height={18} />}
+          >
             {t("header.button_github")}
           </Button>
         </HStack>
@@ -75,17 +81,19 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             <Image src={KhizaLogo} alt="Khiza logo" h={5} />
           </a>
         </Flex>
-        <Grid
+        <HStack
           w="full"
-          templateColumns={["1fr", null, "repeat(2, 1fr)"]}
           gap={6}
-          textAlign={["center", null, "left"]}
+          flexDir={{ base: "column", md: "row" }}
+          justify={{ base: "center", md: "space-between" }}
         >
-          <Text fontSize="small">© 2024 Anyflow. All rights reserved.</Text>
-
-          <HStack justify={{ base: "center", md: "end" }} gap={4}>
+          <Text fontSize="small" color="gray.300" flex={1}>
+            © 2024 Anyflow. All rights reserved.
+          </Text>
+          <ChangeLanguageMenu />
+          <HStack justify={{ base: "center", md: "end" }} gap={4} flex={1}>
             <LinkIcon
-              src={GithubIcon}
+              src={GithubIconSvg}
               alt="Github"
               url={"https://github.com/AnyFlowLabs"}
             />
@@ -105,7 +113,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               url={"https://twitter.com/anyflow_"}
             />
           </HStack>
-        </Grid>
+        </HStack>
       </VStack>
     </Box>
   );

@@ -4,27 +4,26 @@ import {
   Container,
   Flex,
   Heading,
-  Input,
-  InputGroup,
-  InputLeftElement,
   Spinner,
-  Table,
-  TableContainer,
-  Tbody,
-  Td,
-  Th,
-  Thead,
-  Tr,
   Text,
   Button,
+  useToast,
+  Grid,
+  Stack,
+  Badge,
+  VStack,
+  InputGroup,
+  InputLeftElement,
+  Input,
 } from "@chakra-ui/react";
-import { Search2Icon } from "@chakra-ui/icons";
 import { useParams } from "react-router-dom";
 import { useState, useMemo } from "react";
-
-import Pagination from "@/components/Pagination";
 import useChain from "@/hooks/useChain";
 import { CopyChain } from "../components/CopyChain";
+import MetamaskIcon from "@/components/Icons/Metamask";
+import Pagination from "@/components/Pagination";
+import { Search2Icon } from "@chakra-ui/icons";
+import { useTranslation } from "react-i18next";
 
 const ITEMS_PER_PAGE = 10;
 
@@ -33,6 +32,9 @@ export default function ChainDetails() {
   const { chain, isLoading } = useChain(Number(chainId));
   const [currentPage, setCurrentPage] = useState(1);
   const [searchValue, setSearchValue] = useState("");
+  const toast = useToast();
+
+  const { t } = useTranslation();
 
   const providers = useMemo(() => chain?.providers || [], [chain]);
 
@@ -55,17 +57,61 @@ export default function ChainDetails() {
     return filteredProviders.slice(startIndex, startIndex + ITEMS_PER_PAGE);
   }, [filteredProviders, currentPage]);
 
-  const getStatusColor = (status: string) =>
-    status === "online"
-      ? "green.400"
-      : status === "offline"
-        ? "red.400"
-        : "gray";
-
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
     setCurrentPage(1);
   };
+
+  const addToMetaMask = async () => {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    if (!window.ethereum || !chain) return;
+
+    try {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      await window.ethereum.request({
+        method: "wallet_addEthereumChain",
+        params: [
+          {
+            chainId: `0x${chain.chain_id.toString(16)}`, // Convert to hex
+            chainName: chain.name,
+            nativeCurrency: {
+              name: chain.ticker || "Native Token",
+              symbol: chain.ticker || "ETH",
+              decimals: 18,
+            },
+            rpcUrls: providers.map((provider) => provider.public_url),
+            blockExplorerUrls: undefined,
+          },
+        ],
+      });
+
+      toast({
+        title: "Chain added successfully",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+      });
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+    } catch (error: never) {
+      toast({
+        title: "Error adding chain",
+        description: error.message,
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
+    }
+  };
+
+  const hasMetaMask = useMemo(
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    () => typeof window?.ethereum !== "undefined",
+    [],
+  );
 
   if (isLoading) {
     return (
@@ -79,75 +125,105 @@ export default function ChainDetails() {
     return (
       <Center h="100vh">
         <Heading size="lg" color="red.500">
-          Error loading chain details
+          {t("chainlist.errorLoadingChain")}
         </Heading>
       </Center>
     );
   }
 
   return (
-    <Container maxW="container.xl" my={8}>
-      <Flex mb={5} gap={5} align="center">
-        <Box>
-          <Heading size="lg">{chain.name}</Heading>
-          <CopyChain chainId={chain.chain_id.toString()} />
-        </Box>
-        <InputGroup width="300px">
+    <Container maxW="container.lg" my={12}>
+      <VStack gap={8} w="full" align="flex-start">
+        <Flex gap={4} align="center" w="full">
+          <Flex flex={1} align="center" justify="flex-start" gap={8}>
+            <Heading fontSize="5xl">{chain.name}</Heading>
+            <CopyChain chainId={chain.chain_id.toString()} />
+          </Flex>
+          {hasMetaMask && (
+            <Button
+              onClick={addToMetaMask}
+              isDisabled={!hasMetaMask || chain.is_testnet === 1 ? true : false}
+              leftIcon={<MetamaskIcon width={18} height={18} />}
+            >
+              {t("chainlist.addToMetaMask")}
+            </Button>
+          )}
+        </Flex>
+
+        <InputGroup maxW="300px">
           <InputLeftElement pointerEvents="none">
             <Search2Icon color="gray.300" />
           </InputLeftElement>
           <Input
             type="text"
-            placeholder="Search by name or ID"
+            placeholder={t("chainlist.search")}
             value={searchValue}
             onChange={handleSearchChange}
-            aria-label="Search chains"
+            aria-label={t("chainlist.search")}
           />
         </InputGroup>
-      </Flex>
 
-      <Button>Add to MetaMask</Button>
-
-      <TableContainer>
-        <Table variant="striped" colorScheme="blackAlpha">
-          <Thead>
-            <Tr>
-              <Th>Name</Th>
-              <Th>Chain ID</Th>
-              <Th isNumeric>Latency</Th>
-              <Th isNumeric>Status</Th>
-            </Tr>
-          </Thead>
-          <Tbody>
-            {paginatedItems.length > 0 ? (
-              paginatedItems.map((provider) => (
-                <Tr key={provider.id}>
-                  <Td>{provider.name}</Td>
-                  <Td>{provider.id}</Td>
-                  <Td isNumeric>{provider.latency}</Td>
-                  <Td isNumeric color={getStatusColor(provider.status)}>
-                    {provider.status}
-                  </Td>
-                </Tr>
-              ))
-            ) : (
-              <Tr>
-                <Td colSpan={4}>
-                  <Text align="center" color="gray.500">
-                    No matching providers found.
+        {paginatedItems.length > 0 ? (
+          <Grid
+            templateColumns={{ base: "1fr", md: "1fr 1fr 1fr" }}
+            gap={4}
+            w="full"
+          >
+            {paginatedItems.map((provider) => (
+              <Box
+                key={provider.id}
+                bg="gray.800"
+                borderRadius="md"
+                p={4}
+                _hover={{ shadow: "md" }}
+                transition="all 0.2s"
+              >
+                <Flex justify="space-between" align="center" mb={2}>
+                  <Text fontWeight="bold" fontSize="lg">
+                    {provider.name}
                   </Text>
-                </Td>
-              </Tr>
-            )}
-          </Tbody>
-        </Table>
-      </TableContainer>
+                  <Badge
+                    colorScheme={
+                      provider.status === "online"
+                        ? "green"
+                        : provider.status === "offline"
+                          ? "red"
+                          : "gray"
+                    }
+                  >
+                    {provider.status}
+                  </Badge>
+                </Flex>
 
-      <Pagination
-        currentPage={currentPage}
-        totalPages={totalPages}
-        onPageChange={setCurrentPage}
-      />
+                <Stack spacing={2}>
+                  <Flex justify="space-between">
+                    <Text fontSize="sm" color="gray.200">
+                      {t("chainlist.chainId")}
+                    </Text>
+                    <Text fontSize="sm">{provider.id}</Text>
+                  </Flex>
+                  <Flex justify="space-between">
+                    <Text fontSize="sm" color="gray.200">
+                      {t("chainlist.latency")}
+                    </Text>
+                    <Text fontSize="sm">{provider.latency}ms</Text>
+                  </Flex>
+                </Stack>
+              </Box>
+            ))}
+          </Grid>
+        ) : (
+          <Center p={8} w="full">
+            <Text color="gray.500">{t("chainlist.noProviders")}</Text>
+          </Center>
+        )}
+
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={setCurrentPage}
+        />
+      </VStack>
     </Container>
   );
 }

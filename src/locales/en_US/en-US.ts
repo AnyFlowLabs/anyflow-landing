@@ -1,7 +1,6 @@
 export const en_US = {
   translation: {
     header: {
-      title1: "Effortless",
       title2: "Smart Contract Deployments",
       subtitle1: "Effortless",
       subtitle2: ", fast and secure.",
@@ -16,6 +15,12 @@ export const en_US = {
       subtitle:
         "AnyFlow enables 3-click deployments of smart contracts to multiple blockchains. Automate your deployment process and focus on building.",
       // "AnyFlow empowers developers to achieve agile smart contract deployment. This robust tool streamlines automation and enhances DevOps processes, ensuring exceptional code quality across diverse blockchains. Leverage testnets for pre-production accuracy testing and enjoy seamless deployment to multiple testnets without the hassle of faucets or API keys.",
+    },
+    form: {
+      title: "Stay tuned! Support for Solana is coming soon to AnyFlow!",
+      description:
+        "We are currently in the alpha stage, and we want you to be part of this journey. Request early access and help us shape the future of our platform!",
+      button: "Request early access",
     },
     chains: "{{q}} Supported Chains",
     features: {
@@ -48,6 +53,20 @@ export const en_US = {
         text: "Backed by Khiza",
         logo: "Khiza logo URL",
       },
+    },
+    chainlist: {
+      search: "Search by name or ID",
+      title: "Supported Chains",
+      description:
+        "This platform offers a detailed directory of EVM networks, allowing users to connect their wallets and Web3 middleware providers to the correct Chain ID and Network ID for smooth access to the appropriate blockchain.",
+      addToMetaMask: "Add to MetaMask",
+      chainId: "Chain ID",
+      latency: "Latency",
+      noProviders: "No matching providers found.",
+      errorLoadingChain: "Error loading chain details",
+      chainNotFound: "Chain not found, try again.",
+      nativeToken: "Native Token",
+      chainName: "Chain Name",
     },
   },
 };
