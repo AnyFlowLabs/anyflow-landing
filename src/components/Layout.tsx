@@ -1,7 +1,6 @@
 import {
   VStack,
   Image,
-  Grid,
   Text,
   HStack,
   Flex,
@@ -70,7 +69,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <Image src={LogoFooter} alt="Anyflow" />
         <Flex alignItems="center" justifyContent="center" gap={4}>
           <Text color="gray.400" fontSize="sm">
-            Backed By
+            {t("footer.backedBy.text")}
           </Text>
           <a
             href="https://khizadao.com"
@@ -88,7 +87,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           justify={{ base: "center", md: "space-between" }}
         >
           <Text fontSize="small" color="gray.300" flex={1}>
-            © 2024 Anyflow. All rights reserved.
+            {t("footer.copyright")}
           </Text>
           <ChangeLanguageMenu />
           <HStack justify={{ base: "center", md: "end" }} gap={4} flex={1}>
