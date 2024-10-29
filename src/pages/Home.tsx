@@ -14,6 +14,7 @@ import { chains } from "@/data/chains";
 import { useTranslation } from "react-i18next";
 import Slider from "@/components/Slider";
 import { BUTTON_GITHUB, DOCS_URL } from "@/const";
+import GithubIcon from "@/components/Icons/Github";
 
 export default function HomePage() {
   const { t } = useTranslation();
@@ -28,11 +29,10 @@ export default function HomePage() {
           justify="center"
         >
           <Heading
-            as="h2"
-            size="2xl"
-            color="white"
+            as="h1"
+            color="gray.50"
             textAlign="center"
-            fontSize={{ base: "5xl", md: "7xl" }}
+            fontSize={{ base: "5xl", md: "8xl" }}
           >
             {t("header.title2")}
           </Heading>
@@ -40,18 +40,17 @@ export default function HomePage() {
           <Heading
             fontWeight="light"
             as="h3"
-            color="white"
+            color="gray.50"
             fontSize="2xl"
-            my={8}
             textAlign="center"
           >
             <Text as="span" color="brand.500">
               {t("header.subtitle1")}
             </Text>
-            <Text as="span" color="white">
+            <Text as="span" color="gray.50">
               {t("header.subtitle2")}
             </Text>
-            <Text as="span" color="white" fontWeight="bold">
+            <Text as="span" color="gray.50" fontWeight="bold">
               {" "}
               {t("header.subtitle3")}
             </Text>
@@ -70,12 +69,10 @@ export default function HomePage() {
           >
             <VStack flex={1} align="stretch" spacing={2}>
               <Heading color="white" fontSize="lg">
-                Stay tuned! Support for Solana is coming soon to AnyFlow!
+                {t("form.title")}
               </Heading>
               <Text color="gray.100" fontSize="smaller">
-                We are currently in the alpha stage, and we want you to be part
-                of this journey. Request early access and help us shape the
-                future of our platform!
+                {t("form.description")}
               </Text>
             </VStack>
             <Button
@@ -86,7 +83,7 @@ export default function HomePage() {
               referrerPolicy="no-referrer"
               w={{ base: "full", md: "auto" }}
             >
-              Request Access
+              {t("form.button")}
             </Button>
           </Flex>
         </VStack>
@@ -179,6 +176,7 @@ export default function HomePage() {
             {t("callToAction")}
           </Heading>
           <Button
+            leftIcon={<GithubIcon width={18} height={18} />}
             variant="solid"
             as="a"
             href={BUTTON_GITHUB}

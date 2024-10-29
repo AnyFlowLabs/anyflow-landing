@@ -1,21 +1,28 @@
-import {
-  Button,
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
-  Image,
-  HStack,
-} from "@chakra-ui/react";
-import LanguageIcon from "@/assets/language-icon.svg";
-import ArrowDown from "@/assets/arrow-down.svg";
+import { Button, ButtonGroup } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+
+type LanguageOption = {
+  display: string;
+  code: string;
+};
+
+const LANGUAGES: Record<string, LanguageOption> = {
+  "EN-US": { display: "EN-US", code: "en_US" },
+  "PT-BR": { display: "PT-BR", code: "pt_BR" },
+};
 
 export function ChangeLanguageMenu() {
   const { i18n } = useTranslation();
 
-  const [showLanguage, setShowLanguage] = useState("EN-US");
+  const [showLanguage, setShowLanguage] = useState(() => {
+    const currentCode = i18n.language;
+    return (
+      Object.values(LANGUAGES).find((lang) => lang.code === currentCode)
+        ?.display || "EN-US"
+    );
+  });
+
   const [currentLanguage, setCurrentLanguage] = useState(i18n.language);
 
   useEffect(() => {
@@ -23,46 +30,25 @@ export function ChangeLanguageMenu() {
   }, [currentLanguage, i18n]);
 
   const toggleLanguage = (newLanguage: string) => {
-    setCurrentLanguage(newLanguage === "EN-US" ? "en_US" : "pt_BR");
-    setShowLanguage(newLanguage);
+    const selectedLang = LANGUAGES[newLanguage];
+    if (selectedLang) {
+      setCurrentLanguage(selectedLang.code);
+      setShowLanguage(selectedLang.display);
+    }
   };
 
   return (
-    <Menu>
-      <MenuButton
-        as={Button}
-        variant="ghost"
-        color="white"
-        _hover={{ bg: "transparent", color: "white" }}
-        _active={{ bg: "transparent" }}
-        _focus={{ boxShadow: "none" }}
-      >
-        <HStack spacing={3}>
-          <Image src={LanguageIcon} alt="Language" />
-          {showLanguage}
-          <Image src={ArrowDown} alt="Arrow down" />
-        </HStack>
-      </MenuButton>
-      <MenuList bg="gray.600">
-        <MenuItem
-          onClick={() => toggleLanguage("EN-US")}
-          bg="transparent"
-          color="white"
-          _hover={{ bg: "transparent" }}
-          _focus={{ bg: "transparent" }}
+    <ButtonGroup>
+      {Object.entries(LANGUAGES).map(([key, lang]) => (
+        <Button
+          key={key}
+          onClick={() => toggleLanguage(key)}
+          variant={showLanguage === lang.display ? "ghost" : "link"}
+          size="xs"
         >
-          EN-US
-        </MenuItem>
-        <MenuItem
-          onClick={() => toggleLanguage("PT-BR")}
-          bg="transparent"
-          color="white"
-          _hover={{ bg: "transparent" }}
-          _focus={{ bg: "transparent" }}
-        >
-          PT-BR
-        </MenuItem>
-      </MenuList>
-    </Menu>
+          {lang.display}
+        </Button>
+      ))}
+    </ButtonGroup>
   );
 }

@@ -45,5 +45,19 @@ export const pt_BR = {
         logo: "Khiza logo URL",
       },
     },
+    chainlist: {
+      search: "Pesquisar por nome ou ID",
+      title: "Blockchains Suportadas",
+      description:
+        "Esta plataforma oferece um diretório detalhado de redes EVM, permitindo que os usuários conectem seus wallets e provedores de middleware Web3 às IDs de Chain e Network corretas para acesso suave às redes apropriadas.",
+      addToMetaMask: "Adicionar ao MetaMask",
+      chainId: "ID da Chain",
+      latency: "Latência",
+      noProviders: "Nenhum provedor correspondente encontrado.",
+      errorLoadingChain: "Erro ao carregar detalhes da chain",
+      chainNotFound: "Chain não encontrada, tente novamente.",
+      nativeToken: "Token Nativo",
+      chainName: "Nome da Chain",
+    },
   },
 };
