@@ -15,21 +15,20 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - uses: pnpm/action-setup@v2
-        with:
-          version: 9.1
-
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
           node-version: 18
-          cache: 'pnpm'
+          cache: 'npm'
+
+      - name: Clean npm cache
+        run: npm cache clean --force
 
       - name: Install dependencies
-        run: pnpm install
+        run: npm install
 
       - name: Build app
-        run: pnpm build --mode staging
+        run: npm run build --mode staging
 
       - name: Deploy to S3
         uses: jakejarvis/s3-sync-action@v0.5.1

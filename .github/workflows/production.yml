@@ -14,24 +14,20 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - uses: pnpm/action-setup@v2
-        with:
-          version: 9.1
-
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
           node-version: 18
-          cache: "pnpm"
+          cache: "npm"
 
       - name: Clean npm cache
-        run: pnpm store path
+        run: npm cache clean --force
 
       - name: Install dependencies
-        run: pnpm install
+        run: npm install
 
       - name: Build app
-        run: pnpm build --mode production
+        run: npm run build --mode production
 
       - name: Deploy to S3
         uses: jakejarvis/s3-sync-action@v0.5.1
@@ -41,7 +37,8 @@ jobs:
           AWS_S3_BUCKET: ${{ vars.AWS_S3_BUCKET }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          SOURCE_DIR: "dist"
+          SOURCE_DIR: 'dist'
+
       - name: Invalidate AWS CloudFront
         uses: chetan/invalidate-cloudfront-action@v2
         env:
