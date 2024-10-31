@@ -10,7 +10,6 @@ on:
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
-    environment: staging
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
