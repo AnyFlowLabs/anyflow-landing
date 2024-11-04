@@ -16,6 +16,9 @@ import {
   Button,
   SimpleGrid,
   Image,
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
 } from "@chakra-ui/react";
 import { Search2Icon } from "@chakra-ui/icons";
 import useDebounce from "@/hooks/useDebounce";
@@ -70,6 +73,17 @@ export default function Chains() {
   return (
     <>
       <Container maxW="container.lg" my={12}>
+        <Breadcrumb>
+          <BreadcrumbItem>
+            <BreadcrumbLink href="/">Home</BreadcrumbLink>
+          </BreadcrumbItem>
+
+          <BreadcrumbItem>
+            <BreadcrumbLink href="#" isCurrentPage>
+              Chains
+            </BreadcrumbLink>
+          </BreadcrumbItem>
+        </Breadcrumb>
         <VStack flex={1} align="flex-start">
           <Heading>{t("chainlist.title")}</Heading>
           <Text fontSize="smaller">{t("chainlist.description")}</Text>
