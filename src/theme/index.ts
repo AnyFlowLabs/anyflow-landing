@@ -21,7 +21,7 @@ const customTheme = extendTheme({
       body: {
         bg: "gray.50",
         _dark: {
-          bg: "gray.800",
+          bg: "gray.900",
         },
       },
       "::-webkit-scrollbar": {

@@ -6,8 +6,6 @@ import {
   Heading,
   Spinner,
   Text,
-  Button,
-  useToast,
   Grid,
   Stack,
   Badge,
@@ -15,12 +13,14 @@ import {
   InputGroup,
   InputLeftElement,
   Input,
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
 } from "@chakra-ui/react";
 import { useParams } from "react-router-dom";
 import { useState, useMemo } from "react";
 import useChain from "@/hooks/useChain";
 import { CopyChain } from "../components/CopyChain";
-import MetamaskIcon from "@/components/Icons/Metamask";
 import Pagination from "@/components/Pagination";
 import { Search2Icon } from "@chakra-ui/icons";
 import { useTranslation } from "react-i18next";
@@ -32,7 +32,6 @@ export default function ChainDetails() {
   const { chain, isLoading } = useChain(Number(chainId));
   const [currentPage, setCurrentPage] = useState(1);
   const [searchValue, setSearchValue] = useState("");
-  const toast = useToast();
 
   const { t } = useTranslation();
 
@@ -62,56 +61,56 @@ export default function ChainDetails() {
     setCurrentPage(1);
   };
 
-  const addToMetaMask = async () => {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    if (!window.ethereum || !chain) return;
+  // const addToMetaMask = async () => {
+  //   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  //   // @ts-ignore
+  //   if (!window.ethereum || !chain) return;
 
-    try {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      await window.ethereum.request({
-        method: "wallet_addEthereumChain",
-        params: [
-          {
-            chainId: `0x${chain.chain_id.toString(16)}`, // Convert to hex
-            chainName: chain.name,
-            nativeCurrency: {
-              name: chain.ticker || "Native Token",
-              symbol: chain.ticker || "ETH",
-              decimals: 18,
-            },
-            rpcUrls: providers.map((provider) => provider.public_url),
-            blockExplorerUrls: undefined,
-          },
-        ],
-      });
+  //   try {
+  //     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  //     // @ts-ignore
+  //     await window.ethereum.request({
+  //       method: "wallet_addEthereumChain",
+  //       params: [
+  //         {
+  //           chainId: `0x${chain.chain_id.toString(16)}`, // Convert to hex
+  //           chainName: chain.name,
+  //           nativeCurrency: {
+  //             name: chain.ticker || "Native Token",
+  //             symbol: chain.ticker || "ETH",
+  //             decimals: 18,
+  //           },
+  //           rpcUrls: providers.map((provider) => provider.public_url),
+  //           blockExplorerUrls: undefined,
+  //         },
+  //       ],
+  //     });
 
-      toast({
-        title: "Chain added successfully",
-        status: "success",
-        duration: 3000,
-        isClosable: true,
-      });
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-    } catch (error: never) {
-      toast({
-        title: "Error adding chain",
-        description: error.message,
-        status: "error",
-        duration: 3000,
-        isClosable: true,
-      });
-    }
-  };
+  //     toast({
+  //       title: "Chain added successfully",
+  //       status: "success",
+  //       duration: 3000,
+  //       isClosable: true,
+  //     });
+  //     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  //     // @ts-ignore
+  //   } catch (error: never) {
+  //     toast({
+  //       title: "Error adding chain",
+  //       description: error.message,
+  //       status: "error",
+  //       duration: 3000,
+  //       isClosable: true,
+  //     });
+  //   }
+  // };
 
-  const hasMetaMask = useMemo(
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    () => typeof window?.ethereum !== "undefined",
-    [],
-  );
+  // const hasMetaMask = useMemo(
+  //   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  //   // @ts-ignore
+  //   () => typeof window?.ethereum !== "undefined",
+  //   [],
+  // );
 
   if (isLoading) {
     return (
@@ -134,12 +133,26 @@ export default function ChainDetails() {
   return (
     <Container maxW="container.lg" my={12}>
       <VStack gap={8} w="full" align="flex-start">
+        <Breadcrumb>
+          <BreadcrumbItem>
+            <BreadcrumbLink href="/">Home</BreadcrumbLink>
+          </BreadcrumbItem>
+
+          <BreadcrumbItem>
+            <BreadcrumbLink href="/chains">Chains</BreadcrumbLink>
+          </BreadcrumbItem>
+
+          <BreadcrumbItem isCurrentPage>
+            <BreadcrumbLink href="#">Chain Details</BreadcrumbLink>
+          </BreadcrumbItem>
+        </Breadcrumb>
+
         <Flex gap={4} align="center" w="full">
           <Flex flex={1} align="center" justify="flex-start" gap={8}>
             <Heading fontSize="5xl">{chain.name}</Heading>
             <CopyChain chainId={chain.chain_id.toString()} />
           </Flex>
-          {hasMetaMask && (
+          {/* {hasMetaMask && (
             <Button
               onClick={addToMetaMask}
               isDisabled={!hasMetaMask || chain.is_testnet === 1 ? true : false}
@@ -147,7 +160,7 @@ export default function ChainDetails() {
             >
               {t("chainlist.addToMetaMask")}
             </Button>
-          )}
+          )} */}
         </Flex>
 
         <InputGroup maxW="300px">
@@ -200,7 +213,7 @@ export default function ChainDetails() {
                     <Text fontSize="sm" color="gray.200">
                       {t("chainlist.chainId")}
                     </Text>
-                    <Text fontSize="sm">{provider.id}</Text>
+                    <Text fontSize="sm">{provider.chain_id}</Text>
                   </Flex>
                   <Flex justify="space-between">
                     <Text fontSize="sm" color="gray.200">
