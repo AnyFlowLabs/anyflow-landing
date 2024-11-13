@@ -4,7 +4,6 @@ import {
   Container,
   Flex,
   Heading,
-  Spinner,
   Text,
   Grid,
   Stack,
@@ -16,6 +15,7 @@ import {
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbLink,
+  Skeleton,
 } from "@chakra-ui/react";
 import { useParams } from "react-router-dom";
 import { useState, useMemo } from "react";
@@ -114,19 +114,27 @@ export default function ChainDetails() {
 
   if (isLoading) {
     return (
-      <Center h="100vh">
-        <Spinner size="xl" />
-      </Center>
-    );
-  }
+      <Container maxW="container.lg" my={12}>
+        <VStack gap={4}>
+          <Skeleton w="full" h="40px" />
 
-  if (!chain) {
-    return (
-      <Center h="100vh">
-        <Heading size="lg" color="red.500">
-          {t("chainlist.errorLoadingChain")}
-        </Heading>
-      </Center>
+          <Skeleton w="full" h="120px" />
+
+          <Skeleton w="full" h="40px" />
+
+          <Grid
+            templateColumns={{ base: "1fr", md: "1fr 1fr 1fr" }}
+            gap={4}
+            w="full"
+          >
+            <Skeleton w="full" h="80px" />
+            <Skeleton w="full" h="80px" />
+            <Skeleton w="full" h="80px" />
+            <Skeleton w="full" h="80px" />
+            <Skeleton w="full" h="80px" />
+          </Grid>
+        </VStack>
+      </Container>
     );
   }
 
