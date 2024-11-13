@@ -157,8 +157,8 @@ export default function ChainDetails() {
 
         <Flex gap={4} align="center" w="full">
           <Flex flex={1} align="center" justify="flex-start" gap={8}>
-            <Heading fontSize="5xl">{chain.name}</Heading>
-            <CopyChain chainId={chain.chain_id.toString()} />
+            <Heading fontSize="5xl">{chain?.name}</Heading>
+            <CopyChain chainId={chain?.chain_id.toString() || ""} />
           </Flex>
           {/* {hasMetaMask && (
             <Button
