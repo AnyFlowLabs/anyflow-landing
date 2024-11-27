@@ -22,6 +22,7 @@ import { useTranslation } from "react-i18next";
 import Slider from "@/components/Slider";
 import { BUTTON_GITHUB } from "@/const";
 import GithubIcon from "@/components/Icons/Github";
+import KhizaLogo from "@/assets/khiza.svg";
 import HomeCards from "@/components/HomeCards";
 import {
   BadgeIcon,
@@ -35,6 +36,8 @@ import {
   TerminalIcon,
   ZapIcon,
 } from "lucide-react";
+import QuickNodeIcon from "@/components/Icons/QuickNode";
+import XdcIcon from "@/components/Icons/XDC";
 
 export default function HomePage() {
   const { t } = useTranslation();
@@ -282,7 +285,7 @@ export default function HomePage() {
             >
               Deploy Smart Contracts {""}
               <Text
-                 bgGradient="linear(to-l, brand.400, brand.500, brand.100)"
+                bgGradient="linear(to-l, brand.400, brand.500, brand.100)"
                 bgClip="text"
                 as="span"
                 fontWeight="bold"
@@ -630,117 +633,159 @@ export default function HomePage() {
       </Container>
 
       <Container maxW="container.xl" my={16}>
-        <VStack spacing={12} align="stretch">
-          <VStack spacing={4} align="center">
-            <Text
-              variant="glow"
-              fontSize="md"
-              letterSpacing={2}
-              textTransform="uppercase"
-              color="brand.400"
-              data-aos="fade-up"
-            >
-              Trusted By Industry Leaders
-            </Text>
-            <Heading
-              as="h2"
-              fontSize={{ base: "3xl", md: "5xl" }}
-              color="white"
-              textAlign="center"
-              data-aos="fade-up"
-            >
-              Backed by the Best
-            </Heading>
-            <Text
-              color="gray.300"
-              fontSize={{ base: "lg", md: "xl" }}
-              textAlign="center"
-              maxW="800px"
-              data-aos="fade-up"
-            >
-              We're proud to be supported by leading organizations in the
-              blockchain space
-            </Text>
-          </VStack>
-
-          <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8}>
-            <Box
-              p={8}
-              bg="gray.800"
-              borderRadius="xl"
-              border="1px solid"
-              borderColor="gray.700"
-              _hover={{
-                borderColor: "brand.400",
-                transform: "translateY(-4px)",
-              }}
-              transition="all 0.3s"
-              data-aos="fade-up"
-            >
-              <VStack align="flex-start" spacing={4}>
-                <Image src="/khiza-logo.png" alt="Khiza" h="40px" />
-                <Text color="gray.300">
-                  Backed by Khiza, a leading venture capital firm in the
-                  blockchain space
-                </Text>
-              </VStack>
-            </Box>
-
-            <Box
-              p={8}
-              bg="gray.800"
-              borderRadius="xl"
-              border="1px solid"
-              borderColor="gray.700"
-              _hover={{
-                borderColor: "brand.400",
-                transform: "translateY(-4px)",
-              }}
-              transition="all 0.3s"
-              data-aos="fade-up"
-              data-aos-delay="100"
-            >
-              <VStack align="flex-start" spacing={4}>
-                <Image src="/solana-logo.png" alt="Solana" h="40px" />
-                <Text color="gray.300">
-                  Top 4 Finalist in the Solana Hackathon, recognized for
-                  technical excellence and innovation
-                </Text>
-              </VStack>
-            </Box>
-          </SimpleGrid>
-
-          <Box
-            mt={8}
-            p={8}
-            bgGradient="linear(to-r, gray.800, gray.700)"
-            borderRadius="xl"
-            border="1px solid"
-            borderColor="gray.600"
+        <VStack spacing={2} align="center" flex={1}>
+          <Text
+            variant="glow"
+            fontSize="md"
+            letterSpacing={2}
+            textTransform="uppercase"
+            color="brand.400"
             data-aos="fade-up"
           >
-            <VStack spacing={4} align="center">
-              <BadgeIcon
-                colorScheme="brand"
-                p={2}
-                borderRadius="md"
-                textTransform="uppercase"
-                letterSpacing="wide"
+            Trusted By Industry Leaders
+          </Text>
+          <Heading
+            as="h2"
+            fontSize={{ base: "3xl", md: "5xl" }}
+            color="white"
+            textAlign="center"
+            data-aos="fade-up"
+          >
+            Backed by the Best
+          </Heading>
+          <Text
+            color="gray.300"
+            fontSize={{ base: "lg", md: "xl" }}
+            textAlign="center"
+            maxW="800px"
+            data-aos="fade-up"
+          >
+            We're proud to be supported by leading organizations in the
+            blockchain space
+          </Text>
+        </VStack>
+        <HStack spacing={8} align="stretch" mt={12}>
+          <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8} flex={2}>
+            <VStack
+              align="flex-start"
+              spacing={0}
+              p={8}
+              bg="gray.700"
+              borderRadius={20}
+              bgGradient="linear(to-br, gray.800, transparent, transparent, transparent, gray.800)"
+              border="solid 1px"
+              borderColor="gray.500"
+              boxShadow="2xl"
+              transition="transform 0.3s ease-in-out"
+              _hover={{ transform: "translateY(-16px)" }}
+            >
+              <a
+                href="https://khizadao.com"
+                title="Khiza DAO"
+                target="_blank"
+                referrerPolicy="no-referrer"
               >
-                Achievement
-              </BadgeIcon>
-              <Heading size="lg" color="white" textAlign="center">
-                Solana Hackathon Top 4 Finalist
-              </Heading>
-              <Text color="gray.300" textAlign="center" maxW="800px">
-                Our innovative approach to smart contract deployment earned us a
-                place among the top 4 finalists in the prestigious Solana
-                Hackathon, demonstrating our commitment to pushing the
-                boundaries of blockchain technology.
+                <Image src={KhizaLogo} alt="Khiza logo" h={10} />
+              </a>
+              <Text color="gray.300" fontSize="sm">
+                Backed by Khiza, a leading venture capital firm in the
+                blockchain space
               </Text>
             </VStack>
-          </Box>
-        </VStack>
+
+            <VStack
+              align="flex-start"
+              spacing={0}
+              p={8}
+              bg="gray.700"
+              borderRadius={20}
+              bgGradient="linear(to-br, gray.800, transparent, transparent, transparent, gray.800)"
+              border="solid 1px"
+              borderColor="gray.500"
+              boxShadow="2xl"
+              transition="transform 0.3s ease-in-out"
+              _hover={{ transform: "translateY(-16px)" }}
+            >
+              <QuickNodeIcon width={200} height={50} />
+              <Text color="gray.300" fontSize="sm">
+                QuickNode, Your Blockchain Startup Launchpad
+              </Text>
+            </VStack>
+
+            <VStack
+              align="flex-start"
+              spacing={0}
+              p={8}
+              bg="gray.700"
+              borderRadius={20}
+              bgGradient="linear(to-br, gray.800, transparent, transparent, transparent, gray.800)"
+              border="solid 1px"
+              borderColor="gray.500"
+              boxShadow="2xl"
+              transition="transform 0.3s ease-in-out"
+              _hover={{ transform: "translateY(-16px)" }}
+            >
+              <Image
+                src="data:image/png;base64,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"
+                alt="Builder logo"
+                h={10}
+              />
+              <Text color="gray.300" fontSize="sm" mt={8}>
+                We are builders taking on a challenge of building and launching
+                their crazy ideas
+              </Text>
+            </VStack>
+
+            <VStack
+              align="flex-start"
+              spacing={0}
+              p={8}
+              bg="gray.700"
+              borderRadius={20}
+              bgGradient="linear(to-br, gray.800, transparent, transparent, transparent, gray.800)"
+              border="solid 1px"
+              borderColor="gray.500"
+              boxShadow="2xl"
+              transition="transform 0.3s ease-in-out"
+              _hover={{ transform: "translateY(-16px)" }}
+            >
+              <XdcIcon width={100} height={100} />
+              <Text color="gray.300" fontSize="sm">
+                XDC Network is an enterprise-grade, open-source blockchain
+                protocol. An EVM-compatible chain with smart contract
+                capabilities, it is uniquely suited to revolutionize.
+              </Text>
+            </VStack>
+          </SimpleGrid>
+
+          <VStack
+            flex={1}
+            align="flex-start"
+            spacing={4}
+            p={8}
+            bg="gray.700"
+            borderRadius={20}
+            bgGradient="linear(to-br, green.500, transparent, transparent, transparent, gray.800)"
+            border="solid 1px"
+            borderColor="gray.500"
+            boxShadow="2xl"
+            transition="transform 0.3s ease-in-out"
+            _hover={{ transform: "translateY(-16px)" }}
+          >
+            <BadgeIcon />
+            <Heading size="lg" color="white">
+              Solana Hackathon
+              <br />
+              Top 4 Finalist
+            </Heading>
+            <Text color="gray.300">
+              Our innovative approach to smart contract deployment earned us a
+              place among the top 4 finalists in the prestigious Solana
+              Hackathon, demonstrating our commitment to pushing the boundaries
+              of blockchain technology.
+            </Text>
+          </VStack>
+        </HStack>
       </Container>
 
       <Container maxW="container.lg" my={16}>
