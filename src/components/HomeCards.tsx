@@ -1,6 +1,7 @@
 import { FC, useCallback, useEffect, useRef, useState } from "react";
 import {
   Box,
+  Button,
   Heading,
   HStack,
   SimpleGrid,
@@ -190,57 +191,395 @@ const CardStack: FC = () => {
             </Text>
           </VStack>
 
-          <SimpleGrid columns={{ base: 1, md: 2 }} spacing={6} w="full">
-            {[
-              {
-                title: "1. One-Click Deploy",
-                description:
-                  "Deploy your smart contracts instantly with a single command - no wallet setup or token purchases needed",
-                icon: "🚀",
-              },
-              {
-                title: "2. Automated Setup",
-                description:
-                  "Our platform handles all configurations automatically - from RPC endpoints to network selection",
-                icon: "⚡",
-              },
-              {
-                title: "3. Built-in Security",
-                description:
-                  "Enterprise-grade security by default, with automated audits and best practices enforcement",
-                icon: "🛡️",
-              },
-              {
-                title: "4. Cost Efficiency",
-                description:
-                  "Pay only for what you deploy, with transparent pricing and no hidden fees or token requirements",
-                icon: "💎",
-              },
-            ].map((step, index) => (
+          <SimpleGrid columns={{ base: 1, md: 4 }} spacing={6} w="full" pb={48}>
+            <Box
+              key={0}
+              p={4}
+              bg="gray.700"
+              borderRadius="xl"
+              border="1px solid"
+              borderColor="gray.600"
+              _hover={{
+                borderColor: "brand.400",
+                transform: "translateY(-8px)",
+                boxShadow: "xl",
+              }}
+              transition="all 0.3s ease"
+              data-aos="fade-up"
+              data-aos-delay={0}
+              overflow="hidden"
+            >
+              <Heading color="brand.500" fontWeight="bold" fontSize="xl" mb={4}>
+                One-Click Deploy
+              </Heading>
+              <Text color="gray.300" fontSize="sm" mb={6}>
+                Deploy your smart contracts instantly with a single command - no
+                wallet setup or token purchases needed
+              </Text>
+
               <Box
-                key={index}
-                p={4}
-                bg="gray.700"
-                borderRadius="xl"
-                border="1px solid"
-                borderColor="gray.600"
-                _hover={{
-                  borderColor: "brand.400",
-                  transform: "translateY(-8px)",
-                  boxShadow: "xl",
-                }}
-                transition="all 0.3s ease"
-                data-aos="fade-up"
-                data-aos-delay={100 * index}
+                position="relative"
+                display="flex"
+                justifyContent="center"
+                alignItems="center"
               >
-                <Text color="brand.500" fontWeight="bold" fontSize="lg" mb={3}>
-                  {step.title}
-                </Text>
-                <Text color="gray.300" fontSize="md" lineHeight="tall">
-                  {step.description}
-                </Text>
+                <Box position="relative" width="180px" height="180px">
+                  <Box
+                    position="absolute"
+                    top="0%"
+                    left="25%"
+                    borderRadius="50%"
+                    width="150%"
+                    height="150%"
+                    zIndex={0}
+                    transform="translate(-50%, -50%)"
+                    bgGradient="linear(43deg, info.500 0%, success.800 46%, info.500 60%, brand.600 80%, brand.400 100%)"
+                    filter="blur(20px)"
+                    opacity={0.3}
+                    animation="pulse 2s infinite"
+                  />
+                  <Box
+                    position="absolute"
+                    top="0"
+                    left="0"
+                    zIndex={1}
+                    width="100%"
+                    height="100%"
+                    borderRadius="50%"
+                    bgGradient="linear(to-br, gray.700, gray.800)"
+                  />
+
+                  {/* Rotating gradient border */}
+                  <Box
+                    position="absolute"
+                    top="0"
+                    left="0"
+                    width="100%"
+                    height="100%"
+                    borderRadius="50%"
+                    border="4px solid"
+                    borderColor="transparent"
+                    bgGradient="linear(43deg, brand.500 0%, info.500 50%, brand.500 100%)"
+                    animation="spin 3s linear infinite"
+                    _before={{
+                      content: '""',
+                      position: "absolute",
+                      top: "-8px",
+                      left: "-8px",
+                      right: "-8px",
+                      bottom: "-8px",
+                      borderRadius: "50%",
+                      border: "4px solid transparent",
+                      bgGradient:
+                        "linear(43deg, info.800 0%, success.500 50%, info.500 100%)",
+                      animation: "spin 4s linear infinite reverse",
+                    }}
+                  />
+
+                  <Box
+                    position="absolute"
+                    top="50%"
+                    left="50%"
+                    transform="translate(-50%, -50%)"
+                    textAlign="center"
+                    zIndex={1}
+                  >
+                    <Heading
+                      textStyle="gradient"
+                      fontSize="md"
+                      fontWeight="bold"
+                      animation="fadeInOut 2s infinite"
+                    >
+                      Deploying
+                    </Heading>
+                    <Heading
+                      bgGradient="linear(to-r, gray.300, gray.400)"
+                      bgClip="text"
+                      fontSize="xs"
+                      mt={1}
+                      animation="pulse 2s infinite"
+                    >
+                      Smart Contract
+                    </Heading>
+                  </Box>
+                </Box>
               </Box>
-            ))}
+            </Box>
+            <Box
+              key={1}
+              p={4}
+              bg="gray.700"
+              borderRadius="xl"
+              border="1px solid"
+              borderColor="gray.600"
+              _hover={{
+                borderColor: "brand.400",
+                transform: "translateY(-8px)",
+                boxShadow: "xl",
+              }}
+              transition="all 0.3s ease"
+              data-aos="fade-up"
+              data-aos-delay={100}
+            >
+              <Heading color="brand.500" fontWeight="bold" fontSize="xl" mb={4}>
+                Automated Setup
+              </Heading>
+              <Text color="gray.300" fontSize="sm" mb={6}>
+                Our platform handles all configurations automatically - from RPC
+                endpoints to network selection
+              </Text>
+
+              <Box position="relative" mt={2}>
+                <Box
+                  w="full"
+                  h="8px"
+                  bg="gray.600"
+                  borderRadius="full"
+                  overflow="hidden"
+                >
+                  <Box
+                    h="full"
+                    bgGradient="linear(to-r, brand.500, info.500)"
+                    animation="progressBar 6s infinite"
+                  />
+                </Box>
+
+                <HStack spacing={4} mt={4} justify="space-between">
+                  <Box textAlign="center">
+                    <Text color="brand.500" fontSize="xs" mb={1}>
+                      Repository
+                    </Text>
+                    <Box
+                      w="6"
+                      h="6"
+                      borderRadius="full"
+                      bgGradient="linear(to-br, brand.500, info.500)"
+                    />
+                  </Box>
+
+                  <Box textAlign="center">
+                    <Text color="brand.500" fontSize="xs" mb={1}>
+                      Networks
+                    </Text>
+                    <Box
+                      w="6"
+                      h="6"
+                      borderRadius="full"
+                      bgGradient="linear(to-br, brand.500, info.500)"
+                    />
+                  </Box>
+
+                  <Box textAlign="center">
+                    <Text color="brand.500" fontSize="xs" mb={1}>
+                      Review
+                    </Text>
+                    <Box
+                      w="6"
+                      h="6"
+                      borderRadius="full"
+                      bgGradient="linear(to-br, brand.500, info.500)"
+                    />
+                  </Box>
+
+                  <Box textAlign="center">
+                    <Text color="info.500" fontSize="xs" mb={1}>
+                      Deploy
+                    </Text>
+                    <Box
+                      w="6"
+                      h="6"
+                      borderRadius="full"
+                      bgGradient="linear(to-br, brand.500, info.500)"
+                    >
+                      <Text color="white" textAlign="center" lineHeight="24px">
+                        ✓
+                      </Text>
+                    </Box>
+                  </Box>
+                </HStack>
+              </Box>
+            </Box>
+            <Box
+              key={2}
+              p={4}
+              bg="gray.700"
+              borderRadius="xl"
+              border="1px solid"
+              borderColor="gray.600"
+              _hover={{
+                borderColor: "brand.400",
+                transform: "translateY(-8px)",
+                boxShadow: "xl",
+              }}
+              transition="all 0.3s ease"
+              data-aos="fade-up"
+              data-aos-delay={200}
+            >
+              <Heading color="brand.500" fontWeight="bold" fontSize="xl" mb={4}>
+                Built-in Securityy
+              </Heading>
+              <Text color="gray.300" fontSize="sm" mb={6}>
+                Enterprise-grade security by default, with automated audits and
+                best practices enforcement
+              </Text>
+
+              <Box position="relative">
+                <Box
+                  position="relative"
+                  w="full"
+                  h="120px"
+                  borderRadius="lg"
+                  overflow="hidden"
+                  bg="gray.800"
+                >
+                  {/* Shield Animation */}
+                  <Box
+                    position="absolute"
+                    left="50%"
+                    top="50%"
+                    transform="translate(-50%, -50%)"
+                    w="60px"
+                    h="60px"
+                    borderRadius="full"
+                    bgGradient="linear(to-br, brand.500, info.500)"
+                    animation="pulse 2s infinite"
+                  >
+                    <Text
+                      fontSize="2xl"
+                      color="white"
+                      position="absolute"
+                      left="50%"
+                      top="50%"
+                      transform="translate(-50%, -50%)"
+                    >
+                      🛡️
+                    </Text>
+                  </Box>
+
+                  {/* Scanning Effect */}
+                  <Box
+                    position="absolute"
+                    top="0"
+                    left="0"
+                    w="full"
+                    h="2px"
+                    bgGradient="linear(to-r, transparent, info.500, transparent)"
+                    animation="progressBar 3s infinite"
+                  />
+                </Box>
+
+                {/* Status Indicators */}
+                <HStack spacing={2} justify="center" mt={4}>
+                  <Box px={3} py={1} bg="green.500" borderRadius="full">
+                    <Text fontSize="xs" color="white">
+                      Secure
+                    </Text>
+                  </Box>
+                  <Box px={3} py={1} bg="blue.500" borderRadius="full">
+                    <Text fontSize="xs" color="white">
+                      Audited
+                    </Text>
+                  </Box>
+                  <Box px={3} py={1} bg="purple.500" borderRadius="full">
+                    <Text fontSize="xs" color="white">
+                      Protected
+                    </Text>
+                  </Box>
+                </HStack>
+              </Box>
+            </Box>
+            <Box
+              key={3}
+              p={4}
+              bg="gray.700"
+              borderRadius="xl"
+              border="1px solid"
+              borderColor="gray.600"
+              _hover={{
+                borderColor: "brand.400",
+                transform: "translateY(-8px)",
+                boxShadow: "xl",
+              }}
+              transition="all 0.3s ease"
+              data-aos="fade-up"
+              data-aos-delay={300}
+            >
+              <Heading color="brand.500" fontWeight="bold" fontSize="xl" mb={4}>
+                Cost Efficiency
+              </Heading>
+              <Text color="gray.300" fontSize="sm" mb={6}>
+                Pay only for what you deploy, with transparent pricing and no
+                hidden fees or token requirements
+              </Text>
+
+              <Box position="relative" height="120px" mb={4}>
+                <Box
+                  position="absolute"
+                  bottom="0"
+                  left="50%"
+                  transform="translateX(-50%)"
+                  width="80%"
+                  height="80px"
+                  borderRadius="lg"
+                  bg="gray.800"
+                  overflow="hidden"
+                >
+                  {/* Animated Cost Bars */}
+                  <HStack
+                    height="100%"
+                    spacing={2}
+                    justify="center"
+                    align="flex-end"
+                    padding={2}
+                  >
+                    {[0.4, 0.8, 0.6, 0.9, 0.5].map((height, i) => (
+                      <Box
+                        key={i}
+                        width="15%"
+                        height={`${height * 100}%`}
+                        bg="brand.500"
+                        borderRadius="sm"
+                        animation={`pulse ${1 + i * 0.2}s infinite`}
+                      />
+                    ))}
+                  </HStack>
+                </Box>
+
+                {/* Floating Dollar Symbol */}
+                <Box
+                  position="absolute"
+                  top="0"
+                  left="50%"
+                  transform="translateX(-50%)"
+                  width="40px"
+                  height="40px"
+                  borderRadius="full"
+                  bg="green.500"
+                  display="flex"
+                  alignItems="center"
+                  justifyContent="center"
+                  animation="fadeInOut 2s infinite"
+                >
+                  <Text fontSize="xl" color="white" fontWeight="bold">
+                    $
+                  </Text>
+                </Box>
+              </Box>
+
+              {/* Cost Tags */}
+              <HStack spacing={2} justify="center">
+                <Box px={3} py={1} bg="green.500" borderRadius="full">
+                  <Text fontSize="xs" color="white">
+                    Pay-as-you-go
+                  </Text>
+                </Box>
+                <Box px={3} py={1} bg="blue.500" borderRadius="full">
+                  <Text fontSize="xs" color="white">
+                    No Hidden Fees
+                  </Text>
+                </Box>
+              </HStack>
+            </Box>
           </SimpleGrid>
         </VStack>
       </HStack>

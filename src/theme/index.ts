@@ -72,6 +72,63 @@ const customTheme = extendTheme({
             "0 0 5px 0 #e63f66, 0 0 10px 0 #b21e4b, 0 0 50px 0 #b21e4b",
         },
       },
+      "@keyframes cursorMove": {
+        "0%": {
+          transform: "translate(50%, 50%) scale(1)",
+          opacity: 1,
+        },
+        "50%": {
+          transform: "translate(50%, 50%) scale(0.8)",
+          opacity: 0.8,
+        },
+        "100%": {
+          transform: "translate(50%, 50%) scale(1)",
+          opacity: 1,
+        },
+      },
+      "@keyframes progressBar": {
+        "0%": { width: "0%" },
+        "50%": { width: "100%" },
+        "100%": { width: "0%" },
+      },
+      "@keyframes buttonPress": {
+        "0%, 100%": {
+          transform: "scale(1)",
+        },
+        "50%": {
+          transform: "scale(0.95)",
+        },
+      },
+      "@keyframes cursorClick": {
+        "0%, 100%": {
+          transform: "translate(50%, 50%) rotate(-45deg)",
+        },
+        "50%": {
+          transform: "translate(50%, 60%) rotate(-45deg)",
+        },
+      },
+
+      "@keyframes fadeIn": {
+        from: { opacity: 0 },
+        to: { opacity: 1 },
+      },
+
+      "@keyframes fadeInOut": {
+        "0%": { opacity: 0.6 },
+        "50%": { opacity: 1 },
+        "100%": { opacity: 0.6 },
+      },
+
+      "@keyframes spin": {
+        from: { transform: "rotate(0deg)" },
+        to: { transform: "rotate(360deg)" },
+      },
+
+      "@keyframes pulse": {
+        "0%": { opacity: 0.6, transform: "scale(0.98)" },
+        "50%": { opacity: 1, transform: "scale(1)" },
+        "100%": { opacity: 0.6, transform: "scale(0.98)" },
+      },
     },
   },
   fonts,
