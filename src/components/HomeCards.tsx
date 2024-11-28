@@ -2,6 +2,7 @@ import { FC, useCallback, useEffect, useRef, useState } from "react";
 import {
   Box,
   Button,
+  Flex,
   Heading,
   HStack,
   SimpleGrid,
@@ -10,6 +11,7 @@ import {
 } from "@chakra-ui/react";
 
 import { useTranslation } from "react-i18next";
+import { ShieldCheckIcon } from "lucide-react";
 
 const CardStack: FC = () => {
   const { t } = useTranslation();
@@ -170,6 +172,7 @@ const CardStack: FC = () => {
           transition: "all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1)",
         }}
         layerStyle="sectionDark"
+        
       >
         <VStack align="center" w="full" gap={{ base: 4, md: 8 }}>
           <VStack align="center" gap={{ base: 2, md: 4 }}>
@@ -195,7 +198,7 @@ const CardStack: FC = () => {
             <Box
               key={0}
               p={4}
-              bg="gray.700"
+              layerStyle="sectionDark"
               borderRadius="xl"
               border="1px solid"
               borderColor="gray.600"
@@ -308,7 +311,7 @@ const CardStack: FC = () => {
             <Box
               key={1}
               p={4}
-              bg="gray.700"
+              layerStyle="sectionDark"
               borderRadius="xl"
               border="1px solid"
               borderColor="gray.600"
@@ -402,7 +405,7 @@ const CardStack: FC = () => {
             <Box
               key={2}
               p={4}
-              bg="gray.700"
+             layerStyle="sectionDark"
               borderRadius="xl"
               border="1px solid"
               borderColor="gray.600"
@@ -414,84 +417,124 @@ const CardStack: FC = () => {
               transition="all 0.3s ease"
               data-aos="fade-up"
               data-aos-delay={200}
+              overflow="hidden"
             >
               <Heading color="brand.500" fontWeight="bold" fontSize="xl" mb={4}>
-                Built-in Securityy
+                Built-in Security
               </Heading>
               <Text color="gray.300" fontSize="sm" mb={6}>
                 Enterprise-grade security by default, with automated audits and
                 best practices enforcement
               </Text>
 
-              <Box position="relative">
-                <Box
-                  position="relative"
-                  w="full"
-                  h="120px"
-                  borderRadius="lg"
-                  overflow="hidden"
-                  bg="gray.800"
-                >
-                  {/* Shield Animation */}
+              <Box
+                position="relative"
+                display="flex"
+                justifyContent="center"
+                alignItems="center"
+              >
+                <Box position="relative" width="180px" height="180px">
                   <Box
                     position="absolute"
-                    left="50%"
-                    top="50%"
+                    top="0%"
+                    left="25%"
+                    borderRadius="50%"
+                    width="150%"
+                    height="150%"
+                    zIndex={0}
                     transform="translate(-50%, -50%)"
-                    w="60px"
-                    h="60px"
-                    borderRadius="full"
-                    bgGradient="linear(to-br, brand.500, info.500)"
+                    bgGradient="linear(43deg, info.700 0%, success.800 46%, info.500 60%, info.600 80%, success.400 100%)"
+                    filter="blur(40px)"
+                    opacity={0.1}
                     animation="pulse 2s infinite"
-                  >
-                    <Text
-                      fontSize="2xl"
-                      color="white"
-                      position="absolute"
-                      left="50%"
-                      top="50%"
-                      transform="translate(-50%, -50%)"
-                    >
-                      🛡️
-                    </Text>
-                  </Box>
-
-                  {/* Scanning Effect */}
-                  <Box
-                    position="absolute"
-                    top="0"
-                    left="0"
-                    w="full"
-                    h="2px"
-                    bgGradient="linear(to-r, transparent, info.500, transparent)"
-                    animation="progressBar 3s infinite"
                   />
-                </Box>
 
-                {/* Status Indicators */}
-                <HStack spacing={2} justify="center" mt={4}>
-                  <Box px={3} py={1} bg="green.500" borderRadius="full">
-                    <Text fontSize="xs" color="white">
-                      Secure
-                    </Text>
-                  </Box>
-                  <Box px={3} py={1} bg="blue.500" borderRadius="full">
-                    <Text fontSize="xs" color="white">
-                      Audited
-                    </Text>
-                  </Box>
-                  <Box px={3} py={1} bg="purple.500" borderRadius="full">
-                    <Text fontSize="xs" color="white">
-                      Protected
-                    </Text>
-                  </Box>
-                </HStack>
+                  <Flex
+                    transform="translate(-50%, -50%)"
+                    w="120px"
+                    mx="auto"
+                    align="center"
+                    justify="center"
+                    h="120px"
+                    borderRadius="full"
+                    bgGradient="linear(to-br, transparent, info.500)"
+                    animation="pulse 2s infinite"
+                    boxShadow="0 0 20px rgba(66, 153, 225, 0.6)"
+                    _before={{
+                      content: '""',
+                      top: "-2px",
+                      left: "-2px",
+                      position: "absolute",
+                      w: "120px",
+                      h: "120px",
+                      borderRadius: "full",
+                      border: "2px solid",
+                      borderColor: "info.400",
+                      animation: "ripple 1.5s infinite",
+                    }}
+                    color="info.500"
+                  >
+                    <ShieldCheckIcon size={80} />
+                  </Flex>
+
+                  <HStack
+                    spacing={2}
+                    left={-5}
+                    justify="center"
+                    position="absolute"
+                    bottom={-5}
+                    zIndex={10}
+                  >
+                    <Box
+                      px={3}
+                      py={1}
+                      bg="rgba(72, 187, 120, 0.2)"
+                      backdropFilter="blur(8px)"
+                      border="1px solid"
+                      borderColor="green.400"
+                      borderRadius="full"
+                      boxShadow="0 4px 12px rgba(72, 187, 120, 0.2)"
+                    >
+                      <Text fontSize="xs" color="green.200">
+                        Secure
+                      </Text>
+                    </Box>
+                    <Box
+                      px={3}
+                      py={1}
+                      bg="rgba(66, 153, 225, 0.2)"
+                      backdropFilter="blur(8px)"
+                      border="1px solid"
+                      borderColor="blue.400"
+                      borderRadius="full"
+                      boxShadow="0 4px 12px rgba(66, 153, 225, 0.2)"
+                    >
+                      <Text fontSize="xs" color="blue.200">
+                        Audited
+                      </Text>
+                    </Box>
+                    <Box
+                      px={3}
+                      py={1}
+                      bg="rgba(159, 122, 234, 0.2)"
+                      backdropFilter="blur(8px)"
+                      border="1px solid"
+                      borderColor="purple.400"
+                      borderRadius="full"
+                      boxShadow="0 4px 12px rgba(159, 122, 234, 0.2)"
+                    >
+                      <Text fontSize="xs" color="purple.200">
+                        Protected
+                      </Text>
+                    </Box>
+                  </HStack>
+                </Box>
               </Box>
             </Box>
             <Box
               key={3}
               p={4}
-              bg="gray.700"
+              layerStyle="sectionDark"
               borderRadius="xl"
               border="1px solid"
               borderColor="gray.600"
@@ -595,20 +638,124 @@ const CardStack: FC = () => {
           width: "100%",
         }}
         layerStyle="sectionBlack"
+        p={0}
       >
-        <VStack align="center" w="full" gap={{ base: 4, md: 8 }}>
-          <VStack align="center" gap={{ base: 2, md: 4 }}>
-            <Text textStyle="section">Welcome to the Future</Text>
-            <Heading textStyle="title" data-aos="fade-up">
+        <VStack
+          align="center"
+          w="full"
+          gap={{ base: 4, md: 8 }}
+          position="relative"
+        >
+          {/* Animated background elements */}
+          <Box
+            position="absolute"
+            top="0"
+            left="0"
+            right="0"
+            bottom="0"
+            overflow="hidden"
+            zIndex={0}
+          >
+            {[...Array(20)].map((_, i) => (
+              <Box
+                key={i}
+                position="absolute"
+                width="4px"
+                height="4px"
+                bg="brand.400"
+                borderRadius="full"
+                top={`${Math.random() * 100}%`}
+                left={`${Math.random() * 100}%`}
+                animation={`float ${3 + Math.random() * 4}s infinite`}
+                opacity={0.3}
+              />
+            ))}
+            <Box
+              position="absolute"
+              width="full"
+              height="full"
+              bgGradient="radial(circle at 50% 50%, brand.500 0%, transparent 70%)"
+              opacity={0.1}
+              animation="pulse 4s infinite"
+            />
+          </Box>
+
+          <VStack align="center" gap={{ base: 2, md: 4 }} zIndex={1} p={32}>
+            <Text
+              textStyle="section"
+              position="relative"
+              _before={{
+                content: '""',
+                position: "absolute",
+                height: "2px",
+                width: "0%",
+                bottom: "-4px",
+                left: "50%",
+                transform: "translateX(-50%)",
+                bgGradient: "linear(to-r, transparent, brand.500, transparent)",
+                animation: "expandWidth 2s ease-out forwards",
+              }}
+            >
+              Welcome to the Future
+            </Text>
+
+            <Heading
+              data-aos="fade-up"
+              fontSize="8xl"
+              animation="shimmer 3s infinite"
+            >
               {t("home.newSection.newWay.title")}
             </Heading>
-            <Text textStyle="subtitle" data-aos="fade-up">
-              Deploy smart contracts in seconds with just one command
-            </Text>
-            <Text as="h3" color="white" data-aos="fade-up">
+
+            <Box position="relative">
+              <Text
+                textStyle="subtitle"
+                data-aos="fade-up"
+                position="relative"
+                zIndex={2}
+              >
+                Deploy smart contracts in seconds with just one command
+              </Text>
+              <Box
+                position="absolute"
+                top="50%"
+                left="-20px"
+                transform="translateY(-50%)"
+                width="40px"
+                height="40px"
+                borderRadius="full"
+                bgGradient="linear(to-r, brand.500, info.500)"
+                animation="spin 4s linear infinite"
+                opacity={0.6}
+              />
+            </Box>
+
+            <Text
+              as="h3"
+              color="white"
+              data-aos="fade-up"
+              position="relative"
+              _after={{
+                content: '""',
+                position: "absolute",
+                width: "120%",
+                height: "1px",
+                bottom: "-8px",
+                left: "-10%",
+                bgGradient: "linear(to-r, transparent, gray.500, transparent)",
+                animation: "pulse 2s infinite",
+              }}
+            >
               Focus on building great products while we handle the complexity
             </Text>
-            <Heading as="h3" fontSize="3xl" color="white" data-aos="fade-up">
+
+            <Heading
+              as="h3"
+              fontSize="3xl"
+              color="white"
+              data-aos="fade-up"
+              position="relative"
+            >
               The Smart Way to Deploy Smart Contracts
             </Heading>
           </VStack>

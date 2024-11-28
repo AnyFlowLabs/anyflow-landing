@@ -123,7 +123,7 @@ export const en_US = {
           title: "Too complex and too slow",
         },
         newWay: {
-          title: "EASY AND FAST",
+          title: "Easy and Fast",
           subtitle: "Deploy smart contracts in 4 simple steps",
           description:
             "AnyFlow enables 3-click deployments of smart contracts to multiple blockchains. Automate your deployment process and focus on building.",

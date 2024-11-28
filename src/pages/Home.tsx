@@ -940,7 +940,7 @@ export default function HomePage() {
                     justifyContent="flex-start"
                     gap={6}
                   >
-                    <Text color="brand.400" fontSize="sm" fontWeight="bold" textStyle="gradient">
+                    <Text color="gray.400" fontSize="sm" fontWeight="bold" >
                       {index + 1}
                     </Text>
                     {faq.question}
