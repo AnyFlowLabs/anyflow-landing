@@ -57,10 +57,12 @@ const CardStack: FC = () => {
       const translateY = Math.min(0, -easedProgress * 25);
 
       const opacity = 1 - easedProgress * 0.5;
+      const zIndex = 1 + index;
 
       return {
         transform: `translateY(${translateY}px) scale(${scale})`,
         opacity: isNaN(opacity) ? 0 : opacity,
+        zIndex,
       };
     },
     [scrollY, windowHeight],
@@ -74,10 +76,8 @@ const CardStack: FC = () => {
           ...calculateTransform(0),
           position: "sticky",
           top: "144px",
-          zIndex: 1,
           transformOrigin: "center top",
-          transition:
-            "transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1), opacity 0.3s ease-out",
+          transition: "all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1)",
         }}
         layerStyle="sectionLight"
       >
@@ -165,10 +165,8 @@ const CardStack: FC = () => {
           ...calculateTransform(1),
           position: "sticky",
           top: "144px",
-          zIndex: 2,
           transformOrigin: "center top",
-          transition:
-            "transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1), opacity 0.3s ease-out",
+          transition: "all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1)",
         }}
         layerStyle="sectionDark"
       >
@@ -247,16 +245,15 @@ const CardStack: FC = () => {
         </VStack>
       </HStack>
 
-      <Box
+      <HStack
         key="the-anyflow"
         style={{
           ...calculateTransform(2),
           position: "sticky",
           top: "144px",
-          zIndex: 3,
           transformOrigin: "center top",
-          transition:
-            "transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1), opacity 0.3s ease-out",
+          transition: "all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1)",
+          width: "100%",
         }}
         layerStyle="sectionBlack"
       >
@@ -277,7 +274,7 @@ const CardStack: FC = () => {
             </Heading>
           </VStack>
         </VStack>
-      </Box>
+      </HStack>
     </VStack>
   );
 };
