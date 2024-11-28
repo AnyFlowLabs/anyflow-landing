@@ -24,5 +24,5 @@ export const components = {
   Stepper: stepperTheme,
   Badge: badgeTheme,
   Switch: switchTheme,
-  Alert: alertTheme
+  Alert: alertTheme,
 };
