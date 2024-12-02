@@ -1,11 +1,11 @@
-import * as React from "react"
-import { SVGProps } from "react"
+import { SVGProps } from "react";
+
 const SvgComponent = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="1em"
     height="1em"
-    className="text-blue-500 fill-current group-hover/logo:text-blue-600"
+    className="fill-current text-blue-500 group-hover/logo:text-blue-600"
     {...props}
   >
     <path
@@ -15,5 +15,5 @@ const SvgComponent = (props: SVGProps<SVGSVGElement>) => (
       clipRule="evenodd"
     />
   </svg>
-)
-export default SvgComponent
+);
+export default SvgComponent;

@@ -1,7 +1,6 @@
 import { FC, useCallback, useEffect, useRef, useState } from "react";
 import {
   Box,
-  Button,
   Flex,
   Heading,
   HStack,
@@ -135,24 +134,28 @@ const CardStack: FC = () => {
                 borderColor="gray.700"
                 boxShadow="2xl"
                 _hover={{
-                  transform: "translateY(-8px)",
+                  transform: "translateY(-2px)",
                   boxShadow: "xl",
                 }}
                 transition="all 0.3s ease"
                 pos="relative"
-                opacity={0.25 + index * 0.25}
               >
                 <Text
                   color="gray.100"
                   fontWeight="light"
-                  fontSize="5xl"
+                  fontSize={"3xl"}
                   textStyle={index + 1 === 5 ? "gradient" : undefined}
                 >
                   {index + 1 === 5 ? "∞" : index + 1}
                 </Text>
-                <Text color="gray.100" fontWeight="bold" fontSize="Xl" mb={3}>
+                <Heading
+                  color="gray.100"
+                  fontWeight="bold"
+                  fontSize={index + 1 === 5 ? "3xl" : "xl"}
+                  mb={3}
+                >
                   {step.title}
-                </Text>
+                </Heading>
                 <Text color="gray.300" fontSize="sm">
                   {step.description}
                 </Text>
@@ -172,7 +175,6 @@ const CardStack: FC = () => {
           transition: "all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1)",
         }}
         layerStyle="sectionDark"
-        
       >
         <VStack align="center" w="full" gap={{ base: 4, md: 8 }}>
           <VStack align="center" gap={{ base: 2, md: 4 }}>
@@ -405,7 +407,7 @@ const CardStack: FC = () => {
             <Box
               key={2}
               p={4}
-             layerStyle="sectionDark"
+              layerStyle="sectionDark"
               borderRadius="xl"
               border="1px solid"
               borderColor="gray.600"

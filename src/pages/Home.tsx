@@ -6,7 +6,6 @@ import {
   VStack,
   Button,
   HStack,
-  Grid,
   Image,
   SimpleGrid,
   Flex,
@@ -21,15 +20,12 @@ import { chains } from "@/data/chains";
 import { useTranslation } from "react-i18next";
 import Slider from "@/components/Slider";
 import { BUTTON_GITHUB } from "@/const";
-import GithubIcon from "@/components/Icons/Github";
 import KhizaLogo from "@/assets/khiza.svg";
 import HomeCards from "@/components/HomeCards";
 import {
-  BadgeIcon,
   BookIcon,
   CheckIcon,
   CogIcon,
-  Copy,
   CopyIcon,
   HelpingHand,
   ShieldEllipsisIcon,
@@ -38,7 +34,6 @@ import {
 } from "lucide-react";
 import QuickNodeIcon from "@/components/Icons/QuickNode";
 import XdcIcon from "@/components/Icons/XDC";
-import SolanaIcon from "@/components/Icons/Solana";
 
 export default function HomePage() {
   const { t } = useTranslation();
@@ -940,7 +935,7 @@ export default function HomePage() {
                     justifyContent="flex-start"
                     gap={6}
                   >
-                    <Text color="gray.400" fontSize="sm" fontWeight="bold" >
+                    <Text color="gray.400" fontSize="sm" fontWeight="bold">
                       {index + 1}
                     </Text>
                     {faq.question}
