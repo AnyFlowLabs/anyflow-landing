@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { FC, useCallback, useEffect, useRef, useState } from "react";
 import {
   Box,
@@ -8,13 +9,11 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
-
+import { CogIcon, ShieldCheckIcon } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import { ShieldCheckIcon } from "lucide-react";
 
 const CardStack: FC = () => {
   const { t } = useTranslation();
-
   const [scrollY, setScrollY] = useState(0);
   const [windowHeight, setWindowHeight] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -58,12 +57,12 @@ const CardStack: FC = () => {
           : 1;
       const translateY = Math.min(0, -easedProgress * 25);
 
-      const opacity = 1 - easedProgress * 0.5;
+      // const opacity = 1 - easedProgress * 0.5;
       const zIndex = 1 + index;
 
       return {
         transform: `translateY(${translateY}px) scale(${scale})`,
-        opacity: isNaN(opacity) ? 0 : opacity,
+        // opacity: isNaN(opacity) ? 0 : opacity,
         zIndex,
       };
     },
@@ -86,78 +85,46 @@ const CardStack: FC = () => {
         <VStack align="center" w="full" gap={{ base: 4, md: 8 }}>
           <VStack align="center" gap={{ base: 2, md: 4 }}>
             <Text data-aos="fade-up" textStyle="section">
-              The Old Way
+              {t("home.cards.oldWay.title")}
             </Text>
             <Heading data-aos="fade-up" textStyle="title">
-              The Complex Journey of Smart Contract Deployment
+              {t("home.cards.oldWay.subtitle")}
             </Heading>
             <Text data-aos="fade-up" textStyle="subtitle">
-              A time-consuming process filled with multiple steps and potential
-              pitfalls that can slow down your development workflow
+              {t("home.cards.oldWay.description")}
             </Text>
           </VStack>
 
           <SimpleGrid columns={{ base: 1, md: 5 }} spacing={4} w="full">
-            {[
-              {
-                title: "Cryptocurrency Acquisition",
-                description:
-                  "Navigate complex exchanges and manage multiple wallets just to acquire native tokens for deployment",
-              },
-              {
-                title: "Account Management",
-                description:
-                  "Juggle between different accounts, transfer funds, and maintain multiple wallet configurations",
-              },
-              {
-                title: "Technical Setup",
-                description:
-                  "Spend hours configuring RPC providers, managing API keys and testing connections",
-              },
-              {
-                title: "Security Concerns",
-                description:
-                  "Deal with the constant worry of securing private keys while keeping them accessible for deployments",
-              },
-              {
-                title: "Repeat for each network",
-                description:
-                  "Repeat the same process for each network you want to deploy to",
-              },
-            ].map((step, index) => (
+            {[1, 2, 3, 4, 5].map((step) => (
               <Box
-                key={index}
+                key={step}
                 p={4}
-                bgGradient={`linear(to-br, gray.700, transparent, transparent, transparent, transparent)`}
+                bgGradient={`linear(to-br, gray.600, transparent, transparent, transparent, transparent)`}
                 borderRadius="xl"
                 border="1px solid"
-                borderColor="gray.700"
-                boxShadow="2xl"
-                _hover={{
-                  transform: "translateY(-2px)",
-                  boxShadow: "xl",
-                }}
-                transition="all 0.3s ease"
+                borderColor="gray.600"
                 pos="relative"
               >
                 <Text
-                  color="gray.100"
+                  color={step === 5 ? "red" : "gray.100"}
                   fontWeight="light"
-                  fontSize={"3xl"}
-                  textStyle={index + 1 === 5 ? "gradient" : undefined}
+                  fontSize="3xl"
                 >
-                  {index + 1 === 5 ? "∞" : index + 1}
+                  {step === 5 ? "∞" : step}
                 </Text>
                 <Heading
                   color="gray.100"
                   fontWeight="bold"
-                  fontSize={index + 1 === 5 ? "3xl" : "xl"}
+                  fontSize={step === 5 ? "2xl" : "xl"}
                   mb={3}
                 >
-                  {step.title}
+                  {/* @ts-ignore */}
+                  {t(`home.cards.oldWay.steps.step${step}.title`)}
                 </Heading>
                 <Text color="gray.300" fontSize="sm">
-                  {step.description}
+                  {/* @ts-ignore */}
+                  {t(`home.cards.oldWay.steps.step${step}.description`)}
                 </Text>
               </Box>
             ))}
@@ -179,48 +146,33 @@ const CardStack: FC = () => {
         <VStack align="center" w="full" gap={{ base: 4, md: 8 }}>
           <VStack align="center" gap={{ base: 2, md: 4 }}>
             <Text data-aos="fade-up" textStyle="section">
-              The Future of Deployment
+              {t("home.cards.futureWay.title")}
             </Text>
             <Heading textStyle="title" data-aos="fade-up">
-              Deploy Smart Contracts{" "}
-              <Text as="span" textStyle="gradient">
-                in Minutes
-              </Text>
-              ,
-              <br />
-              Not Hours
+              {t("home.cards.futureWay.subtitle")}
             </Heading>
             <Text textStyle="subtitle" data-aos="fade-up">
-              Experience the magic of one-click deployments with Anyflow - where
-              complexity meets simplicity
+              {t("home.cards.futureWay.description")}
             </Text>
           </VStack>
 
           <SimpleGrid columns={{ base: 1, md: 4 }} spacing={6} w="full" pb={48}>
+            {/* One-Click Deploy */}
             <Box
-              key={0}
               p={4}
-              layerStyle="sectionDark"
-              borderRadius="xl"
-              border="1px solid"
-              borderColor="gray.600"
-              _hover={{
-                borderColor: "brand.400",
-                transform: "translateY(-8px)",
-                boxShadow: "xl",
-              }}
-              transition="all 0.3s ease"
+              layerStyle="section"
               data-aos="fade-up"
-              data-aos-delay={0}
+              data-aos-delay={200}
               overflow="hidden"
+              border="1px solid"
+              borderColor="gray.700"
             >
               <Heading color="brand.500" fontWeight="bold" fontSize="xl" mb={4}>
-                One-Click Deploy
+                {t("home.cards.futureWay.features.oneClick.title")}
               </Heading>
-              <Text color="gray.300" fontSize="sm" mb={6}>
-                Deploy your smart contracts instantly with a single command - no
-                wallet setup or token purchases needed
-              </Text>
+              <Heading color="gray.50" fontSize="lg" mb={6}>
+                {t("home.cards.futureWay.features.oneClick.description")}
+              </Heading>
 
               <Box
                 position="relative"
@@ -238,7 +190,7 @@ const CardStack: FC = () => {
                     height="150%"
                     zIndex={0}
                     transform="translate(-50%, -50%)"
-                    bgGradient="linear(43deg, info.500 0%, success.800 46%, info.500 60%, brand.600 80%, brand.400 100%)"
+                    bgGradient="linear(43deg, info.500 0%, success.800 46%, info.500 60%, info.600 80%, brand.400 100%)"
                     filter="blur(20px)"
                     opacity={0.3}
                     animation="pulse 2s infinite"
@@ -304,130 +256,89 @@ const CardStack: FC = () => {
                       mt={1}
                       animation="pulse 2s infinite"
                     >
-                      Smart Contract
+                      Smart contract
                     </Heading>
                   </Box>
                 </Box>
               </Box>
             </Box>
+
+            {/* Automated Setup */}
             <Box
-              key={1}
               p={4}
-              layerStyle="sectionDark"
-              borderRadius="xl"
-              border="1px solid"
-              borderColor="gray.600"
-              _hover={{
-                borderColor: "brand.400",
-                transform: "translateY(-8px)",
-                boxShadow: "xl",
-              }}
-              transition="all 0.3s ease"
-              data-aos="fade-up"
-              data-aos-delay={100}
-            >
-              <Heading color="brand.500" fontWeight="bold" fontSize="xl" mb={4}>
-                Automated Setup
-              </Heading>
-              <Text color="gray.300" fontSize="sm" mb={6}>
-                Our platform handles all configurations automatically - from RPC
-                endpoints to network selection
-              </Text>
-
-              <Box position="relative" mt={2}>
-                <Box
-                  w="full"
-                  h="8px"
-                  bg="gray.600"
-                  borderRadius="full"
-                  overflow="hidden"
-                >
-                  <Box
-                    h="full"
-                    bgGradient="linear(to-r, brand.500, info.500)"
-                    animation="progressBar 6s infinite"
-                  />
-                </Box>
-
-                <HStack spacing={4} mt={4} justify="space-between">
-                  <Box textAlign="center">
-                    <Text color="brand.500" fontSize="xs" mb={1}>
-                      Repository
-                    </Text>
-                    <Box
-                      w="6"
-                      h="6"
-                      borderRadius="full"
-                      bgGradient="linear(to-br, brand.500, info.500)"
-                    />
-                  </Box>
-
-                  <Box textAlign="center">
-                    <Text color="brand.500" fontSize="xs" mb={1}>
-                      Networks
-                    </Text>
-                    <Box
-                      w="6"
-                      h="6"
-                      borderRadius="full"
-                      bgGradient="linear(to-br, brand.500, info.500)"
-                    />
-                  </Box>
-
-                  <Box textAlign="center">
-                    <Text color="brand.500" fontSize="xs" mb={1}>
-                      Review
-                    </Text>
-                    <Box
-                      w="6"
-                      h="6"
-                      borderRadius="full"
-                      bgGradient="linear(to-br, brand.500, info.500)"
-                    />
-                  </Box>
-
-                  <Box textAlign="center">
-                    <Text color="info.500" fontSize="xs" mb={1}>
-                      Deploy
-                    </Text>
-                    <Box
-                      w="6"
-                      h="6"
-                      borderRadius="full"
-                      bgGradient="linear(to-br, brand.500, info.500)"
-                    >
-                      <Text color="white" textAlign="center" lineHeight="24px">
-                        ✓
-                      </Text>
-                    </Box>
-                  </Box>
-                </HStack>
-              </Box>
-            </Box>
-            <Box
-              key={2}
-              p={4}
-              layerStyle="sectionDark"
-              borderRadius="xl"
-              border="1px solid"
-              borderColor="gray.600"
-              _hover={{
-                borderColor: "brand.400",
-                transform: "translateY(-8px)",
-                boxShadow: "xl",
-              }}
-              transition="all 0.3s ease"
+              layerStyle="section"
               data-aos="fade-up"
               data-aos-delay={200}
               overflow="hidden"
+              border="1px solid"
+              borderColor="gray.700"
             >
               <Heading color="brand.500" fontWeight="bold" fontSize="xl" mb={4}>
-                Built-in Security
+                {t("home.cards.futureWay.features.automatedSetup.title")}
               </Heading>
-              <Text color="gray.300" fontSize="sm" mb={6}>
-                Enterprise-grade security by default, with automated audits and
-                best practices enforcement
-              </Text>
+              <Heading color="gray.50" fontSize="lg" mb={6}>
+                {t("home.cards.futureWay.features.automatedSetup.description")}
+              </Heading>
+
+              <Box
+                position="relative"
+                display="flex"
+                justifyContent="center"
+                alignItems="center"
+              >
+                <Box position="relative" width="180px" height="180px">
+                  <Box
+                    position="absolute"
+                    top="0%"
+                    left="25%"
+                    borderRadius="50%"
+                    width="150%"
+                    height="150%"
+                    zIndex={0}
+                    transform="translate(-50%, -50%)"
+                    bgGradient="linear(43deg, info.500 0%, success.600 46%, info.500 60%, success.600 80%, info.400 100%)"
+                    filter="blur(40px)"
+                    opacity={0.1}
+                    animation="pulse 5s infinite"
+                  />
+
+                  <Flex
+                    transform="translate(-50%, -50%)"
+                    w="120px"
+                    h="120px"
+                    borderRadius="full"
+                    bgGradient="linear(to-br, success.500, info.600)"
+                    alignItems="center"
+                    justifyContent="center"
+                    boxShadow="0 0 20px rgba(0, 255, 255, 0.6)"
+                    animation="spin 12s linear infinite"
+                    border="4px solid"
+                    borderColor="success.400"
+                  >
+                    <Text fontSize="5xl" color="success.50">
+                      <CogIcon size={80} />
+                    </Text>
+                  </Flex>
+                </Box>
+              </Box>
+            </Box>
+
+            {/* Security */}
+            <Box
+              p={4}
+              layerStyle="section"
+              data-aos="fade-up"
+              data-aos-delay={200}
+              overflow="hidden"
+              border="1px solid"
+              borderColor="gray.700"
+            >
+              <Heading color="brand.500" fontWeight="bold" fontSize="xl" mb={4}>
+                {t("home.cards.futureWay.features.security.title")}
+              </Heading>
+              <Heading color="gray.50" fontSize="lg" mb={6}>
+                {t("home.cards.futureWay.features.security.description")}
+              </Heading>
 
               <Box
                 position="relative"
@@ -498,7 +409,9 @@ const CardStack: FC = () => {
                       boxShadow="0 4px 12px rgba(72, 187, 120, 0.2)"
                     >
                       <Text fontSize="xs" color="green.200">
-                        Secure
+                        {t(
+                          "home.cards.futureWay.features.security.badges.secure",
+                        )}
                       </Text>
                     </Box>
                     <Box
@@ -512,7 +425,9 @@ const CardStack: FC = () => {
                       boxShadow="0 4px 12px rgba(66, 153, 225, 0.2)"
                     >
                       <Text fontSize="xs" color="blue.200">
-                        Audited
+                        {t(
+                          "home.cards.futureWay.features.security.badges.audited",
+                        )}
                       </Text>
                     </Box>
                     <Box
@@ -526,104 +441,169 @@ const CardStack: FC = () => {
                       boxShadow="0 4px 12px rgba(159, 122, 234, 0.2)"
                     >
                       <Text fontSize="xs" color="purple.200">
-                        Protected
+                        {t(
+                          "home.cards.futureWay.features.security.badges.protected",
+                        )}
                       </Text>
                     </Box>
                   </HStack>
                 </Box>
               </Box>
             </Box>
+
+            {/* Cost Efficiency */}
             <Box
-              key={3}
               p={4}
-              layerStyle="sectionDark"
-              borderRadius="xl"
-              border="1px solid"
-              borderColor="gray.600"
-              _hover={{
-                borderColor: "brand.400",
-                transform: "translateY(-8px)",
-                boxShadow: "xl",
-              }}
-              transition="all 0.3s ease"
+              layerStyle="section"
               data-aos="fade-up"
-              data-aos-delay={300}
+              data-aos-delay={200}
+              overflow="hidden"
+              border="1px solid"
+              borderColor="gray.700"
             >
               <Heading color="brand.500" fontWeight="bold" fontSize="xl" mb={4}>
-                Cost Efficiency
+                {t("home.cards.futureWay.features.costEfficiency.title")}
               </Heading>
-              <Text color="gray.300" fontSize="sm" mb={6}>
-                Pay only for what you deploy, with transparent pricing and no
-                hidden fees or token requirements
-              </Text>
+              <Heading color="gray.50" fontSize="lg" mb={6}>
+                {t("home.cards.futureWay.features.costEfficiency.description")}
+              </Heading>
 
-              <Box position="relative" height="120px" mb={4}>
+              <Box position="relative" height="160px">
                 <Box
                   position="absolute"
-                  bottom="0"
-                  left="50%"
-                  transform="translateX(-50%)"
-                  width="80%"
-                  height="80px"
-                  borderRadius="lg"
-                  bg="gray.800"
-                  overflow="hidden"
-                >
-                  {/* Animated Cost Bars */}
-                  <HStack
-                    height="100%"
-                    spacing={2}
-                    justify="center"
-                    align="flex-end"
-                    padding={2}
-                  >
-                    {[0.4, 0.8, 0.6, 0.9, 0.5].map((height, i) => (
-                      <Box
-                        key={i}
-                        width="15%"
-                        height={`${height * 100}%`}
-                        bg="brand.500"
-                        borderRadius="sm"
-                        animation={`pulse ${1 + i * 0.2}s infinite`}
-                      />
-                    ))}
-                  </HStack>
-                </Box>
+                  top="0%"
+                  left="25%"
+                  borderRadius="50%"
+                  width="150%"
+                  height="150%"
+                  zIndex={0}
+                  transform="translate(-50%, -50%)"
+                  bgGradient="linear(43deg, success.500 0%, info.500 46%, success.500 60%, info.600 80%, success.400 100%)"
+                  filter="blur(20px)"
+                  opacity={0.2}
+                  animation="pulse 5s infinite"
+                />
 
-                {/* Floating Dollar Symbol */}
                 <Box
                   position="absolute"
-                  top="0"
+                  top="40%"
                   left="50%"
-                  transform="translateX(-50%)"
-                  width="40px"
-                  height="40px"
-                  borderRadius="full"
-                  bg="green.500"
+                  transform="translate(-50%, -50%)"
+                  width="154px"
+                  height="154px"
+                  borderRadius="50%"
+                  bgGradient="linear(to-br, gray.800, transparent)"
+                  border="2px solid"
+                  borderColor="green.400"
                   display="flex"
                   alignItems="center"
                   justifyContent="center"
-                  animation="fadeInOut 2s infinite"
+                  zIndex={1}
+                  boxShadow="0 0px 20px rgba(72, 187, 120, 0.3)"
                 >
-                  <Text fontSize="xl" color="white" fontWeight="bold">
-                    $
-                  </Text>
+                  <Box
+                    position="absolute"
+                    width="100%"
+                    height="100%"
+                    animation="spin 15s linear infinite"
+                  >
+                    {[0, 45, 90, 135, 180, 225, 270, 315].map((deg, i) => (
+                      <Box
+                        key={i}
+                        position="absolute"
+                        top="44%"
+                        left="44%"
+                        transform={`rotate(${deg}deg) translateY(-60px)`}
+                        width="16px"
+                        height="16px"
+                        display="flex"
+                        alignItems="center"
+                        justifyContent="center"
+                        bg="rgba(72, 187, 120, 0.1)"
+                        borderRadius="md"
+                        backdropFilter="blur(4px)"
+                      >
+                        <Text
+                          fontSize="sm"
+                          fontWeight="bold"
+                          color="success.500"
+                        >
+                          {
+                            [
+                              "ETH",
+                              "BNB",
+                              "MATIC",
+                              "AVAX",
+                              "FTM",
+                              "ONE",
+                              "USDC",
+                              "USDT",
+                            ][i]
+                          }
+                        </Text>
+                      </Box>
+                    ))}
+                  </Box>
+                  <Box
+                    position="absolute"
+                    width="88px"
+                    height="88px"
+                    borderRadius="50%"
+                    bg="rgba(72, 187, 120, 0.1)"
+                    display="flex"
+                    alignItems="center"
+                    justifyContent="center"
+                    border="2px solid"
+                    borderColor="green.400"
+                  >
+                    <Text fontSize="4xl" fontWeight="bold" color="info.500">
+                      $
+                    </Text>
+                  </Box>
                 </Box>
-              </Box>
 
-              {/* Cost Tags */}
-              <HStack spacing={2} justify="center">
-                <Box px={3} py={1} bg="green.500" borderRadius="full">
-                  <Text fontSize="xs" color="white">
-                    Pay-as-you-go
-                  </Text>
-                </Box>
-                <Box px={3} py={1} bg="blue.500" borderRadius="full">
-                  <Text fontSize="xs" color="white">
-                    No Hidden Fees
-                  </Text>
-                </Box>
-              </HStack>
+                <HStack
+                  spacing={2}
+                  left={2}
+                  justify="center"
+                  position="absolute"
+                  bottom={-5}
+                  zIndex={10}
+                >
+                  <Box
+                    px={3}
+                    py={1}
+                    bg="rgba(72, 187, 120, 0.2)"
+                    backdropFilter="blur(8px)"
+                    border="1px solid"
+                    borderColor="green.400"
+                    borderRadius="full"
+                    boxShadow="0 4px 12px rgba(72, 187, 120, 0.2)"
+                  >
+                    <Text fontSize="xs" color="green.200">
+                      {t(
+                        "home.cards.futureWay.features.costEfficiency.badges.payAsYouGo",
+                      )}
+                    </Text>
+                  </Box>
+                  <Box
+                    px={3}
+                    py={1}
+                    bg="rgba(66, 153, 225, 0.2)"
+                    backdropFilter="blur(8px)"
+                    border="1px solid"
+                    borderColor="blue.400"
+                    borderRadius="full"
+                    boxShadow="0 4px 12px rgba(66, 153, 225, 0.2)"
+                  >
+                    <Text fontSize="xs" color="blue.200">
+                      {t(
+                        "home.cards.futureWay.features.costEfficiency.badges.transparent",
+                      )}
+                    </Text>
+                  </Box>
+                </HStack>
+              </Box>
             </Box>
           </SimpleGrid>
         </VStack>
@@ -647,8 +627,9 @@ const CardStack: FC = () => {
           w="full"
           gap={{ base: 4, md: 8 }}
           position="relative"
+          overflow="hidden"
+          borderRadius={20}
         >
-          {/* Animated background elements */}
           <Box
             position="absolute"
             top="0"
@@ -662,104 +643,49 @@ const CardStack: FC = () => {
               <Box
                 key={i}
                 position="absolute"
-                width="4px"
-                height="4px"
-                bg="brand.400"
+                width={`${2 + Math.random() * Math.random()}px`}
+                height={`${2 + Math.random() * Math.random()}px`}
+                bg="gray.400"
                 borderRadius="full"
                 top={`${Math.random() * 100}%`}
                 left={`${Math.random() * 100}%`}
-                animation={`float ${3 + Math.random() * 4}s infinite`}
-                opacity={0.3}
+                animation={`${Math.random() > 0.5 ? "twinkle" : "pulse"} ${2 + Math.random() * 8}s infinite ${Math.random() * 2}s`}
+                opacity={1}
+                boxShadow="0 0 8px rgba(255,255,255,1)"
               />
             ))}
-            <Box
-              position="absolute"
-              width="full"
-              height="full"
-              bgGradient="radial(circle at 50% 50%, brand.500 0%, transparent 70%)"
-              opacity={0.1}
-              animation="pulse 4s infinite"
-            />
           </Box>
 
-          <VStack align="center" gap={{ base: 2, md: 4 }} zIndex={1} p={32}>
-            <Text
-              textStyle="section"
-              position="relative"
-              _before={{
-                content: '""',
-                position: "absolute",
-                height: "2px",
-                width: "0%",
-                bottom: "-4px",
-                left: "50%",
-                transform: "translateX(-50%)",
-                bgGradient: "linear(to-r, transparent, brand.500, transparent)",
-                animation: "expandWidth 2s ease-out forwards",
-              }}
-            >
-              Welcome to the Future
-            </Text>
+          <Box
+            position="absolute"
+            top="0%"
+            left="50%"
+            borderRadius="50%"
+            width="200%"
+            height="100%"
+            zIndex={0}
+            transform="translate(-50%, -50%)"
+            bgGradient="linear(49deg, success.500  0%, info.500 46%, info.500 60%, info.600 80%, transparent 100%)"
+            filter="blur(100px)"
+            opacity={0.2}
+            animation="pulse 5s infinite"
+          />
+
+          <VStack align="center" gap={{ base: 2, md: 4 }} zIndex={1} p={24}>
+            <Text textStyle="section">{t("home.cards.anyflow.title")}</Text>
 
             <Heading
               data-aos="fade-up"
               fontSize="8xl"
-              animation="shimmer 3s infinite"
+              textAlign="center"
+              color="gray.50"
             >
-              {t("home.newSection.newWay.title")}
+              {t("home.cards.anyflow.subtitle")}
             </Heading>
 
-            <Box position="relative">
-              <Text
-                textStyle="subtitle"
-                data-aos="fade-up"
-                position="relative"
-                zIndex={2}
-              >
-                Deploy smart contracts in seconds with just one command
-              </Text>
-              <Box
-                position="absolute"
-                top="50%"
-                left="-20px"
-                transform="translateY(-50%)"
-                width="40px"
-                height="40px"
-                borderRadius="full"
-                bgGradient="linear(to-r, brand.500, info.500)"
-                animation="spin 4s linear infinite"
-                opacity={0.6}
-              />
-            </Box>
-
-            <Text
-              as="h3"
-              color="white"
-              data-aos="fade-up"
-              position="relative"
-              _after={{
-                content: '""',
-                position: "absolute",
-                width: "120%",
-                height: "1px",
-                bottom: "-8px",
-                left: "-10%",
-                bgGradient: "linear(to-r, transparent, gray.500, transparent)",
-                animation: "pulse 2s infinite",
-              }}
-            >
-              Focus on building great products while we handle the complexity
+            <Text as="h3" color="gray.50" data-aos="fade-up">
+              {t("home.cards.anyflow.description")}
             </Text>
-
-            <Heading
-              as="h3"
-              fontSize="3xl"
-              color="white"
-              data-aos="fade-up"
-              position="relative"
-            >
-              The Smart Way to Deploy Smart Contracts
-            </Heading>
           </VStack>
         </VStack>
       </HStack>

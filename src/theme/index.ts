@@ -129,6 +129,11 @@ const customTheme = extendTheme({
         "50%": { opacity: 1, transform: "scale(1)" },
         "100%": { opacity: 0.6, transform: "scale(0.98)" },
       },
+
+      "@keyframes twinkle": {
+        "0%, 100%": { opacity: 0.3, transform: "scale(1)" },
+        "50%": { opacity: 0.8, transform: "scale(5.5)" }
+      }
     },
   },
   fonts,
@@ -144,11 +149,15 @@ const customTheme = extendTheme({
       bgGradient: "linear(to-br, success.500, info.500)",
       bgClip: "text",
     },
+    brandGradient: {
+      bgGradient: "linear(to-l, brand.500, brand.300)",
+      bgClip: "text",
+    },
     section: {
       fontSize: "md",
       letterSpacing: 2,
       textTransform: "uppercase",
-      color: "brand.500",
+      color: "gray.50",
     },
     title: {
       fontSize: { base: "4xl", md: "5xl" },
@@ -158,7 +167,7 @@ const customTheme = extendTheme({
       textAlign: "center",
     },
     subtitle: {
-      color: "gray.300",
+      color: "gray.50",
       fontSize: { base: "lg", md: "xl" },
       textAlign: "center",
     },
