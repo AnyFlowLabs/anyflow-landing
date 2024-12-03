@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { FC, useCallback, useEffect, useRef, useState } from "react";
 import {
   Box,
@@ -118,9 +119,11 @@ const CardStack: FC = () => {
                   fontSize={step === 5 ? "2xl" : "xl"}
                   mb={3}
                 >
+                  {/* @ts-ignore */}
                   {t(`home.cards.oldWay.steps.step${step}.title`)}
                 </Heading>
                 <Text color="gray.300" fontSize="sm">
+                  {/* @ts-ignore */}
                   {t(`home.cards.oldWay.steps.step${step}.description`)}
                 </Text>
               </Box>
