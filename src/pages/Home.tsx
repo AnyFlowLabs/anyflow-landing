@@ -8,7 +8,6 @@ import {
   HStack,
   Image,
   SimpleGrid,
-  Flex,
   Spinner,
   Accordion,
   AccordionItem,
@@ -26,7 +25,6 @@ import {
   BookIcon,
   CheckIcon,
   CogIcon,
-  CopyIcon,
   HelpingHand,
   ShieldEllipsisIcon,
   TerminalIcon,
@@ -186,7 +184,7 @@ export default function HomePage() {
               {t("chains", { q: chains.length })}
             </Heading>
             <Button variant="link" color="brand.500">
-              Want to add your chain ?
+              {t("home.addChain")}
             </Button>
           </HStack>
         </Container>
@@ -285,7 +283,7 @@ export default function HomePage() {
               data-aos="fade-up"
               fontWeight="light"
             >
-              Fastest multichain deployment
+              {t("home.deployment.title")}
             </Heading>
             <Text
               color="gray.50"
@@ -293,9 +291,7 @@ export default function HomePage() {
               data-aos="fade-up"
               data-aos-delay="100"
             >
-              Instantly deploy smart contracts across multiple blockchains.
-              Focus on innovation while our platform handles the complexities
-              swiftly—deployments are completed in seconds.
+              {t("home.deployment.description")}
             </Text>
           </VStack>
 
@@ -319,9 +315,9 @@ export default function HomePage() {
                   <TerminalIcon size={24} />
                 </Box>
                 <Text color="gray.100" fontFamily="mono">
-                  $ anyflow deploy{" "}
+                  {t("home.deployment.terminal.command")}{" "}
                   <Text as="span" color="gray.100" fontWeight="medium">
-                    my-contract.sol
+                    {t("home.deployment.terminal.fileName")}
                   </Text>
                 </Text>
               </HStack>
@@ -337,7 +333,7 @@ export default function HomePage() {
                   <HStack spacing={3}>
                     <Spinner size="sm" color="brand.500" />
                     <Text color="brand.500" fontFamily="mono">
-                      Deploying smart contract...
+                      {t("home.deployment.terminal.deploying")}
                     </Text>
                   </HStack>
                   <VStack
@@ -346,15 +342,14 @@ export default function HomePage() {
                     color="gray.400"
                     fontFamily="mono"
                   >
-                    <Text>✓ Compiling contract</Text>
-                    <Text>✓ Verifying source code</Text>
-                    <Text>✓ Double checking...</Text>
+                    <Text>{t("home.deployment.terminal.steps.compiling")}</Text>
+                    <Text>{t("home.deployment.terminal.steps.verifying")}</Text>
+                    <Text>{t("home.deployment.terminal.steps.checking")}</Text>
                     <Text
                       bgGradient="linear(to-l, #55d8e4, #5Be9ab)"
                       bgClip="text"
                     >
-                      ✨ Contract deployed successfully at
-                      0x742d35Cc6634C0532925a3b844Bc454e4438f44e
+                      {t("home.deployment.terminal.steps.success")} 0x742d35Cc6634C0532925a3b844Bc454e4438f44e
                     </Text>
                   </VStack>
                 </VStack>
@@ -395,11 +390,10 @@ export default function HomePage() {
               />
               <ZapIcon size={48} />
               <Heading fontWeight="bold" fontSize="xl">
-                Ultra-fast execution
+                {t("home.deployment.features.ultraFast.title")}
               </Heading>
               <Text color="gray.50" fontSize="md">
-                Deploy contracts instantly with our streamlined pipeline,
-                designed for speed.
+                {t("home.deployment.features.ultraFast.description")}
               </Text>
             </VStack>
 
@@ -429,11 +423,10 @@ export default function HomePage() {
               />
               <ShieldEllipsisIcon size={48} />
               <Heading fontWeight="bold" fontSize="xl" color="gray.50">
-                Robust security
+                {t("home.deployment.features.security.title")}
               </Heading>
               <Text color="gray.50" fontSize="md">
-                Automatic security checks and audits are standard, ensuring your
-                deployments are always secure.
+                {t("home.deployment.features.security.description")}
               </Text>
             </VStack>
 
@@ -463,11 +456,10 @@ export default function HomePage() {
               />
               <CogIcon size={48} />
               <Heading fontWeight="bold" fontSize="xl" color="gray.50">
-                Fully configurable
+                {t("home.deployment.features.configurable.title")}
               </Heading>
               <Text color="gray.50" fontSize="md">
-                Adjust the deployment process to meet the specific needs of your
-                projects effortlessly.
+                {t("home.deployment.features.configurable.description")}
               </Text>
             </VStack>
           </SimpleGrid>
@@ -491,86 +483,55 @@ export default function HomePage() {
             textAlign="center"
             data-aos="fade-up"
           >
-            Unlock the potential of our{" "}
+            {t("home.cli.title")}{" "}
             <Text as="span" color="brand.500">
               CLI tool
             </Text>
           </Heading>
 
           <Text color="gray.50" fontSize="lg">
-            Streamline your development workflow with a tool built for
-            efficiency and simplicity
+            {t("home.cli.description")}
           </Text>
 
           <HStack w="full" align="center" justify="center" spacing={8} my={4}>
             <HStack>
               <CheckIcon size={32} />
-              <Text color="gray.200">Easy to use</Text>
+              <Text color="gray.200">{t("home.cli.features.easy")}</Text>
             </HStack>
             <HStack>
               <BookIcon size={32} />
-              <Text color="gray.200">Detailed documentation</Text>
+              <Text color="gray.200">{t("home.cli.features.docs")}</Text>
             </HStack>
             <HStack>
               <HelpingHand size={32} />
-              <Text color="gray.200">Active community</Text>
+              <Text color="gray.200">{t("home.cli.features.community")}</Text>
             </HStack>
           </HStack>
 
-          <Image src="/carbon.png" alt="Carbon" maxW="container.lg" w="full" />
+          <Text color="gray.50" fontSize="sm" fontFamily="mono" pr={4} bg="gray.800" p={2} px={4} borderRadius="lg">
+            {t("home.cli.command")}
+          </Text>
 
-          <Flex gap={8} w="full" maxW="container.lg">
-            <HStack flex={1} align="center" gap={4}>
-              <Text
-                color="gray.50"
-                fontSize="sm"
-                fontFamily="mono"
-                pr={4}
-                bg="gray.800"
-                p={2}
-                px={4}
-                borderRadius="lg"
-              >
-                npm install anyflow-cli
-              </Text>
-              <Button
-                variant="link"
-                color="brand.50"
-                size="xs"
-                leftIcon={<CopyIcon size={16} />}
-              ></Button>
-            </HStack>
-            <Flex gap={8}>
-              <Button
-                variant="outline"
-                size="lg"
-                data-aos="fade-up"
-                data-aos-delay="400"
-              >
-                Try our CLI tool
-              </Button>
-              <Button
-                variant="link"
-                color="brand.50"
-                size="lg"
-                data-aos="fade-up"
-                data-aos-delay="400"
-              >
-                Read our Docs
-              </Button>
-            </Flex>
-          </Flex>
+          <Button variant="outline" size="lg" data-aos="fade-up" data-aos-delay="400">
+            {t("home.cli.buttons.try")}
+          </Button>
+          <Button variant="link" color="brand.50" size="lg" data-aos="fade-up" data-aos-delay="400">
+            {t("home.cli.buttons.docs")}
+          </Button>
         </VStack>
       </Container>
 
       <Container maxW="container.xl" my={16}>
         <VStack spacing={2} align="center" flex={1}>
           <Text textStyle="section" data-aos="fade-up">
-            Trusted by industry leaders
+            {t("home.trusted.title")}
           </Text>
           <Heading textStyle="title" textAlign="center" data-aos="fade-up">
-            Supported by top organizations driving innovation in blockchain
+            {t("home.trusted.title")}
           </Heading>
+          <Text fontSize="md" color="gray.100">
+            {t("home.trusted.description")}
+          </Text>
         </VStack>
         <HStack spacing={8} align="stretch" mt={12}>
           <SimpleGrid columns={{ base: 1, md: 5 }} spacing={8} flex={2}>
@@ -586,8 +547,7 @@ export default function HomePage() {
                 </a>
               </Box>
               <Text fontSize="md" color="gray.100">
-                Anyflow is part of the Khiza ecosystem, a Brazilian startup
-                studio dedicated to driving innovation in web3.
+                {t("home.partners.khiza.description")}
               </Text>
             </VStack>
 
@@ -596,22 +556,20 @@ export default function HomePage() {
                 <QuickNodeIcon width={200} height={50} />
               </Box>
               <Text fontSize="md" color="gray.100">
-                Quicknode partners with Anyflow to enhance blockchain deployment
-                capabilities and developer tools.
+                {t("home.partners.quicknode.description")}
               </Text>
             </VStack>
 
             <VStack layerStyle="section" p={6}>
               <Box w="full" h="60px">
                 <Image
-                  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAUAAAAFjCAYAAABMqNIyAAAACXBIWXMAADddAAA3XQEZgEZdAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAbxSURBVHgB7ddBq2d1GcDx59z5z4xZopNjlhFNSLUyDNq5cExaF62T7B20DYIEiZahQtsUatkikNrEYOsIBqSINl400cJCZXScO+M93V7FD/p+PnDOb3vgcL7PeWYAAGjZBhb6x+M/fW0W2Wc//sIff/zEkHUYWGjf9yuzyGb+5x0NQJQAAlkCCGQJIJAlgECWAAJZAghkCSCQJYBAlgACWQIIZAkgkCWAQJYAAlkCCGQJIJAlgECWAAJZAghkCSCQJYBAlgACWQIIZAkgkCWAQJYAAlkCCGQJIJAlgEDWYUh76+rPrsxCN+7ss8rpvg1tAhh35/Tj12ahP/3ngYFVrMBAlgACWQIIZAkgkCWAQJYAAlkCCGQJIJAlgECWAAJZAghkCSCQJYBAlgACWQIIZAkgkCWAQJYAAlkCCGQJIJAlgECWAAJZAghkCSCQJYBAlgACWQIIZG2z2FPPv/3DfZtvzyLbbI/us983q1x+f859Yt1r+NTphVnpvTcvzkLvnl3Xh6jtucMstm/7o2cPcnUWOYvfrPTpr16ao7uWz6F13rwzC/1v8F0dkraj05eswECWAAJZAghkCSCQJYBAlgACWQIIZAkgkCWAQJYAAlkCCGQJIJAlgECWAAJZAghkCSCQJYBAlgACWQIIZAkgkCWAQJYAAlkCCGQJIJAlgECWAAJZAghkCSCQJYBAlgACWYfvvfDWMzPbT2aRRx67MQ89fGtY489vPjgrXX7yMKxx/90358ql92eVuy/+7uz6/azkDxDIEkAgSwCBLAEEsgQQyBJAIEsAgSwBBLIEEMgSQCBLAIEsAQSyBBDIEkAgSwCBLAEEsgQQyBJAIEsAgSwBBLIEEMgSQCBLAIEsAQSyBBDIEkAgSwCBLAEEsgQQyBJAIEsAgazDxD31/FtP79tcmUV++duX7zt3cjKrnFy8PCttX7t/lvrrEJYP4L5t3z87rs4ivzl//5ycfDSrfP3CA7PS9o2vzCrbdnZ7aQizAgNZAghkCSCQJYBAlgACWQIIZAkgkCWAQJYAAlkCCGQJIJAlgECWAAJZAghkCSCQJYBAlgACWQIIZAkgkCWAQJYAAlkCCGQJIJAlgECWAAJZAghkCSCQJYBAlgACWQIIZAkgkCWAQJYAAlmHYanXrz77nbM5dN8s8s8PLw5UCeBiR/vRz/d9vzKL/P3GPQNVVmAgSwCBLAEEsgQQyBJAIEsAgSwBBLIEEMgSQCBLAIEsAQSyBBDIEkAgSwCBLAEEsgQQyBJAIEsAgSwBBLIEEMgSQCBLAIEsAQSyBBDIEkAgSwCBLAEEsgQQyBJAIEsAgSwBBLIEEMgSQCDrMMRtrwwAAAAA/8/+C8NTq3AdR3rlAAAAAElFTkSuQmCC"
+                  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAUAAAAFjCAYAAABMqNIyAAAACXBIWXMAADddAAA3XQEZgEZdAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAbxSURBVHgB7ddBq2d1GcDx59z5z4xZopNjlhFNSLUyDNq5cExaF62T7B20DYIEiZahQtsUatkikNrEYOsIBqSINl400cJCZXScO+M93V7FD/p+PnDOb3vgcL7PeWYAAGjZBhb6x+M/fW0W2Wc//sIff/zEkHUYWGjf9yuzyGb+5x0NQJQAAlkCCGQJIJAlgECWAAJZAghkCSCQJYBAlgACWQIIZAkgkCWAQJYAAlkCCGQJIJAlgECWAAJZAghkCSCQJYBAlgACWQIIZAkgkCWAQJYAAlkCCGQJIJAlgEDWYUh76+rPrsxCN+7ss8rpvg1tAhh35/Tj12ahP/3ngYFVrMBAlgACWQIIZAkgkCWAQJYAAlkCCGQJIJAlgECWAAJZAghkCSCQJYBAlgACWQIIZAkgkCWAQJYAAlkCCGQJIJAlgECWAAJZAghkCSCQJYBAlgACWQIIZAkgkCWAQJYAAlmHYanXrz77nbM5dN8s8s8PLw5UCeBiR/vRz/d9vzKL/P3GPQNVVmAgSwCBLAEEsgQQyBJAIEsAgSwBBLIEEMgSQCBLAIEsAQSyBBDIEkAgSwCBLAEEsgQQyBJAIEsAgSwBBLIEEMgSQCBLAIEsAQSyBBDIEkAgSwCBLAEEsgQQyBJAIEsAgazDxD31/FtP79tcmUV++duX7zt3cjKrnFy8PCttX7t/lvrrEJYP4L5t3z87rs4ivzl//5ycfDSrfP3CA7PS9o2vzCrbdnZ7aQizAgNZAghkCSCQJYBAlgACWQIIZAkgkCWAQJYAAlkCCGQJIJAlgECWAAJZAghkCSCQJYBAlgACWQIIZAkgkCWAQJYAAlkCCGQJIJAlgECWAAJZAghkCSCQJYBAlgACWQIIZAkgkCWAQJYAAlmHYanXrz77nbM5dN8s8s8PLw5UCeBiR/vRz/d9vzKL/P3GPQNVVmAgSwCBLAEEsgQQyBJAIEsAgSwBBLIEEMgSQCBLAIEsAQSyBBDIEkAgSwCBLAEEsgQQyBJAIEsAgSwBBLIEEMgSQCBLAIEsAQSyBBDIEkAgSwCBLAEEsgQQyBJAIEsAgSwBBLIEEMgSQCDrMMRtrwwAAAAA/8/+C8NTq3AdR3rlAAAAAElFTkSuQmCC"
                   alt="Builder logo"
                   h={10}
                 />
               </Box>
               <Text fontSize="md" color="gray.100">
-                Ranked in the top 3.5% of Backdrop Build V4, a program blending
-                acceleration and hackathon.
+                {t("home.partners.builder.description")}
               </Text>
             </VStack>
 
@@ -620,8 +578,7 @@ export default function HomePage() {
                 <XdcIcon width={100} height={50} />
               </Box>
               <Text fontSize="md" color="gray.100">
-                Anyflow Received a grant from the XDC blockchain to expand
-                integrations and advance product development.
+                {t("home.partners.xdc.description")}
               </Text>
             </VStack>
 
@@ -688,8 +645,7 @@ export default function HomePage() {
               </Box>
 
               <Text fontSize="md" color="gray.100">
-                Secured a top 4 position in the 2024 Copa America hackathon,
-                organized by Solana to highlight innovation.
+                {t("home.partners.builder.description")}
               </Text>
             </VStack>
           </SimpleGrid>
@@ -700,80 +656,47 @@ export default function HomePage() {
         <VStack spacing={8} align="stretch">
           <VStack spacing={4} align="center" mb={8}>
             <Text textStyle="section" data-aos="fade-up">
-              Frequently asked questions
+              {t("home.faq.section")}
             </Text>
             <Heading textStyle="title" data-aos="fade-up">
-              Everything you need to know
+              {t("home.faq.title")}
             </Heading>
             <Text textStyle="subtitle" data-aos="fade-up">
-              Find answers to the most common questions about Anyflow's
-              deployment platform
+              {t("home.faq.subtitle")}
             </Text>
           </VStack>
 
-          <Accordion
-            allowMultiple
-            variant="custom"
-            data-aos="fade-up"
-            boxShadow="2xl"
-          >
+          <Accordion allowMultiple variant="custom" data-aos="fade-up" boxShadow="2xl">
             {[
               {
-                question: "What is Anyflow?",
-                answer:
-                  "Anyflow is a smart contract deployment platform that simplifies deploying contracts across multiple blockchains. It removes the need to manage wallets, buy tokens, or handle complex technical configurations.",
+                question: t("home.faq.questions.what.question"),
+                answer: t("home.faq.questions.what.answer"),
               },
               {
-                question: "How does one-click deployment work?",
-                answer:
-                  "Our platform automates every step of the deployment process. Connect your project, choose your target network, and click deploy. We handle everything, including wallet management, gas fees, and network setup.",
+                question: t("home.faq.questions.how.question"),
+                answer: t("home.faq.questions.how.answer"),
               },
               {
-                question: "Do I need to buy tokens for deployment?",
-                answer:
-                  "No! Anyflow eliminates token management. We handle all token requirements for you, so you can deploy contracts without purchasing or managing native tokens.",
+                question: t("home.faq.questions.tokens.question"),
+                answer: t("home.faq.questions.tokens.answer"),
               },
               {
-                question: "Is Anyflow secure?",
-                answer:
-                  "Yes! Security is our highest priority. We use enterprise-grade measures, and automated audits, and enforce best practices. Your code and credentials are always encrypted and protected.",
+                question: t("home.faq.questions.security.question"),
+                answer: t("home.faq.questions.security.answer"),
               },
               {
-                question: "Which blockchains are supported?",
-                answer:
-                  "Anyflow supports all major EVM-compatible networks, such as Ethereum, Polygon, BSC, Avalanche, and more. We are continuously adding new networks based on community demand.",
+                question: t("home.faq.questions.chains.question"),
+                answer: t("home.faq.questions.chains.answer"),
               },
-              {
-                question: "How much does it cost?",
-                answer:
-                  "We offer transparent, pay-as-you-go pricing with no hidden fees. You only pay for successful deployments, saving time and resources while staying cost-competitive with traditional methods.",
-              },
-            ].map((faq, index) => (
+            ].map((item, index) => (
               <AccordionItem key={index}>
                 <AccordionButton>
-                  <Heading
-                    flex={1}
-                    as="h3"
-                    fontSize="xl"
-                    color="white"
-                    lineHeight="1"
-                    display="flex"
-                    alignItems="center"
-                    justifyContent="flex-start"
-                    gap={6}
-                  >
-                    <Text color="gray.400" fontSize="sm" fontWeight="bold">
-                      {index + 1}
-                    </Text>
-                    {faq.question}
-                  </Heading>
+                  <Box flex="1" textAlign="left">
+                    {item.question}
+                  </Box>
                   <AccordionIcon />
                 </AccordionButton>
-                <AccordionPanel pb={4}>
-                  <Text color="gray.200" fontSize="md">
-                    {faq.answer}
-                  </Text>
-                </AccordionPanel>
+                <AccordionPanel pb={4}>{item.answer}</AccordionPanel>
               </AccordionItem>
             ))}
           </Accordion>

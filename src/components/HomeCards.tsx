@@ -9,8 +9,10 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import { CogIcon, ShieldCheckIcon } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const CardStack: FC = () => {
+  const { t } = useTranslation();
   const [scrollY, setScrollY] = useState(0);
   const [windowHeight, setWindowHeight] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -82,47 +84,20 @@ const CardStack: FC = () => {
         <VStack align="center" w="full" gap={{ base: 4, md: 8 }}>
           <VStack align="center" gap={{ base: 2, md: 4 }}>
             <Text data-aos="fade-up" textStyle="section">
-              The Old Way
+              {t("home.cards.oldWay.title")}
             </Text>
             <Heading data-aos="fade-up" textStyle="title">
-              The conventional deployment method
+              {t("home.cards.oldWay.subtitle")}
             </Heading>
             <Text data-aos="fade-up" textStyle="subtitle">
-              Previously, you had to go through a time-intensive and complex
-              process
+              {t("home.cards.oldWay.description")}
             </Text>
           </VStack>
 
           <SimpleGrid columns={{ base: 1, md: 5 }} spacing={4} w="full">
-            {[
-              {
-                title: "Cryptocurrency Acquisition",
-                description:
-                  "Acquire native tokens through complex exchanges and multiple wallets.",
-              },
-              {
-                title: "Account Management",
-                description:
-                  "Manage various accounts, transfer funds, and configure multiple wallets.",
-              },
-              {
-                title: "Technical Setup",
-                description:
-                  "Configure RPC providers, manage API keys, and test connections for hours.",
-              },
-              {
-                title: "Security Concerns",
-                description:
-                  "Secure private keys and ensure their accessibility for deployments.",
-              },
-              {
-                title: "Repeat for Each Network",
-                description:
-                  "Duplicate efforts across every network for deployment.",
-              },
-            ].map((step, index) => (
+            {[1, 2, 3, 4, 5].map((step) => (
               <Box
-                key={index}
+                key={step}
                 p={4}
                 bgGradient={`linear(to-br, gray.600, transparent, transparent, transparent, transparent)`}
                 borderRadius="xl"
@@ -131,22 +106,22 @@ const CardStack: FC = () => {
                 pos="relative"
               >
                 <Text
-                  color={index + 1 === 5 ? "red" : "gray.100"}
+                  color={step === 5 ? "red" : "gray.100"}
                   fontWeight="light"
                   fontSize="3xl"
                 >
-                  {index + 1 === 5 ? "∞" : index + 1}
+                  {step === 5 ? "∞" : step}
                 </Text>
                 <Heading
                   color="gray.100"
                   fontWeight="bold"
-                  fontSize={index + 1 === 5 ? "2xl" : "xl"}
+                  fontSize={step === 5 ? "2xl" : "xl"}
                   mb={3}
                 >
-                  {step.title}
+                  {t(`home.cards.oldWay.steps.step${step}.title`)}
                 </Heading>
                 <Text color="gray.300" fontSize="sm">
-                  {step.description}
+                  {t(`home.cards.oldWay.steps.step${step}.description`)}
                 </Text>
               </Box>
             ))}
@@ -168,24 +143,18 @@ const CardStack: FC = () => {
         <VStack align="center" w="full" gap={{ base: 4, md: 8 }}>
           <VStack align="center" gap={{ base: 2, md: 4 }}>
             <Text data-aos="fade-up" textStyle="section">
-              The Future of Deployment
+              {t("home.cards.futureWay.title")}
             </Text>
             <Heading textStyle="title" data-aos="fade-up">
-              Deploy Smart Contracts{" "}
-              <Text as="span" color="brand.500">
-                in Minutes
-              </Text>
-              ,
-              <br />
-              Not Hours
+              {t("home.cards.futureWay.subtitle")}
             </Heading>
             <Text textStyle="subtitle" data-aos="fade-up">
-              Experience the magic of one-click deployments with Anyflow - where
-              complexity meets simplicity
+              {t("home.cards.futureWay.description")}
             </Text>
           </VStack>
 
           <SimpleGrid columns={{ base: 1, md: 4 }} spacing={6} w="full" pb={48}>
+            {/* One-Click Deploy */}
             <Box
               p={4}
               layerStyle="section"
@@ -196,11 +165,10 @@ const CardStack: FC = () => {
               borderColor="gray.700"
             >
               <Heading color="brand.500" fontWeight="bold" fontSize="xl" mb={4}>
-                One-Click Deploy
+                {t("home.cards.futureWay.features.oneClick.title")}
               </Heading>
               <Heading color="gray.50" fontSize="lg" mb={6}>
-                Deploy instantly with one command—no wallet setup or token
-                buying needed.
+                {t("home.cards.futureWay.features.oneClick.description")}
               </Heading>
 
               <Box
@@ -285,12 +253,14 @@ const CardStack: FC = () => {
                       mt={1}
                       animation="pulse 2s infinite"
                     >
-                      Smart Contract
+                      Smart contract
                     </Heading>
                   </Box>
                 </Box>
               </Box>
             </Box>
+
+            {/* Automated Setup */}
             <Box
               p={4}
               layerStyle="section"
@@ -301,11 +271,10 @@ const CardStack: FC = () => {
               borderColor="gray.700"
             >
               <Heading color="brand.500" fontWeight="bold" fontSize="xl" mb={4}>
-                Automated setup
+                {t("home.cards.futureWay.features.automatedSetup.title")}
               </Heading>
               <Heading color="gray.50" fontSize="lg" mb={6}>
-                Automatically configures everything from RPC endpoints to
-                network selection.
+                {t("home.cards.futureWay.features.automatedSetup.description")}
               </Heading>
 
               <Box
@@ -350,6 +319,8 @@ const CardStack: FC = () => {
                 </Box>
               </Box>
             </Box>
+
+            {/* Security */}
             <Box
               p={4}
               layerStyle="section"
@@ -360,11 +331,10 @@ const CardStack: FC = () => {
               borderColor="gray.700"
             >
               <Heading color="brand.500" fontWeight="bold" fontSize="xl" mb={4}>
-                Built-in Security
+                {t("home.cards.futureWay.features.security.title")}
               </Heading>
               <Heading color="gray.50" fontSize="lg" mb={6}>
-                Ensures enterprise-grade security automatically, enforcing best
-                practices.
+                {t("home.cards.futureWay.features.security.description")}
               </Heading>
 
               <Box
@@ -436,7 +406,9 @@ const CardStack: FC = () => {
                       boxShadow="0 4px 12px rgba(72, 187, 120, 0.2)"
                     >
                       <Text fontSize="xs" color="green.200">
-                        Secure
+                        {t(
+                          "home.cards.futureWay.features.security.badges.secure",
+                        )}
                       </Text>
                     </Box>
                     <Box
@@ -450,7 +422,9 @@ const CardStack: FC = () => {
                       boxShadow="0 4px 12px rgba(66, 153, 225, 0.2)"
                     >
                       <Text fontSize="xs" color="blue.200">
-                        Audited
+                        {t(
+                          "home.cards.futureWay.features.security.badges.audited",
+                        )}
                       </Text>
                     </Box>
                     <Box
@@ -464,13 +438,17 @@ const CardStack: FC = () => {
                       boxShadow="0 4px 12px rgba(159, 122, 234, 0.2)"
                     >
                       <Text fontSize="xs" color="purple.200">
-                        Protected
+                        {t(
+                          "home.cards.futureWay.features.security.badges.protected",
+                        )}
                       </Text>
                     </Box>
                   </HStack>
                 </Box>
               </Box>
             </Box>
+
+            {/* Cost Efficiency */}
             <Box
               p={4}
               layerStyle="section"
@@ -481,11 +459,10 @@ const CardStack: FC = () => {
               borderColor="gray.700"
             >
               <Heading color="brand.500" fontWeight="bold" fontSize="xl" mb={4}>
-                Cost Efficiency
+                {t("home.cards.futureWay.features.costEfficiency.title")}
               </Heading>
               <Heading color="gray.50" fontSize="lg" mb={6}>
-                Only pay for deployments with clear pricing and no hidden fees
-                or mandatory tokens.
+                {t("home.cards.futureWay.features.costEfficiency.description")}
               </Heading>
 
               <Box position="relative" height="160px">
@@ -601,7 +578,9 @@ const CardStack: FC = () => {
                     boxShadow="0 4px 12px rgba(72, 187, 120, 0.2)"
                   >
                     <Text fontSize="xs" color="green.200">
-                      Pay-as-you-go
+                      {t(
+                        "home.cards.futureWay.features.costEfficiency.badges.payAsYouGo",
+                      )}
                     </Text>
                   </Box>
                   <Box
@@ -615,7 +594,9 @@ const CardStack: FC = () => {
                     boxShadow="0 4px 12px rgba(66, 153, 225, 0.2)"
                   >
                     <Text fontSize="xs" color="blue.200">
-                      Transparent
+                      {t(
+                        "home.cards.futureWay.features.costEfficiency.badges.transparent",
+                      )}
                     </Text>
                   </Box>
                 </HStack>
@@ -688,7 +669,7 @@ const CardStack: FC = () => {
           />
 
           <VStack align="center" gap={{ base: 2, md: 4 }} zIndex={1} p={24}>
-            <Text textStyle="section">Streamline and accelerate</Text>
+            <Text textStyle="section">{t("home.cards.anyflow.title")}</Text>
 
             <Heading
               data-aos="fade-up"
@@ -696,12 +677,11 @@ const CardStack: FC = () => {
               textAlign="center"
               color="gray.50"
             >
-              Optimize your workflow for faster development
+              {t("home.cards.anyflow.subtitle")}
             </Heading>
 
             <Text as="h3" color="gray.50" data-aos="fade-up">
-              Concentrate on crafting exceptional blockchain solutions while we
-              streamline the technical details
+              {t("home.cards.anyflow.description")}
             </Text>
           </VStack>
         </VStack>
