@@ -1,10 +1,10 @@
 export const en_US = {
   translation: {
     header: {
-      title2: "Smart Contract Deployments",
-      subtitle1: "Effortless",
-      subtitle2: ", fast and secure.",
-      subtitle3: "Multichain ready.",
+      title: "Smart contract deployment made simple",
+      subtitle: "Fast, ",
+      subtitle2: "secure, and ",
+      subtitle3: "multichain ready.",
       button: "Request access",
       docs: "Check our docs",
       button_github: "Log in with Github",
