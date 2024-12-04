@@ -2,6 +2,7 @@
 import { FC, useCallback, useEffect, useRef, useState } from "react";
 import {
   Box,
+  Button,
   Flex,
   Heading,
   HStack,
@@ -11,6 +12,7 @@ import {
 } from "@chakra-ui/react";
 import { CogIcon, ShieldCheckIcon } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { BUTTON_GITHUB } from "@/const";
 
 const CardStack: FC = () => {
   const { t } = useTranslation();
@@ -149,7 +151,11 @@ const CardStack: FC = () => {
               {t("home.cards.futureWay.title")}
             </Text>
             <Heading textStyle="title" data-aos="fade-up">
-              {t("home.cards.futureWay.subtitle")}
+              {t("home.cards.futureWay.subtitle1")}
+              <Text as="span" color="brand.500">
+                {t("home.cards.futureWay.subtitle2")}
+              </Text>
+              {t("home.cards.futureWay.subtitle3")}
             </Heading>
             <Text textStyle="subtitle" data-aos="fade-up">
               {t("home.cards.futureWay.description")}
@@ -191,7 +197,7 @@ const CardStack: FC = () => {
                     zIndex={0}
                     transform="translate(-50%, -50%)"
                     bgGradient="linear(43deg, info.500 0%, success.800 46%, info.500 60%, info.600 80%, brand.400 100%)"
-                    filter="blur(20px)"
+                    filter="blur(40px)"
                     opacity={0.3}
                     animation="pulse 2s infinite"
                   />
@@ -206,7 +212,6 @@ const CardStack: FC = () => {
                     bgGradient="linear(to-br, gray.700, gray.800)"
                   />
 
-                  {/* Rotating gradient border */}
                   <Box
                     position="absolute"
                     top="0"
@@ -286,7 +291,14 @@ const CardStack: FC = () => {
                 justifyContent="center"
                 alignItems="center"
               >
-                <Box position="relative" width="180px" height="180px">
+                <Flex
+                  position="relative"
+                  width="180px"
+                  height="180px"
+                  mx="auto"
+                  align="center"
+                  justify="center"
+                >
                   <Box
                     position="absolute"
                     top="0%"
@@ -296,10 +308,10 @@ const CardStack: FC = () => {
                     height="150%"
                     zIndex={0}
                     transform="translate(-50%, -50%)"
-                    bgGradient="linear(43deg, info.500 0%, success.600 46%, info.500 60%, success.600 80%, info.400 100%)"
+                    bgGradient="linear(43deg, info.700 0%, success.800 46%, info.500 60%, info.600 80%, success.400 100%)"
                     filter="blur(40px)"
                     opacity={0.1}
-                    animation="pulse 5s infinite"
+                    animation="pulse 2s infinite"
                   />
 
                   <Flex
@@ -319,7 +331,7 @@ const CardStack: FC = () => {
                       <CogIcon size={80} />
                     </Text>
                   </Flex>
-                </Box>
+                </Flex>
               </Box>
             </Box>
 
@@ -385,7 +397,7 @@ const CardStack: FC = () => {
                       borderColor: "info.400",
                       animation: "ripple 1.5s infinite",
                     }}
-                    color="info.500"
+                    color="info.50"
                   >
                     <ShieldCheckIcon size={80} />
                   </Flex>
@@ -451,7 +463,6 @@ const CardStack: FC = () => {
               </Box>
             </Box>
 
-            {/* Cost Efficiency */}
             <Box
               p={4}
               layerStyle="section"
@@ -478,10 +489,10 @@ const CardStack: FC = () => {
                   height="150%"
                   zIndex={0}
                   transform="translate(-50%, -50%)"
-                  bgGradient="linear(43deg, success.500 0%, info.500 46%, success.500 60%, info.600 80%, success.400 100%)"
-                  filter="blur(20px)"
-                  opacity={0.2}
-                  animation="pulse 5s infinite"
+                  bgGradient="linear(43deg, info.700 0%, success.800 46%, info.500 60%, info.600 80%, success.400 100%)"
+                  filter="blur(40px)"
+                  opacity={0.1}
+                  animation="pulse 2s infinite"
                 />
 
                 <Box
@@ -556,7 +567,7 @@ const CardStack: FC = () => {
                     border="2px solid"
                     borderColor="green.400"
                   >
-                    <Text fontSize="4xl" fontWeight="bold" color="info.500">
+                    <Text fontSize="4xl" fontWeight="bold" color="info.50">
                       $
                     </Text>
                   </Box>
@@ -686,6 +697,18 @@ const CardStack: FC = () => {
             <Text as="h3" color="gray.50" data-aos="fade-up">
               {t("home.cards.anyflow.description")}
             </Text>
+
+            <Button
+              variant="gradient"
+              size="lg"
+              as="a"
+              target="_blank"
+              rel="noopener noreferrer"
+              href={BUTTON_GITHUB}
+              boxShadow="2xl"
+            >
+              {t("home.cards.anyflow.cta")}
+            </Button>
           </VStack>
         </VStack>
       </HStack>

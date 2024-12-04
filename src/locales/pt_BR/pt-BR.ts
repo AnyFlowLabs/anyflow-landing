@@ -1,11 +1,6 @@
 export const pt_BR = {
   translation: {
     header: {
-      title: "Smart contract deployment made simple",
-      subtitle: "Fast, ",
-      subtitle2: "secure, and ",
-      subtitle3: "multichain ready.",
-      button: "Request access",
       docs: "Check our docs",
       button_github: "Log in with Github",
     },
@@ -14,7 +9,6 @@ export const pt_BR = {
       title: "We're like Vercel for Smart Contracts",
       subtitle:
         "AnyFlow enables 3-click deployments of smart contracts to multiple blockchains. Automate your deployment process and focus on building.",
-      // "AnyFlow empowers developers to achieve agile smart contract deployment. This robust tool streamlines automation and enhances DevOps processes, ensuring exceptional code quality across diverse blockchains. Leverage testnets for pre-production accuracy testing and enjoy seamless deployment to multiple testnets without the hassle of faucets or API keys.",
     },
     form: {
       title: "Stay tuned! Support for Solana is coming soon to AnyFlow!",
@@ -22,7 +16,7 @@ export const pt_BR = {
         "We are currently in the alpha stage, and we want you to be part of this journey. Request early access and help us shape the future of our platform!",
       button: "Request early access",
     },
-    chains: "{{q}} Supported Chains",
+    chains: "{{q}} Rede suportadas",
     features: {
       continuousIntegration: {
         title: "Continuous Integration Made Easy",
@@ -70,11 +64,11 @@ export const pt_BR = {
       chainName: "Chain Name",
     },
     home: {
-      title: "Smart Contract Deployments",
-      subtitle1: "Effortless",
-      subtitle2: ", fast and secure.",
-      subtitle3: "Multichain ready.",
-      cta: "START NOW",
+      title: "Deploy de smart contracts sem complicação",
+      subtitle1: "Rápido, ",
+      subtitle2: " seguro e adaptado para diversas ",
+      subtitle3: "blockchains.",
+      cta: "Comece agora",
       problemSection: {
         title: "Problem",
         subtitle:
@@ -129,99 +123,65 @@ export const pt_BR = {
             "AnyFlow enables 3-click deployments of smart contracts to multiple blockchains. Automate your deployment process and focus on building.",
         },
       },
-      cardsSection: {
-        title: "We're like Vercel for Smart Contracts",
-        features: {
-          continuousIntegration: {
-            title: "Continuous Integration Made Easy",
-            description:
-              "Integrate AnyFlow with your CI tools like GitHub Actions or Jenkins for seamless smart contract deployments. Automate the tedious parts of deployment and focus more on innovation and less on infrastructure.",
-          },
-          handsOffDeployment: {
-            title: "Hands-Off Deployment Process",
-            description:
-              "Forget about gas calculations and private key management. AnyFlow automates these complexities, allowing you to deploy without directly handling sensitive elements or wasting time with configuration.",
-          },
-          trustAndControl: {
-            title: "Trust and Control in Your Hands",
-            description:
-              "Every deployment through AnyFlow requires explicit approval from your team, ensuring a trustless operation where only authorized actions are executed, and maintaining the integrity and security of your deployments.",
-          },
-          unifiedCosts: {
-            title: "Unified Operational Costs",
-            description:
-              "Simplify your billing with AnyFlow’s straightforward financial model. All deployment costs are consolidated and billed in USD, freeing you from managing multiple native tokens across blockchains.",
-          },
-        },
-      },
-      addChain: "Want to add your chain ?",
-      deploymentFuture: {
-        title: "The Future of Deployment",
-        description:
-          "Experience the magic of one-click deployments with Anyflow - where complexity meets simplicity",
-      },
-      optimization: {
-        title: "Optimize your workflow for faster development",
-        subtitle:
-          "Concentrate on crafting exceptional blockchain solutions while we streamline the technical details",
-      },
-      streamline: {
-        title: "Streamline and accelerate",
-      },
+
+      addChain: "Quer adicionar sua rede ?",
+
       cards: {
         oldWay: {
-          title: "The Old Way",
-          subtitle: "The conventional deployment method",
+          title: "Método antigo",
+          subtitle: "Abordagem convencional de deploy",
           description:
-            "Previously, you had to go through a time-intensive and complex process",
+            "Anteriormente, era preciso passar por um processo demorado e complexo",
           steps: {
             step1: {
-              title: "Cryptocurrency Acquisition",
+              title: "Aquisição de criptomoedas",
               description:
-                "Acquire native tokens through complex exchanges and multiple wallets.",
+                "Adquirir tokens nativos através de trocas complexas e múltiplas carteiras.",
             },
             step2: {
-              title: "Account Management",
+              title: "Gerenciamento de contas",
               description:
-                "Manage various accounts, transfer funds, and configure multiple wallets.",
+                "Administrar várias contas, transferir fundos e ajustar configurações de carteiras.",
             },
             step3: {
-              title: "Technical Setup",
+              title: "Configuração técnica",
               description:
-                "Configure RPC providers, manage API keys, and test connections for hours.",
+                "Configurar provedores RPC, gerenciar chaves API e testar conexões prolongadamente.",
             },
             step4: {
-              title: "Security Concerns",
+              title: "Preocupações com segurança",
               description:
-                "Secure private keys and ensure their accessibility for deployments.",
+                "Garantir a segurança das chaves privadas e assegurar a acessibilidade para deploys.",
             },
             step5: {
-              title: "Repeat for Each Network",
+              title: "Repetir para cada rede",
               description:
-                "Duplicate efforts across every network for deployment.",
+                "Repetir todo o processo para cada rede onde deseja realizar o deploy.",
             },
           },
         },
         futureWay: {
-          title: "The Future of Deployment",
-          subtitle: "Deploy Smart Contracts in Minutes, Not Hours",
+          title: "O futuro do deploy",
+          subtitle1: "Deploy de smart contracts ",
+          subtitle2: " em minutos, ",
+          subtitle3: "não horas",
           description:
-            "Experience the magic of one-click deployments with Anyflow - where complexity meets simplicity",
+            "Viva a simplicidade dos deploys com um clique no Anyflow",
           features: {
             oneClick: {
-              title: "One-Click Deploy",
+              title: "Deploy com um clique",
               description:
-                "Deploy instantly with one command—no wallet setup or token buying needed.",
+                "Deploy instantâneo com um comando. Sem configurações complexas.",
             },
             automatedSetup: {
-              title: "Automated setup",
+              title: "Configuração automática",
               description:
-                "Automatically configures everything from RPC endpoints to network selection.",
+                "Tudo configurado automaticamente: da seleção de rede aos endpoints RPC.",
             },
             security: {
-              title: "Built-in Security",
+              title: "Segurança integrada",
               description:
-                "Ensures enterprise-grade security automatically, enforcing best practices.",
+                "Garantia de segurança com auditorias e melhores práticas do mercado.",
               badges: {
                 secure: "Secure",
                 audited: "Audited",
@@ -229,27 +189,29 @@ export const pt_BR = {
               },
             },
             costEfficiency: {
-              title: "Cost Efficiency",
+              title: "Eficiência de custo",
               description:
-                "Only pay for deployments with clear pricing and no hidden fees or mandatory tokens.",
+                "Custos transparentes, sem taxas ocultas. Pague apenas pelo que usar.",
               badges: {
-                payAsYouGo: "Pay-as-you-go",
-                transparent: "Transparent",
+                payAsYouGo: "Pague-conforme-usa",
+                transparent: "Transparente",
               },
             },
           },
         },
         anyflow: {
-          title: "Streamline and accelerate",
-          subtitle: "Optimize your workflow for faster development",
+          title: "Simplifique e acelere",
+          subtitle:
+            "Aprimore seu fluxo de trabalho para um desenvolvimento mais ágil",
           description:
-            "Concentrate on crafting exceptional blockchain solutions while we streamline the technical details",
+            "Foque em desenvolver soluções excepcionais em blockchain enquanto cuidamos dos detalhes chatos para você",
+          cta: "Comece agora",
         },
       },
       deployment: {
-        title: "Fastest multichain deployment",
+        title: "O deploy multichain mais rápido",
         description:
-          "Instantly deploy smart contracts across multiple blockchains. Focus on innovation while our platform handles the complexities swiftly—deployments are completed in seconds.",
+          "Faça deploy de smart contracts em várias blockchains ao mesmo tempo. Foque na inovação enquanto nossa plataforma cuida da complexidade de forma ágil — os deploys são concluídos em segundos.",
         terminal: {
           command: "$ anyflow deploy",
           fileName: "my-contract.sol",
@@ -263,50 +225,69 @@ export const pt_BR = {
         },
         features: {
           ultraFast: {
-            title: "Ultra-fast execution",
+            title: "Execução ultrarrápida",
             description:
-              "Deploy contracts instantly with our streamlined pipeline, designed for speed.",
+              "Realize deploys instantâneos com nossa pipeline otimizada para velocidade.",
+          },
+          security: {
+            title: "Segurança robusta",
+            description:
+              "Verificações automáticas e auditorias integradas garantem que seus deploys sejam sempre seguros.",
+          },
+          configurable: {
+            title: "Totalmente configurável",
+            description:
+              "Ajuste o processo de deploy para atender às necessidades específicas dos seus projetos com facilidade.",
           },
         },
       },
       faq: {
-        section: "Frequently asked questions",
-        title: "Everything you need to know",
+        section: "Perguntas frequentes",
+        title: "Tudo o que você precisa saber",
         subtitle:
-          "Find answers to the most common questions about Anyflow's deployment platform",
+          "Encontre respostas para as perguntas mais comuns sobre a plataforma de deploy do Anyflow",
         questions: {
           what: {
-            question: "What is Anyflow?",
+            question: "O que é o Anyflow?",
             answer:
-              "Anyflow is a smart contract deployment platform that simplifies deploying contracts across multiple blockchains. It removes the need to manage wallets, buy tokens, or handle complex technical configurations.",
+              "O Anyflow é uma plataforma de deploy de smart contracts que simplifica esse processo em várias blockchains ao mesmo tempo. Ele elimina a necessidade de gerenciar carteiras, comprar tokens ou lidar com configurações técnicas complexas.",
           },
           how: {
-            question: "How does one-click deployment work?",
+            question: "Como funciona o deploy com um clique?",
             answer:
-              "Our platform automates every step of the deployment process. Connect your project, choose your target network, and click deploy. We handle everything, including wallet management, gas fees, and network setup.",
+              "Nossa plataforma automatiza cada etapa do processo de deploy. Conecte seu projeto, escolha a rede de destino e clique em deploy. Nós cuidamos de tudo, incluindo gerenciamento de carteiras, taxas de gás e configurações de rede.",
           },
           tokens: {
-            question: "Do I need to buy tokens for deployment?",
+            question: "Preciso comprar tokens para o deploy?",
             answer:
-              "No! Anyflow eliminates token management. We handle all token requirements for you, so you can deploy contracts without purchasing or managing native tokens.",
+              "Não! O Anyflow elimina a gestão de tokens. Nós cuidamos de todos os requisitos de token para você, permitindo que faça deploy sem precisar comprar ou gerenciar tokens nativos.",
           },
           security: {
-            question: "Is Anyflow secure?",
+            question: "O Anyflow é seguro?",
             answer:
-              "Yes! Security is our highest priority. We use enterprise-grade measures, and automated audits, and enforce best practices. Your code and credentials are always encrypted and protected.",
+              "Sim! A segurança é nossa maior prioridade. Utilizamos medidas de nível empresarial, auditorias automatizadas e aplicamos as melhores práticas. Seu código e credenciais estão sempre protegidos e criptografados.",
           },
           chains: {
-            question: "Which blockchains are supported?",
+            question: "Quais blockchains são suportadas?",
             answer:
-              "Anyflow supports all major EVM-compatible networks, such as Ethereum, Polygon, BSC, Avalanche, and more. We are continuously adding new networks based on community demand.",
+              "O Anyflow suporta todas as principais redes compatíveis com EVM, como Ethereum, Polygon, BSC, Avalanche e outras. Estamos continuamente adicionando novas redes com base na demanda da comunidade.",
+          },
+          cost: {
+            question: "Quanto custa?",
+            answer:
+              "Oferecemos preços transparentes no modelo pay-as-you-go, sem taxas ocultas. Você paga apenas pelos deploys bem-sucedidos, economizando tempo e recursos enquanto mantém um custo competitivo em relação aos métodos tradicionais.",
+          },
+          integrate: {
+            question: "Como posso integrar minha blockchain ao Anyflow?",
+            answer:
+              "Estamos constantemente expandindo nossa solução para atender mais blockchains. Nossa equipe está pronta para ajudá-lo. Por favor, preencha o formulário neste LINK, e nossa equipe entrará em contato com você.",
           },
         },
       },
-
       trusted: {
-        title: "Trusted by industry leaders",
+        title: "Reconhecido por líderes do mercado",
         description:
-          "Secured a top 4 position in the 2024 Copa America hackathon, organized by Solana to highlight innovation.",
+          "Apoiado por grandes organizações que impulsionam a inovação no blockchain.",
       },
       features: {
         security: {
@@ -321,44 +302,42 @@ export const pt_BR = {
         },
       },
       cli: {
-        title: "Unlock the potential of our CLI tool",
+        title: "Descubra o poder da nossa CLI",
         description:
-          "Streamline your development workflow with a tool built for efficiency and simplicity",
+          "Simplifique o seu fluxo de trabalho com uma ferramenta feita para ser eficiente e simples.",
         features: {
-          easy: "Easy to use",
-          docs: "Detailed documentation",
-          community: "Active community",
+          easy: "Fácil de usar",
+          docs: "Documentação completa",
+          community: "Comunidade ativa",
         },
         command: "npm install anyflow-cli",
         buttons: {
-          try: "Try our CLI tool",
-          docs: "Read our Docs",
+          try: "Experimente a nossa ferramenta CLI",
+          docs: "Leia a documentação",
         },
       },
       partners: {
         khiza: {
           description:
-            "Anyflow is part of the Khiza ecosystem, a Brazilian startup studio dedicated to driving innovation in web3.",
+            "Anyflow faz parte do ecossistema Khiza, um startup studio brasileiro dedicado à inovação em web3.",
         },
         quicknode: {
           description:
-            "Quicknode partners with Anyflow to enhance blockchain deployment capabilities and developer tools.",
+            "Quicknode é parceiro do Anyflow, colaborando para aprimorar o deploy em blockchains e ferramentas para desenvolvedores.",
         },
         builder: {
           description:
-            "Ranked in the top 3.5% of Backdrop Build V4, a program blending acceleration and hackathon.",
+            "Estamos entre os 3,5% melhores do Backdrop Build V4, um programa que combina aceleração e hackathon.",
         },
         xdc: {
           description:
-            "Anyflow Received a grant from the XDC blockchain to expand integrations and advance product development.",
+            "O Anyflow recebeu um grant da blockchain XDC para expandir integrações e avançar no desenvolvimento do produto.",
+        },
+        soalana: {
+          description:
+            "Alcançamos o top 4 no hackathon Copa América de 2024, organizado pela Solana para destacar projetos inovadores.",
         },
       },
-    },
-  },
-  aos: {
-    init: {
-      // Se houver algum texto específico para traduzir do componente AOS
-      // podemos adicionar aqui
     },
   },
 };

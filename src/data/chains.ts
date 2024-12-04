@@ -9,17 +9,19 @@ import optimismIcon from "../assets/chains/optimism.svg";
 import polygonIcon from "../assets/chains/polygon.svg";
 import ethereumIcon from "../assets/chains/ethereum.svg";
 import bscIcon from "../assets/chains/bsc.svg";
+import xdcIcon from "../assets/chains/xdc.svg";
 
 export type ChainDef = {
-  name: string,
-  value: string,
-  icon: string,
-}
+  name: string;
+  value: string;
+  icon: string;
+};
 
 export const chains: ChainDef[] = [
   { name: "Base", value: "baseSepolia", icon: baseIcon },
+  { name: "XDC", value: "xdc", icon: xdcIcon },
   { name: "Ethereum", value: "sepolia", icon: ethereumIcon },
-  { name: "BSC", value: "bscTestnet", icon: bscIcon},
+  { name: "BSC", value: "bscTestnet", icon: bscIcon },
   { name: "Polygon", value: "polygonAmoy", icon: polygonIcon },
   { name: "Avalanche", value: "avalancheFuji", icon: avalancheIcon },
   { name: "Arbitrum", value: "arbitrumSepolia", icon: arbitrumIcon },
