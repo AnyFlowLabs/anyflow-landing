@@ -1,11 +1,6 @@
 export const en_US = {
   translation: {
     header: {
-      title: "Smart contract deployment made simple",
-      subtitle: "Fast, ",
-      subtitle2: "secure, and ",
-      subtitle3: "multichain ready.",
-      button: "Request access",
       docs: "Check our docs",
       button_github: "Log in with Github",
     },
@@ -14,7 +9,6 @@ export const en_US = {
       title: "We're like Vercel for Smart Contracts",
       subtitle:
         "AnyFlow enables 3-click deployments of smart contracts to multiple blockchains. Automate your deployment process and focus on building.",
-      // "AnyFlow empowers developers to achieve agile smart contract deployment. This robust tool streamlines automation and enhances DevOps processes, ensuring exceptional code quality across diverse blockchains. Leverage testnets for pre-production accuracy testing and enjoy seamless deployment to multiple testnets without the hassle of faucets or API keys.",
     },
     form: {
       title: "Stay tuned! Support for Solana is coming soon to AnyFlow!",
@@ -129,45 +123,7 @@ export const en_US = {
             "AnyFlow enables 3-click deployments of smart contracts to multiple blockchains. Automate your deployment process and focus on building.",
         },
       },
-      cardsSection: {
-        title: "We're like Vercel for Smart Contracts",
-        features: {
-          continuousIntegration: {
-            title: "Continuous Integration Made Easy",
-            description:
-              "Integrate AnyFlow with your CI tools like GitHub Actions or Jenkins for seamless smart contract deployments. Automate the tedious parts of deployment and focus more on innovation and less on infrastructure.",
-          },
-          handsOffDeployment: {
-            title: "Hands-Off Deployment Process",
-            description:
-              "Forget about gas calculations and private key management. AnyFlow automates these complexities, allowing you to deploy without directly handling sensitive elements or wasting time with configuration.",
-          },
-          trustAndControl: {
-            title: "Trust and Control in Your Hands",
-            description:
-              "Every deployment through AnyFlow requires explicit approval from your team, ensuring a trustless operation where only authorized actions are executed, and maintaining the integrity and security of your deployments.",
-          },
-          unifiedCosts: {
-            title: "Unified Operational Costs",
-            description:
-              "Simplify your billing with AnyFlow’s straightforward financial model. All deployment costs are consolidated and billed in USD, freeing you from managing multiple native tokens across blockchains.",
-          },
-        },
-      },
       addChain: "Want to add your chain ?",
-      deploymentFuture: {
-        title: "The Future of Deployment",
-        description:
-          "Experience the magic of one-click deployments with Anyflow - where complexity meets simplicity",
-      },
-      optimization: {
-        title: "Optimize your workflow for faster development",
-        subtitle:
-          "Concentrate on crafting exceptional blockchain solutions while we streamline the technical details",
-      },
-      streamline: {
-        title: "Streamline and accelerate",
-      },
       cards: {
         oldWay: {
           title: "The Old Way",
@@ -244,6 +200,7 @@ export const en_US = {
           subtitle: "Optimize your workflow for faster development",
           description:
             "Concentrate on crafting exceptional blockchain solutions while we streamline the technical details",
+          cta: "Start now",
         },
       },
       deployment: {
@@ -266,6 +223,16 @@ export const en_US = {
             title: "Ultra-fast execution",
             description:
               "Deploy contracts instantly with our streamlined pipeline, designed for speed.",
+          },
+          security: {
+            title: "Robust security",
+            description:
+              "Automatic security checks and audits are standard, ensuring your deployments are always secure.",
+          },
+          configurable: {
+            title: "Fully configurable",
+            description:
+              "Adjust the deployment process to meet the specific needs of your projects effortlessly.",
           },
         },
       },
@@ -300,6 +267,16 @@ export const en_US = {
             answer:
               "Anyflow supports all major EVM-compatible networks, such as Ethereum, Polygon, BSC, Avalanche, and more. We are continuously adding new networks based on community demand.",
           },
+          cost: {
+            question: "How much does it cost?",
+            answer:
+              "We offer transparent pricing in the pay-as-you-go model, with no hidden fees. You only pay for successful deploys, saving time and resources while maintaining a competitive cost compared to traditional methods.",
+          },
+          integrate: {
+            question: "How can I integrate my blockchain to Anyflow?",
+            answer:
+              "We are constantly expanding our solution so we are able to assist more blockchains. Our team is ready to help you. Please, fill out the form inside this LINK, and our team will get back to you.",
+          },
         },
       },
       trusted: {
@@ -320,7 +297,7 @@ export const en_US = {
         },
       },
       cli: {
-        title: "Unlock the potential of our CLI tool",
+        title: "Unlock the potential of our",
         description:
           "Streamline your development workflow with a tool built for efficiency and simplicity",
         features: {
@@ -351,13 +328,11 @@ export const en_US = {
           description:
             "Anyflow Received a grant from the XDC blockchain to expand integrations and advance product development.",
         },
+        solana: {
+          description:
+            "Secured a top 4 position in the 2024 Copa America hackathon, organized by Solana to highlight innovation.",
+        },
       },
-    },
-  },
-  aos: {
-    init: {
-      // Se houver algum texto específico para traduzir do componente AOS
-      // podemos adicionar aqui
     },
   },
 };

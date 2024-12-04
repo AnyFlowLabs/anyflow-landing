@@ -60,7 +60,7 @@ export default function HomePage() {
               data-aos="fade-up"
               data-aos-anchor-placement="top-bottom"
             >
-              {t("header.title")}
+              {t("home.title")}
             </Heading>
 
             <Heading
@@ -74,14 +74,14 @@ export default function HomePage() {
               data-aos-anchor-placement="top-bottom"
             >
               <Text as="span" color="brand.500">
-                {t("header.subtitle")}
+                {t("home.subtitle1")}
               </Text>
               <Text as="span" color="gray.50">
-                {t("header.subtitle2")}
+                {t("home.subtitle2")}
               </Text>
               <Text as="span" color="gray.50" fontStyle="italic">
                 {" "}
-                {t("header.subtitle3")}
+                {t("home.subtitle3")}
               </Text>
             </Heading>
 
@@ -99,41 +99,24 @@ export default function HomePage() {
             >
               {t("home.cta")}
             </Button>
-
-            {/* <Flex
-            w="full"
-            bgGradient="linear(to-tl, gray.900, gray.800)"
-            p={6}
-            mt={{ base: 4, md: 16 }}
-            rounded="md"
-            flexDir={["column", null, "row"]}
-            gap={{ base: 4, md: 16 }}
-            alignItems="center"
-            boxShadow="lg"
-          >
-            <VStack flex={1} align="stretch" spacing={2}>
-              <Heading color="white" fontSize="lg">
-                {t("form.title")}
-              </Heading>
-              <Text color="gray.100" fontSize="smaller">
-                {t("form.description")}
-              </Text>
-            </VStack>
-            <Button
-              variant="solid"
-              as="a"
-              href="https://docs.google.com/forms/d/e/1FAIpQLSdBLFsdjxCJPuc8X7yEqzrwd-i8cloKxNUkcMMzPY1m6OMb5Q/viewform"
-              target="_blank"
-              referrerPolicy="no-referrer"
-              w={{ base: "full", md: "auto" }}
-            >
-              {t("form.button")}
-            </Button>
-          </Flex> */}
           </VStack>
         </Container>
 
         <Box pos="relative" minH="80vh" w="full" data-aos="zoom-in">
+          <Container
+            pos="absolute"
+            top={0}
+            left="50%"
+            transform="translateX(-50%)"
+            maxW="container.lg"
+            bg="gray.600"
+            borderRadius={20}
+            bgGradient="linear(to-br, gray.800, gray.800, gray.800, transparent, gray.800)"
+            border="solid 1px"
+            borderColor="gray.500"
+            height="500px"
+          ></Container>
+
           <Container
             maxW="container.xl"
             bg="gray.600"
@@ -142,8 +125,6 @@ export default function HomePage() {
             border="solid 1px"
             borderColor="gray.500"
             transform="scale(0.9)"
-            // border="solid 2px #fff"
-            // boxShadow="0 0 5px 0 #b21e4b, 0 0 10px 0 #b21e4b, 0 0 50px 0 #b21e4b, 0 0 80px 0 #b21e4b"
             height="500px"
           ></Container>
 
@@ -152,21 +133,13 @@ export default function HomePage() {
             bg="gray.700"
             top="50px"
             left="50%"
-            // border="solid 4px #fff"
             maxW="container.xl"
             p={4}
-            // animation={`glow 2s infinite`}
-            bgGradient="linear(to-br, gray.700, transparent, transparent, transparent, transparent)"
             borderRadius={20}
             border="solid 1px"
             borderColor="gray.500"
-            // boxShadow="0 0 5px 0 #e63f66, 0 0 10px 0 #b21e4b, 0 0 50px 0 #b21e4b"
             transform=" translateX(-50%)"
             overflow="hidden"
-            transition="transform 0.3s ease-in-out"
-            _hover={{
-              transform: "translateX(-50%) scale(1.05)",
-            }}
           >
             <Box borderRadius={20} overflow="hidden" h="600px">
               <img src="/anyflow-app.gif" width="100%" height="100%" alt="" />
@@ -221,47 +194,7 @@ export default function HomePage() {
         </Box>
       </VStack>
 
-      {/* <Container maxW="container.xl">
-        <Flex flexDir={{ base: "column", md: "row" }} gap={12}>
-          <VStack spacing={6} align={["center", null, "start"]} flex={1}>
-            <Heading color="brand.500" fontWeight="light" fontSize="large">
-              {t("secondSection.info")}
-            </Heading>
-            <Heading as="h3" fontSize="3xl" color="white">
-              {t("secondSection.title")}
-            </Heading>
-            <Text color="gray.200" fontSize="medium">
-              {t("secondSection.subtitle")}
-            </Text>
-            <Button
-              as="a"
-              href={DOCS_URL}
-              target="_blank"
-              variant="outline"
-              w={{ base: "full", md: "auto" }}
-            >
-              {t("header.docs")}
-            </Button>
-          </VStack>
-
-          <Box flex={2}>
-            <Image
-              src="/anyflow-app.gif"
-              alt="App image"
-              rounded="xl"
-              w="100%"
-            />
-          </Box>
-        </Flex>
-      </Container> */}
-
-      <Container
-        maxW="container.xl"
-        // p={{ base: 8, md: 12 }}
-        // bg="gray.800"
-        my={{ base: 8, md: 12 }}
-        // borderRadius={12}
-      >
+      <Container maxW="container.xl" my={{ base: 8, md: 12 }}>
         <HomeCards />
       </Container>
 
@@ -350,7 +283,8 @@ export default function HomePage() {
                       bgGradient="linear(to-l, #55d8e4, #5Be9ab)"
                       bgClip="text"
                     >
-                      {t("home.deployment.terminal.steps.success")} 0x742d35Cc6634C0532925a3b844Bc454e4438f44e
+                      {t("home.deployment.terminal.steps.success")}{" "}
+                      0x742d35Cc6634C0532925a3b844Bc454e4438f44e
                     </Text>
                   </VStack>
                 </VStack>
@@ -513,16 +447,43 @@ export default function HomePage() {
             </HStack>
           </HStack>
 
-          <Text color="gray.50" fontSize="sm" fontFamily="mono" pr={4} bg="gray.800" p={2} px={4} borderRadius="lg">
-            {t("home.cli.command")}
-          </Text>
+          <Image src="/carbon.png" alt="Anyflow logo" h={40} />
 
-          <Button variant="outline" size="lg" data-aos="fade-up" data-aos-delay="400">
-            {t("home.cli.buttons.try")}
-          </Button>
-          <Button variant="link" color="brand.50" size="lg" data-aos="fade-up" data-aos-delay="400">
-            {t("home.cli.buttons.docs")}
-          </Button>
+          <HStack w="full" justify="center" align="center">
+            <Text
+              mr={20}
+              color="gray.50"
+              fontSize="sm"
+              fontFamily="mono"
+              pr={4}
+              bg="gray.800"
+              p={2}
+              px={4}
+              borderRadius="lg"
+            >
+              {t("home.cli.command")}
+            </Text>
+
+            <HStack gap={8}>
+              <Button
+                variant="outline"
+                size="lg"
+                data-aos="fade-up"
+                data-aos-delay="400"
+              >
+                {t("home.cli.buttons.try")}
+              </Button>
+              <Button
+                variant="link"
+                color="brand.50"
+                size="lg"
+                data-aos="fade-up"
+                data-aos-delay="400"
+              >
+                {t("home.cli.buttons.docs")}
+              </Button>
+            </HStack>
+          </HStack>
         </VStack>
       </Container>
 
@@ -650,7 +611,7 @@ export default function HomePage() {
               </Box>
 
               <Text fontSize="md" color="gray.100">
-                {t("home.partners.builder.description")}
+                {t("home.partners.solana.description")}
               </Text>
             </VStack>
           </SimpleGrid>
@@ -671,7 +632,12 @@ export default function HomePage() {
             </Text>
           </VStack>
 
-          <Accordion allowMultiple variant="custom" data-aos="fade-up" boxShadow="2xl">
+          <Accordion
+            allowMultiple
+            variant="custom"
+            data-aos="fade-up"
+            boxShadow="2xl"
+          >
             {[
               {
                 question: t("home.faq.questions.what.question"),
@@ -692,6 +658,14 @@ export default function HomePage() {
               {
                 question: t("home.faq.questions.chains.question"),
                 answer: t("home.faq.questions.chains.answer"),
+              },
+              {
+                question: t("home.faq.questions.cost.question"),
+                answer: t("home.faq.questions.cost.answer"),
+              },
+              {
+                question: t("home.faq.questions.integrate.question"),
+                answer: t("home.faq.questions.integrate.answer"),
               },
             ].map((item, index) => (
               <AccordionItem key={index}>
