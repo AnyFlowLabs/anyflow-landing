@@ -160,7 +160,9 @@ export const en_US = {
         },
         futureWay: {
           title: "The Future of Deployment",
-          subtitle: "Deploy Smart Contracts in Minutes, Not Hours",
+          subtitle1: "Deploy Smart Contracts",
+          subtitle2: " in Minutes, ",
+          subtitle3: "Not Hours",
           description:
             "Experience the magic of one-click deployments with Anyflow - where complexity meets simplicity",
           features: {

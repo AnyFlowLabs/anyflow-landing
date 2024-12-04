@@ -151,7 +151,11 @@ const CardStack: FC = () => {
               {t("home.cards.futureWay.title")}
             </Text>
             <Heading textStyle="title" data-aos="fade-up">
-              {t("home.cards.futureWay.subtitle")}
+              {t("home.cards.futureWay.subtitle1")}
+              <Text as="span" color="brand.500">
+                {t("home.cards.futureWay.subtitle2")}
+              </Text>
+              {t("home.cards.futureWay.subtitle3")}
             </Heading>
             <Text textStyle="subtitle" data-aos="fade-up">
               {t("home.cards.futureWay.description")}
