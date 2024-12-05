@@ -8,6 +8,8 @@ import {
   Image,
   Stack,
 } from "@chakra-ui/react";
+import { SEO } from "../components/SEO";
+
 import { chains } from "@/data/chains";
 import { useTranslation } from "react-i18next";
 import Slider from "@/components/Slider";
@@ -23,11 +25,16 @@ export default function HomePage() {
 
   return (
     <>
+      <SEO
+        title={`AnyFlow - ${t("home.title")}`}
+        description={`${t("home.subtitle1")}${t("home.subtitle2")}${t("home.subtitle3")}`}
+      />
       <Container maxW={{ base: "full", md: "container.xl" }}>
         <VStack
           py={{ base: 8, md: 12, lg: "auto" }}
           align="center"
           justify="center"
+          spacing={6}
         >
           <Heading
             maxW="container.lg"
@@ -44,7 +51,7 @@ export default function HomePage() {
           <Heading
             fontFamily="body"
             fontWeight="light"
-            as="h3"
+            as="h2"
             color="gray.50"
             fontSize={{ base: "xl", md: "2xl" }}
             textAlign="center"
@@ -74,6 +81,7 @@ export default function HomePage() {
             href={BUTTON_GITHUB}
             letterSpacing={3}
             w={{ base: "full", md: "auto" }}
+            aria-label={t("home.cta")}
           >
             {t("home.cta")}
           </Button>
@@ -86,6 +94,8 @@ export default function HomePage() {
         maxW={{ base: "full", md: "container.xl" }}
         data-aos="zoom-in"
         mb={{ base: -24, md: 24 }}
+        role="region"
+        aria-label="Application Preview"
       >
         <Container
           pos="absolute"
@@ -99,6 +109,7 @@ export default function HomePage() {
           border="solid 1px"
           borderColor="gray.500"
           height={{ base: "100px", md: "100px" }}
+          aria-hidden="true"
         ></Container>
 
         <Container
@@ -113,6 +124,7 @@ export default function HomePage() {
           border="solid 1px"
           borderColor="gray.500"
           height={{ base: "100px", md: "100px" }}
+          aria-hidden="true"
         ></Container>
 
         <Container
@@ -133,7 +145,13 @@ export default function HomePage() {
             overflow="hidden"
             height={{ base: "auto", md: "600px", lg: "full" }}
           >
-            <img src="/anyflow-app.gif" width="100%" height="100%" alt="" />
+            <img
+              src="/anyflow-app.gif"
+              width="100%"
+              height="100%"
+              alt="AnyFlow application demo"
+              loading="lazy"
+            />
           </Box>
         </Container>
       </Container>
@@ -151,7 +169,11 @@ export default function HomePage() {
           justify="space-between"
           spacing={{ base: 4, md: 0 }}
         >
-          <Heading textStyle="title" fontSize={{ base: "2xl", md: "3xl" }}>
+          <Heading
+            as="h2"
+            textStyle="title"
+            fontSize={{ base: "2xl", md: "3xl" }}
+          >
             {t("chains", { q: chains.length })}
           </Heading>
           <Button
@@ -161,6 +183,7 @@ export default function HomePage() {
             href="https://forms.gle/zdcSMhhkCnzz5xpW8"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label={t("home.addChain")}
           >
             {t("home.addChain")}
           </Button>
@@ -174,6 +197,8 @@ export default function HomePage() {
         bgGradient="linear(to-t, transparent, gray.700)"
         w="full"
         mb={{ base: 8, md: 24 }}
+        role="region"
+        aria-label="Supported Blockchain Networks"
       >
         <Slider alias="first">
           {chains.map((chain) => (
@@ -191,9 +216,10 @@ export default function HomePage() {
               >
                 {chain.icon ? (
                   <Image
-                    alt={chain.value}
+                    alt={`${chain.value} logo`}
                     src={chain.icon}
                     width={{ base: "24px", md: "32px" }}
+                    loading="lazy"
                   />
                 ) : null}
                 <Text fontSize={{ base: "sm", md: "md" }}>{chain.value}</Text>
