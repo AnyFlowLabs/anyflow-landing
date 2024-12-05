@@ -21,23 +21,25 @@ import { Logo } from "./Logo";
 import GithubIcon from "./Icons/Github";
 import { ChangeLanguageMenu } from "./ChangeLanguageMenu";
 import { AOSInit } from "./AOS";
+import { HelmetProvider } from "react-helmet-async";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const { t } = useTranslation();
 
   return (
-    <>
+    <HelmetProvider>
       <AOSInit />
-      <Box>
-        <HStack
-          flexDir={{ base: "column", md: "row" }}
-          // bg="gray.800"
-          bg="transparent"
-          justify="space-between"
-          p={4}
-          gap={{ base: 4, md: 0 }}
-        >
-          <Logo />
+      <HStack
+        as="header"
+        role="banner"
+        flexDir={{ base: "column", md: "row" }}
+        bg="transparent"
+        justify="space-between"
+        p={4}
+        gap={{ base: 4, md: 0 }}
+      >
+        <Logo />
+        <nav>
           <HStack gap={{ base: 4, md: 8 }}>
             <a
               target="_blank"
@@ -57,43 +59,48 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               {t("header.button_github")}
             </Button>
           </HStack>
-        </HStack>
+        </nav>
+      </HStack>
 
-        <Box as="main">{children}</Box>
+      <Box as="main" role="main">
+        {children}
+      </Box>
 
-        <VStack
-          as="footer"
-          mx="auto"
-          maxW="container.lg"
-          px={{ base: 3, md: 6 }}
-          spacing={8}
-          pb={16}
-          pt={32}
-        >
-          <Image src={LogoFooter} alt="Anyflow" />
-          <Flex alignItems="center" justifyContent="center" gap={4}>
-            <Text color="gray.400" fontSize="sm">
-              {t("footer.backedBy.text")}
-            </Text>
-            <a
-              href="https://khizadao.com"
-              title="Khiza DAO"
-              target="_blank"
-              referrerPolicy="no-referrer"
-            >
-              <Image src={KhizaLogo} alt="Khiza logo" h={5} />
-            </a>
-          </Flex>
-          <HStack
-            w="full"
-            gap={6}
-            flexDir={{ base: "column", md: "row" }}
-            justify={{ base: "center", md: "space-between" }}
+      <VStack
+        as="footer"
+        role="contentinfo"
+        mx="auto"
+        maxW="container.lg"
+        px={{ base: 3, md: 6 }}
+        spacing={8}
+        pb={16}
+        pt={32}
+      >
+        <Image src={LogoFooter} alt="Anyflow" />
+        <Flex alignItems="center" justifyContent="center" gap={4}>
+          <Text color="gray.400" fontSize="sm">
+            {t("footer.backedBy.text")}
+          </Text>
+          <a
+            href="https://khizadao.com"
+            title="Khiza DAO"
+            target="_blank"
+            referrerPolicy="no-referrer"
           >
-            <Text fontSize="small" color="gray.300" flex={1}>
-              {t("footer.copyright")}
-            </Text>
-            <ChangeLanguageMenu />
+            <Image src={KhizaLogo} alt="Khiza logo" h={5} />
+          </a>
+        </Flex>
+        <HStack
+          w="full"
+          gap={6}
+          flexDir={{ base: "column", md: "row" }}
+          justify={{ base: "center", md: "space-between" }}
+        >
+          <Text fontSize="small" color="gray.300" flex={1}>
+            {t("footer.copyright")}
+          </Text>
+          <ChangeLanguageMenu />
+          <nav aria-label="Social Media Links">
             <HStack justify={{ base: "center", md: "end" }} gap={4} flex={1}>
               <LinkIcon
                 src={GithubIconSvg}
@@ -116,9 +123,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 url={"https://twitter.com/anyflow_"}
               />
             </HStack>
-          </HStack>
-        </VStack>
-      </Box>
-    </>
+          </nav>
+        </HStack>
+      </VStack>
+    </HelmetProvider>
   );
 }
