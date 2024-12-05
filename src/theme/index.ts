@@ -132,8 +132,8 @@ const customTheme = extendTheme({
 
       "@keyframes twinkle": {
         "0%, 100%": { opacity: 0.3, transform: "scale(1)" },
-        "50%": { opacity: 0.8, transform: "scale(5.5)" }
-      }
+        "50%": { opacity: 0.8, transform: "scale(5.5)" },
+      },
     },
   },
   fonts,
@@ -160,14 +160,14 @@ const customTheme = extendTheme({
       color: "gray.50",
     },
     title: {
-      fontSize: { base: "4xl", md: "5xl" },
+      fontSize: { base: "5xl", md: "5xl" },
       color: "gray.50",
       fontWeight: "bold",
       lineHeight: "1.1",
       textAlign: "center",
     },
     subtitle: {
-      color: "gray.50",
+      color: "gray.200",
       fontSize: { base: "lg", md: "xl" },
       textAlign: "center",
     },
@@ -176,13 +176,13 @@ const customTheme = extendTheme({
     section: {
       bgGradient:
         "linear(to-br, gray.800, transparent, transparent, transparent, transparent)",
-      pt: 12,
       border: "solid 1px",
       borderColor: "gray.500",
       boxShadow: "2xl",
       borderRadius: 20,
       w: "full",
-      p: { base: 8, md: 16 },
+      p: { base: 4, md: 8, lg: 12 },
+      pt: { base: 8, md: 12, lg: 16 },
     },
     sectionDark: {
       bg: "gray.800",
@@ -190,13 +190,12 @@ const customTheme = extendTheme({
         bgGradient:
           "linear(to-br, gray.700, transparent, transparent, transparent, transparent)",
       },
-      pt: 12,
       border: "solid 1px",
       borderColor: "gray.500",
       boxShadow: "2xl",
       borderRadius: 20,
       w: "full",
-      p: { base: 8, md: 16 },
+      p: { base: 6, md: 16, lg: 24 },
     },
     sectionBlack: {
       bg: "gray.900",
@@ -204,13 +203,12 @@ const customTheme = extendTheme({
         bgGradient:
           "linear(to-br, gray.700, transparent, transparent, transparent, transparent)",
       },
-      pt: 12,
       border: "solid 1px",
       borderColor: "gray.500",
       boxShadow: "2xl",
       borderRadius: 20,
       w: "full",
-      p: { base: 8, md: 16 },
+      p: { base: 6, md: 16, lg: 24 },
     },
     sectionLight: {
       bg: "gray.700",
@@ -224,7 +222,7 @@ const customTheme = extendTheme({
       boxShadow: "2xl",
       borderRadius: 20,
       w: "full",
-      p: { base: 8, md: 16 },
+      p: { base: 6, md: 16, lg: 24 },
     },
   },
 });
