@@ -17,6 +17,7 @@ const customTheme = extendTheme({
     global: {
       "html, body": {
         height: "100%",
+        overflowX: "clip",
       },
       body: {
         bg: "gray.700",

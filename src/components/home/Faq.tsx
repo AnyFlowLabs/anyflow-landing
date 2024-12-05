@@ -77,7 +77,10 @@ export default function FacSection() {
                 </Box>
                 <AccordionIcon />
               </AccordionButton>
-              <AccordionPanel pb={4}>{item.answer}</AccordionPanel>
+              <AccordionPanel
+                pb={4}
+                dangerouslySetInnerHTML={{ __html: item.answer }}
+              ></AccordionPanel>
             </AccordionItem>
           ))}
         </Accordion>

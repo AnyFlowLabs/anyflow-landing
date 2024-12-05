@@ -93,7 +93,7 @@ export default function CLIToolSection() {
           </Text>
 
           <Stack
-            direction={{ base: "row", md: "row" }}
+            direction={{ base: "column", md: "row" }}
             gap={{ base: 4, md: 8 }}
             mb={{ base: 4, md: 0 }}
           >

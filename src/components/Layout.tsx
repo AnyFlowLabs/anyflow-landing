@@ -37,6 +37,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         justify="space-between"
         p={4}
         gap={{ base: 4, md: 0 }}
+        w="full"
       >
         <Logo />
         <nav>

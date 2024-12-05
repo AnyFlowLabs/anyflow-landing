@@ -99,7 +99,7 @@ export default function TrustedSection() {
           <VStack layerStyle="section" p={{ base: 4, md: 6 }}>
             <Box w="full" h={{ base: "50px", md: "60px" }}>
               <svg
-                width="146"
+                width="116"
                 height="80"
                 viewBox="0 0 646 96"
                 fill="none"
