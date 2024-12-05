@@ -23,6 +23,11 @@ const buttonTheme = defineStyleConfig({
       px: 8,
       py: 6,
     },
+    xl: {
+      fontSize: "xl",
+      px: { base: 8, md: 16 },
+      py: { base: 4, md: 6 },
+    },
   },
   variants: {
     navbar: (props) => ({

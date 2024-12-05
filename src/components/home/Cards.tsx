@@ -68,9 +68,19 @@ const CardsSection: FC = () => {
 
       const zIndex = 1 + index;
 
+      const opacity = index < Math.ceil(scrollY / windowHeight)
+        ? Math.max(0.5, 1 - easedProgress * 0.5)
+        : 1;
+
+      const blur = index === 1 && scrollY > windowHeight
+        ? `blur(${Math.max(0, 500 - (scrollY - windowHeight) * 0.5)}px)`
+        : index === 0 && scrollY > windowHeight ? 'blur(1000px)' : 'none';
+
       return {
         transform: `translateY(${translateY}px) scale(${scale})`,
         zIndex,
+        opacity,
+        filter: blur,
       };
     },
     [scrollY, windowHeight, isMobile],
@@ -200,7 +210,6 @@ const CardsSection: FC = () => {
               columns={{ base: 1, sm: 2, md: 4 }}
               spacing={{ base: 6, md: 8 }}
               w="full"
-              pb={{ base: 12, md: 48 }}
             >
               <VStack
                 p={{ base: 6, md: 4 }}
@@ -228,6 +237,7 @@ const CardsSection: FC = () => {
                   color="gray.50"
                   fontSize={{ base: "xl", md: "lg" }}
                   mb={{ base: 0, md: 6 }}
+                  fontWeight="light"
                 >
                   {t("home.cards.futureWay.features.oneClick.description")}
                 </Heading>
@@ -352,6 +362,7 @@ const CardsSection: FC = () => {
                   color="gray.50"
                   fontSize={{ base: "xl", md: "lg" }}
                   mb={{ base: 0, md: 6 }}
+                  fontWeight="light"
                 >
                   {t(
                     "home.cards.futureWay.features.automatedSetup.description",
@@ -435,6 +446,7 @@ const CardsSection: FC = () => {
                   color="gray.50"
                   fontSize={{ base: "xl", md: "lg" }}
                   mb={{ base: 0, md: 6 }}
+                  fontWeight="light"
                 >
                   {t("home.cards.futureWay.features.security.description")}
                 </Heading>
@@ -519,6 +531,7 @@ const CardsSection: FC = () => {
                   color="gray.50"
                   fontSize={{ base: "xl", md: "lg" }}
                   mb={{ base: 0, md: 6 }}
+                  fontWeight="light"
                 >
                   {t(
                     "home.cards.futureWay.features.costEfficiency.description",
@@ -722,13 +735,15 @@ const CardsSection: FC = () => {
               </Text>
 
               <Button
+                mt={{ base: 4, md: 8 }}
                 variant="gradient"
-                size="lg"
+                size="xl"
                 as="a"
                 target="_blank"
                 rel="noopener noreferrer"
                 href={BUTTON_GITHUB}
                 boxShadow="2xl"
+                textTransform="uppercase"
               >
                 {t("home.cards.anyflow.cta")}
               </Button>
