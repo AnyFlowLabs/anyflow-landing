@@ -19,7 +19,7 @@ const customTheme = extendTheme({
         height: "100%",
       },
       body: {
-        bg: "gray.800",
+        bg: "gray.700",
         _dark: {
           bg: "gray.700",
         },
@@ -38,74 +38,6 @@ const customTheme = extendTheme({
           bg: "red",
         },
         borderRadius: "8px",
-      },
-      ".glow": {
-        borderRadius: "lg",
-        backgroundImage: "linear-gradient(43deg, brand.700 0%, brand.500 46%)",
-        marginRight: "25px",
-        filter: "brightness(120%)",
-      },
-      ".glow:before": {
-        zIndex: -1,
-        position: "absolute",
-        content: '""',
-        width: "100%",
-        height: "100%",
-        left: "0",
-        top: "0",
-        backgroundColor: "gray.900",
-        backgroundImage:
-          "linear-gradient(43deg, #5Be9ab 0%, #5Be9ab 46%, #55d8e4 100%)",
-        filter: "blur(60px)",
-      },
-      "@keyframes glow": {
-        "0%": {
-          boxShadow:
-            "0 0 5px 0 #e63f66, 0 0 10px 0 #b21e4b, 0 0 50px 0 #b21e4b",
-        },
-        "50%": {
-          boxShadow:
-            "0 0 10px 0 #e63f66, 0 0 20px 0 #b21e4b, 0 0 70px 0 #b21e4b",
-        },
-        "100%": {
-          boxShadow:
-            "0 0 5px 0 #e63f66, 0 0 10px 0 #b21e4b, 0 0 50px 0 #b21e4b",
-        },
-      },
-      "@keyframes cursorMove": {
-        "0%": {
-          transform: "translate(50%, 50%) scale(1)",
-          opacity: 1,
-        },
-        "50%": {
-          transform: "translate(50%, 50%) scale(0.8)",
-          opacity: 0.8,
-        },
-        "100%": {
-          transform: "translate(50%, 50%) scale(1)",
-          opacity: 1,
-        },
-      },
-      "@keyframes progressBar": {
-        "0%": { width: "0%" },
-        "50%": { width: "100%" },
-        "100%": { width: "0%" },
-      },
-      "@keyframes buttonPress": {
-        "0%, 100%": {
-          transform: "scale(1)",
-        },
-        "50%": {
-          transform: "scale(0.95)",
-        },
-      },
-      "@keyframes cursorClick": {
-        "0%, 100%": {
-          transform: "translate(50%, 50%) rotate(-45deg)",
-        },
-        "50%": {
-          transform: "translate(50%, 60%) rotate(-45deg)",
-        },
       },
 
       "@keyframes fadeIn": {

@@ -10,6 +10,7 @@ import {
   Text,
   VStack,
   Container,
+  useBreakpointValue,
 } from "@chakra-ui/react";
 import { CogIcon, ShieldCheckIcon } from "lucide-react";
 import { useTranslation } from "react-i18next";
@@ -21,8 +22,11 @@ const CardsSection: FC = () => {
   const [windowHeight, setWindowHeight] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const animationRef = useRef<number | undefined>(undefined);
+  const isMobile = useBreakpointValue({ base: true, md: false });
 
   useEffect(() => {
+    if (isMobile) return;
+
     setWindowHeight(window.innerHeight);
 
     const handleResize = () => setWindowHeight(window.innerHeight);
@@ -45,12 +49,14 @@ const CardsSection: FC = () => {
       }
       window.removeEventListener("resize", handleResize);
     };
-  }, []);
+  }, [isMobile]);
 
   const easeOutCubic = (t: number): number => 1 - Math.pow(1 - t, 3);
 
   const calculateTransform = useCallback(
     (index: number) => {
+      if (isMobile) return {};
+
       const progress = (scrollY - index * windowHeight) / windowHeight;
       const easedProgress = easeOutCubic(Math.min(Math.max(progress, 0), 1));
 
@@ -60,53 +66,66 @@ const CardsSection: FC = () => {
           : 1;
       const translateY = Math.min(0, -easedProgress * 25);
 
-      // const opacity = 1 - easedProgress * 0.5;
       const zIndex = 1 + index;
 
       return {
         transform: `translateY(${translateY}px) scale(${scale})`,
-        // opacity: isNaN(opacity) ? 0 : opacity,
         zIndex,
       };
     },
-    [scrollY, windowHeight],
+    [scrollY, windowHeight, isMobile],
   );
 
   return (
     <Container
-      maxW={{ base: "container.sm", md: "container.xl" }}
-      my={{ base: 8, md: 12, lg: 16 }}
+      maxW={{ base: "full", md: "container.xl" }}
+      mb={{ base: 44, md: 12, lg: 16 }}
     >
-      <VStack ref={containerRef} w="full" pos="relative" gap={16}>
+      <VStack
+        ref={containerRef}
+        w="full"
+        pos="relative"
+        gap={{ base: 8, md: 16 }}
+      >
         <HStack
           key="the-old-way"
           style={{
             ...calculateTransform(0),
-            position: "sticky",
-            top: "144px",
+            position: isMobile ? "relative" : "sticky",
+            top: "72px",
             transformOrigin: "center top",
             transition: "all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1)",
           }}
           layerStyle="sectionLight"
+          flexDirection={{ base: "column", md: "row" }}
         >
           <VStack align="center" w="full" gap={{ base: 4, md: 8 }}>
             <VStack align="center" gap={{ base: 2, md: 4 }}>
               <Text data-aos="fade-up" textStyle="section">
                 {t("home.cards.oldWay.title")}
               </Text>
-              <Heading data-aos="fade-up" textStyle="title">
+              <Heading data-aos="fade-up" textStyle="title" textAlign="center">
                 {t("home.cards.oldWay.subtitle")}
               </Heading>
-              <Text data-aos="fade-up" textStyle="subtitle">
+              <Text
+                data-aos="fade-up"
+                textStyle="subtitle"
+                textAlign="center"
+                px={4}
+              >
                 {t("home.cards.oldWay.description")}
               </Text>
             </VStack>
 
-            <SimpleGrid columns={{ base: 1, md: 5 }} spacing={4} w="full">
+            <SimpleGrid
+              columns={{ base: 1, sm: 2, md: 5 }}
+              spacing={{ base: 4, md: 6 }}
+              w="full"
+            >
               {[1, 2, 3, 4, 5].map((step) => (
                 <Box
                   key={step}
-                  p={4}
+                  p={{ base: 6, md: 4 }}
                   bgGradient={`linear(to-br, gray.600, transparent, transparent, transparent, transparent)`}
                   borderRadius="xl"
                   border="1px solid"
@@ -116,20 +135,24 @@ const CardsSection: FC = () => {
                   <Text
                     color={step === 5 ? "red" : "gray.100"}
                     fontWeight="light"
-                    fontSize="3xl"
+                    fontSize={{ base: "4xl", md: "3xl" }}
                   >
                     {step === 5 ? "∞" : step}
                   </Text>
                   <Heading
                     color="gray.100"
                     fontWeight="bold"
-                    fontSize={step === 5 ? "2xl" : "xl"}
+                    fontSize={
+                      step === 5
+                        ? { base: "2xl", md: "xl" }
+                        : { base: "xl", md: "lg" }
+                    }
                     mb={3}
                   >
                     {/* @ts-ignore */}
                     {t(`home.cards.oldWay.steps.step${step}.title`)}
                   </Heading>
-                  <Text color="gray.300" fontSize="sm">
+                  <Text color="gray.300" fontSize={{ base: "md", md: "sm" }}>
                     {/* @ts-ignore */}
                     {t(`home.cards.oldWay.steps.step${step}.description`)}
                   </Text>
@@ -143,65 +166,85 @@ const CardsSection: FC = () => {
           key="the-future-way"
           style={{
             ...calculateTransform(1),
-            position: "sticky",
-            top: "144px",
+            position: isMobile ? "relative" : "sticky",
+            top: "72px",
             transformOrigin: "center top",
             transition: "all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1)",
           }}
           layerStyle="sectionDark"
+          flexDirection={{ base: "column", md: "row" }}
         >
           <VStack align="center" w="full" gap={{ base: 4, md: 8 }}>
             <VStack align="center" gap={{ base: 2, md: 4 }}>
               <Text data-aos="fade-up" textStyle="section">
                 {t("home.cards.futureWay.title")}
               </Text>
-              <Heading textStyle="title" data-aos="fade-up">
+              <Heading textStyle="title" data-aos="fade-up" textAlign="center">
                 {t("home.cards.futureWay.subtitle1")}
                 <Text as="span" color="brand.500">
                   {t("home.cards.futureWay.subtitle2")}
                 </Text>
                 {t("home.cards.futureWay.subtitle3")}
               </Heading>
-              <Text textStyle="subtitle" data-aos="fade-up">
+              <Text
+                textStyle="subtitle"
+                data-aos="fade-up"
+                textAlign="center"
+                px={4}
+              >
                 {t("home.cards.futureWay.description")}
               </Text>
             </VStack>
 
             <SimpleGrid
-              columns={{ base: 1, md: 4 }}
-              spacing={6}
+              columns={{ base: 1, sm: 2, md: 4 }}
+              spacing={{ base: 6, md: 8 }}
               w="full"
-              pb={48}
+              pb={{ base: 12, md: 48 }}
             >
-              {/* One-Click Deploy */}
-              <Box
-                p={4}
+              <VStack
+                p={{ base: 6, md: 4 }}
+                pt={{ base: 8, md: 8 }}
                 layerStyle="section"
                 data-aos="fade-up"
                 data-aos-delay={200}
                 overflow="hidden"
                 border="1px solid"
                 borderColor="gray.700"
+                align="center"
+                justify="center"
               >
                 <Heading
                   color="brand.500"
                   fontWeight="bold"
-                  fontSize="xl"
+                  fontSize={{ base: "2xl", md: "xl" }}
                   mb={4}
+                  w="full"
+                  textAlign="left"
                 >
                   {t("home.cards.futureWay.features.oneClick.title")}
                 </Heading>
-                <Heading color="gray.50" fontSize="lg" mb={6}>
+                <Heading
+                  color="gray.50"
+                  fontSize={{ base: "xl", md: "lg" }}
+                  mb={{ base: 0, md: 6 }}
+                >
                   {t("home.cards.futureWay.features.oneClick.description")}
                 </Heading>
 
-                <Box
+                <Flex
+                  display={{ base: "none", md: "flex" }}
                   position="relative"
-                  display="flex"
-                  justifyContent="center"
-                  alignItems="center"
+                  justify="center"
+                  align="center"
+                  h="full"
                 >
-                  <Box position="relative" width="180px" height="180px">
+                  <Box
+                    position="absolute"
+                    bottom={4}
+                    width={{ base: "160px", md: "160px" }}
+                    height={{ base: "160px", md: "160px" }}
+                  >
                     <Box
                       position="absolute"
                       top="0%"
@@ -263,7 +306,7 @@ const CardsSection: FC = () => {
                     >
                       <Heading
                         textStyle="gradient"
-                        fontSize="md"
+                        fontSize={{ base: "lg", md: "2xl" }}
                         fontWeight="bold"
                         animation="fadeInOut 2s infinite"
                       >
@@ -272,7 +315,7 @@ const CardsSection: FC = () => {
                       <Heading
                         bgGradient="linear(to-r, gray.300, gray.400)"
                         bgClip="text"
-                        fontSize="xs"
+                        fontSize={{ base: "sm", md: "sm" }}
                         mt={1}
                         animation="pulse 2s infinite"
                       >
@@ -280,46 +323,53 @@ const CardsSection: FC = () => {
                       </Heading>
                     </Box>
                   </Box>
-                </Box>
-              </Box>
+                </Flex>
+              </VStack>
 
-              {/* Automated Setup */}
-              <Box
-                p={4}
+              <VStack
+                p={{ base: 6, md: 4 }}
+                pt={{ base: 8, md: 8 }}
                 layerStyle="section"
                 data-aos="fade-up"
                 data-aos-delay={200}
                 overflow="hidden"
                 border="1px solid"
                 borderColor="gray.700"
+                align="center"
+                justify="center"
               >
                 <Heading
                   color="brand.500"
                   fontWeight="bold"
-                  fontSize="xl"
+                  fontSize={{ base: "2xl", md: "xl" }}
                   mb={4}
+                  w="full"
+                  textAlign="left"
                 >
                   {t("home.cards.futureWay.features.automatedSetup.title")}
                 </Heading>
-                <Heading color="gray.50" fontSize="lg" mb={6}>
+                <Heading
+                  color="gray.50"
+                  fontSize={{ base: "xl", md: "lg" }}
+                  mb={{ base: 0, md: 6 }}
+                >
                   {t(
                     "home.cards.futureWay.features.automatedSetup.description",
                   )}
                 </Heading>
 
-                <Box
+                <Flex
+                  display={{ base: "none", md: "flex" }}
                   position="relative"
-                  display="flex"
-                  justifyContent="center"
-                  alignItems="center"
+                  justify="center"
+                  align="center"
+                  h="full"
                 >
-                  <Flex
-                    position="relative"
-                    width="180px"
-                    height="180px"
-                    mx="auto"
-                    align="center"
-                    justify="center"
+                  <Box
+                    position="absolute"
+                    bottom={4}
+                    width={{ base: "160px", md: "160px" }}
+                    height={{ base: "160px", md: "160px" }}
                   >
                     <Box
                       position="absolute"
@@ -337,9 +387,8 @@ const CardsSection: FC = () => {
                     />
 
                     <Flex
-                      transform="translate(-50%, -50%)"
-                      w="120px"
-                      h="120px"
+                      w={{ base: "160px", md: "160px" }}
+                      h={{ base: "160px", md: "160px" }}
                       borderRadius="full"
                       bgGradient="linear(to-br, success.500, info.600)"
                       alignItems="center"
@@ -349,46 +398,63 @@ const CardsSection: FC = () => {
                       border="4px solid"
                       borderColor="success.400"
                     >
-                      <Text fontSize="5xl" color="success.50">
+                      <Text
+                        fontSize={{ base: "6xl", md: "5xl" }}
+                        color="success.50"
+                      >
                         <CogIcon size={80} />
                       </Text>
                     </Flex>
-                  </Flex>
-                </Box>
-              </Box>
+                  </Box>
+                </Flex>
+              </VStack>
 
-              {/* Security */}
-              <Box
-                p={4}
+              <VStack
+                p={{ base: 6, md: 4 }}
+                pt={{ base: 8, md: 8 }}
                 layerStyle="section"
                 data-aos="fade-up"
                 data-aos-delay={200}
                 overflow="hidden"
                 border="1px solid"
                 borderColor="gray.700"
+                align="center"
+                justify="center"
               >
                 <Heading
                   color="brand.500"
                   fontWeight="bold"
-                  fontSize="xl"
+                  fontSize={{ base: "2xl", md: "xl" }}
                   mb={4}
+                  w="full"
+                  textAlign="left"
                 >
                   {t("home.cards.futureWay.features.security.title")}
                 </Heading>
-                <Heading color="gray.50" fontSize="lg" mb={6}>
+                <Heading
+                  color="gray.50"
+                  fontSize={{ base: "xl", md: "lg" }}
+                  mb={{ base: 0, md: 6 }}
+                >
                   {t("home.cards.futureWay.features.security.description")}
                 </Heading>
 
-                <Box
+                <Flex
+                  display={{ base: "none", md: "flex" }}
                   position="relative"
-                  display="flex"
-                  justifyContent="center"
-                  alignItems="center"
+                  justify="center"
+                  align="center"
+                  h="full"
                 >
-                  <Box position="relative" width="180px" height="180px">
+                  <Box
+                    position="absolute"
+                    bottom={4}
+                    width={{ base: "160px", md: "160px" }}
+                    height={{ base: "160px", md: "160px" }}
+                  >
                     <Box
                       position="absolute"
-                      top="0%"
+                      top="25%"
                       left="25%"
                       borderRadius="50%"
                       width="150%"
@@ -402,12 +468,11 @@ const CardsSection: FC = () => {
                     />
 
                     <Flex
-                      transform="translate(-50%, -50%)"
-                      w="120px"
+                      w={{ base: "160px", md: "160px" }}
                       mx="auto"
                       align="center"
                       justify="center"
-                      h="120px"
+                      h={{ base: "160px", md: "160px" }}
                       borderRadius="full"
                       bgGradient="linear(to-br, transparent, info.500)"
                       animation="pulse 2s infinite"
@@ -417,8 +482,8 @@ const CardsSection: FC = () => {
                         top: "-2px",
                         left: "-2px",
                         position: "absolute",
-                        w: "120px",
-                        h: "120px",
+                        w: { base: "160px", md: "160px" },
+                        h: { base: "160px", md: "160px" },
                         borderRadius: "full",
                         border: "2px solid",
                         borderColor: "info.400",
@@ -428,70 +493,13 @@ const CardsSection: FC = () => {
                     >
                       <ShieldCheckIcon size={80} />
                     </Flex>
-
-                    <HStack
-                      spacing={2}
-                      left={-5}
-                      justify="center"
-                      position="absolute"
-                      bottom={-5}
-                      zIndex={10}
-                    >
-                      <Box
-                        px={3}
-                        py={1}
-                        bg="rgba(72, 187, 120, 0.2)"
-                        backdropFilter="blur(8px)"
-                        border="1px solid"
-                        borderColor="green.400"
-                        borderRadius="full"
-                        boxShadow="0 4px 12px rgba(72, 187, 120, 0.2)"
-                      >
-                        <Text fontSize="xs" color="green.200">
-                          {t(
-                            "home.cards.futureWay.features.security.badges.secure",
-                          )}
-                        </Text>
-                      </Box>
-                      <Box
-                        px={3}
-                        py={1}
-                        bg="rgba(66, 153, 225, 0.2)"
-                        backdropFilter="blur(8px)"
-                        border="1px solid"
-                        borderColor="blue.400"
-                        borderRadius="full"
-                        boxShadow="0 4px 12px rgba(66, 153, 225, 0.2)"
-                      >
-                        <Text fontSize="xs" color="blue.200">
-                          {t(
-                            "home.cards.futureWay.features.security.badges.audited",
-                          )}
-                        </Text>
-                      </Box>
-                      <Box
-                        px={3}
-                        py={1}
-                        bg="rgba(159, 122, 234, 0.2)"
-                        backdropFilter="blur(8px)"
-                        border="1px solid"
-                        borderColor="purple.400"
-                        borderRadius="full"
-                        boxShadow="0 4px 12px rgba(159, 122, 234, 0.2)"
-                      >
-                        <Text fontSize="xs" color="purple.200">
-                          {t(
-                            "home.cards.futureWay.features.security.badges.protected",
-                          )}
-                        </Text>
-                      </Box>
-                    </HStack>
                   </Box>
-                </Box>
-              </Box>
+                </Flex>
+              </VStack>
 
               <Box
-                p={4}
+                p={{ base: 6, md: 4 }}
+                pt={{ base: 8, md: 8 }}
                 layerStyle="section"
                 data-aos="fade-up"
                 data-aos-delay={200}
@@ -502,18 +510,28 @@ const CardsSection: FC = () => {
                 <Heading
                   color="brand.500"
                   fontWeight="bold"
-                  fontSize="xl"
+                  fontSize={{ base: "2xl", md: "xl" }}
                   mb={4}
                 >
                   {t("home.cards.futureWay.features.costEfficiency.title")}
                 </Heading>
-                <Heading color="gray.50" fontSize="lg" mb={6}>
+                <Heading
+                  color="gray.50"
+                  fontSize={{ base: "xl", md: "lg" }}
+                  mb={{ base: 0, md: 6 }}
+                >
                   {t(
                     "home.cards.futureWay.features.costEfficiency.description",
                   )}
                 </Heading>
 
-                <Box position="relative" height="160px">
+                <Box
+                  position="relative"
+                  height={{ base: "180px", md: "180px" }}
+                  display={{ base: "none", md: "flex" }}
+                  alignContent="center"
+                  justifyContent="center"
+                >
                   <Box
                     position="absolute"
                     top="0%"
@@ -531,11 +549,9 @@ const CardsSection: FC = () => {
 
                   <Box
                     position="absolute"
-                    top="40%"
-                    left="50%"
-                    transform="translate(-50%, -50%)"
-                    width="154px"
-                    height="154px"
+                    bottom={4}
+                    width={{ base: "160px", md: "160px" }}
+                    height={{ base: "160px", md: "160px" }}
                     borderRadius="50%"
                     bgGradient="linear(to-br, gray.800, transparent)"
                     border="2px solid"
@@ -559,8 +575,8 @@ const CardsSection: FC = () => {
                           top="44%"
                           left="44%"
                           transform={`rotate(${deg}deg) translateY(-60px)`}
-                          width="16px"
-                          height="16px"
+                          width={{ base: "20px", md: "16px" }}
+                          height={{ base: "20px", md: "16px" }}
                           display="flex"
                           alignItems="center"
                           justifyContent="center"
@@ -569,7 +585,7 @@ const CardsSection: FC = () => {
                           backdropFilter="blur(4px)"
                         >
                           <Text
-                            fontSize="sm"
+                            fontSize={{ base: "md", md: "sm" }}
                             fontWeight="bold"
                             color="success.500"
                           >
@@ -591,8 +607,8 @@ const CardsSection: FC = () => {
                     </Box>
                     <Box
                       position="absolute"
-                      width="88px"
-                      height="88px"
+                      width={{ base: "108px", md: "88px" }}
+                      height={{ base: "108px", md: "88px" }}
                       borderRadius="50%"
                       bg="rgba(72, 187, 120, 0.1)"
                       display="flex"
@@ -601,53 +617,15 @@ const CardsSection: FC = () => {
                       border="2px solid"
                       borderColor="green.400"
                     >
-                      <Text fontSize="4xl" fontWeight="bold" color="info.50">
+                      <Text
+                        fontSize={{ base: "5xl", md: "4xl" }}
+                        fontWeight="bold"
+                        color="info.50"
+                      >
                         $
                       </Text>
                     </Box>
                   </Box>
-
-                  <HStack
-                    spacing={2}
-                    left={2}
-                    justify="center"
-                    position="absolute"
-                    bottom={-5}
-                    zIndex={10}
-                  >
-                    <Box
-                      px={3}
-                      py={1}
-                      bg="rgba(72, 187, 120, 0.2)"
-                      backdropFilter="blur(8px)"
-                      border="1px solid"
-                      borderColor="green.400"
-                      borderRadius="full"
-                      boxShadow="0 4px 12px rgba(72, 187, 120, 0.2)"
-                    >
-                      <Text fontSize="xs" color="green.200">
-                        {t(
-                          "home.cards.futureWay.features.costEfficiency.badges.payAsYouGo",
-                        )}
-                      </Text>
-                    </Box>
-                    <Box
-                      px={3}
-                      py={1}
-                      bg="rgba(66, 153, 225, 0.2)"
-                      backdropFilter="blur(8px)"
-                      border="1px solid"
-                      borderColor="blue.400"
-                      borderRadius="full"
-                      boxShadow="0 4px 12px rgba(66, 153, 225, 0.2)"
-                    >
-                      <Text fontSize="xs" color="blue.200">
-                        {t(
-                          "home.cards.futureWay.features.costEfficiency.badges.transparent",
-                        )}
-                      </Text>
-                    </Box>
-                  </HStack>
                 </Box>
               </Box>
             </SimpleGrid>
@@ -658,8 +636,8 @@ const CardsSection: FC = () => {
           key="the-anyflow"
           style={{
             ...calculateTransform(2),
-            position: "sticky",
-            top: "144px",
+            position: isMobile ? "relative" : "sticky",
+            top: "72px",
             transformOrigin: "center top",
             transition: "all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1)",
             width: "100%",
@@ -716,19 +694,30 @@ const CardsSection: FC = () => {
               animation="pulse 5s infinite"
             />
 
-            <VStack align="center" gap={{ base: 2, md: 4 }} zIndex={1} p={24}>
+            <VStack
+              align="center"
+              gap={{ base: 2, md: 4 }}
+              zIndex={1}
+              p={{ base: 8, md: 24 }}
+            >
               <Text textStyle="section">{t("home.cards.anyflow.title")}</Text>
 
               <Heading
                 data-aos="fade-up"
-                fontSize="8xl"
+                fontSize={{ base: "4xl", md: "8xl" }}
                 textAlign="center"
                 color="gray.50"
               >
                 {t("home.cards.anyflow.subtitle")}
               </Heading>
 
-              <Text as="h3" color="gray.50" data-aos="fade-up">
+              <Text
+                as="h3"
+                color="gray.50"
+                data-aos="fade-up"
+                textAlign="center"
+                px={4}
+              >
                 {t("home.cards.anyflow.description")}
               </Text>
 

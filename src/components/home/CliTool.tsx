@@ -69,7 +69,7 @@ export default function CLIToolSection() {
         <Image
           src="/carbon.png"
           alt="Anyflow logo"
-          w={{ base: "0", md: "400px" }}
+          w={{ base: "0", md: "800px" }}
           h={{ base: "0", md: "auto" }}
         />
 
