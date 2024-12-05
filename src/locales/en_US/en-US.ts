@@ -277,7 +277,7 @@ export const en_US = {
           integrate: {
             question: "How can I integrate my blockchain to Anyflow?",
             answer:
-              "We are constantly expanding our solution so we are able to assist more blockchains. Our team is ready to help you. Please, fill out the form inside this LINK, and our team will get back to you.",
+              "We are constantly expanding our solution so we are able to assist more blockchains. Our team is ready to help you. Please, fill out the form inside this <a target='_blank' rel='noreferrer' href='https://forms.gle/5353535353535353'>LINK</a>, and our team will get back to you.",
           },
         },
       },

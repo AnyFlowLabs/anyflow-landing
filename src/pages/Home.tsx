@@ -41,7 +41,7 @@ export default function HomePage() {
             as="h1"
             color="gray.50"
             textAlign="center"
-            fontSize={{ base: "3xl", md: "5xl", lg: "7xl" }}
+            fontSize={{ base: "5xl", md: "5xl", lg: "7xl" }}
             data-aos="fade-up"
             data-aos-anchor-placement="top-bottom"
           >
@@ -53,7 +53,7 @@ export default function HomePage() {
             fontWeight="light"
             as="h2"
             color="gray.50"
-            fontSize={{ base: "xl", md: "2xl" }}
+            fontSize={{ base: "2xl", md: "2xl" }}
             textAlign="center"
             data-aos="fade-up"
             data-aos-anchor-placement="top-bottom"
@@ -89,6 +89,7 @@ export default function HomePage() {
       </Container>
 
       <Container
+        display={{ base: "none", md: "block" }}
         pos="relative"
         minH={{ base: "400px", md: "600px" }}
         maxW={{ base: "full", md: "container.xl" }}
@@ -196,7 +197,7 @@ export default function HomePage() {
         data-aos-delay="200"
         bgGradient="linear(to-t, transparent, gray.700)"
         w="full"
-        mb={{ base: 8, md: 24 }}
+        mb={{ base: 0, md: 12 }}
         role="region"
         aria-label="Supported Blockchain Networks"
       >

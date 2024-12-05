@@ -280,7 +280,7 @@ export const pt_BR = {
           integrate: {
             question: "Como posso integrar minha blockchain ao Anyflow?",
             answer:
-              "Estamos constantemente expandindo nossa solução para atender mais blockchains. Nossa equipe está pronta para ajudá-lo. Por favor, preencha o formulário neste LINK, e nossa equipe entrará em contato com você.",
+              "Estamos constantemente expandindo nossa solução para atender mais blockchains. Nossa equipe está pronta para ajudá-lo. Por favor, preencha o formulário neste <a target='_blank' rel='noreferrer' href='https://forms.gle/5353535353535353'>LINK</a>, e nossa equipe entrará em contato com você.",
           },
         },
       },
