@@ -19,9 +19,20 @@ import TrustedSection from "@/components/home/Trusted";
 import CLIToolSection from "@/components/home/CliTool";
 import TerminalSection from "@/components/home/Terminal";
 import CardsSection from "@/components/home/Cards";
+import { useEffect } from "react";
 
 export default function HomePage() {
   const { t } = useTranslation();
+
+  useEffect(() => {
+    // Add smooth scrolling behavior to the page
+    document.documentElement.style.scrollBehavior = "smooth";
+    
+    return () => {
+      // Clean up by removing smooth scrolling when component unmounts
+      document.documentElement.style.scrollBehavior = "auto";
+    };
+  }, []);
 
   return (
     <>
