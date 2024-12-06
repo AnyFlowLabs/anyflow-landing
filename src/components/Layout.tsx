@@ -20,45 +20,56 @@ import LinkIcon from "@/components/LinkIcon";
 import { Logo } from "./Logo";
 import GithubIcon from "./Icons/Github";
 import { ChangeLanguageMenu } from "./ChangeLanguageMenu";
+import { AOSInit } from "./AOS";
+import { HelmetProvider } from "react-helmet-async";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const { t } = useTranslation();
 
   return (
-    <Box bgGradient="linear(to-l, gray.800, gray.900)">
+    <HelmetProvider>
+      <AOSInit />
       <HStack
+        as="header"
+        role="banner"
         flexDir={{ base: "column", md: "row" }}
-        bg="gray.800"
+        bg="transparent"
         justify="space-between"
         p={4}
         gap={{ base: 4, md: 0 }}
+        w="full"
       >
         <Logo />
-        <HStack gap={{ base: 4, md: 8 }}>
-          <a
-            target="_blank"
-            className="hidden text-white lg:inline"
-            href={DOCS_URL}
-            referrerPolicy="no-referrer"
-          >
-            Docs
-          </a>
-          <Link to={"/chains"}>Chains</Link>
+        <nav>
+          <HStack gap={{ base: 4, md: 8 }}>
+            <a
+              target="_blank"
+              className="hidden text-white lg:inline"
+              href={DOCS_URL}
+              referrerPolicy="no-referrer"
+            >
+              Docs
+            </a>
+            <Link to={"/chains"}>Chains</Link>
 
-          <Button
-            as="a"
-            href={BUTTON_GITHUB}
-            leftIcon={<GithubIcon width={18} height={18} />}
-          >
-            {t("header.button_github")}
-          </Button>
-        </HStack>
+            <Button
+              as="a"
+              href={BUTTON_GITHUB}
+              leftIcon={<GithubIcon width={18} height={18} />}
+            >
+              {t("header.button_github")}
+            </Button>
+          </HStack>
+        </nav>
       </HStack>
 
-      <Box as="main">{children}</Box>
+      <Box as="main" role="main">
+        {children}
+      </Box>
 
       <VStack
         as="footer"
+        role="contentinfo"
         mx="auto"
         maxW="container.lg"
         px={{ base: 3, md: 6 }}
@@ -90,30 +101,32 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             {t("footer.copyright")}
           </Text>
           <ChangeLanguageMenu />
-          <HStack justify={{ base: "center", md: "end" }} gap={4} flex={1}>
-            <LinkIcon
-              src={GithubIconSvg}
-              alt="Github"
-              url={"https://github.com/AnyFlowLabs"}
-            />
-            <LinkIcon
-              src={LinkedinIcon}
-              alt="Linkedin"
-              url={"https://www.linkedin.com/company/anyflowtool/"}
-            />
-            <LinkIcon
-              src={DiscordIcon}
-              alt="Discord"
-              url={"https://discord.gg/aCygGwBWya"}
-            />
-            <LinkIcon
-              src={TwitterIcon}
-              alt="Twitter"
-              url={"https://twitter.com/anyflow_"}
-            />
-          </HStack>
+          <nav aria-label="Social Media Links">
+            <HStack justify={{ base: "center", md: "end" }} gap={4} flex={1}>
+              <LinkIcon
+                src={GithubIconSvg}
+                alt="Github"
+                url={"https://github.com/AnyFlowLabs"}
+              />
+              <LinkIcon
+                src={LinkedinIcon}
+                alt="Linkedin"
+                url={"https://www.linkedin.com/company/anyflowtool/"}
+              />
+              <LinkIcon
+                src={DiscordIcon}
+                alt="Discord"
+                url={"https://discord.gg/aCygGwBWya"}
+              />
+              <LinkIcon
+                src={TwitterIcon}
+                alt="Twitter"
+                url={"https://twitter.com/anyflow_"}
+              />
+            </HStack>
+          </nav>
         </HStack>
       </VStack>
-    </Box>
+    </HelmetProvider>
   );
 }

@@ -19,17 +19,18 @@ const custom = definePartsStyle({
     borderWidth: "1px",
     borderColor: "gray.100",
     _dark: {
-      borderColor: "gray.600",
+      borderColor: "gray.500",
     },
-    borderRadius: "4px",
+    borderRadius: 20,
     overflow: "hidden",
   },
   panel: {
     border: "none",
+    padding: 6,
   },
   button: {
     borderWidth: 0,
-    padding: 4,
+    padding: 6,
     borderBottomWidth: 1,
     borderColor: "gray.100",
     _dark: {

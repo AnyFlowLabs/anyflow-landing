@@ -4,215 +4,248 @@ import {
   Heading,
   Text,
   VStack,
-  Flex,
-  Image,
   Button,
-  HStack,
+  Image,
+  Stack,
 } from "@chakra-ui/react";
-import Group from "@/assets/group.svg";
+import { SEO } from "../components/SEO";
+
 import { chains } from "@/data/chains";
 import { useTranslation } from "react-i18next";
 import Slider from "@/components/Slider";
-import { BUTTON_GITHUB, DOCS_URL } from "@/const";
-import GithubIcon from "@/components/Icons/Github";
+import { BUTTON_GITHUB } from "@/const";
+import FacSection from "@/components/home/Faq";
+import TrustedSection from "@/components/home/Trusted";
+import CLIToolSection from "@/components/home/CliTool";
+import TerminalSection from "@/components/home/Terminal";
+import CardsSection from "@/components/home/Cards";
+import { useEffect } from "react";
 
 export default function HomePage() {
   const { t } = useTranslation();
 
+  useEffect(() => {
+    // Add smooth scrolling behavior to the page
+    document.documentElement.style.scrollBehavior = "smooth";
+    
+    return () => {
+      // Clean up by removing smooth scrolling when component unmounts
+      document.documentElement.style.scrollBehavior = "auto";
+    };
+  }, []);
+
   return (
     <>
-      <Container maxW="container.lg">
+      <SEO
+        title={`AnyFlow - ${t("home.title")}`}
+        description={`${t("home.subtitle1")}${t("home.subtitle2")}${t("home.subtitle3")}`}
+      />
+      <Container maxW={{ base: "full", md: "container.xl" }}>
         <VStack
-          h={{ base: "100%", md: "75vh" }}
-          py={{ base: 8, md: "auto" }}
+          py={{ base: 8, md: 12, lg: "auto" }}
           align="center"
           justify="center"
+          spacing={6}
         >
           <Heading
+            maxW="container.lg"
             as="h1"
             color="gray.50"
             textAlign="center"
-            fontSize={{ base: "5xl", md: "8xl" }}
+            fontSize={{ base: "5xl", md: "5xl", lg: "7xl" }}
+            data-aos="fade-up"
+            data-aos-anchor-placement="top-bottom"
           >
-            {t("header.title2")}
+            {t("home.title")}
           </Heading>
 
           <Heading
+            fontFamily="body"
             fontWeight="light"
-            as="h3"
+            as="h2"
             color="gray.50"
-            fontSize="2xl"
+            fontSize={{ base: "2xl", md: "2xl" }}
             textAlign="center"
+            data-aos="fade-up"
+            data-aos-anchor-placement="top-bottom"
           >
             <Text as="span" color="brand.500">
-              {t("header.subtitle1")}
+              {t("home.subtitle1")}
             </Text>
             <Text as="span" color="gray.50">
-              {t("header.subtitle2")}
+              {t("home.subtitle2")}
             </Text>
-            <Text as="span" color="gray.50" fontWeight="bold">
+            <Text as="span" color="gray.50" fontStyle="italic">
               {" "}
-              {t("header.subtitle3")}
+              {t("home.subtitle3")}
             </Text>
           </Heading>
 
-          <Flex
-            w="full"
-            bgGradient="linear(to-tl, gray.900, gray.800)"
-            p={6}
-            mt={{ base: 4, md: 16 }}
-            rounded="md"
-            flexDir={["column", null, "row"]}
-            gap={{ base: 4, md: 16 }}
-            alignItems="center"
-            boxShadow="lg"
+          <Button
+            mt={{ base: 4, md: 6 }}
+            mb={{ base: 8, md: 12 }}
+            data-aos="fade-up"
+            data-aos-anchor-placement="top-bottom"
+            variant="gradient"
+            as="a"
+            size="lg"
+            href={BUTTON_GITHUB}
+            letterSpacing={3}
+            w={{ base: "full", md: "auto" }}
+            aria-label={t("home.cta")}
           >
-            <VStack flex={1} align="stretch" spacing={2}>
-              <Heading color="white" fontSize="lg">
-                {t("form.title")}
-              </Heading>
-              <Text color="gray.100" fontSize="smaller">
-                {t("form.description")}
-              </Text>
-            </VStack>
-            <Button
-              variant="solid"
-              as="a"
-              href="https://docs.google.com/forms/d/e/1FAIpQLSdBLFsdjxCJPuc8X7yEqzrwd-i8cloKxNUkcMMzPY1m6OMb5Q/viewform"
-              target="_blank"
-              referrerPolicy="no-referrer"
-              w={{ base: "full", md: "auto" }}
-            >
-              {t("form.button")}
-            </Button>
-          </Flex>
+            {t("home.cta")}
+          </Button>
         </VStack>
       </Container>
 
-      <Container maxW="container.lg">
-        <Flex flexDir={{ base: "column", md: "row" }} gap={12}>
-          <VStack spacing={6} align={["center", null, "start"]} flex={1}>
-            <Heading color="brand.500" fontWeight="light" fontSize="large">
-              {t("secondSection.info")}
-            </Heading>
-            <Heading as="h3" fontSize="3xl" color="white">
-              {t("secondSection.title")}
-            </Heading>
-            <Text color="gray.200" fontSize="medium">
-              {t("secondSection.subtitle")}
-            </Text>
-            <Button
-              as="a"
-              href={DOCS_URL}
-              target="_blank"
-              variant="outline"
-              w={{ base: "full", md: "auto" }}
-            >
-              {t("header.docs")}
-            </Button>
-          </VStack>
+      <Container
+        display={{ base: "none", md: "block" }}
+        pos="relative"
+        minH={{ base: "400px", md: "600px" }}
+        maxW={{ base: "full", md: "container.xl" }}
+        data-aos="zoom-in"
+        mb={{ base: -24, md: 24 }}
+        role="region"
+        aria-label="Application Preview"
+      >
+        <Container
+          pos="absolute"
+          top={{ base: -4, md: -2 }}
+          left="50%"
+          transform="translateX(-50%) scale(0.8)"
+          maxW={{ base: "full", md: "container.xl" }}
+          bg="gray.600"
+          borderRadius="xl"
+          bgGradient="linear(to-br, gray.800, gray.800, gray.800, transparent, gray.800)"
+          border="solid 1px"
+          borderColor="gray.500"
+          height={{ base: "100px", md: "100px" }}
+          aria-hidden="true"
+        ></Container>
 
-          <Box flex={2}>
-            <Image src={Group} alt="App image" rounded="xl" w="100%" />
+        <Container
+          pos="absolute"
+          top={{ base: -2, md: 2 }}
+          left="50%"
+          transform="translateX(-50%) scale(0.9)"
+          maxW={{ base: "full", md: "container.xl" }}
+          bg="gray.600"
+          borderRadius="xl"
+          bgGradient="linear(to-br, gray.800, gray.800, gray.800, transparent, gray.800)"
+          border="solid 1px"
+          borderColor="gray.500"
+          height={{ base: "100px", md: "100px" }}
+          aria-hidden="true"
+        ></Container>
+
+        <Container
+          pos="absolute"
+          bg="gray.700"
+          top={{ base: "0px", md: "24px" }}
+          left="50%"
+          maxW={{ base: "full", md: "container.xl" }}
+          p={{ base: 2, md: 4 }}
+          borderRadius="xl"
+          border="solid 1px"
+          borderColor="gray.500"
+          transform=" translateX(-50%)"
+          overflow="hidden"
+        >
+          <Box
+            borderRadius="xl"
+            overflow="hidden"
+            height={{ base: "auto", md: "600px", lg: "full" }}
+          >
+            <img
+              src="/anyflow-app.gif"
+              width="100%"
+              height="100%"
+              alt="AnyFlow application demo"
+              loading="lazy"
+            />
           </Box>
-        </Flex>
+        </Container>
       </Container>
 
-      <Container maxW="container.lg" mb={12} mt={24}>
-        <Heading as="h2" textAlign="center" fontSize="2xl" color="white">
-          {t("chains", { q: chains.length })}
-        </Heading>
-      </Container>
-
-      <Slider>
-        {chains.map((chain) => (
-          <Slider.Slide key={chain.value}>
-            <VStack
-              align="center"
-              justify="center"
-              p={4}
-              minW="120px"
-              bg="gray.700"
-              color="gray.50"
-              rounded={8}
-            >
-              {chain.icon ? (
-                <img alt={chain.value} src={chain.icon} width="32px" />
-              ) : null}
-              <Text>{chain.value}</Text>
-            </VStack>
-          </Slider.Slide>
-        ))}
-      </Slider>
-
-      <Container maxW="container.lg">
-        <HStack
-          flexDir={{ base: "column", md: "row" }}
-          mt={20}
-          spacing={4}
-          align="stretch"
+      <Container
+        maxW={{ base: "container.sm", md: "container.xl" }}
+        mb={{ base: 8, md: 12 }}
+        data-aos="fade-up"
+        data-aos-anchor-placement="top-bottom"
+        px={{ base: 4, md: 6 }}
+      >
+        <Stack
+          direction={{ base: "column", md: "row" }}
+          align={{ base: "flex-start", md: "center" }}
+          justify="space-between"
+          spacing={{ base: 4, md: 0 }}
         >
-          <IntegrationDisplay
-            title={t("features.continuousIntegration.title")}
-            description={t("features.continuousIntegration.description")}
-          />
-          <IntegrationDisplay
-            title={t("features.handsOffDeployment.title")}
-            description={t("features.handsOffDeployment.description")}
-          />
-
-          <IntegrationDisplay
-            title={t("features.unifiedCosts.title")}
-            description={t("features.unifiedCosts.description")}
-          />
-        </HStack>
-
-        <HStack
-          my={12}
-          flexDir={{ base: "column", md: "row" }}
-          gap={{ base: 4, md: 8 }}
-        >
-          <Heading flex={1} fontSize="2xl">
-            {t("callToAction")}
+          <Heading
+            as="h2"
+            textStyle="title"
+            fontSize={{ base: "2xl", md: "3xl" }}
+          >
+            {t("chains", { q: chains.length })}
           </Heading>
           <Button
-            leftIcon={<GithubIcon width={18} height={18} />}
-            variant="solid"
+            variant="link"
+            color="brand.500"
             as="a"
-            href={BUTTON_GITHUB}
-            w={{ base: "full", md: "auto" }}
+            href="https://forms.gle/zdcSMhhkCnzz5xpW8"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={t("home.addChain")}
           >
-            {t("githubButton")}
+            {t("home.addChain")}
           </Button>
-        </HStack>
+        </Stack>
       </Container>
+
+      <Box
+        data-aos="fade-up"
+        data-aos-anchor-placement="top-bottom"
+        data-aos-delay="200"
+        bgGradient="linear(to-t, transparent, gray.700)"
+        w="full"
+        mb={{ base: 0, md: 12 }}
+        role="region"
+        aria-label="Supported Blockchain Networks"
+      >
+        <Slider alias="first">
+          {chains.map((chain) => (
+            <Slider.Slide key={chain.value}>
+              <VStack
+                align="center"
+                justify="center"
+                p={{ base: 4, md: 8 }}
+                minW={{ base: "100px", md: "120px" }}
+                bgGradient="linear(to-br, gray.700, gray.800, transparent)"
+                color="gray.50"
+                rounded="xl"
+                border="solid 1px"
+                borderColor="gray.600"
+              >
+                {chain.icon ? (
+                  <Image
+                    alt={`${chain.value} logo`}
+                    src={chain.icon}
+                    width={{ base: "24px", md: "32px" }}
+                    loading="lazy"
+                  />
+                ) : null}
+                <Text fontSize={{ base: "sm", md: "md" }}>{chain.value}</Text>
+              </VStack>
+            </Slider.Slide>
+          ))}
+        </Slider>
+      </Box>
+
+      <CardsSection />
+      <TerminalSection />
+      <CLIToolSection />
+      <TrustedSection />
+      <FacSection />
     </>
   );
 }
-
-export interface IntegrationDisplayProps {
-  title: string;
-  description: string;
-}
-
-export const IntegrationDisplay: React.FC<IntegrationDisplayProps> = ({
-  description,
-  title,
-}) => {
-  return (
-    <VStack
-      justifyContent="space-between"
-      gap={4}
-      borderRadius={8}
-      p={6}
-      bg="gray.700"
-    >
-      <Heading as="h4" fontSize="3xl" flex={1}>
-        {title}
-      </Heading>
-      <Text flex={1} fontSize="smaller">
-        {description}
-      </Text>
-    </VStack>
-  );
-};

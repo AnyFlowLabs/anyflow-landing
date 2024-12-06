@@ -8,9 +8,11 @@ export interface SliderProps extends React.HTMLAttributes<HTMLDivElement> {
   width?: string;
   duration?: number;
   toRight?: boolean;
+  alias: string;
 }
 
 const Slider = ({
+  alias,
   children,
   width = "200px",
   duration = 40,
@@ -21,7 +23,7 @@ const Slider = ({
 
     const keyFrames =
       "\
-        @-webkit-keyframes slider_logo_slider {\
+        @-webkit-keyframes slider_logo_slider_ALIAS {\
             0% {\
                 transform: translateX(0);\
             }\
@@ -29,7 +31,7 @@ const Slider = ({
                 transform: translateX(A_DYNAMIC_VALUE);\
             }\
         }\
-        @-moz-keyframes slider_logo_slider {\
+        @-moz-keyframes slider_logo_slider_ALIAS {\
             0% {\
                 transform: translateX(0);\
             }\
@@ -37,13 +39,15 @@ const Slider = ({
                 transform: translateX(A_DYNAMIC_VALUE);\
             }\
         }";
-    style.innerHTML = keyFrames.replace(
-      /A_DYNAMIC_VALUE/g,
-      `calc(${toRight ? "" : "-"}${width} * ${children!.length})`,
-    );
+    style.innerHTML = keyFrames
+      .replace(
+        /A_DYNAMIC_VALUE/g,
+        `calc(${toRight ? "" : "-"}${width} * ${children!.length})`,
+      )
+      .replace("ALIAS", alias);
 
     document.getElementsByTagName("head")[0].appendChild(style);
-  }, [toRight, width, children]);
+  }, [toRight, width, children, alias]);
 
   return (
     <Box pos="relative">
@@ -52,7 +56,7 @@ const Slider = ({
           gap={4}
           top={0}
           style={{
-            animation: `slider_logo_slider ${duration}s linear infinite`,
+            animation: `slider_logo_slider_${alias} ${duration}s linear infinite`,
           }}
         >
           {children?.map((child, i) => (
