@@ -4,5 +4,4 @@ export const config: ThemeConfig = {
   initialColorMode: "dark",
   disableTransitionOnChange: false,
   cssVarPrefix: "anyflow",
-
 };

@@ -16,6 +16,12 @@ export const en_US = {
         "We are currently in the alpha stage, and we want you to be part of this journey. Request early access and help us shape the future of our platform!",
       button: "Request early access",
     },
+    form: {
+      title: "Stay tuned! Support for Solana is coming soon to AnyFlow!",
+      description:
+        "We are currently in the alpha stage, and we want you to be part of this journey. Request early access and help us shape the future of our platform!",
+      button: "Request early access",
+    },
     chains: "{{q}} Supported Chains",
     features: {
       continuousIntegration: {
