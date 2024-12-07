@@ -153,6 +153,8 @@ export const en_US = {
             },
             step5: {
               title: "Repeat for Each Network",
+              // TODO: I think here we could do something like animate the last
+              // word and make it change to Network/Project/Person
               description:
                 "Duplicate efforts across every network for deployment.",
             },
@@ -328,7 +330,7 @@ export const en_US = {
         },
         xdc: {
           description:
-            "Anyflow Received a grant from the XDC blockchain to expand integrations and advance product development.",
+            "Anyflow Received a grant from the XDC Network to expand integrations and advance product development.",
         },
         solana: {
           description:

@@ -102,7 +102,8 @@ export default function HomePage() {
       <Container
         display={{ base: "none", md: "block" }}
         pos="relative"
-        minH={{ base: "400px", md: "600px" }}
+        // minH={{ base: "400px", md: "600px" }}
+        minH="0"
         maxW={{ base: "full", md: "container.xl" }}
         data-aos="zoom-in"
         mb={{ base: -24, md: 24 }}
@@ -140,7 +141,7 @@ export default function HomePage() {
         ></Container>
 
         <Container
-          pos="absolute"
+          pos="relative"
           bg="gray.700"
           top={{ base: "0px", md: "24px" }}
           left="50%"
@@ -155,7 +156,6 @@ export default function HomePage() {
           <Box
             borderRadius="xl"
             overflow="hidden"
-            height={{ base: "auto", md: "600px", lg: "full" }}
           >
             <img
               src="/anyflow-app.gif"
@@ -168,6 +168,7 @@ export default function HomePage() {
         </Container>
       </Container>
 
+      {/* Chains */}
       <Container
         maxW={{ base: "container.sm", md: "container.xl" }}
         mb={{ base: 8, md: 12 }}
