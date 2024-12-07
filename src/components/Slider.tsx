@@ -1,7 +1,7 @@
 import { Box, Flex } from "@chakra-ui/react";
 import React, { ReactElement, useEffect } from "react";
 
-export interface SlideProps extends React.HTMLAttributes<HTMLDivElement> {}
+export interface SlideProps extends React.HTMLAttributes<HTMLDivElement> { }
 
 export interface SliderProps extends React.HTMLAttributes<HTMLDivElement> {
   children: ReactElement[];
@@ -51,7 +51,7 @@ const Slider = ({
 
   return (
     <Box pos="relative">
-      <Box w="full" h="auto" margin="auto" top={0} overflow="hidden">
+      <Box w="full" h="full" margin="auto" top={0} overflow="hidden">
         <Flex
           gap={4}
           top={0}

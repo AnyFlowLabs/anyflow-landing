@@ -27,7 +27,7 @@ export default function HomePage() {
   useEffect(() => {
     // Add smooth scrolling behavior to the page
     document.documentElement.style.scrollBehavior = "smooth";
-    
+
     return () => {
       // Clean up by removing smooth scrolling when component unmounts
       document.documentElement.style.scrollBehavior = "auto";
@@ -218,13 +218,14 @@ export default function HomePage() {
               <VStack
                 align="center"
                 justify="center"
-                p={{ base: 4, md: 8 }}
-                minW={{ base: "100px", md: "120px" }}
+                p={{ base: 4, md: 6 }}
+                width={{ base: "120px", md: "140px" }}
                 bgGradient="linear(to-br, gray.700, gray.800, transparent)"
                 color="gray.50"
                 rounded="xl"
                 border="solid 1px"
                 borderColor="gray.600"
+                height="full"
               >
                 {chain.icon ? (
                   <Image
@@ -234,7 +235,10 @@ export default function HomePage() {
                     loading="lazy"
                   />
                 ) : null}
-                <Text fontSize={{ base: "sm", md: "md" }}>{chain.value}</Text>
+                <Text
+                  align={{ base: "center" }}
+                  fontSize={{ base: "sm", md: "md" }}
+                >{chain.name}</Text>
               </VStack>
             </Slider.Slide>
           ))}

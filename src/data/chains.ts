@@ -19,7 +19,7 @@ export type ChainDef = {
 
 export const chains: ChainDef[] = [
   { name: "Base", value: "baseSepolia", icon: baseIcon },
-  { name: "XDC", value: "xdc", icon: xdcIcon },
+  { name: "XDC Network", value: "xdc", icon: xdcIcon },
   { name: "Ethereum", value: "sepolia", icon: ethereumIcon },
   { name: "BSC", value: "bscTestnet", icon: bscIcon },
   { name: "Polygon", value: "polygonAmoy", icon: polygonIcon },
