@@ -19,7 +19,7 @@ import TrustedSection from "@/components/home/Trusted";
 import CLIToolSection from "@/components/home/CliTool";
 import TerminalSection from "@/components/home/Terminal";
 import CardsSection from "@/components/home/Cards";
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 
 export default function HomePage() {
   const { t } = useTranslation();
@@ -34,12 +34,50 @@ export default function HomePage() {
     };
   }, []);
 
+  // Memoize translations that don't change
+  const seoTitle = useMemo(() => `AnyFlow - ${t("home.title")}`, [t]);
+  const seoDescription = useMemo(
+    () => `${t("home.subtitle1")}${t("home.subtitle2")}${t("home.subtitle3")}`,
+    [t]
+  );
+
+  // Memoize chain slides to prevent unnecessary re-renders
+  const chainSlides = useMemo(
+    () =>
+      chains.map((chain) => (
+        <Slider.Slide key={chain.value}>
+          <VStack
+            align="center"
+            justify="center"
+            p={{ base: 4, md: 6 }}
+            width={{ base: "120px", md: "140px" }}
+            bgGradient="linear(to-br, gray.700, gray.800, transparent)"
+            color="gray.50"
+            rounded="xl"
+            border="solid 1px"
+            borderColor="gray.600"
+            height="full"
+          >
+            {chain.icon ? (
+              <Image
+                alt={`${chain.value} logo`}
+                src={chain.icon}
+                width={{ base: "24px", md: "32px" }}
+                loading="lazy"
+              />
+            ) : null}
+            <Text align={{ base: "center" }} fontSize={{ base: "sm", md: "md" }}>
+              {chain.name}
+            </Text>
+          </VStack>
+        </Slider.Slide>
+      )),
+    [chains]
+  );
+
   return (
     <>
-      <SEO
-        title={`AnyFlow - ${t("home.title")}`}
-        description={`${t("home.subtitle1")}${t("home.subtitle2")}${t("home.subtitle3")}`}
-      />
+      <SEO title={seoTitle} description={seoDescription} />
       <Container maxW={{ base: "full", md: "container.xl" }}>
         <VStack
           py={{ base: 8, md: 12, lg: "auto" }}
@@ -102,7 +140,6 @@ export default function HomePage() {
       <Container
         display={{ base: "none", md: "block" }}
         pos="relative"
-        // minH={{ base: "400px", md: "600px" }}
         minH="0"
         maxW={{ base: "full", md: "container.xl" }}
         data-aos="zoom-in"
@@ -153,10 +190,7 @@ export default function HomePage() {
           transform=" translateX(-50%)"
           overflow="hidden"
         >
-          <Box
-            borderRadius="xl"
-            overflow="hidden"
-          >
+          <Box borderRadius="xl" overflow="hidden">
             <img
               src="/anyflow-app.gif"
               width="100%"
@@ -182,16 +216,12 @@ export default function HomePage() {
           justify="space-between"
           spacing={{ base: 4, md: 0 }}
         >
-          <Heading
-            as="h2"
-            textStyle="title"
-            fontSize={{ base: "2xl", md: "3xl" }}
-          >
+          <Heading as="h2" textStyle="title" fontSize={{ base: "2xl", md: "3xl" }}>
             {t("chains", { q: chains.length })}
           </Heading>
           <Button
-            variant="link"
-            color="brand.500"
+            variant="outline"
+            color="gray.50"
             as="a"
             href="https://forms.gle/zdcSMhhkCnzz5xpW8"
             target="_blank"
@@ -213,37 +243,7 @@ export default function HomePage() {
         role="region"
         aria-label="Supported Blockchain Networks"
       >
-        <Slider alias="first">
-          {chains.map((chain) => (
-            <Slider.Slide key={chain.value}>
-              <VStack
-                align="center"
-                justify="center"
-                p={{ base: 4, md: 6 }}
-                width={{ base: "120px", md: "140px" }}
-                bgGradient="linear(to-br, gray.700, gray.800, transparent)"
-                color="gray.50"
-                rounded="xl"
-                border="solid 1px"
-                borderColor="gray.600"
-                height="full"
-              >
-                {chain.icon ? (
-                  <Image
-                    alt={`${chain.value} logo`}
-                    src={chain.icon}
-                    width={{ base: "24px", md: "32px" }}
-                    loading="lazy"
-                  />
-                ) : null}
-                <Text
-                  align={{ base: "center" }}
-                  fontSize={{ base: "sm", md: "md" }}
-                >{chain.name}</Text>
-              </VStack>
-            </Slider.Slide>
-          ))}
-        </Slider>
+        <Slider alias="first">{chainSlides}</Slider>
       </Box>
 
       <CardsSection />

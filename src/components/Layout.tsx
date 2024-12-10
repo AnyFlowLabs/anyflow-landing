@@ -1,6 +1,5 @@
 import {
   VStack,
-  Image,
   Text,
   HStack,
   Flex,
@@ -22,6 +21,7 @@ import GithubIcon from "./Icons/Github";
 import { ChangeLanguageMenu } from "./ChangeLanguageMenu";
 import { AOSInit } from "./AOS";
 import { HelmetProvider } from "react-helmet-async";
+import { OptimizedImage } from "./OptimizedImage";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const { t } = useTranslation();
@@ -77,9 +77,13 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         pb={16}
         pt={32}
       >
-        <Image src={LogoFooter} alt="Anyflow" />
+        <OptimizedImage 
+          src={LogoFooter} 
+          alt="Anyflow" 
+          cacheKey="logo-footer"
+        />
         <Flex alignItems="center" justifyContent="center" gap={4}>
-          <Text color="gray.400" fontSize="sm">
+          <Text color="gray.300" fontSize="sm">
             {t("footer.backedBy.text")}
           </Text>
           <a
@@ -88,7 +92,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             target="_blank"
             referrerPolicy="no-referrer"
           >
-            <Image src={KhizaLogo} alt="Khiza logo" h={5} />
+            <OptimizedImage 
+              src={KhizaLogo} 
+              alt="Khiza logo" 
+              h={5} 
+              cacheKey="khiza-logo"
+            />
           </a>
         </Flex>
         <HStack
@@ -107,21 +116,25 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 src={GithubIconSvg}
                 alt="Github"
                 url={"https://github.com/AnyFlowLabs"}
+                style={{ width: 24, height: 24 }}
               />
               <LinkIcon
                 src={LinkedinIcon}
                 alt="Linkedin"
                 url={"https://www.linkedin.com/company/anyflowtool/"}
+                style={{ width: 24, height: 24 }}
               />
               <LinkIcon
                 src={DiscordIcon}
                 alt="Discord"
                 url={"https://discord.gg/aCygGwBWya"}
+                style={{ width: 24, height: 24 }}
               />
               <LinkIcon
                 src={TwitterIcon}
                 alt="Twitter"
                 url={"https://twitter.com/anyflow_"}
+                style={{ width: 24, height: 24 }}
               />
             </HStack>
           </nav>

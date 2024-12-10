@@ -1,3 +1,4 @@
+import { Box } from "@chakra-ui/react";
 import React from "react";
 
 export interface IconProps extends React.HTMLAttributes<HTMLImageElement> {
@@ -11,13 +12,14 @@ function handleClick(url: string) {
 }
 
 const LinkIcon: React.FC<IconProps> = ({ src, alt, url, ...props }) => (
-  <img
-    src={src}
-    alt={alt}
-    style={{ cursor: "pointer" }}
-    onClick={() => handleClick(url)}
-    {...props}
-  />
+  <Box cursor="pointer">
+    <img
+      src={src}
+      alt={alt || "link icon"}
+      onClick={() => handleClick(url)}
+      {...props}
+    />
+  </Box>
 );
 
 export default LinkIcon;

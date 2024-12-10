@@ -13,7 +13,7 @@ export const Logo = () => {
     >
       <>
         <LogoFull width={169} height={30} />
-        <Badge bg="brand.500" color="brand.50">
+        <Badge bg="brand.600" color="white">
           BETA
         </Badge>
       </>

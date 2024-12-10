@@ -76,6 +76,7 @@ export default function TrustedSection() {
           <VStack layerStyle="section" p={{ base: 4, md: 6 }}>
             <Box w="full" h={{ base: "50px", md: "60px" }}>
               <Image
+                alt="Builder"
                 ml={-8}
                 w="auto"
                 h={{ base: "140px", md: "140px" }}

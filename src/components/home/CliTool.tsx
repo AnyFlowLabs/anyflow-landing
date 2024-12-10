@@ -67,7 +67,7 @@ export default function CLIToolSection() {
         </Stack>
 
         <Image
-          src="/carbon.png"
+          src="/carbon.webp"
           alt="Anyflow logo"
           w={{ base: "0", md: "800px" }}
           h={{ base: "0", md: "auto" }}
