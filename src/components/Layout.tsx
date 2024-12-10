@@ -1,6 +1,5 @@
 import {
   VStack,
-  Image,
   Text,
   HStack,
   Flex,
@@ -22,6 +21,7 @@ import GithubIcon from "./Icons/Github";
 import { ChangeLanguageMenu } from "./ChangeLanguageMenu";
 import { AOSInit } from "./AOS";
 import { HelmetProvider } from "react-helmet-async";
+import { OptimizedImage } from "./OptimizedImage";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const { t } = useTranslation();
@@ -77,7 +77,11 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         pb={16}
         pt={32}
       >
-        <Image src={LogoFooter} alt="Anyflow" />
+        <OptimizedImage 
+          src={LogoFooter} 
+          alt="Anyflow" 
+          cacheKey="logo-footer"
+        />
         <Flex alignItems="center" justifyContent="center" gap={4}>
           <Text color="gray.300" fontSize="sm">
             {t("footer.backedBy.text")}
@@ -88,7 +92,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             target="_blank"
             referrerPolicy="no-referrer"
           >
-            <Image src={KhizaLogo} alt="Khiza logo" h={5} />
+            <OptimizedImage 
+              src={KhizaLogo} 
+              alt="Khiza logo" 
+              h={5} 
+              cacheKey="khiza-logo"
+            />
           </a>
         </Flex>
         <HStack

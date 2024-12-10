@@ -58,6 +58,24 @@
       content="We streamline web3 DevOps with fast, secure multi-blockchain smart contract deployments in under 5 minutes."
     />
 
+    <!-- Cache Control -->
+    <meta http-equiv="Cache-Control" content="public, max-age=31536000" />
+    <meta http-equiv="Expires" content="31536000" />
+    
+    <!-- Preload Critical Images -->
+    <link rel="preload" as="image" href="/anyflow.svg" />
+    <link rel="preload" as="image" href="/logo-footer.svg" />
+    <link rel="preload" as="image" href="/og-image.png" />
+    
+    <!-- Preconnect to External Domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- DNS Prefetch -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+
+    <!-- Favicons -->
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
     <link rel="icon" href="/anyflow.svg" type="image/svg+xml" />
@@ -65,6 +83,19 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Service Worker Registration -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js').then(registration => {
+            console.log('SW registered:', registration);
+          }).catch(error => {
+            console.log('SW registration failed:', error);
+          });
+        });
+      }
+    </script>
   </head>
 
   <body
