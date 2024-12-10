@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 
 import { ChainDef } from "@/const/chainsApi";
+import { API_URL } from "@/const";
 
 const isNumeric = (value: string) =>
   !isNaN(parseFloat(value)) && isFinite(+value);
 
-const baseUrl = "https://api-staging.anyflow.pro/api/chains";
+const baseUrl = `${API_URL}/api/chains`;
 
 function useAllChains(page: number, filter: string | null = null) {
   const [chains, setChains] = useState<ChainDef[]>([]);

@@ -1,3 +1,4 @@
+import { API_URL } from "@/const";
 import { ChainDef } from "@/const/chainsApi";
 import { useEffect, useState } from "react";
 
@@ -11,7 +12,7 @@ const useChain = (chainId: number) => {
 
       try {
         const response = await fetch(
-          `https://api-staging.anyflow.pro/api/chains/${chainId}`,
+          `${API_URL}/api/chains/${chainId}`,
         );
         const data = await response.json();
         setChain(data);
