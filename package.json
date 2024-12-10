@@ -18,7 +18,6 @@
     "@fontsource/geist-mono": "^5.1.0",
     "@fontsource/geist-sans": "^5.1.0",
     "@fontsource/red-hat-display": "^5.1.0",
-    "@intercom/messenger-js-sdk": "^0.0.14",
     "aos": "^2.3.4",
     "framer-motion": "^11.11.10",
     "i18next": "^23.11.3",
