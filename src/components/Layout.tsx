@@ -79,7 +79,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       >
         <Image src={LogoFooter} alt="Anyflow" />
         <Flex alignItems="center" justifyContent="center" gap={4}>
-          <Text color="gray.400" fontSize="sm">
+          <Text color="gray.300" fontSize="sm">
             {t("footer.backedBy.text")}
           </Text>
           <a
@@ -107,21 +107,25 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 src={GithubIconSvg}
                 alt="Github"
                 url={"https://github.com/AnyFlowLabs"}
+                style={{ width: 24, height: 24 }}
               />
               <LinkIcon
                 src={LinkedinIcon}
                 alt="Linkedin"
                 url={"https://www.linkedin.com/company/anyflowtool/"}
+                style={{ width: 24, height: 24 }}
               />
               <LinkIcon
                 src={DiscordIcon}
                 alt="Discord"
                 url={"https://discord.gg/aCygGwBWya"}
+                style={{ width: 24, height: 24 }}
               />
               <LinkIcon
                 src={TwitterIcon}
                 alt="Twitter"
                 url={"https://twitter.com/anyflow_"}
+                style={{ width: 24, height: 24 }}
               />
             </HStack>
           </nav>

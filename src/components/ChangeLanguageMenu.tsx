@@ -43,8 +43,9 @@ export function ChangeLanguageMenu() {
         <Button
           key={key}
           onClick={() => toggleLanguage(key)}
-          variant={showLanguage === lang.display ? "ghost" : "link"}
-          size="xs"
+          variant={showLanguage === lang.display ? "solid" : "ghost"}
+          bg={showLanguage === lang.display ? "gray.600" : "transparent"}
+          size="sm"
         >
           {lang.display}
         </Button>

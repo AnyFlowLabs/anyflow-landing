@@ -190,8 +190,8 @@ export default function HomePage() {
             {t("chains", { q: chains.length })}
           </Heading>
           <Button
-            variant="link"
-            color="brand.500"
+            variant="outline"
+            color="gray.50"
             as="a"
             href="https://forms.gle/zdcSMhhkCnzz5xpW8"
             target="_blank"
