@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://usepicnic.com/sitemap.xml
+Sitemap: https://anyflow.pro/sitemap.xml
