@@ -247,8 +247,8 @@ export default function HomePage() {
       </Box>
 
       <CardsSection />
-      <TerminalSection />
-      <CLIToolSection />
+      {/* <TerminalSection /> */}
+      {/* <CLIToolSection /> */}
       <TrustedSection />
       <FacSection />
     </>
