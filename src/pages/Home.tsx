@@ -16,8 +16,8 @@ import Slider from "@/components/Slider";
 import { BUTTON_GITHUB } from "@/const";
 import FacSection from "@/components/home/Faq";
 import TrustedSection from "@/components/home/Trusted";
-import CLIToolSection from "@/components/home/CliTool";
-import TerminalSection from "@/components/home/Terminal";
+// import CLIToolSection from "@/components/home/CliTool";
+// import TerminalSection from "@/components/home/Terminal";
 import CardsSection from "@/components/home/Cards";
 import { useEffect, useMemo } from "react";
 
