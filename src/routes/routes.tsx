@@ -3,6 +3,8 @@ import Chains from "@/pages/Chains";
 import { createBrowserRouter } from "react-router-dom";
 import ChainDetails from "@/pages/ChainDetails";
 import Layout from "@/components/Layout";
+import RewardsPage from "@/pages/Rewards/RewardsPage";
+import LandingPageLayout from "@/components/LandingPageLayout";
 
 export const router = createBrowserRouter([
   {
@@ -11,6 +13,14 @@ export const router = createBrowserRouter([
       <Layout>
         <HomePage />
       </Layout>
+    ),
+  },
+  {
+    path: "/rewards",
+    element: (
+      <LandingPageLayout>
+        <RewardsPage />
+      </LandingPageLayout>
     ),
   },
   {

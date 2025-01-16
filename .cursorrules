@@ -1,0 +1,89 @@
+# Cursor Rules for Frontend Development
+
+## Core Development Principles
+- Write clean, maintainable code following React best practices
+- Use TypeScript for type safety and better developer experience
+- Implement functional components with React hooks
+- Follow component composition patterns
+- Optimize for performance and accessibility
+
+## Chakra UI Guidelines
+
+### Component Development
+1. Always use TypeScript with Chakra UI components
+2. Leverage Chakra's built-in component composition
+3. Utilize native accessibility features
+4. Apply semantic HTML using the 'as' prop
+5. Support dark/light modes with useColorMode
+6. Build responsive layouts with Chakra's responsive syntax
+7. Follow performance best practices (lazy loading, memoization)
+8. Use Chakra's responsive syntax for responsive layouts
+9. Use Lucide icons for icons
+
+## TypeScript Standards
+
+### Naming Conventions
+- Components: PascalCase (UserProfile)
+- Variables/Functions: camelCase (getUserData)
+- Files/Directories: kebab-case (user-profile)
+- Constants/Env: UPPERCASE (API_URL)
+- Boolean variables: use verb prefix (isLoading, hasError)
+- Use complete words except for common abbreviations (API, URL, i/j for loops)
+
+### Function Guidelines
+- Keep functions small and focused (max 20 lines)
+- Use descriptive verb-based names (fetchUserData)
+- Implement early returns to reduce nesting
+- Prefer higher-order functions (map, filter, reduce)
+- Use arrow functions for simple operations
+- Accept objects for multiple parameters (RO-RO pattern)
+- Maintain single responsibility principle
+
+### Type Safety
+- Avoid 'any' type - create custom types/interfaces
+- Use TypeScript's strict mode
+- Define explicit return types
+- Create reusable type definitions
+- Use generics when appropriate
+
+### Component Structure
+- Separate business logic from UI
+- Use custom hooks for reusable logic
+- Implement proper prop typing
+- Handle loading and error states
+- Follow container/presenter pattern when useful
+
+### State Management
+- Use appropriate React hooks (useState, useReducer)
+- Implement context for global state
+- Keep state as local as possible
+- Use immutable state updates
+- Consider performance implications
+
+### Error Handling
+- Implement proper error boundaries
+- Use try/catch for async operations
+- Display user-friendly error messages
+- Log errors appropriately
+- Handle edge cases gracefully
+
+### Code Organization
+- Group related components
+- Maintain consistent file structure
+- Use barrel exports (index.ts)
+- Separate utilities and constants
+- Keep shared types in dedicated files
+
+### Testing
+- Write unit tests for components
+- Test custom hooks independently
+- Implement integration tests
+- Use React Testing Library
+- Maintain good test coverage
+
+### Performance
+- Implement code splitting
+- Use proper memoization
+- Optimize re-renders
+- Lazy load components
+- Monitor bundle size
