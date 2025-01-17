@@ -197,12 +197,12 @@ const HeroSection = () => {
             position="relative"
           >
             <Box
-              bg="rgba(0,0,0,0.1)"
+              // bg="rgba(0,0,0,0.1)"
               data-aos="flip-right"
               data-aos-delay={100}
             >
               <Image
-                src="/rewards/bg.jpg"
+                src="/rewards/hero.webp"
                 alt="Smart Contract Deployment"
                 width="full"
                 height="auto"
@@ -236,8 +236,8 @@ const HeroSection = () => {
 
             <HStack
               position="absolute"
-              top={80}
-              right={-16}
+              top={40}
+              right={-24}
               align="center"
               justify="center"
               p={{ base: 4, md: 4 }}
@@ -276,7 +276,7 @@ const HeroSection = () => {
 
             <HStack
               position="absolute"
-              bottom={40}
+              bottom={20}
               left={-8}
               align="center"
               justify="center"
