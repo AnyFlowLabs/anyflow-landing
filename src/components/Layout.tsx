@@ -1,11 +1,4 @@
-import {
-  VStack,
-  Text,
-  HStack,
-  Flex,
-  Box,
-  Button,
-} from "@chakra-ui/react";
+import { VStack, Text, HStack, Flex, Box, Button } from "@chakra-ui/react";
 import LogoFooter from "@/assets/logo-footer.svg";
 import KhizaLogo from "@/assets/khiza.svg";
 import GithubIconSvg from "@/assets/github.svg";
@@ -22,6 +15,7 @@ import { ChangeLanguageMenu } from "./ChangeLanguageMenu";
 import { AOSInit } from "./AOS";
 import { HelmetProvider } from "react-helmet-async";
 import { OptimizedImage } from "./OptimizedImage";
+import ElonMuskIcon from "./Icons/XIcon";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const { t } = useTranslation();
@@ -77,11 +71,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         pb={16}
         pt={32}
       >
-        <OptimizedImage 
-          src={LogoFooter} 
-          alt="Anyflow" 
-          cacheKey="logo-footer"
-        />
+        <OptimizedImage src={LogoFooter} alt="Anyflow" cacheKey="logo-footer" />
         <Flex alignItems="center" justifyContent="center" gap={4}>
           <Text color="gray.300" fontSize="sm">
             {t("footer.backedBy.text")}
@@ -92,10 +82,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             target="_blank"
             referrerPolicy="no-referrer"
           >
-            <OptimizedImage 
-              src={KhizaLogo} 
-              alt="Khiza logo" 
-              h={5} 
+            <OptimizedImage
+              src={KhizaLogo}
+              alt="Khiza logo"
+              h={5}
               cacheKey="khiza-logo"
             />
           </a>
@@ -130,12 +120,20 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 url={"https://discord.gg/aCygGwBWya"}
                 style={{ width: 24, height: 24 }}
               />
-              <LinkIcon
-                src={TwitterIcon}
-                alt="Twitter"
-                url={"https://twitter.com/anyflow_"}
-                style={{ width: 24, height: 24 }}
-              />
+              <Box
+                as="a"
+                href="https://x.com/anyflow_"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <ElonMuskIcon
+                  style={{
+                    width: 22,
+                    height: 22,
+                    color: "var(--anyflow-colors-gray-400)",
+                  }}
+                />
+              </Box>
             </HStack>
           </nav>
         </HStack>

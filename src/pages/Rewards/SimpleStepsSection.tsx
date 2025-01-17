@@ -131,23 +131,22 @@ const SimpleStepsSection = () => {
                     ))}
                   </VStack>
 
-                  <Box
-                    w="full"
-                    pt={6}
-                    borderTop="1px solid"
-                    borderColor="whiteAlpha.200"
-                  >
-                    <HStack justify="space-between" w="full">
-                      <HStack color="gray.400">
-                        <ClockIcon size={16} />
-                        <Text>{item.time}</Text>
-                      </HStack>
-                      <HStack color="green.400" fontWeight="bold">
-                        <DollarSignIcon size={16} />
-                        <Text>${item.reward}</Text>
-                      </HStack>
+                  <HStack justify="center" w="full">
+                    <HStack color="gray.400" flex={1}>
+                      <ClockIcon size={16} />
+                      <Text>{item.time}</Text>
                     </HStack>
-                  </Box>
+
+                    <Text
+                      bg="green.400"
+                      px={3}
+                      py={1}
+                      borderRadius="full"
+                      fontWeight="bold"
+                    >
+                      Earn $ {item.reward}
+                    </Text>
+                  </HStack>
                 </VStack>
               </VStack>
             ))}

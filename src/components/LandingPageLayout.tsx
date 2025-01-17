@@ -3,7 +3,6 @@ import LogoFooter from "@/assets/logo-footer.svg";
 import KhizaLogo from "@/assets/khiza.svg";
 import GithubIconSvg from "@/assets/github.svg";
 import LinkedinIcon from "@/assets/linkedin.svg";
-import TwitterIcon from "@/assets/twitter.svg";
 import DiscordIcon from "@/assets/discord.svg";
 
 import { useTranslation } from "react-i18next";
@@ -12,6 +11,7 @@ import { ChangeLanguageMenu } from "./ChangeLanguageMenu";
 import { AOSInit } from "./AOS";
 import { HelmetProvider } from "react-helmet-async";
 import { OptimizedImage } from "./OptimizedImage";
+import ElonMuskIcon from "@/components/Icons/XIcon";
 
 export default function LandingPageLayout({
   children,
@@ -87,12 +87,15 @@ export default function LandingPageLayout({
                 url={"https://discord.gg/aCygGwBWya"}
                 style={{ width: 24, height: 24 }}
               />
-              <LinkIcon
-                src={TwitterIcon}
-                alt="Twitter"
-                url={"https://twitter.com/anyflow_"}
-                style={{ width: 24, height: 24 }}
-              />
+              <Box as="a" href="https://x.com/anyflow_" target="_blank" rel="noopener noreferrer">
+                <ElonMuskIcon
+                  style={{
+                    width: 22,
+                    height: 22,
+                    color: "var(--anyflow-colors-gray-400)",
+                  }}
+                />
+              </Box>
             </HStack>
           </nav>
         </HStack>

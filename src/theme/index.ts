@@ -76,6 +76,12 @@ const customTheme = extendTheme({
         "60%": { transform: "translateY(-15px)" },
       },
 
+      "@keyframes bounce": {
+        "0%, 20%, 50%, 80%, 100%": { transform: "translateY(0)" },
+        "40%": { transform: "translateY(-20px)" },
+        "60%": { transform: "translateY(-10spx)" },
+      },
+
       "@keyframes twinkle": {
         "0%, 100%": { opacity: 0.3, transform: "scale(1)" },
         "50%": { opacity: 0.8, transform: "scale(5.5)" },
