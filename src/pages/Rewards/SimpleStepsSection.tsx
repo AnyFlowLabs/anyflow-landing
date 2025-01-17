@@ -18,6 +18,8 @@ import {
   MessageCircleIcon,
   SparklesIcon,
   CodeIcon,
+  Share2Icon,
+  LinkIcon,
 } from "lucide-react";
 import { TitleSection } from "./Components";
 
@@ -152,7 +154,7 @@ const SimpleStepsSection = () => {
             ))}
           </SimpleGrid>
 
-          <VStack spacing={6} pt={8}>
+          <HStack gap={8} color="gray.400" fontSize="md">
             <Button
               size="lg"
               variant="gradient"
@@ -166,21 +168,47 @@ const SimpleStepsSection = () => {
             >
               Start earning now
             </Button>
+            <HStack>
+              <ClockIcon size={18} color="var(--anyflow-colors-info-500)" />
+              <Text color="gray.200">Average completion: 1.5 hours</Text>
+            </HStack>
+            <HStack>
+              <DollarSignIcon
+                size={18}
+                color="var(--anyflow-colors-info-500)"
+              />
+              <Text color="gray.200">Total earnings: up to $70</Text>
+            </HStack>
+          </HStack>
 
-            <HStack
-              spacing={8}
-              color="gray.400"
-              fontSize="md"
-              divider={<Text color="gray.600">•</Text>}
-            >
-              <HStack>
-                <ClockIcon size={18} />
-                <Text>Average completion: 1.5 hours</Text>
-              </HStack>
-              <HStack>
-                <DollarSignIcon size={18} />
-                <Text>Total earnings: up to $70</Text>
-              </HStack>
+          <VStack spacing={8} pt={16} w="full">
+            <TitleSection
+              pre="Referral Program"
+              title="Refer a friend"
+              description="Invite friends who complete the program and earn an additional $10 for each successful referral up to $70 in total rewards"
+            />
+            
+            <HStack spacing={4}>
+              <Button
+                leftIcon={<Share2Icon />}
+                variant="outline"
+                colorScheme="brand"
+                size="lg"
+              >
+                Share on X
+              </Button>
+              <Button
+                leftIcon={<LinkIcon />}
+                variant="outline"
+                colorScheme="brand"
+                size="lg"
+                onClick={() => {
+                  // Add referral link logic here
+                  window.location.href = "/app/welcome?ref=xyz";
+                }}
+              >
+                Copy referral link
+              </Button>
             </HStack>
           </VStack>
         </VStack>

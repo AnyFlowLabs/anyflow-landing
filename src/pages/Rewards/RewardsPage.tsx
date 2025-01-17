@@ -9,6 +9,11 @@ import {
   HStack,
   Circle,
   Divider,
+  Tag,
+  Icon,
+  List,
+  ListItem,
+  ListIcon,
 } from "@chakra-ui/react";
 import {
   ArrowRightIcon,
@@ -22,6 +27,11 @@ import {
   SendIcon,
   FileTextIcon,
   MessageCircleIcon,
+  CheckIcon,
+  CodeIcon,
+  BrainIcon,
+  UserIcon,
+  UserCogIcon,
 } from "lucide-react";
 import CardsSection from "./CardsSection";
 import VercelLikeSection from "./VercelLikeSection";
@@ -30,6 +40,7 @@ import RecommendedSection from "./RecommendedSection";
 import GetStartedSection from "./GetStarted";
 import HeroSection from "./HeroSection";
 import SimpleStepsSection from "./SimpleStepsSection";
+import ProgramRequirementsSection from "./ProgramRequirementsSection";
 
 const RewardsPage = () => {
   return (
@@ -175,6 +186,8 @@ const RewardsPage = () => {
       <GetStartedSection />
 
       <SimpleStepsSection />
+
+      <ProgramRequirementsSection />
     </Box>
   );
 };
