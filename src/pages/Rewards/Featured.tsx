@@ -6,8 +6,7 @@ export const FeaturedSection = () => {
     <HStack align="center" justify="center" gap={{ base: 4, md: 4 }}>
       <Text
         fontSize="sm"
-        fontFamily="heading"
-        color="gray.400"
+        color="gray.300"
         textTransform="uppercase"
         letterSpacing={1}
       >
@@ -22,7 +21,7 @@ export const FeaturedSection = () => {
           transition="all 0.3s ease-in-out"
           p={4}
           borderRadius="lg"
-          bgGradient="linear(to-br, transparent, transparent, gray.800)"
+          bgGradient="linear(to-br, gray.600, transparent, transparent)"
           data-aos="fade-up"
           data-aos-delay="100"
           _hover={{
@@ -44,7 +43,7 @@ export const FeaturedSection = () => {
           transition="all 0.3s ease-in-out"
           p={4}
           borderRadius="lg"
-          bgGradient="linear(to-br, transparent, transparent, gray.800)"
+          bgGradient="linear(to-br, gray.600, transparent, transparent)"
           data-aos="fade-up"
           data-aos-delay="200"
           _hover={{
@@ -162,7 +161,7 @@ export const FeaturedSection = () => {
           transition="all 0.3s ease-in-out"
           p={4}
           borderRadius="lg"
-          bgGradient="linear(to-br, transparent, transparent, gray.800)"
+          bgGradient="linear(to-br, gray.600, transparent, transparent)"
           data-aos="fade-up"
           data-aos-delay="300"
           _hover={{

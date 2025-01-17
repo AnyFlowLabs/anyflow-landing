@@ -6,10 +6,9 @@ import XdcIcon from "@/components/Icons/XDC";
 export const BackedSection = () => {
   return (
     <HStack align="center" justify="center" gap={{ base: 4, md: 8 }}>
-      <Text
+       <Text
         fontSize="sm"
-        fontFamily="heading"
-        color="gray.400"
+        color="gray.300"
         textTransform="uppercase"
         letterSpacing={1}
       >
