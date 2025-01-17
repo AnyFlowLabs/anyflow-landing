@@ -5,9 +5,15 @@ export const TitleSection: FC<{
   pre?: string;
   title: string;
   description?: string;
-}> = ({ pre, title, description }) => {
+  forceAlignLeft?: boolean;
+}> = ({ pre, title, description, forceAlignLeft }) => {
   return (
-    <VStack gap={{ base: 0, md: 0 }} w="full" align="center" justify="center">
+    <VStack
+      gap={{ base: 0, md: 0 }}
+      w="full"
+      align={forceAlignLeft ? "start" : "center"}
+      justify="center"
+    >
       {pre && (
         <Text
           fontSize="xl"
@@ -20,11 +26,21 @@ export const TitleSection: FC<{
           {pre}
         </Text>
       )}
-      <Heading as="h2" textStyle="title" fontSize={{ base: "2xl", md: "5xl" }}>
+      <Heading
+        as="h2"
+        textStyle="title"
+        fontSize={{ base: "2xl", md: "5xl" }}
+        textAlign={forceAlignLeft ? "left" : "center"}
+      >
         {title}
       </Heading>
       {description && (
-        <Text fontSize="xl" color="gray.200">
+        <Text
+          fontSize="xl"
+          color="gray.200"
+          maxW={{ base: "full", md: "container.sm" }}
+          textAlign={forceAlignLeft ? "left" : "center"}
+        >
           {description}
         </Text>
       )}

@@ -30,7 +30,7 @@ import { TitleSection } from "./Components";
 
 const ProgramRequirementsSection = () => {
   return (
-    <Container maxW="container.xl" py={{ base: 4, md: 8 }}>
+    <Container maxW="container.xl" py={{ base: 4, md: 8, lg: 16, xl: 24 }}>
       <VStack spacing={16} align="centers" justify="center" w="full">
         <TitleSection
           pre="Program Requirements"

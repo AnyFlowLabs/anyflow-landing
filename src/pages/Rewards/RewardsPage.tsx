@@ -6,14 +6,6 @@ import {
   SimpleGrid,
   Text,
   VStack,
-  HStack,
-  Circle,
-  Divider,
-  Tag,
-  Icon,
-  List,
-  ListItem,
-  ListIcon,
 } from "@chakra-ui/react";
 import {
   ArrowRightIcon,
@@ -21,17 +13,6 @@ import {
   WalletIcon,
   LayersIcon,
   MessageSquareIcon,
-  ClockIcon,
-  CheckCircleIcon,
-  DollarSignIcon,
-  SendIcon,
-  FileTextIcon,
-  MessageCircleIcon,
-  CheckIcon,
-  CodeIcon,
-  BrainIcon,
-  UserIcon,
-  UserCogIcon,
 } from "lucide-react";
 import CardsSection from "./CardsSection";
 import VercelLikeSection from "./VercelLikeSection";
@@ -42,6 +23,8 @@ import HeroSection from "./HeroSection";
 import SimpleStepsSection from "./SimpleStepsSection";
 import ProgramRequirementsSection from "./ProgramRequirementsSection";
 import RewardsFaqSection from "./RewardsFaqSection";
+import ReadyToEarnSection from "./ReadyToEarnSection";
+import WhyJoinNowSection from "./WhyJoinNowSection";
 
 const RewardsPage = () => {
   return (
@@ -190,7 +173,11 @@ const RewardsPage = () => {
 
       <ProgramRequirementsSection />
 
+      <WhyJoinNowSection />
+
       <RewardsFaqSection />
+
+      <ReadyToEarnSection />
     </Box>
   );
 };

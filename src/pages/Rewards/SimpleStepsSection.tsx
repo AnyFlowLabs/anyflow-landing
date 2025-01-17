@@ -25,13 +25,8 @@ import { TitleSection } from "./Components";
 
 const SimpleStepsSection = () => {
   return (
-    <Box
-      w="full"
-      py={{ base: 16, md: 24 }}
-      position="relative"
-      overflow="hidden"
-    >
-      <Box
+    <Box w="full" py={{ base: 4, md: 8 }} position="relative" overflow="hidden">
+      {/* <Box
         position="absolute"
         top="0"
         left="50%"
@@ -43,7 +38,7 @@ const SimpleStepsSection = () => {
         h={{ base: "full", md: "25vh" }}
         transform="translate(-50%, -50%)"
         opacity="0.5"
-      />
+      /> */}
 
       <Container maxW="container.xl" position="relative">
         <VStack spacing={12} align="center" w="full">
@@ -181,36 +176,49 @@ const SimpleStepsSection = () => {
             </HStack>
           </HStack>
 
-          <VStack spacing={8} pt={16} w="full">
+          <HStack
+            spacing={4}
+            p={{ base: 4, sm: 8, md: 16, lg: 24 }}
+            bg="gray.800"
+            w="full"
+            borderRadius="2xl"
+            border="2px solid"
+            borderColor="rgba(255, 255, 255, 0.1)"
+            backdropFilter="blur(10px)"
+          >
             <TitleSection
               pre="Referral Program"
               title="Refer a friend"
               description="Invite friends who complete the program and earn an additional $10 for each successful referral up to $70 in total rewards"
+              forceAlignLeft
             />
-            
-            <HStack spacing={4}>
-              <Button
-                leftIcon={<Share2Icon />}
-                variant="outline"
-                colorScheme="brand"
-                size="lg"
-              >
-                Share on X
-              </Button>
-              <Button
-                leftIcon={<LinkIcon />}
-                variant="outline"
-                colorScheme="brand"
-                size="lg"
-                onClick={() => {
-                  // Add referral link logic here
-                  window.location.href = "/app/welcome?ref=xyz";
-                }}
-              >
-                Copy referral link
-              </Button>
-            </HStack>
-          </VStack>
+            <Button
+              leftIcon={<Share2Icon />}
+              variant="outline"
+              colorScheme="brand"
+              size="lg"
+              _hover={{
+                transform: "translateY(-2px)",
+              }}
+            >
+              Share on X
+            </Button>
+            <Button
+              leftIcon={<LinkIcon />}
+              variant="subtle"
+              colorScheme="brand"
+              size="lg"
+              _hover={{
+                transform: "translateY(-2px)",
+              }}
+              onClick={() => {
+                // Add referral link logic here
+                window.location.href = "/app/welcome?ref=xyz";
+              }}
+            >
+              Copy referral link
+            </Button>
+          </HStack>
         </VStack>
       </Container>
     </Box>
