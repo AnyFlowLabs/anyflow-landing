@@ -41,6 +41,7 @@ import GetStartedSection from "./GetStarted";
 import HeroSection from "./HeroSection";
 import SimpleStepsSection from "./SimpleStepsSection";
 import ProgramRequirementsSection from "./ProgramRequirementsSection";
+import RewardsFaqSection from "./RewardsFaqSection";
 
 const RewardsPage = () => {
   return (
@@ -188,6 +189,8 @@ const RewardsPage = () => {
       <SimpleStepsSection />
 
       <ProgramRequirementsSection />
+
+      <RewardsFaqSection />
     </Box>
   );
 };
