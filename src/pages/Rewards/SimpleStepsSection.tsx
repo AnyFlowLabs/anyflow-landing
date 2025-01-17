@@ -85,7 +85,7 @@ const SimpleStepsSection = () => {
                 key={index}
                 p={10}
                 bgGradient="linear(to-br, transparent, transparent, transparent, transparent, gray.800)"
-                borderRadius="2xl"
+                borderRadius="lg"
                 border="2px solid"
                 borderColor="rgba(255, 255, 255, 0.1)"
                 spacing={8}
@@ -181,7 +181,7 @@ const SimpleStepsSection = () => {
             p={{ base: 4, sm: 8, md: 16, lg: 24 }}
             bg="gray.800"
             w="full"
-            borderRadius="2xl"
+            borderRadius="lg"
             border="2px solid"
             borderColor="rgba(255, 255, 255, 0.1)"
             backdropFilter="blur(10px)"

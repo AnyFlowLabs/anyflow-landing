@@ -80,7 +80,7 @@ const HeroSection = () => {
                 bg="rgba(255,255,255,0.1)"
                 px={4}
                 py={2}
-                borderRadius="md"
+                borderRadius="lg"
                 data-aos="fade-up"
                 data-aos-delay={100}
               >
@@ -206,7 +206,7 @@ const HeroSection = () => {
                 alt="Smart Contract Deployment"
                 width="full"
                 height="auto"
-                borderRadius="2xl"
+                borderRadius="lg"
                 objectFit="cover"
                 transition="all 0.6s ease-in-out"
                 _hover={{
@@ -221,7 +221,7 @@ const HeroSection = () => {
               align="center"
               justify="center"
               p={{ base: 4, md: 4 }}
-              borderRadius="md"
+              borderRadius="lg"
               border="solid 1px"
               boxShadow="2xl"
               bg="rgba(255,255,255,0.1)"
@@ -241,7 +241,7 @@ const HeroSection = () => {
               align="center"
               justify="center"
               p={{ base: 4, md: 4 }}
-              borderRadius="md"
+              borderRadius="lg"
               border="solid 1px"
               boxShadow="2xl"
               bg="rgba(255,255,255,0.1)"
@@ -261,7 +261,7 @@ const HeroSection = () => {
               align="center"
               justify="center"
               p={{ base: 4, md: 4 }}
-              borderRadius="md"
+              borderRadius="lg"
               border="solid 1px"
               boxShadow="2xl"
               bg="rgba(255,255,255,0.1)"
@@ -281,7 +281,7 @@ const HeroSection = () => {
               align="center"
               justify="center"
               p={{ base: 4, md: 4 }}
-              borderRadius="md"
+              borderRadius="lg"
               border="solid 1px"
               boxShadow="2xl"
               bg="rgba(255,255,255,0.1)"

@@ -30,7 +30,7 @@ const WhyJoinNowSection = () => {
       maxW="full"
       mx={{ base: 4, sm: 8, md: 12, lg: 12, xl: 12 }}
       bg="brand.700"
-      borderRadius="2xl"
+      borderRadius="lg"
     >
       <Container maxW="container.xl" py={{ base: 12, sm: 16, md: 24, lg: 32 }}>
         <VStack spacing={12} align="center">
@@ -50,7 +50,7 @@ const WhyJoinNowSection = () => {
             <VStack
               bg={cardBg}
               p={8}
-              borderRadius="xl"
+              borderRadius="lg"
               boxShadow="lg"
               spacing={6}
               align="start"
@@ -80,7 +80,7 @@ const WhyJoinNowSection = () => {
             <VStack
               bg={cardBg}
               p={8}
-              borderRadius="xl"
+              borderRadius="lg"
               boxShadow="lg"
               spacing={6}
               align="start"
@@ -105,7 +105,7 @@ const WhyJoinNowSection = () => {
             <VStack
               bg={cardBg}
               p={8}
-              borderRadius="xl"
+              borderRadius="lg"
               boxShadow="lg"
               spacing={6}
               align="start"
@@ -130,7 +130,7 @@ const WhyJoinNowSection = () => {
             <VStack
               bg={cardBg}
               p={8}
-              borderRadius="xl"
+              borderRadius="lg"
               boxShadow="lg"
               spacing={6}
               align="start"
