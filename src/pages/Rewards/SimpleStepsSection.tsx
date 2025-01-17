@@ -7,184 +7,186 @@ import {
   VStack,
   HStack,
   Circle,
+  Box,
 } from "@chakra-ui/react";
 import {
-  ArrowRightIcon,
   UsersIcon,
   ClockIcon,
   CheckCircleIcon,
   DollarSignIcon,
-  SendIcon,
   FileTextIcon,
   MessageCircleIcon,
+  SparklesIcon,
+  CodeIcon,
 } from "lucide-react";
 import { TitleSection } from "./Components";
 
 const SimpleStepsSection = () => {
   return (
-    <Container maxW="container.xl" py={{ base: 8, md: 16 }}>
-      <VStack spacing={8} align="center" w="full">
-        <TitleSection
-          pre="Reward Program"
-          title="3 simple steps to earn rewards"
-          description="Complete all steps to earn up to $70 in rewards. Most developers finish in under 2 hours!"
-        />
+    <Box
+      w="full"
+      py={{ base: 16, md: 24 }}
+      position="relative"
+      overflow="hidden"
+    >
+      <Box
+        position="absolute"
+        top="0"
+        left="50%"
+        right="0"
+        bottom="0"
+        bgGradient="radial(circle at 50% 0%, transparent 0%, info.600 70%, transparent 100%)"
+        filter="blur(100px)"
+        w={{ base: "full", md: "25vw" }}
+        h={{ base: "full", md: "25vh" }}
+        transform="translate(-50%, -50%)"
+        opacity="0.5"
+      />
 
-        <SimpleGrid columns={{ base: 1, md: 3 }} spacing={8} w="full" pt={8}>
-          <VStack
-            p={8}
-            bg="whiteAlpha.50"
-            borderRadius="xl"
-            border="1px solid"
-            borderColor="whiteAlpha.200"
-            spacing={6}
-            align="start"
-            position="relative"
-            transition="all 0.3s"
-            _hover={{ transform: "translateY(-4px)" }}
-          >
-            <Circle size={8} bg="brand.500" color="white" fontSize="xl">
-              1
-            </Circle>
+      <Container maxW="container.xl" position="relative">
+        <VStack spacing={12} align="center" w="full">
+          <TitleSection
+            pre="Reward Program"
+            title="3 simple steps to earn rewards"
+            description="Complete all steps to earn up to $70 in rewards. Most developers finish in under 2 hours!"
+          />
 
-            <VStack align="start" spacing={4}>
-              <Heading size="md" color="white">
-                Deploy Contract
-              </Heading>
-
-              <VStack align="start" spacing={3}>
-                <HStack color="gray.300">
-                  <SendIcon size={16} />
-                  <Text>Deploy to XDC Network</Text>
+          <SimpleGrid columns={{ base: 1, md: 3 }} spacing={8} w="full">
+            {[
+              {
+                step: 1,
+                title: "Deploy Contract",
+                tasks: [
+                  { icon: CodeIcon, text: "Deploy to XDC Network" },
+                  { icon: FileTextIcon, text: "Quick feedback form" },
+                ],
+                time: "20 min",
+                reward: 10,
+              },
+              {
+                step: 2,
+                title: "Detailed Feedback",
+                tasks: [
+                  { icon: CheckCircleIcon, text: "Complete survey" },
+                  { icon: MessageCircleIcon, text: "Improvement ideas" },
+                ],
+                time: "30 min",
+                reward: 20,
+              },
+              {
+                step: 3,
+                title: "Quick Interview",
+                tasks: [
+                  { icon: MessageCircleIcon, text: "Feedback discussion" },
+                  { icon: UsersIcon, text: "Experience sharing" },
+                ],
+                time: "30 min",
+                reward: 40,
+              },
+            ].map((item, index) => (
+              <VStack
+                key={index}
+                p={10}
+                bgGradient="linear(to-br, transparent, transparent, transparent, transparent, gray.800)"
+                borderRadius="2xl"
+                border="2px solid"
+                borderColor="rgba(255, 255, 255, 0.1)"
+                spacing={8}
+                align="start"
+                position="relative"
+                transition="all 0.4s ease-in-out"
+                _hover={{
+                  transform: "translateY(-4px)",
+                  boxShadow: "xl",
+                }}
+                backdropFilter="blur(10px)"
+              >
+                <HStack spacing={4} w="full">
+                  <Circle
+                    size={12}
+                    bg="brand.500"
+                    color="white"
+                    fontSize="2xl"
+                    fontWeight="bold"
+                  >
+                    {item.step}
+                  </Circle>
+                  <Heading size="lg" color="white" letterSpacing="tight">
+                    {item.title}
+                  </Heading>
                 </HStack>
-                <HStack color="gray.300">
-                  <FileTextIcon size={16} />
-                  <Text>Quick feedback form</Text>
-                </HStack>
+
+                <VStack align="start" spacing={6} w="full">
+                  <VStack align="start" spacing={4} w="full">
+                    {item.tasks.map((task, i) => (
+                      <HStack
+                        key={i}
+                        color="gray.300"
+                        transition="all 0.3s"
+                        _hover={{ color: "brand.400" }}
+                      >
+                        <task.icon size={18} />
+                        <Text fontSize="lg">{task.text}</Text>
+                      </HStack>
+                    ))}
+                  </VStack>
+
+                  <Box
+                    w="full"
+                    pt={6}
+                    borderTop="1px solid"
+                    borderColor="whiteAlpha.200"
+                  >
+                    <HStack justify="space-between" w="full">
+                      <HStack color="gray.400">
+                        <ClockIcon size={16} />
+                        <Text>{item.time}</Text>
+                      </HStack>
+                      <HStack color="green.400" fontWeight="bold">
+                        <DollarSignIcon size={16} />
+                        <Text>${item.reward}</Text>
+                      </HStack>
+                    </HStack>
+                  </Box>
+                </VStack>
               </VStack>
+            ))}
+          </SimpleGrid>
 
-              <HStack spacing={4} pt={2}>
-                <HStack color="gray.400">
-                  <ClockIcon size={16} />
-                  <Text fontSize="sm">20 min total</Text>
-                </HStack>
-                <HStack color="green.400">
-                  <DollarSignIcon size={16} />
-                  <Text fontSize="sm">Earn $10</Text>
-                </HStack>
+          <VStack spacing={6} pt={8}>
+            <Button
+              size="lg"
+              variant="gradient"
+              rightIcon={<SparklesIcon />}
+              px={12}
+              py={7}
+              fontSize="xl"
+              _hover={{
+                transform: "translateY(-2px)",
+              }}
+            >
+              Start earning now
+            </Button>
+
+            <HStack
+              spacing={8}
+              color="gray.400"
+              fontSize="md"
+              divider={<Text color="gray.600">•</Text>}
+            >
+              <HStack>
+                <ClockIcon size={18} />
+                <Text>Average completion: 1.5 hours</Text>
               </HStack>
-            </VStack>
-          </VStack>
-
-          <VStack
-            p={8}
-            bg="whiteAlpha.50"
-            borderRadius="xl"
-            border="1px solid"
-            borderColor="whiteAlpha.200"
-            spacing={6}
-            align="start"
-            position="relative"
-            transition="all 0.3s"
-            _hover={{ transform: "translateY(-4px)" }}
-          >
-            <Circle size={8} bg="brand.500" color="white" fontSize="xl">
-              2
-            </Circle>
-
-            <VStack align="start" spacing={4}>
-              <Heading size="md" color="white">
-                Detailed Feedback
-              </Heading>
-
-              <VStack align="start" spacing={3}>
-                <HStack color="gray.300">
-                  <CheckCircleIcon size={16} />
-                  <Text>Complete survey</Text>
-                </HStack>
-                <HStack color="gray.300">
-                  <MessageCircleIcon size={16} />
-                  <Text>Improvement ideas</Text>
-                </HStack>
-              </VStack>
-
-              <HStack spacing={4} pt={2}>
-                <HStack color="gray.400">
-                  <ClockIcon size={16} />
-                  <Text fontSize="sm">30 min total</Text>
-                </HStack>
-                <HStack color="green.400">
-                  <DollarSignIcon size={16} />
-                  <Text fontSize="sm">Earn $10</Text>
-                </HStack>
+              <HStack>
+                <DollarSignIcon size={18} />
+                <Text>Total earnings: up to $70</Text>
               </HStack>
-            </VStack>
-          </VStack>
-
-          <VStack
-            p={8}
-            bg="whiteAlpha.50"
-            borderRadius="xl"
-            border="1px solid"
-            borderColor="whiteAlpha.200"
-            spacing={6}
-            align="start"
-            position="relative"
-            transition="all 0.3s"
-            _hover={{ transform: "translateY(-4px)" }}
-          >
-            <Circle size={8} bg="brand.500" color="white" fontSize="xl">
-              3
-            </Circle>
-
-            <VStack align="start" spacing={4}>
-              <Heading size="md" color="white">
-                Quick Interview
-              </Heading>
-
-              <VStack align="start" spacing={3}>
-                <HStack color="gray.300">
-                  <MessageCircleIcon size={16} />
-                  <Text>Feedback discussion</Text>
-                </HStack>
-                <HStack color="gray.300">
-                  <UsersIcon size={16} />
-                  <Text>Experience sharing</Text>
-                </HStack>
-              </VStack>
-
-              <HStack spacing={4} pt={2}>
-                <HStack color="gray.400">
-                  <ClockIcon size={16} />
-                  <Text fontSize="sm">30 min total</Text>
-                </HStack>
-                <HStack color="green.400">
-                  <DollarSignIcon size={16} />
-                  <Text fontSize="sm">Earn $20</Text>
-                </HStack>
-              </HStack>
-            </VStack>
-          </VStack>
-        </SimpleGrid>
-
-        <VStack spacing={4} pt={12}>
-          <Button size="lg" colorScheme="brand" rightIcon={<ArrowRightIcon />}>
-            Start earning now
-          </Button>
-          <HStack spacing={6} color="gray.400" fontSize="sm">
-            <HStack>
-              <ClockIcon size={16} />
-              <Text>Average completion time: 1.5 hours</Text>
             </HStack>
-            <Text>•</Text>
-            <HStack>
-              <DollarSignIcon size={16} />
-              <Text>Total potential earnings: $40</Text>
-            </HStack>
-          </HStack>
+          </VStack>
         </VStack>
-      </VStack>
-    </Container>
+      </Container>
+    </Box>
   );
 };
 
