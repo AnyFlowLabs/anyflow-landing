@@ -1,9 +1,16 @@
 import XdcIcon from "@/components/Icons/XDC";
-import { Text, HStack, Image, Box } from "@chakra-ui/react";
+import { Text, HStack, Image, Box, useMediaQuery } from "@chakra-ui/react";
 
 export const FeaturedSection = () => {
+  const [isMobile] = useMediaQuery("(max-width: 768px)");
+
   return (
-    <HStack align="center" justify="center" gap={{ base: 4, md: 4 }}>
+    <HStack
+      align="center"
+      justify="center"
+      gap={{ base: 4, md: 4 }}
+      flexDir={{ base: "column", md: "row" }}
+    >
       <Text
         fontSize="sm"
         color="gray.300"
@@ -12,14 +19,20 @@ export const FeaturedSection = () => {
       >
         Featured in
       </Text>
-      <HStack flex={1} align="center" justify="start" gap={{ base: 4, md: 4 }}>
+      <HStack
+        flex={1}
+        flexWrap="wrap"
+        align="center"
+        justify="start"
+        gap={{ base: 4, md: 4 }}
+      >
         <Box
           as="a"
           href="https://backdropbuild.com/builds/anyflow-sxo7"
           target="_blank"
           rel="noopener noreferrer"
           transition="all 0.3s ease-in-out"
-          p={4}
+          p={{ base: 2, md: 4 }}
           borderRadius="lg"
           bgGradient="linear(to-br, gray.600, transparent, transparent)"
           data-aos="fade-up"
@@ -31,7 +44,7 @@ export const FeaturedSection = () => {
           <Image
             src="data:image/png;base64,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"
             w="auto"
-            h="44px"
+            h={{base: "36px", md: "44px"}}
           />
         </Box>
 
@@ -41,7 +54,7 @@ export const FeaturedSection = () => {
           target="_blank"
           rel="noopener noreferrer"
           transition="all 0.3s ease-in-out"
-          p={4}
+          p={{ base: 2, md: 4 }}
           borderRadius="lg"
           bgGradient="linear(to-br, gray.600, transparent, transparent)"
           data-aos="fade-up"
@@ -51,8 +64,8 @@ export const FeaturedSection = () => {
           }}
         >
           <svg
-            width="192"
-            height="48"
+            width={isMobile ? "144" : "192"}
+            height={isMobile ? "36" : "48"}
             viewBox="0 0 192 48"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -159,7 +172,7 @@ export const FeaturedSection = () => {
           target="_blank"
           rel="noopener noreferrer"
           transition="all 0.3s ease-in-out"
-          p={4}
+          p={{ base: 2, md: 4 }}
           borderRadius="lg"
           bgGradient="linear(to-br, gray.600, transparent, transparent)"
           data-aos="fade-up"
@@ -169,8 +182,8 @@ export const FeaturedSection = () => {
           }}
         >
           <XdcIcon
-            width={100}
-            height={50}
+            width={isMobile ? 72 : 100}
+            height={isMobile ? 36 : 50}
             data-aos="fade-up"
             data-aos-delay="100"
           />

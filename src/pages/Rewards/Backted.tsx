@@ -5,7 +5,7 @@ import XdcIcon from "@/components/Icons/XDC";
 
 export const BackedSection = () => {
   return (
-    <HStack align="center" justify="center" gap={{ base: 4, md: 8 }}>
+    <HStack align="center" justify="center" gap={{ base: 0, md: 8 }} flexDir={{base: "column", md: "row"}}>
        <Text
         fontSize="sm"
         color="gray.300"

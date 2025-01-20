@@ -41,12 +41,13 @@ const HeroSection = () => {
         >
           <VStack spacing={4} align={{ base: "center", lg: "start" }} flex={1}>
             <Text
-              fontSize="xl"
+              fontSize={{ base: "sm", md: "xl" }}
               bgGradient="linear(to-r, info.400, success.600)"
               bgClip="text"
               fontWeight="bold"
               fontFamily="heading"
               letterSpacing={0.5}
+              textAlign={{ base: "left", md: "center" }}
             >
               Hey web3 developer, ready to shape the future?
             </Text>
@@ -56,7 +57,7 @@ const HeroSection = () => {
               fontSize={{ base: "4xl", lg: "6xl" }}
               lineHeight="shorter"
               color="white"
-              textAlign={{ base: "center", lg: "left" }}
+              textAlign={{ base: "left", lg: "left" }}
               data-aos="fade-up"
             >
               Earn up to{" "}
@@ -71,7 +72,13 @@ const HeroSection = () => {
               testing the future of smart contract deployment
             </Heading>
 
-            <Flex w="full" gap={4} align="center" justify="flex-start">
+            <Flex
+              w="full"
+              flexDir={{ base: "column", md: "row" }}
+              gap={4}
+              align="center"
+              justify="flex-start"
+            >
               <HStack
                 fontSize="xs"
                 letterSpacing={0.5}
@@ -82,6 +89,7 @@ const HeroSection = () => {
                 py={2}
                 borderRadius="lg"
                 data-aos="fade-up"
+                w={{ base: "full", md: "auto" }}
                 data-aos-delay={100}
               >
                 <SquareStackIcon size={16} />
@@ -94,6 +102,7 @@ const HeroSection = () => {
                 color="gray.100"
                 data-aos="fade-up"
                 data-aos-delay={200}
+                w={{ base: "full", md: "auto" }}
               >
                 <Text fontWeight="light" fontFamily="heading" letterSpacing={1}>
                   Trusted by 500+ developers
@@ -129,17 +138,27 @@ const HeroSection = () => {
               py={8}
               rightIcon={<RocketIcon size={24} />}
               data-aos="fade-up"
+              data-aos-delay={300}
+              w={{ base: "full", md: "auto" }}
             >
               Start now
             </Button>
 
-            <HStack spacing={12} pt={8}>
+            <HStack
+              spacing={{ base: 2, md: 12 }}
+              pt={{ base: 2, md: 8 }}
+              w="full"
+              flexDir={{ base: "row", md: "row" }}
+              align={{ base: "start", md: "start" }}
+            >
               <HStack
+                flexDir={{ base: "column", md: "row" }}
                 align="center"
                 gap={2}
                 color="info.500"
                 data-aos="fade-up"
                 data-aos-delay={100}
+                w={{ base: "full", md: "auto" }}
               >
                 <BoltIcon size={24} />
                 <Text
@@ -147,17 +166,20 @@ const HeroSection = () => {
                   fontWeight="light"
                   color="gray.200"
                   fontSize="xs"
-                  letterSpacing={0.25}
+                  letterSpacing={{ base: 0, md: 0.25 }}
+                  textAlign={{ base: "center", md: "left" }}
                 >
                   Setup in 5 minutes
                 </Text>
               </HStack>
               <HStack
+                flexDir={{ base: "column", md: "row" }}
                 align="center"
                 gap={2}
                 color="info.500"
                 data-aos="fade-up"
                 data-aos-delay={100}
+                w={{ base: "full", md: "auto" }}
               >
                 <LockIcon size={24} />
                 <Text
@@ -165,17 +187,20 @@ const HeroSection = () => {
                   fontWeight="light"
                   color="gray.200"
                   fontSize="xs"
-                  letterSpacing={0.25}
+                  letterSpacing={{ base: 0, md: 0.25 }}
+                  textAlign={{ base: "center", md: "left" }}
                 >
                   No wallet connection required
                 </Text>
               </HStack>
               <HStack
+                flexDir={{ base: "column", md: "row" }}
                 align="center"
                 gap={2}
                 color="info.500"
                 data-aos="fade-up"
                 data-aos-delay={100}
+                w={{ base: "full", md: "auto" }}
               >
                 <CoinsIcon size={24} />
                 <Text
@@ -183,7 +208,8 @@ const HeroSection = () => {
                   fontWeight="light"
                   color="gray.200"
                   fontSize="xs"
-                  letterSpacing={0.25}
+                  letterSpacing={{ base: 0, md: 0.25 }}
+                  textAlign={{ base: "center", md: "left" }}
                 >
                   Instant rewards
                 </Text>
@@ -193,8 +219,10 @@ const HeroSection = () => {
 
           <Box
             flex={1}
-            display={{ base: "none", lg: "block" }}
+            display={{ base: "block", lg: "block" }}
             position="relative"
+            mt={{base: 8, md: 0}}
+            w="full"
           >
             <Box
               // bg="rgba(0,0,0,0.1)"
@@ -220,85 +248,88 @@ const HeroSection = () => {
               left={-2}
               align="center"
               justify="center"
-              p={{ base: 4, md: 4 }}
+              p={{ base: 1, md: 4 }}
               borderRadius="lg"
               border="solid 1px"
               boxShadow="2xl"
               bg="rgba(255,255,255,0.1)"
-              animation="bounce2 8s cubic-bezier(0, 0, 0.2, 1) infinite"
+              animation={{ base: "none", md: "bounce2 8s cubic-bezier(0, 0, 0.2, 1) infinite" }}
               color="gray.50"
               borderColor="gray.50"
               backdropFilter="blur(5px)"
+              gap={{ base: 2, md: 4 }}
             >
               <MousePointerIcon size={24} />
-              <Text>One-Click Deploy</Text>
+              <Text fontSize={{ base: "xs", md: "sm" }}>One-Click Deploy</Text>
             </HStack>
 
             <HStack
               position="absolute"
-              top={40}
-              right={-24}
+              top={{ base: 6, md: 40}}
+              right={{ base: 0, md: -16}}
               align="center"
               justify="center"
-              p={{ base: 4, md: 4 }}
+              p={{ base: 1, md: 4 }}
               borderRadius="lg"
               border="solid 1px"
               boxShadow="2xl"
               bg="rgba(255,255,255,0.1)"
-              animation="bounce2 8s cubic-bezier(0, 0, 0.2, 1) infinite"
+              animation={{ base: "none", md: "bounce2 8s cubic-bezier(0, 0, 0.2, 1) infinite" }}
               color="gray.50"
               borderColor="gray.50"
               backdropFilter="blur(5px)"
+              gap={{ base: 2, md: 4 }}
             >
               <CogIcon size={24} />
-              <Text>Automated Setup</Text>
+              <Text fontSize={{ base: "xs", md: "sm" }}>Automated Setup</Text>
             </HStack>
 
             <HStack
               position="absolute"
-              bottom={10}
-              right={-8}
+              bottom={{ base: 16, md: 20}}
+              right={{ base: -2, md: -24}}
               align="center"
               justify="center"
-              p={{ base: 4, md: 4 }}
+              p={{ base: 1, md: 4 }}
               borderRadius="lg"
               border="solid 1px"
               boxShadow="2xl"
               bg="rgba(255,255,255,0.1)"
-              animation="bounce2 8s cubic-bezier(0, 0, 0.2, 1) infinite"
+              animation={{ base: "none", md: "bounce2 8s cubic-bezier(0, 0, 0.2, 1) infinite" }}
               color="gray.50"
               borderColor="gray.50"
               backdropFilter="blur(5px)"
+              gap={{ base: 2, md: 4 }}
             >
               <ShieldIcon size={24} />
-              <Text>Built-in Security</Text>
+              <Text fontSize={{ base: "xs", md: "sm" }}>Built-in Security</Text>
             </HStack>
 
             <HStack
               position="absolute"
               bottom={20}
-              left={-8}
+              left={{ base: -2, md: -8}}
               align="center"
               justify="center"
-              p={{ base: 4, md: 4 }}
+              p={{ base: 1, md: 4 }}
               borderRadius="lg"
               border="solid 1px"
               boxShadow="2xl"
               bg="rgba(255,255,255,0.1)"
-              animation="bounce2 8s cubic-bezier(0, 0, 0.2, 1) infinite"
+              animation={{ base: "none", md: "bounce2 8s cubic-bezier(0, 0, 0.2, 1) infinite" }}
               color="gray.50"
               borderColor="gray.50"
               backdropFilter="blur(5px)"
             >
               <HandCoinsIcon size={24} />
-              <Text>Cost Efficiency</Text>
+              <Text fontSize={{ base: "xs", md: "sm" }}>Cost Efficiency</Text>
             </HStack>
           </Box>
         </Flex>
       </Container>
 
       <Container maxW="container.xl" py={{ base: 4, md: 8 }}>
-        <HStack spacing={16} w="full" align="center" justify="center">
+        <HStack spacing={{ base: 4, md: 16 }} w="full" align="center" justify="center" flexDir={{base: "column", md: "row"}}>
           <BackedSection />
           <FeaturedSection />
         </HStack>
