@@ -5,6 +5,7 @@ const SvgComponent = (props: SVGProps<SVGSVGElement>) => (
     xmlns="http://www.w3.org/2000/svg"
     width="1em"
     height="1em"
+    viewBox="0 0 42 42"
     className="fill-current text-blue-500 group-hover/logo:text-blue-600"
     {...props}
   >

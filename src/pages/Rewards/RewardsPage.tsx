@@ -31,7 +31,7 @@ import ModalClose from "./ModalClose";
 const RewardsPage = () => {
   return (
     <Box as="main">
-      <ModalClose />
+      {/* <ModalClose /> */}
       <HeroSection />
 
       <VercelLikeSection />

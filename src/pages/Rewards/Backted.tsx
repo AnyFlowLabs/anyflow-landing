@@ -1,12 +1,19 @@
-import { HStack, Text } from "@chakra-ui/react";
+import { HStack, Image, Text } from "@chakra-ui/react";
 
 import QuickNodeIcon from "@/components/Icons/QuickNode";
 import XdcIcon from "@/components/Icons/XDC";
+import KhizaLogo from "@/assets/khiza.svg";
 
 export const BackedSection = () => {
   return (
-    <HStack align="center" justify="center" gap={{ base: 0, md: 8 }} flexDir={{base: "column", md: "row"}}>
-       <Text
+    <HStack
+      align="center"
+      justify="center"
+      gap={{ base: 0, md: 4 }}
+      flexDir={{ base: "column", md: "row" }}
+      flex={1}
+    >
+      <Text
         fontSize="sm"
         color="gray.300"
         textTransform="uppercase"
@@ -14,10 +21,28 @@ export const BackedSection = () => {
       >
         Backed by industry leaders
       </Text>
-      <HStack flex={1} align="center" justify="center" gap={{ base: 4, md: 8 }}>
-        <QuickNodeIcon width={50} height={50} data-aos="fade-up" data-aos-delay="100" />
+      <HStack flex={1} align="center" justify="center" gap={{ base: 2, md: 4 }}>
+        <a
+          href="https://khizadao.com"
+          title="Khiza DAO"
+          target="_blank"
+          referrerPolicy="no-referrer"
+        >
+          <Image src={KhizaLogo} alt="Khiza logo" h={8} />
+        </a>
+        <QuickNodeIcon
+          width="40px"
+          height="40px"
+          data-aos="fade-up"
+          data-aos-delay="100"
+        />
 
-        <XdcIcon width={100} height={50} data-aos="fade-up" data-aos-delay="200" />
+        <XdcIcon
+          width={100}
+          height={50}
+          data-aos="fade-up"
+          data-aos-delay="200"
+        />
 
         <svg
           width="116"

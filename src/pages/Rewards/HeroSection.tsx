@@ -282,24 +282,24 @@ const HeroSection = () => {
             w="full"
           >
             <Box
-              // bg="rgba(0,0,0,0.1)"
-              data-aos="flip-right"
-              data-aos-delay={100}
-            >
-              <Image
-                src="/rewards/hero.webp"
-                alt="Smart Contract Deployment"
-                width="full"
-                height="auto"
-                borderRadius="lg"
-                objectFit="cover"
-                transition="all 0.6s ease-in-out"
-                _hover={{
-                  filter: "blur(4px)",
-                }}
-              />
-            </Box>
-            <HStack
+              as="video"
+              src="/hero.mp4"
+              autoPlay
+              loop
+              muted
+              playsInline
+              width="full"
+              height="auto"
+              borderRadius="lg"
+              objectFit="cover"
+              transition="all 0.6s ease-in-out"
+              // _hover={{
+              //   filter: "blur(4px)",
+              // }}
+              border="solid 2px"
+              borderColor="rgba(255,255,255,0.1)"
+            />
+            {/* <HStack
               position="absolute"
               top={8}
               left={-2}
@@ -349,7 +349,7 @@ const HeroSection = () => {
 
             <HStack
               position="absolute"
-              bottom={{ base: 16, md: 20 }}
+              bottom={{ base: 16, md: 2 }}
               right={{ base: -2, md: -24 }}
               align="center"
               justify="center"
@@ -392,14 +392,14 @@ const HeroSection = () => {
             >
               <HandCoinsIcon size={24} />
               <Text fontSize={{ base: "xs", md: "sm" }}>Cost Efficiency</Text>
-            </HStack>
+            </HStack> */}
           </Box>
         </Flex>
       </Container>
 
       <Container maxW="container.xl" py={{ base: 4, md: 8 }}>
         <HStack
-          spacing={{ base: 4, md: 16 }}
+          spacing={{ base: 4, md: 6 }}
           w="full"
           align="center"
           justify="center"
