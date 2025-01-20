@@ -5,7 +5,6 @@ import {
   Flex,
   Heading,
   HStack,
-  Image,
   Link,
   Text,
   VStack,
@@ -16,10 +15,6 @@ import {
   CoinsIcon,
   RocketIcon,
   SquareStackIcon,
-  MousePointerIcon,
-  CogIcon,
-  ShieldIcon,
-  HandCoinsIcon,
 } from "lucide-react";
 import BackedSection from "./Backted";
 import FeaturedSection from "./Featured";

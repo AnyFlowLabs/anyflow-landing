@@ -4,10 +4,8 @@ import KhizaLogo from "@/assets/khiza.svg";
 import GithubIconSvg from "@/assets/github.svg";
 import LinkedinIcon from "@/assets/linkedin.svg";
 import DiscordIcon from "@/assets/discord.svg";
-
 import { useTranslation } from "react-i18next";
 import LinkIcon from "@/components/LinkIcon";
-import { ChangeLanguageMenu } from "./ChangeLanguageMenu";
 import { AOSInit } from "./AOS";
 import { HelmetProvider } from "react-helmet-async";
 import { OptimizedImage } from "./OptimizedImage";
@@ -87,7 +85,12 @@ export default function LandingPageLayout({
                 url={"https://discord.gg/aCygGwBWya"}
                 style={{ width: 24, height: 24 }}
               />
-              <Box as="a" href="https://x.com/anyflow_" target="_blank" rel="noopener noreferrer">
+              <Box
+                as="a"
+                href="https://x.com/anyflow_"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <ElonMuskIcon
                   style={{
                     width: 22,
