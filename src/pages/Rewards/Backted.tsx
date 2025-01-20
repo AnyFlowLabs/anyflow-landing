@@ -1,10 +1,12 @@
-import { HStack, Image, Text } from "@chakra-ui/react";
+import { HStack, Image, Text, useMediaQuery } from "@chakra-ui/react";
 
 import QuickNodeIcon from "@/components/Icons/QuickNode";
 import XdcIcon from "@/components/Icons/XDC";
 import KhizaLogo from "@/assets/khiza.svg";
 
 export const BackedSection = () => {
+  const [isMobile] = useMediaQuery("(max-width: 768px)");
+
   return (
     <HStack
       align="center"
@@ -28,25 +30,25 @@ export const BackedSection = () => {
           target="_blank"
           referrerPolicy="no-referrer"
         >
-          <Image src={KhizaLogo} alt="Khiza logo" h={8} />
+          <Image src={KhizaLogo} alt="Khiza logo" h={isMobile ? 6 : 8} />
         </a>
         <QuickNodeIcon
-          width="40px"
-          height="40px"
+          width={isMobile ? "32px" : "40px"}
+          height={isMobile ? "32px" : "40px"}
           data-aos="fade-up"
           data-aos-delay="100"
         />
 
         <XdcIcon
-          width={100}
-          height={50}
+          width={isMobile ? 80 : 100}
+          height={isMobile ? 40 : 50}
           data-aos="fade-up"
           data-aos-delay="200"
         />
 
         <svg
-          width="116"
-          height="80"
+          width={isMobile ? "90" : "116"}
+          height={isMobile ? "60" : "80"}
           viewBox="0 0 646 96"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
