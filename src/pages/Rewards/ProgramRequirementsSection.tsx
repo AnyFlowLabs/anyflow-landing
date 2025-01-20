@@ -9,6 +9,7 @@ import {
   Circle,
   Icon,
   Flex,
+  Link,
 } from "@chakra-ui/react";
 import {
   ArrowRightIcon,
@@ -23,6 +24,7 @@ import {
   UserCogIcon,
 } from "lucide-react";
 import { TitleSection } from "./Components";
+import { APP_URL } from "@/const";
 
 const ProgramRequirementsSection = () => {
   return (
@@ -221,7 +223,11 @@ const ProgramRequirementsSection = () => {
               icon: FileTextIcon,
             },
           ].map((item) => (
-            <VStack key={item.step} spacing={{ base: 2, md: 6 }} align={{ base: "center", md: "start" }}>
+            <VStack
+              key={item.step}
+              spacing={{ base: 2, md: 6 }}
+              align={{ base: "center", md: "start" }}
+            >
               <HStack
                 spacing={{ base: 2, md: 4 }}
                 align={{ base: "center", md: "center" }}
@@ -274,6 +280,9 @@ const ProgramRequirementsSection = () => {
           py={7}
           fontSize="xl"
           w={{ base: "full", md: "auto" }}
+          as={Link}
+          href={APP_URL + "/rewards"}
+          target="_blank"
         >
           Apply Now
         </Button>

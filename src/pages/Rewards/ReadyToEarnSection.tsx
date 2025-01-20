@@ -8,6 +8,7 @@ import {
   Box,
   useColorModeValue,
   HStack,
+  Link,
 } from "@chakra-ui/react";
 import {
   ArrowRightIcon,
@@ -22,6 +23,7 @@ import {
   RocketIcon,
 } from "lucide-react";
 import { TitleSection } from "./Components";
+import { APP_URL } from "@/const";
 
 function ReadyToEarnSection() {
   const highlightColor = useColorModeValue("yellow.400", "yellow.300");
@@ -98,6 +100,9 @@ function ReadyToEarnSection() {
               _hover={{ transform: "translateY(-2px)" }}
               _active={{ transform: "scale(0.98)" }}
               w={{ base: "full", md: "auto" }}
+              as={Link}
+              href={APP_URL + "/rewards"}
+              target="_blank"
             >
               Start earning now
             </Button>
@@ -121,11 +126,13 @@ function ReadyToEarnSection() {
                 icon: <MessageSquareIcon />,
                 text: "Follow updates",
                 label: "Follow our updates",
+                href: "https://x.com/anyflow_",
               },
               {
                 icon: <CodeIcon />,
                 text: "Start project",
                 label: "Start your project",
+                href: "https://app.anyflow.pro/",
               },
             ].map((item, index) => (
               <Button
@@ -133,6 +140,9 @@ function ReadyToEarnSection() {
                 variant="outline"
                 leftIcon={item.icon}
                 aria-label={item.label}
+                as={Link}
+                href={item.href}
+                target="_blank"
               >
                 {item.text}
               </Button>
@@ -187,8 +197,8 @@ function ReadyToEarnSection() {
                       fontSize={{ base: "lg", md: "2xl" }}
                       role="img"
                       aria-label={item.title}
-                      textAlign={{base: "left", md: "center"}}   
-                      mx={{ base: "0", md: "auto"}}
+                      textAlign={{ base: "left", md: "center" }}
+                      mx={{ base: "0", md: "auto" }}
                     >
                       {<item.icon strokeWidth={1.5} />}
                     </Text>
@@ -196,13 +206,14 @@ function ReadyToEarnSection() {
                       <Heading
                         size={{ base: "sm", md: "lg" }}
                         color={headingColor}
-                        textAlign={{base: "left", md: "center"}}                      >
+                        textAlign={{ base: "left", md: "center" }}
+                      >
                         {item.title}
                       </Heading>
                       <Text
                         color={textColor}
                         fontSize={{ base: "xs", md: "sm" }}
-                        textAlign={{base: "left", md: "center"}}
+                        textAlign={{ base: "left", md: "center" }}
                       >
                         {item.text}
                       </Text>

@@ -6,6 +6,7 @@ import {
   Heading,
   HStack,
   Image,
+  Link,
   Text,
   VStack,
 } from "@chakra-ui/react";
@@ -23,6 +24,7 @@ import {
 import BackedSection from "./Backted";
 import FeaturedSection from "./Featured";
 import { useEffect, useState } from "react";
+import { APP_URL } from "@/const";
 
 const HeroSection = () => {
   const [roleIndex, setRoleIndex] = useState(0);
@@ -39,7 +41,7 @@ const HeroSection = () => {
     }, 2000);
 
     return () => clearInterval(interval);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -57,13 +59,36 @@ const HeroSection = () => {
           gap={{ base: 0, md: 16 }}
         >
           <VStack spacing={4} align={{ base: "center", lg: "start" }} flex={1}>
-            <Box overflow="hidden" position="relative">
+            <Box
+              flex={1}
+              display={{ base: "block", lg: "none" }}
+              position="relative"
+              w="full"
+            >
+              <Box
+                as="video"
+                src="/hero.mp4"
+                autoPlay
+                loop
+                muted
+                playsInline
+                width="full"
+                height="auto"
+                borderRadius="lg"
+                objectFit="cover"
+                transition="all 0.6s ease-in-out"
+                border="solid 2px"
+                borderColor="rgba(255,255,255,0.1)"
+              />
+            </Box>
+
+            <Box overflow="hidden" position="relative" w="full">
               <Text
                 fontSize={{ base: "sm", md: "xl" }}
                 fontWeight="400"
                 fontFamily="heading"
                 letterSpacing={0.5}
-                textAlign={{ base: "left", md: "center" }}
+                textAlign={{ base: "left", md: "left" }}
                 w={{ base: "full", md: "auto" }}
               >
                 <Text
@@ -141,6 +166,7 @@ const HeroSection = () => {
                   Limited Spots Available
                 </Text>
               </HStack>
+
               <HStack
                 fontSize="sm"
                 color="gray.100"
@@ -149,16 +175,8 @@ const HeroSection = () => {
                 w={{ base: "full", md: "auto" }}
               >
                 <Text fontWeight="light" fontFamily="heading" letterSpacing={1}>
-                  Trusted by 500+ developers
+                  50 spots available
                 </Text>
-                <Flex
-                  align="center"
-                  justify="center"
-                  color="yellow.300"
-                  fontSize="2xl"
-                >
-                  ★★★★★
-                </Flex>
               </HStack>
             </Flex>
 
@@ -175,6 +193,9 @@ const HeroSection = () => {
             </Text>
 
             <Button
+              as={Link}
+              href={APP_URL + "/rewards"}
+              target="_blank"
               size="lg"
               variant="gradient"
               color="white"
@@ -261,132 +282,36 @@ const HeroSection = () => {
             </HStack>
           </VStack>
 
+          {/* Video for desktop */}
           <Box
             flex={1}
-            display={{ base: "block", lg: "block" }}
+            display={{ base: "none", lg: "block" }}
             position="relative"
             mt={{ base: 8, md: 0 }}
             w="full"
           >
             <Box
-              // bg="rgba(0,0,0,0.1)"
-              data-aos="flip-right"
-              data-aos-delay={100}
-            >
-              <Image
-                src="/rewards/hero.webp"
-                alt="Smart Contract Deployment"
-                width="full"
-                height="auto"
-                borderRadius="lg"
-                objectFit="cover"
-                transition="all 0.6s ease-in-out"
-                _hover={{
-                  filter: "blur(4px)",
-                }}
-              />
-            </Box>
-            <HStack
-              position="absolute"
-              top={8}
-              left={-2}
-              align="center"
-              justify="center"
-              p={{ base: 1, md: 4 }}
+              as="video"
+              src="/hero.mp4"
+              autoPlay
+              loop
+              muted
+              playsInline
+              width="full"
+              height="auto"
               borderRadius="lg"
-              border="solid 1px"
-              boxShadow="2xl"
-              bg="rgba(255,255,255,0.1)"
-              animation={{
-                base: "none",
-                md: "bounce2 8s cubic-bezier(0, 0, 0.2, 1) infinite",
-              }}
-              color="gray.50"
-              borderColor="gray.50"
-              backdropFilter="blur(5px)"
-              gap={{ base: 2, md: 4 }}
-            >
-              <MousePointerIcon size={24} />
-              <Text fontSize={{ base: "xs", md: "sm" }}>One-Click Deploy</Text>
-            </HStack>
-
-            <HStack
-              position="absolute"
-              top={{ base: 6, md: 40 }}
-              right={{ base: 0, md: -16 }}
-              align="center"
-              justify="center"
-              p={{ base: 1, md: 4 }}
-              borderRadius="lg"
-              border="solid 1px"
-              boxShadow="2xl"
-              bg="rgba(255,255,255,0.1)"
-              animation={{
-                base: "none",
-                md: "bounce2 8s cubic-bezier(0, 0, 0.2, 1) infinite",
-              }}
-              color="gray.50"
-              borderColor="gray.50"
-              backdropFilter="blur(5px)"
-              gap={{ base: 2, md: 4 }}
-            >
-              <CogIcon size={24} />
-              <Text fontSize={{ base: "xs", md: "sm" }}>Automated Setup</Text>
-            </HStack>
-
-            <HStack
-              position="absolute"
-              bottom={{ base: 16, md: 20 }}
-              right={{ base: -2, md: -24 }}
-              align="center"
-              justify="center"
-              p={{ base: 1, md: 4 }}
-              borderRadius="lg"
-              border="solid 1px"
-              boxShadow="2xl"
-              bg="rgba(255,255,255,0.1)"
-              animation={{
-                base: "none",
-                md: "bounce2 8s cubic-bezier(0, 0, 0.2, 1) infinite",
-              }}
-              color="gray.50"
-              borderColor="gray.50"
-              backdropFilter="blur(5px)"
-              gap={{ base: 2, md: 4 }}
-            >
-              <ShieldIcon size={24} />
-              <Text fontSize={{ base: "xs", md: "sm" }}>Built-in Security</Text>
-            </HStack>
-
-            <HStack
-              position="absolute"
-              bottom={20}
-              left={{ base: -2, md: -8 }}
-              align="center"
-              justify="center"
-              p={{ base: 1, md: 4 }}
-              borderRadius="lg"
-              border="solid 1px"
-              boxShadow="2xl"
-              bg="rgba(255,255,255,0.1)"
-              animation={{
-                base: "none",
-                md: "bounce2 8s cubic-bezier(0, 0, 0.2, 1) infinite",
-              }}
-              color="gray.50"
-              borderColor="gray.50"
-              backdropFilter="blur(5px)"
-            >
-              <HandCoinsIcon size={24} />
-              <Text fontSize={{ base: "xs", md: "sm" }}>Cost Efficiency</Text>
-            </HStack>
+              objectFit="cover"
+              transition="all 0.6s ease-in-out"
+              border="solid 2px"
+              borderColor="rgba(255,255,255,0.1)"
+            />
           </Box>
         </Flex>
       </Container>
 
       <Container maxW="container.xl" py={{ base: 4, md: 8 }}>
         <HStack
-          spacing={{ base: 4, md: 16 }}
+          spacing={{ base: 4, md: 6 }}
           w="full"
           align="center"
           justify="center"
@@ -396,149 +321,6 @@ const HeroSection = () => {
           <FeaturedSection />
         </HStack>
       </Container>
-
-      {/* <Container maxW="container.xl" py={{ base: 4, md: 8 }}>
-        <SimpleGrid
-          columns={{ base: 1, md: 2 }}
-          spacing={{ base: 2, md: 8 }}
-          w="full"
-        >
-          <VStack
-            flex={1}
-            p={{ base: 6, md: 12 }}
-            bgGradient="linear(to-br, gray.600, transparent, transparent, transparent, gray.800)"
-            border="solid 1px"
-            borderColor="gray.500"
-            borderRadius="lg"
-            align="start"
-            transition="all 0.3s ease-in-out"
-            backdropFilter="blur(4px)"
-            _hover={{
-              bgGradient:
-                "linear(to-br, gray.600, transparent, transparent, transparent, gray.900)",
-              transform: "translateY(-2px)",
-            }}
-          >
-            <Flex
-              align="center"
-              justify="center"
-              color="yellow.400"
-              fontSize="2xl"
-            >
-              ★★★★★
-            </Flex>
-            <Text
-              textAlign="left"
-              fontSize={{ base: "md", md: "lg" }}
-              fontStyle="italic"
-              h={{ base: "auto", md: "84px" }}
-              color="gray.100"
-            >
-              "The reward program made testing our smart contracts across chains
-              a breeze. Earned $50 while improving our deployment process -
-              win-win!"
-            </Text>
-
-            <HStack
-              align="center"
-              justify="center"
-              w="full"
-              gap={{ base: 4, md: 6 }}
-            >
-              <Image
-                src="/rewards/avatar-1.png"
-                alt="Wagner M. B."
-                width={12}
-                height={12}
-              />
-
-              <VStack w="full" align="start" gap={0} flex={1}>
-                <Text
-                  fontWeight="medium"
-                  color="gray.100"
-                  fontSize={{ base: "sm", md: "md" }}
-                >
-                  John D.
-                </Text>
-                <Text
-                  fontWeight="medium"
-                  color="gray.300"
-                  fontSize={{ base: "xs", md: "sm" }}
-                >
-                  Senior Smart Contract Engineer @ DeFi Protocol
-                </Text>
-              </VStack>
-            </HStack>
-          </VStack>
-
-          <VStack
-            flex={1}
-            p={{ base: 6, md: 12 }}
-            bgGradient="linear(to-br, gray.600, transparent, transparent, transparent, gray.800)"
-            border="solid 1px"
-            borderColor="gray.500"
-            borderRadius="lg"
-            align="start"
-            transition="all 0.3s ease-in-out"
-            backdropFilter="blur(4px)"
-            _hover={{
-              bgGradient:
-                "linear(to-br, gray.600, transparent, transparent, transparent, gray.900)",
-              transform: "translateY(-2px)",
-            }}
-          >
-            <Flex
-              align="center"
-              justify="center"
-              color="yellow.400"
-              fontSize="2xl"
-            >
-              ★★★★★
-            </Flex>
-            <Text
-              textAlign="left"
-              fontSize={{ base: "md", md: "lg" }}
-              fontStyle="italic"
-              h={{ base: "auto", md: "84px" }}
-              color="gray.100"
-            >
-              "Setup took literally 5 minutes and I started earning immediately.
-              The multi-chain testing experience is exactly what Web3 needed."
-            </Text>
-
-            <HStack
-              align="center"
-              justify="center"
-              w="full"
-              gap={{ base: 4, md: 6 }}
-            >
-              <Image
-                src="/rewards/avatar-4.png"
-                alt="Wagner M. B."
-                width={12}
-                height={12}
-              />
-
-              <VStack w="full" align="start" gap={0} flex={1}>
-                <Text
-                  fontWeight="medium"
-                  color="gray.100"
-                  fontSize={{ base: "sm", md: "md" }}
-                >
-                  Sarah Web3.
-                </Text>
-                <Text
-                  fontWeight="medium"
-                  color="gray.300"
-                  fontSize={{ base: "xs", md: "sm" }}
-                >
-                  Blockchain Developer @ Web3 Studio
-                </Text>
-              </VStack>
-            </HStack>
-          </VStack>
-        </SimpleGrid>
-      </Container> */}
     </>
   );
 };

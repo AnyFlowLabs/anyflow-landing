@@ -17,6 +17,7 @@ import {
   BookOpenIcon,
   CodeIcon,
   UsersRoundIcon,
+  Link,
 } from "lucide-react";
 import { TitleSection } from "./Components";
 
@@ -98,6 +99,9 @@ const DeveloperResourcesSection = () => {
                 rightIcon={<ArrowRightIcon size={16} />}
                 aria-label="View documentation"
                 fontWeight="medium"
+                as={Link}
+                href="https://docs.anyflow.pro/"
+                target="_blank"
               >
                 View docs
               </Button>
@@ -161,6 +165,9 @@ const DeveloperResourcesSection = () => {
                 rightIcon={<ArrowRightIcon size={16} />}
                 aria-label="View templates"
                 fontWeight="medium"
+                as={Link}
+                href="https://github.com/AnyFlowLabs?q=template&type=all&language=&sort=stargazers"
+                target="_blank"
               >
                 View templates
               </Button>
@@ -269,6 +276,9 @@ const DeveloperResourcesSection = () => {
                 aria-label="Join Discord community"
                 fontWeight="medium"
                 w={{ base: "full", md: "auto" }}
+                as={Link}
+                href="https://discord.gg/aCygGwBWya"
+                target="_blank"
               >
                 Join Discord
               </Button>

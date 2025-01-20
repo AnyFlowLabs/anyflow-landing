@@ -10,6 +10,7 @@ import {
   Progress,
   useColorModeValue,
   Circle,
+  Link,
 } from "@chakra-ui/react";
 import {
   ArrowRightIcon,
@@ -19,6 +20,7 @@ import {
   StarIcon,
 } from "lucide-react";
 import { TitleSection } from "./Components";
+import { APP_URL } from "@/const";
 import { useMemo } from "react";
 
 const WhyJoinNowSection = () => {
@@ -27,66 +29,69 @@ const WhyJoinNowSection = () => {
   const accentColor = useColorModeValue("purple.500", "purple.300");
 
   const getDaysLeft = () => {
-    const endDate = new Date('2025-01-31');
+    const endDate = new Date("2025-01-31");
     const today = new Date();
     const diffTime = endDate.getTime() - today.getTime();
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
     return diffDays > 0 ? diffDays : 14;
   };
 
-  const cards = useMemo(() => [
-    {
-      icon: RocketIcon,
-      iconBg: "purple.100",
-      iconColor: "purple.500",
-      title: "Early access program",
-      description: "Only 50 spots available",
-      footer: (
-        <Box w="full">
-          <Progress value={0} colorScheme="purple" borderRadius="full" />
-          <Text mt={2} fontSize="sm" color={textColor}>
-            <strong>0</strong> spots taken
+  const cards = useMemo(
+    () => [
+      {
+        icon: RocketIcon,
+        iconBg: "purple.100",
+        iconColor: "purple.500",
+        title: "Early access program",
+        description: "Only 50 spots available",
+        footer: (
+          <Box w="full">
+            <Progress value={0} colorScheme="purple" borderRadius="full" />
+            <Text mt={2} fontSize="sm" color={textColor}>
+              <strong>0</strong> spots taken
+            </Text>
+          </Box>
+        ),
+      },
+      {
+        icon: SparklesIcon,
+        iconBg: "yellow.100",
+        iconColor: "yellow.500",
+        title: "Early Bird Bonus",
+        description: "Extra $10 bonus for first participants",
+        footer: (
+          <Text fontSize="sm" color={accentColor} fontWeight="bold">
+            Offer ends January 31st
           </Text>
-        </Box>
-      ),
-    },
-    {
-      icon: SparklesIcon,
-      iconBg: "yellow.100", 
-      iconColor: "yellow.500",
-      title: "Early Bird Bonus",
-      description: "Extra $10 bonus for first participants",
-      footer: (
-        <Text fontSize="sm" color={accentColor} fontWeight="bold">
-          Offer ends January 31st
-        </Text>
-      ),
-    },
-    {
-      icon: CrownIcon,
-      iconBg: "blue.100",
-      iconColor: "blue.500", 
-      title: "Founding Members",
-      description: "Join our exclusive Discord community",
-      footer: (
-        <Text fontSize="sm" color={accentColor} fontWeight="bold">
-          50 spots remaining
-        </Text>
-      ),
-    },
-    {
-      icon: StarIcon,
-      iconBg: "green.100",
-      iconColor: "green.500",
-      title: "Launch Offer",
-      description: "Priority access to future programs",
-      footer: (
-        <Text fontSize="sm" color="red.500" fontWeight="bold">
-          {getDaysLeft()} days left
-        </Text>
-      ),
-    },
-  ], [textColor, accentColor]);
+        ),
+      },
+      {
+        icon: CrownIcon,
+        iconBg: "blue.100",
+        iconColor: "blue.500",
+        title: "Founding Members",
+        description: "Join our exclusive Discord community",
+        footer: (
+          <Text fontSize="sm" color={accentColor} fontWeight="bold">
+            50 spots remaining
+          </Text>
+        ),
+      },
+      {
+        icon: StarIcon,
+        iconBg: "green.100",
+        iconColor: "green.500",
+        title: "Launch Offer",
+        description: "Priority access to future programs",
+        footer: (
+          <Text fontSize="sm" color="red.500" fontWeight="bold">
+            {getDaysLeft()} days left
+          </Text>
+        ),
+      },
+    ],
+    [textColor, accentColor],
+  );
 
   return (
     <Box
@@ -130,7 +135,7 @@ const WhyJoinNowSection = () => {
               <VStack
                 key={index}
                 bg={cardBg}
-                p={{ base: 4, md: 7}}
+                p={{ base: 4, md: 7 }}
                 borderRadius="lg"
                 boxShadow="lg"
                 spacing={6}
@@ -139,7 +144,14 @@ const WhyJoinNowSection = () => {
                 transition="transform 0.2s"
                 _hover={{ transform: "translateY(-4px)" }}
               >
-                <Circle size={12} bg={card.iconBg} color={card.iconColor} display="flex" alignItems="center" justifyContent="center">
+                <Circle
+                  size={12}
+                  bg={card.iconBg}
+                  color={card.iconColor}
+                  display="flex"
+                  alignItems="center"
+                  justifyContent="center"
+                >
                   <card.icon size={24} />
                 </Circle>
                 <VStack align="start" spacing={2}>
@@ -157,6 +169,9 @@ const WhyJoinNowSection = () => {
             aria-label="Join the early access program now"
             variant="outline"
             w={{ base: "full", md: "auto" }}
+            as={Link}
+            href={APP_URL + "/rewards"}
+            target="_blank"
           >
             Join now
           </Button>

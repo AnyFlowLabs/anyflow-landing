@@ -23,10 +23,16 @@ import {
   LinkIcon,
 } from "lucide-react";
 import { TitleSection } from "./Components";
+import { APP_URL } from "@/const";
 
 const SimpleStepsSection = () => {
   return (
-    <Box w="full" py={{ base: 16, md: 8 }} position="relative" overflow="hidden">
+    <Box
+      w="full"
+      py={{ base: 16, md: 8 }}
+      position="relative"
+      overflow="hidden"
+    >
       <Box
         position="absolute"
         top="0"
@@ -59,8 +65,16 @@ const SimpleStepsSection = () => {
                 step: 1,
                 title: "Deploy Contract",
                 tasks: [
-                  { icon: CodeIcon, text: "Deploy to XDC Network" },
-                  { icon: FileTextIcon, text: "Quick feedback form" },
+                  {
+                    icon: CodeIcon,
+                    text: "Deploy to XDC Network",
+                    time: "5 ~ 10 min",
+                  },
+                  {
+                    icon: FileTextIcon,
+                    text: "Quick feedback form",
+                    time: "5 ~ 10 min",
+                  },
                 ],
                 time: "20 min",
                 reward: 10,
@@ -69,8 +83,16 @@ const SimpleStepsSection = () => {
                 step: 2,
                 title: "Detailed Feedback",
                 tasks: [
-                  { icon: CheckCircleIcon, text: "Complete survey" },
-                  { icon: MessageCircleIcon, text: "Improvement ideas" },
+                  {
+                    icon: CheckCircleIcon,
+                    text: "Complete survey",
+                    time: "10 ~ 20 min",
+                  },
+                  {
+                    icon: MessageCircleIcon,
+                    text: "Improvement ideas",
+                    time: "10 ~ 15 min",
+                  },
                 ],
                 time: "30 min",
                 reward: 20,
@@ -79,8 +101,16 @@ const SimpleStepsSection = () => {
                 step: 3,
                 title: "Quick Interview",
                 tasks: [
-                  { icon: MessageCircleIcon, text: "Feedback discussion" },
-                  { icon: UsersIcon, text: "Experience sharing" },
+                  {
+                    icon: MessageCircleIcon,
+                    text: "Feedback discussion",
+                    time: "20 min",
+                  },
+                  {
+                    icon: UsersIcon,
+                    text: "Experience sharing",
+                    time: "10 min",
+                  },
                 ],
                 time: "30 min",
                 reward: 40,
@@ -110,6 +140,8 @@ const SimpleStepsSection = () => {
                     color="white"
                     fontSize="2xl"
                     fontWeight="bold"
+                    border="2px solid"
+                    borderColor="rgba(255, 255, 255, 0.1)"
                   >
                     {item.step}
                   </Circle>
@@ -132,8 +164,11 @@ const SimpleStepsSection = () => {
                         _hover={{ color: "brand.400" }}
                       >
                         <task.icon size={18} />
-                        <Text fontSize={{ base: "sm", md: "lg" }}>
+                        <Text fontSize={{ base: "sm", md: "md" }} flex={1}>
                           {task.text}
+                        </Text>
+                        <Text fontSize="xs" color="gray.400">
+                          {task.time}
                         </Text>
                       </HStack>
                     ))}
@@ -178,6 +213,9 @@ const SimpleStepsSection = () => {
                 transform: "translateY(-2px)",
               }}
               w={{ base: "full", md: "auto" }}
+              as={Link}
+              href={APP_URL + "/rewards"}
+              target="_blank"
             >
               Start earning now
             </Button>
@@ -200,7 +238,10 @@ const SimpleStepsSection = () => {
             w={{ base: "auto", md: "full" }}
             borderRadius="lg"
             border={{ base: "none", md: "2px solid" }}
-            borderColor={{base: "transparent", md: "rgba(255, 255, 255, 0.1)"}}
+            borderColor={{
+              base: "transparent",
+              md: "rgba(255, 255, 255, 0.1)",
+            }}
             backdropFilter="blur(10px)"
             flexDir={{ base: "column", md: "row" }}
             mx={{ base: -8, md: 0 }}
@@ -214,7 +255,7 @@ const SimpleStepsSection = () => {
               forceAlignLeft
             />
             <Button
-            as={Link}
+              as={Link}
               leftIcon={<Share2Icon />}
               variant="outline"
               colorScheme="brand"
@@ -223,7 +264,7 @@ const SimpleStepsSection = () => {
               _hover={{
                 transform: "translateY(-2px)",
               }}
-              href="https://x.com/anyflow_"
+              href={"https://x.com/anyflow_"}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -232,7 +273,7 @@ const SimpleStepsSection = () => {
             <Button
               leftIcon={<LinkIcon />}
               as={Link}
-              href="https://app.anyflow.pro/"
+              href={APP_URL + "/rewards"}
               target="_blank"
               rel="noopener noreferrer"
               variant="subtle"
@@ -242,7 +283,6 @@ const SimpleStepsSection = () => {
               _hover={{
                 transform: "translateY(-2px)",
               }}
-             
             >
               Copy referral link
             </Button>

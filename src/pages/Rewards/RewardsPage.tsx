@@ -3,6 +3,7 @@ import {
   Button,
   Container,
   Heading,
+  Link,
   SimpleGrid,
   Text,
   VStack,
@@ -27,11 +28,12 @@ import ReadyToEarnSection from "./ReadyToEarnSection";
 import WhyJoinNowSection from "./WhyJoinNowSection";
 import DeveloperResourcesSection from "./DeveloperResourcesSection";
 import ModalClose from "./ModalClose";
+import { APP_URL } from "@/const";
 
 const RewardsPage = () => {
   return (
     <Box as="main">
-      <ModalClose />
+      {/* <ModalClose /> */}
       <HeroSection />
 
       <VercelLikeSection />
@@ -171,6 +173,9 @@ const RewardsPage = () => {
             mt={{ base: 4, md: 8 }}
             rightIcon={<ArrowRightIcon />}
             w={{ base: "full", md: "auto" }}
+            as={Link}
+            href={APP_URL + "/rewards"}
+            target="_blank"
           >
             Start earning now
           </Button>
