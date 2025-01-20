@@ -370,7 +370,6 @@ const HeroSection = () => {
             align="start"
             transition="all 0.3s ease-in-out"
             backdropFilter="blur(4px)"
-            flexDir={{ base: "column", md: "row" }}
             _hover={{
               bgGradient:
                 "linear(to-br, gray.600, transparent, transparent, transparent, gray.900)",

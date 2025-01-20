@@ -93,7 +93,7 @@ const ProgramRequirementsSection = () => {
                   p={{ base: 2, md: 4 }}
                   borderRadius="lg"
                 >
-                  <Icon as={BrainIcon}  color="gray.50" boxSize={{ base: 8, md: 12 }} />12} />
+                  <Icon as={BrainIcon}  color="gray.50" boxSize={{ base: 8, md: 12 }} />
                   <Text flex={1}>Tech team leaders</Text>
                 </VStack>
                 <VStack

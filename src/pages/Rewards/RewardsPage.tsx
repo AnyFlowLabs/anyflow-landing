@@ -6,9 +6,6 @@ import {
   SimpleGrid,
   Text,
   VStack,
-  HStack,
-  Icon,
-  useColorModeValue,
 } from "@chakra-ui/react";
 import {
   ArrowRightIcon,
@@ -16,9 +13,6 @@ import {
   WalletIcon,
   LayersIcon,
   MessageSquareIcon,
-  BookOpenIcon,
-  CodeIcon,
-  UsersRoundIcon,
 } from "lucide-react";
 import CardsSection from "./CardsSection";
 import VercelLikeSection from "./VercelLikeSection";
@@ -32,15 +26,12 @@ import RewardsFaqSection from "./RewardsFaqSection";
 import ReadyToEarnSection from "./ReadyToEarnSection";
 import WhyJoinNowSection from "./WhyJoinNowSection";
 import DeveloperResourcesSection from "./DeveloperResourcesSection";
+import ModelClose from "./ModalClose";
 
 const RewardsPage = () => {
-  const cardBg = useColorModeValue("gray.50", "gray.800");
-  const cardBorder = useColorModeValue("gray.200", "gray.700");
-  const textColor = useColorModeValue("gray.600", "gray.300");
-  const headingColor = useColorModeValue("gray.900", "white");
-
   return (
     <Box as="main">
+      <ModelClose />  
       <HeroSection />
 
       <VercelLikeSection />
