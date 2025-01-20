@@ -6,7 +6,6 @@ import {
   Heading,
   HStack,
   Image,
-  SimpleGrid,
   Text,
   VStack,
 } from "@chakra-ui/react";
@@ -23,8 +22,26 @@ import {
 } from "lucide-react";
 import BackedSection from "./Backted";
 import FeaturedSection from "./Featured";
+import { useEffect, useState } from "react";
 
 const HeroSection = () => {
+  const [roleIndex, setRoleIndex] = useState(0);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const roles = ["web3 CTO", "web3 tech lead", "web3 developer"];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIsAnimating(true);
+      setTimeout(() => {
+        setRoleIndex((prev) => (prev + 1) % roles.length);
+        setIsAnimating(false);
+      }, 500);
+    }, 2000);
+
+    return () => clearInterval(interval);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <>
       <Container
@@ -40,18 +57,44 @@ const HeroSection = () => {
           gap={{ base: 0, md: 16 }}
         >
           <VStack spacing={4} align={{ base: "center", lg: "start" }} flex={1}>
-            <Text
-              fontSize={{ base: "sm", md: "xl" }}
-              bgGradient="linear(to-r, info.400, success.600)"
-              bgClip="text"
-              fontWeight="bold"
-              fontFamily="heading"
-              letterSpacing={0.5}
-              textAlign={{ base: "left", md: "center" }}
-              w={{ base: "full", md: "auto" }}
-            >
-              Hey web3 developer, ready to shape the future?
-            </Text>
+            <Box overflow="hidden" position="relative">
+              <Text
+                fontSize={{ base: "sm", md: "xl" }}
+                fontWeight="400"
+                fontFamily="heading"
+                letterSpacing={0.5}
+                textAlign={{ base: "left", md: "center" }}
+                w={{ base: "full", md: "auto" }}
+              >
+                <Text
+                  as="span"
+                  bgGradient="linear(to-r, info.400, success.600)"
+                  bgClip="text"
+                >
+                  Hey{" "}
+                </Text>
+                <Text
+                  as="span"
+                  bgGradient="linear(to-r, info.500, success.400)"
+                  bgClip="text"
+                  fontWeight="bold"
+                  animation={
+                    isAnimating
+                      ? `roleSlideUp 0.5s ease-out forwards`
+                      : `roleSlideDown 0.5s ease-out`
+                  }
+                >
+                  {roles[roleIndex]}
+                </Text>
+                <Text
+                  as="span"
+                  bgGradient="linear(to-r, info.400, success.600)"
+                  bgClip="text"
+                >
+                  , ready to shape the future?
+                </Text>
+              </Text>
+            </Box>
 
             <Heading
               as="h1"
@@ -212,7 +255,7 @@ const HeroSection = () => {
                   letterSpacing={{ base: 0, md: 0.25 }}
                   textAlign={{ base: "center", md: "left" }}
                 >
-                  Instant rewards
+                  Up to $70 in rewards
                 </Text>
               </HStack>
             </HStack>
@@ -354,7 +397,7 @@ const HeroSection = () => {
         </HStack>
       </Container>
 
-      <Container maxW="container.xl" py={{ base: 4, md: 8 }}>
+      {/* <Container maxW="container.xl" py={{ base: 4, md: 8 }}>
         <SimpleGrid
           columns={{ base: 1, md: 2 }}
           spacing={{ base: 2, md: 8 }}
@@ -495,7 +538,7 @@ const HeroSection = () => {
             </HStack>
           </VStack>
         </SimpleGrid>
-      </Container>
+      </Container> */}
     </>
   );
 };

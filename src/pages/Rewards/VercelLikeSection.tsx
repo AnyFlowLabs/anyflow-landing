@@ -3,16 +3,20 @@ import { QuoteIcon } from "lucide-react";
 
 const VercelLikeSection = () => {
   return (
-    <Container maxW="container.xl" py={{ base: 4, md: 8 }}>
+    <Container maxW="container.xl" py={{ base: 16, md: 32 }}>
       <HStack
         w="full"
         align="center"
         justify="center"
         spacing={{ base: 8, md: 20 }}
-        flexDir={{base: "column", md: "row"}}
-       
+        flexDir={{ base: "column", md: "row" }}
       >
-        <VStack w="full" align="flex-start" justify="center" spacing={{ base: 0, md: 2}}>
+        <VStack
+          flex={0.5}
+          align="flex-start"
+          justify="center"
+          spacing={{ base: 0, md: 2 }}
+        >
           <QuoteIcon size={32} style={{ transform: "rotate(180deg)" }} />
           <Text
             mt={4}
@@ -24,7 +28,7 @@ const VercelLikeSection = () => {
             color="gray.50"
             fontStyle="italic"
           >
-            Every deployment felt like a gamble with manual gas setups and
+            "Every deployment felt like a gamble with manual gas setups and
             private key risks. AnyFlow’s automation ensures I can deploy
             confidently and focus on scaling my project.
           </Text>
@@ -52,21 +56,21 @@ const VercelLikeSection = () => {
           </HStack>
         </VStack>
 
-        <VStack w="full" align="flex-start" justify="flex-start" spacing={0}>
+        <VStack flex={1.5} align="flex-start" justify="flex-start" spacing={0}>
           <Text
-            fontSize={{base: "md", md: "xl"}}
+            fontSize={{ base: "md", md: "xl" }}
             bgGradient="linear(to-r, info.400, success.600)"
             bgClip="text"
             fontWeight="bold"
             fontFamily="heading"
             letterSpacing={0.5}
-            textAlign={{base: "left", md: "left"}}
+            textAlign={{ base: "left", md: "left" }}
           >
             Tired of wasting time on developments?
           </Text>
           <Text
             textAlign="left"
-            fontSize={{base: "4xl", md: "6xl"}}
+            fontSize={{ base: "4xl", md: "6xl" }}
             color="gray.100"
             lineHeight="1.2"
             fontWeight="bold"
@@ -77,7 +81,7 @@ const VercelLikeSection = () => {
               color="brand.400"
               bgGradient="linear(to-r, brand.200, brand.500)"
               bgClip="text"
-              fontSize={{base: "4xl", md: "6xl"}}
+              fontSize={{ base: "4xl", md: "6xl" }}
             >
               the “Vercel” of smart contracts.
             </Text>

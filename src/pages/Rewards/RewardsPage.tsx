@@ -26,19 +26,19 @@ import RewardsFaqSection from "./RewardsFaqSection";
 import ReadyToEarnSection from "./ReadyToEarnSection";
 import WhyJoinNowSection from "./WhyJoinNowSection";
 import DeveloperResourcesSection from "./DeveloperResourcesSection";
-import ModelClose from "./ModalClose";
+import ModalClose from "./ModalClose";
 
 const RewardsPage = () => {
   return (
     <Box as="main">
-      <ModelClose />  
+      <ModalClose />
       <HeroSection />
 
       <VercelLikeSection />
 
       <CardsSection />
 
-      <Container maxW="container.xl" py={{ base: 4, md: 16 }}>
+      <Container maxW="container.xl" py={{ base: 8, md: 24 }}>
         <VStack spacing={{ base: 1, md: 2 }} align="center" w="full">
           <TitleSection
             pre="Benefits"
@@ -151,7 +151,6 @@ const RewardsPage = () => {
                   Join the community
                 </Heading>
                 <VStack align="start" spacing={2} gap={{ base: 1, md: 2 }}>
-                  <Text color="info.500">Up to $70 per completion</Text>
                   <Text color="info.300">24 active members</Text>
                   <Text color="info.300">24/7 Support</Text>
                 </VStack>

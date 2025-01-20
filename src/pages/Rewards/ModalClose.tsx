@@ -67,24 +67,24 @@ const ModalClose = () => {
             >
               <PartyPopperIcon size={48} color="white" />
             </Box>
-            
+
             <VStack w="full" align="center" justify="center" spacing={3}>
-              <Heading 
-                as="h2" 
-                size="lg" 
-                textAlign="center" 
+              <Heading
+                as="h2"
+                size="lg"
+                textAlign="center"
                 bgGradient="linear(to-r, brand.200, brand.500)"
                 bgClip="text"
                 fontWeight="extrabold"
               >
                 Exclusive Early-Bird Offer!
               </Heading>
-              <Text 
-                fontSize={{ base: "md", md: "lg" }} 
+              <Text
+                fontSize={{ base: "md", md: "lg" }}
                 color="gray.300"
                 textAlign="center"
               >
-                Join now and unlock these special benefits:
+                Join now and enjoy these special benefits:
               </Text>
             </VStack>
 
@@ -102,11 +102,11 @@ const ModalClose = () => {
                 </Text>
                 <Divider borderColor="whiteAlpha.200" />
                 <Text fontSize={{ base: "sm", md: "md" }} color="gray.100">
-                  🎯 Priority access to interview stage
+                  🎯 Priority access to the interview stage
                 </Text>
                 <Divider borderColor="whiteAlpha.200" />
                 <Text fontSize={{ base: "sm", md: "md" }} color="gray.100">
-                  💫 Exclusive early feedback privileges
+                  🗣️ Early feedback privileges to shape the product
                 </Text>
               </VStack>
             </Box>
@@ -118,16 +118,12 @@ const ModalClose = () => {
               textAlign="center"
               fontSize="sm"
             >
-              🔥 Limited time offer - Only 50 spots remaining!
+              ⏳ Hurry! Only 50 spots left.
             </Text>
           </VStack>
         </ModalBody>
 
-        <ModalFooter 
-          borderTopWidth="1px"
-          borderColor="whiteAlpha.100"
-          p={6}
-        >
+        <ModalFooter borderTopWidth="1px" borderColor="whiteAlpha.100" p={6}>
           <Stack
             direction={{ base: "column", md: "row" }}
             w="full"

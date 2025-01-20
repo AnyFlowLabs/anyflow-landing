@@ -8,6 +8,7 @@ import {
   HStack,
   Circle,
   Box,
+  Link,
 } from "@chakra-ui/react";
 import {
   UsersIcon,
@@ -25,8 +26,8 @@ import { TitleSection } from "./Components";
 
 const SimpleStepsSection = () => {
   return (
-    <Box w="full" py={{ base: 4, md: 8 }} position="relative" overflow="hidden">
-      {/* <Box
+    <Box w="full" py={{ base: 16, md: 8 }} position="relative" overflow="hidden">
+      <Box
         position="absolute"
         top="0"
         left="50%"
@@ -34,11 +35,11 @@ const SimpleStepsSection = () => {
         bottom="0"
         bgGradient="radial(circle at 50% 0%, transparent 0%, info.600 70%, transparent 100%)"
         filter="blur(100px)"
-        w={{ base: "full", md: "25vw" }}
-        h={{ base: "full", md: "25vh" }}
+        w={{ base: "full", md: "500px" }}
+        h={{ base: "100px", md: "500px" }}
         transform="translate(-50%, -50%)"
         opacity="0.5"
-      /> */}
+      />
 
       <Container maxW="container.xl" position="relative">
         <VStack spacing={{ base: 4, md: 12 }} align="center" w="full">
@@ -189,7 +190,7 @@ const SimpleStepsSection = () => {
                 size={18}
                 color="var(--anyflow-colors-info-500)"
               />
-              <Text color="gray.200">Total earnings: up to $70</Text>
+              <Text color="gray.200">Total earnings: $40</Text>
             </HStack>
           </HStack>
 
@@ -199,7 +200,7 @@ const SimpleStepsSection = () => {
             w={{ base: "auto", md: "full" }}
             borderRadius="lg"
             border={{ base: "none", md: "2px solid" }}
-            borderColor="rgba(255, 255, 255, 0.1)"
+            borderColor={{base: "transparent", md: "rgba(255, 255, 255, 0.1)"}}
             backdropFilter="blur(10px)"
             flexDir={{ base: "column", md: "row" }}
             mx={{ base: -8, md: 0 }}
@@ -213,6 +214,7 @@ const SimpleStepsSection = () => {
               forceAlignLeft
             />
             <Button
+            as={Link}
               leftIcon={<Share2Icon />}
               variant="outline"
               colorScheme="brand"
@@ -221,11 +223,18 @@ const SimpleStepsSection = () => {
               _hover={{
                 transform: "translateY(-2px)",
               }}
+              href="https://x.com/anyflow_"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               Share on X
             </Button>
             <Button
               leftIcon={<LinkIcon />}
+              as={Link}
+              href="https://app.anyflow.pro/"
+              target="_blank"
+              rel="noopener noreferrer"
               variant="subtle"
               colorScheme="brand"
               size="lg"
@@ -233,10 +242,7 @@ const SimpleStepsSection = () => {
               _hover={{
                 transform: "translateY(-2px)",
               }}
-              onClick={() => {
-                // Add referral link logic here
-                window.location.href = "/app/welcome?ref=xyz";
-              }}
+             
             >
               Copy referral link
             </Button>

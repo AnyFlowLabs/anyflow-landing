@@ -90,6 +90,28 @@ const customTheme = extendTheme({
       "@keyframes gridAnimation": {
         to: { transform: "translateY(-50%)" },
       },
+
+      "@keyframes roleSlideDown": {
+        "0%": {
+          transform: "translateY(-100%)",
+          opacity: 0,
+        },
+        "100%": {
+          transform: "translateY(0)",
+          opacity: 1,
+        },
+      },
+
+      "@keyframes roleSlideUp": {
+        "0%": {
+          transform: "translateY(0)",
+          opacity: 1,
+        },
+        "100%": {
+          transform: "translateY(100%)",
+          opacity: 0,
+        },
+      },
     },
   },
   fonts,

@@ -35,8 +35,8 @@ const ProgramRequirementsSection = () => {
       >
         <TitleSection
           pre="Program Requirements"
-          title="Who Can Participate?"
-          description="Our program is designed for developers at all experience levels"
+          title="Who can participate?"
+          // description="Our program is designed for developers at all experience levels"
         />
         <HStack
           spacing={{ base: 4, md: 12 }}
@@ -45,7 +45,7 @@ const ProgramRequirementsSection = () => {
           justify="center"
           flexDir={{ base: "column", md: "row" }}
         >
-          <VStack align="start" spacing={8}>
+          <VStack align="start" spacing={{ base: 8, md: 12 }}>
             <Heading size="lg" color="white" letterSpacing="tight">
               Who is it for?
             </Heading>
@@ -73,7 +73,7 @@ const ProgramRequirementsSection = () => {
                     color="gray.50"
                     boxSize={{ base: 8, md: 12 }}
                   />
-                  <Text flex={1}>Beginners starting their Web3 journey</Text>
+                  <Text flex={1}>Beginners</Text>
                 </VStack>
                 <VStack
                   flexDir={{ base: "row", md: "column" }}
@@ -121,7 +121,7 @@ const ProgramRequirementsSection = () => {
                     color="gray.50"
                     boxSize={{ base: 8, md: 12 }}
                   />
-                  <Text flex={1}>CTOs and technical decision makers</Text>
+                  <Text flex={1}>CTOs</Text>
                 </VStack>
               </SimpleGrid>
               <VStack
@@ -157,7 +157,7 @@ const ProgramRequirementsSection = () => {
                       boxSize={{ base: 4, md: 8 }}
                     />
                     <Text fontSize={{ base: "sm", md: "xl" }} flex={1}>
-                      Experience with smart contract development
+                      Experience with smart contract developmentt
                     </Text>
                   </HStack>
                   <HStack w="full" align="center" justify="start">
@@ -221,10 +221,11 @@ const ProgramRequirementsSection = () => {
               icon: FileTextIcon,
             },
           ].map((item) => (
-            <VStack key={item.step} spacing={{ base: 2, md: 6 }} align="start">
+            <VStack key={item.step} spacing={{ base: 2, md: 6 }} align={{ base: "center", md: "start" }}>
               <HStack
                 spacing={{ base: 2, md: 4 }}
-                align="start"
+                align={{ base: "center", md: "center" }}
+                justify={{ base: "center", md: "center" }}
                 flexDir={{ base: "column", md: "row" }}
               >
                 <Circle
@@ -283,7 +284,7 @@ const ProgramRequirementsSection = () => {
             color="white"
             letterSpacing="tight"
           >
-            Earn up to $70 for completing the program
+            Earn up to $70
           </Heading>
         </HStack>
       </Flex>

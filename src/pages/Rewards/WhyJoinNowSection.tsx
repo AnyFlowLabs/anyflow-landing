@@ -26,6 +26,14 @@ const WhyJoinNowSection = () => {
   const textColor = useColorModeValue("gray.600", "gray.300");
   const accentColor = useColorModeValue("purple.500", "purple.300");
 
+  const getDaysLeft = () => {
+    const endDate = new Date('2025-01-31');
+    const today = new Date();
+    const diffTime = endDate.getTime() - today.getTime();
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    return diffDays > 0 ? diffDays : 14;
+  };
+
   const cards = useMemo(() => [
     {
       icon: RocketIcon,
@@ -74,7 +82,7 @@ const WhyJoinNowSection = () => {
       description: "Priority access to future programs",
       footer: (
         <Text fontSize="sm" color="red.500" fontWeight="bold">
-          14 days left
+          {getDaysLeft()} days left
         </Text>
       ),
     },
