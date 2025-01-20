@@ -1,60 +1,28 @@
-import { VStack, Text, HStack, Flex, Box, Button } from "@chakra-ui/react";
+import { VStack, Text, HStack, Flex, Box } from "@chakra-ui/react";
 import LogoFooter from "@/assets/logo-footer.svg";
 import KhizaLogo from "@/assets/khiza.svg";
 import GithubIconSvg from "@/assets/github.svg";
 import LinkedinIcon from "@/assets/linkedin.svg";
 import DiscordIcon from "@/assets/discord.svg";
-import { Link } from "react-router-dom";
+
 import { useTranslation } from "react-i18next";
-import { BUTTON_GITHUB, DOCS_URL } from "@/const";
 import LinkIcon from "@/components/LinkIcon";
-import { Logo } from "./Logo";
-import GithubIcon from "./Icons/Github";
 import { ChangeLanguageMenu } from "./ChangeLanguageMenu";
 import { AOSInit } from "./AOS";
 import { HelmetProvider } from "react-helmet-async";
 import { OptimizedImage } from "./OptimizedImage";
-import ElonMuskIcon from "./Icons/XIcon";
+import ElonMuskIcon from "@/components/Icons/XIcon";
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+export default function LandingPageLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const { t } = useTranslation();
 
   return (
     <HelmetProvider>
       <AOSInit />
-      <HStack
-        as="header"
-        role="banner"
-        flexDir={{ base: "column", md: "row" }}
-        bg="transparent"
-        justify="space-between"
-        p={4}
-        gap={{ base: 4, md: 0 }}
-        w="full"
-      >
-        <Logo />
-        <nav>
-          <HStack gap={{ base: 4, md: 8 }}>
-            <a
-              target="_blank"
-              className="hidden text-white lg:inline"
-              href={DOCS_URL}
-              referrerPolicy="no-referrer"
-            >
-              Docs
-            </a>
-            <Link to={"/chains"}>Chains</Link>
-
-            <Button
-              as="a"
-              href={BUTTON_GITHUB}
-              leftIcon={<GithubIcon width={18} height={18} />}
-            >
-              {t("header.button_github")}
-            </Button>
-          </HStack>
-        </nav>
-      </HStack>
 
       <Box as="main" role="main">
         {children}
@@ -119,12 +87,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 url={"https://discord.gg/aCygGwBWya"}
                 style={{ width: 24, height: 24 }}
               />
-              <Box
-                as="a"
-                href="https://x.com/anyflow_"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <Box as="a" href="https://x.com/anyflow_" target="_blank" rel="noopener noreferrer">
                 <ElonMuskIcon
                   style={{
                     width: 22,
