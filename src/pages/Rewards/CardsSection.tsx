@@ -1,3 +1,4 @@
+import { APP_URL } from "@/const";
 import {
   Button,
   Container,
@@ -7,6 +8,7 @@ import {
   Text,
   VStack,
   useMediaQuery,
+  Link,
 } from "@chakra-ui/react";
 import {
   ArrowUpRightIcon,
@@ -296,7 +298,14 @@ const CardsSection = () => {
           </VStack>
         </HStack>
         <Flex justify="center" mt={8}>
-          <Button variant="gradient" size="lg" w={{ base: "full", md: "auto" }}>
+          <Button
+            as={Link}
+            href={APP_URL + "/rewards"}
+            target="_blank"
+            variant="gradient"
+            size="lg"
+            w={{ base: "full", md: "auto" }}
+          >
             Start deploying effortlessly
           </Button>
         </Flex>

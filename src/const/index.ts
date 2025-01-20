@@ -1,4 +1,4 @@
-export const BUTTON_GITHUB =
+export const APP_URL =
   process.env.NODE_ENV == "production"
     ? "https://app.anyflow.pro"
     : "https://app-staging.anyflow.pro";

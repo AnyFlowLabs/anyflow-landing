@@ -23,6 +23,7 @@ import {
   LinkIcon,
 } from "lucide-react";
 import { TitleSection } from "./Components";
+import { APP_URL } from "@/const";
 
 const SimpleStepsSection = () => {
   return (
@@ -212,6 +213,9 @@ const SimpleStepsSection = () => {
                 transform: "translateY(-2px)",
               }}
               w={{ base: "full", md: "auto" }}
+              as={Link}
+              href={APP_URL + "/rewards"}
+              target="_blank"
             >
               Start earning now
             </Button>
@@ -260,7 +264,7 @@ const SimpleStepsSection = () => {
               _hover={{
                 transform: "translateY(-2px)",
               }}
-              href="https://x.com/anyflow_"
+              href={"https://x.com/anyflow_"}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -269,7 +273,7 @@ const SimpleStepsSection = () => {
             <Button
               leftIcon={<LinkIcon />}
               as={Link}
-              href="https://app.anyflow.pro/"
+              href={APP_URL + "/rewards"}
               target="_blank"
               rel="noopener noreferrer"
               variant="subtle"

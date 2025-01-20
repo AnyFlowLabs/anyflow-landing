@@ -6,7 +6,7 @@ import LinkedinIcon from "@/assets/linkedin.svg";
 import DiscordIcon from "@/assets/discord.svg";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { BUTTON_GITHUB, DOCS_URL } from "@/const";
+import { APP_URL, DOCS_URL } from "@/const";
 import LinkIcon from "@/components/LinkIcon";
 import { Logo } from "./Logo";
 import GithubIcon from "./Icons/Github";
@@ -47,7 +47,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
             <Button
               as="a"
-              href={BUTTON_GITHUB}
+              href={APP_URL}
               leftIcon={<GithubIcon width={18} height={18} />}
             >
               {t("header.button_github")}

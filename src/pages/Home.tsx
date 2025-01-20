@@ -13,7 +13,7 @@ import { SEO } from "../components/SEO";
 import { chains } from "@/data/chains";
 import { useTranslation } from "react-i18next";
 import Slider from "@/components/Slider";
-import { BUTTON_GITHUB } from "@/const";
+import { APP_URL } from "@/const";
 import FacSection from "@/components/home/Faq";
 import TrustedSection from "@/components/home/Trusted";
 // import CLIToolSection from "@/components/home/CliTool";
@@ -127,7 +127,7 @@ export default function HomePage() {
             variant="gradient"
             as="a"
             size="lg"
-            href={BUTTON_GITHUB}
+            href={APP_URL}
             letterSpacing={3}
             w={{ base: "full", md: "auto" }}
             aria-label={t("home.cta")}

@@ -7,9 +7,11 @@ import {
   SimpleGrid,
   Text,
   VStack,
+  Link,
 } from "@chakra-ui/react";
 import { TitleSection } from "./Components";
 import { ArrowRightIcon, CheckIcon, TrophyIcon, XIcon } from "lucide-react";
+import { APP_URL } from "@/const";
 
 const RecommendedSection = () => {
   return (
@@ -21,7 +23,12 @@ const RecommendedSection = () => {
           description="Stop wasting time and money on outdated methods"
         />
 
-        <SimpleGrid columns={{ base: 1, md: 2 }} spacing={{ base: 4, md: 8 }} w="full" pt={8}>
+        <SimpleGrid
+          columns={{ base: 1, md: 2 }}
+          spacing={{ base: 4, md: 8 }}
+          w="full"
+          pt={8}
+        >
           <VStack
             p={{ base: 6, md: 16 }}
             borderRadius="lg"
@@ -176,6 +183,9 @@ const RecommendedSection = () => {
               size="lg"
               w="full"
               rightIcon={<ArrowRightIcon />}
+              as={Link}
+              href={APP_URL + "/rewards"}
+              target="_blank"
             >
               Get Started
             </Button>

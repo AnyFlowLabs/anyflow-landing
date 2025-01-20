@@ -14,7 +14,7 @@ import {
 } from "@chakra-ui/react";
 import { CogIcon, ShieldCheckIcon } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import { BUTTON_GITHUB } from "@/const";
+import { APP_URL } from "@/const";
 
 const CardsSection: FC = () => {
   const { t } = useTranslation();
@@ -741,7 +741,7 @@ const CardsSection: FC = () => {
                 as="a"
                 target="_blank"
                 rel="noopener noreferrer"
-                href={BUTTON_GITHUB}
+                href={APP_URL}
                 boxShadow="2xl"
                 textTransform="uppercase"
               >

@@ -6,6 +6,7 @@ import {
   Heading,
   HStack,
   Image,
+  Link,
   Text,
   VStack,
 } from "@chakra-ui/react";
@@ -23,6 +24,7 @@ import {
 import BackedSection from "./Backted";
 import FeaturedSection from "./Featured";
 import { useEffect, useState } from "react";
+import { APP_URL } from "@/const";
 
 const HeroSection = () => {
   const [roleIndex, setRoleIndex] = useState(0);
@@ -191,6 +193,9 @@ const HeroSection = () => {
             </Text>
 
             <Button
+              as={Link}
+              href={APP_URL + "/rewards"}
+              target="_blank"
               size="lg"
               variant="gradient"
               color="white"

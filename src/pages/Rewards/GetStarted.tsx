@@ -7,6 +7,7 @@ import {
   HStack,
   Icon,
   Center,
+  Link,
 } from "@chakra-ui/react";
 import { ArrowRightIcon, GithubIcon, MessageCircleIcon } from "lucide-react";
 import { TitleSection } from "./Components";
@@ -34,6 +35,7 @@ const GetStartedSection = () => {
               description: "Stay updated with latest news and announcements",
               icon: ElonMuskIcon,
               gradient: "linear(to-br, blue.600, blue.400)",
+              href: "https://x.com/anyflow_pro",
             },
             {
               step: 2,
@@ -41,6 +43,7 @@ const GetStartedSection = () => {
               description: "Connect with community and get 24/7 support",
               icon: MessageCircleIcon,
               gradient: "linear(to-br, purple.600, purple.400)",
+              href: "https://discord.gg/aCygGwBWya",
             },
             {
               step: 3,
@@ -48,6 +51,7 @@ const GetStartedSection = () => {
               description: "Required for program participation and rewards",
               icon: GithubIcon,
               gradient: "linear(to-br, gray.600, gray.400)",
+              href: "https://github.com/anyflow-pro",
             },
           ].map((item, index) => (
             <HStack
@@ -64,6 +68,9 @@ const GetStartedSection = () => {
               overflow="hidden"
               data-aos="fade-up"
               data-aos-delay={`${index * 100}`}
+              as={Link}
+              href={item.href}
+              target="_blank"
             >
               <Center
                 w={{ base: 16, md: 20 }}
