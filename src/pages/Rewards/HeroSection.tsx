@@ -39,7 +39,7 @@ const HeroSection = () => {
     }, 2000);
 
     return () => clearInterval(interval);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -141,7 +141,20 @@ const HeroSection = () => {
                   Limited Spots Available
                 </Text>
               </HStack>
+
               <HStack
+                fontSize="sm"
+                color="gray.100"
+                data-aos="fade-up"
+                data-aos-delay={200}
+                w={{ base: "full", md: "auto" }}
+              >
+                <Text fontWeight="light" fontFamily="heading" letterSpacing={1}>
+                  50 spots available
+                </Text>
+              </HStack>
+
+              {/* <HStack
                 fontSize="sm"
                 color="gray.100"
                 data-aos="fade-up"
@@ -159,7 +172,7 @@ const HeroSection = () => {
                 >
                   ★★★★★
                 </Flex>
-              </HStack>
+              </HStack> */}
             </Flex>
 
             <Text

@@ -66,7 +66,7 @@ export default function LandingPageLayout({
           <Text fontSize="small" color="gray.300" flex={1}>
             {t("footer.copyright")}
           </Text>
-          <ChangeLanguageMenu />
+          {/* <ChangeLanguageMenu /> */}
           <nav aria-label="Social Media Links">
             <HStack justify={{ base: "center", md: "end" }} gap={4} flex={1}>
               <LinkIcon
