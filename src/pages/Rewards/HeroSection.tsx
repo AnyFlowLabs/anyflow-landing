@@ -212,7 +212,7 @@ const HeroSection = () => {
                   letterSpacing={{ base: 0, md: 0.25 }}
                   textAlign={{ base: "center", md: "left" }}
                 >
-                  Instant rewards
+                 Up to $70 in rewards
                 </Text>
               </HStack>
             </HStack>

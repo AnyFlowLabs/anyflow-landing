@@ -35,8 +35,8 @@ const ProgramRequirementsSection = () => {
       >
         <TitleSection
           pre="Program Requirements"
-          title="Who Can Participate?"
-          description="Our program is designed for developers at all experience levels"
+          title="Who can participate?"
+          // description="Our program is designed for developers at all experience levels"
         />
         <HStack
           spacing={{ base: 4, md: 12 }}
@@ -73,7 +73,7 @@ const ProgramRequirementsSection = () => {
                     color="gray.50"
                     boxSize={{ base: 8, md: 12 }}
                   />
-                  <Text flex={1}>Beginners starting their Web3 journey</Text>
+                  <Text flex={1}>Beginners</Text>
                 </VStack>
                 <VStack
                   flexDir={{ base: "row", md: "column" }}
@@ -121,7 +121,7 @@ const ProgramRequirementsSection = () => {
                     color="gray.50"
                     boxSize={{ base: 8, md: 12 }}
                   />
-                  <Text flex={1}>CTOs and technical decision makers</Text>
+                  <Text flex={1}>CTOs</Text>
                 </VStack>
               </SimpleGrid>
               <VStack
@@ -157,7 +157,7 @@ const ProgramRequirementsSection = () => {
                       boxSize={{ base: 4, md: 8 }}
                     />
                     <Text fontSize={{ base: "sm", md: "xl" }} flex={1}>
-                      Experience with smart contract development
+                    Experience with smart contract developmentt
                     </Text>
                   </HStack>
                   <HStack w="full" align="center" justify="start">
@@ -177,7 +177,7 @@ const ProgramRequirementsSection = () => {
                       boxSize={{ base: 4, md: 8 }}
                     />
                     <Text fontSize={{ base: "sm", md: "xl" }} flex={1}>
-                      Familiarity with Solidity or similar languages
+                    Familiarity with Solidity or similar languages
                     </Text>
                   </HStack>
                   <HStack w="full" align="center" justify="start">
@@ -187,7 +187,7 @@ const ProgramRequirementsSection = () => {
                       boxSize={{ base: 4, md: 8 }}
                     />
                     <Text fontSize={{ base: "sm", md: "xl" }} flex={1}>
-                      Understanding of blockchain deployment processes
+                    Understanding of blockchain deployment processes
                     </Text>
                   </HStack>
                 </SimpleGrid>
@@ -283,7 +283,7 @@ const ProgramRequirementsSection = () => {
             color="white"
             letterSpacing="tight"
           >
-            Earn up to $70 for completing the program
+           Earn up to $70
           </Heading>
         </HStack>
       </Flex>

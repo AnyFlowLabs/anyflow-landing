@@ -61,7 +61,7 @@ function ReadyToEarnSection() {
 
           <TitleSection
             title="Ready to earn your rewards?"
-            description="Join our community of developers and start earning today"
+            // description="Join our community of developers and start earning today"
           />
 
           <SimpleGrid
@@ -145,7 +145,7 @@ function ReadyToEarnSection() {
               size="lg"
               color={headingColor}
               mb={{ base: 4, md: 8 }}
-              textAlign={{base: "left", md: "center"}}
+              textAlign={{ base: "left", md: "center" }}
             >
               Why join now:
             </Heading>
@@ -183,14 +183,27 @@ function ReadyToEarnSection() {
                   }}
                 >
                   <VStack align="start" spacing={{ base: 2, md: 4 }}>
-                    <Text fontSize={{ base: "lg", md: "2xl" }} role="img" aria-label={item.title}>
+                    <Text
+                      fontSize={{ base: "lg", md: "2xl" }}
+                      role="img"
+                      aria-label={item.title}
+                      textAlign={{base: "left", md: "center"}}   
+                      mx={{ base: "0", md: "auto"}}
+                    >
                       {<item.icon strokeWidth={1.5} />}
                     </Text>
                     <VStack align="start" spacing={1}>
-                      <Heading size={{ base: "sm", md: "lg" }} color={headingColor}>
+                      <Heading
+                        size={{ base: "sm", md: "lg" }}
+                        color={headingColor}
+                        textAlign={{base: "left", md: "center"}}                      >
                         {item.title}
                       </Heading>
-                      <Text color={textColor} fontSize={{ base: "xs", md: "sm" }}>
+                      <Text
+                        color={textColor}
+                        fontSize={{ base: "xs", md: "sm" }}
+                        textAlign={{base: "left", md: "center"}}
+                      >
                         {item.text}
                       </Text>
                     </VStack>

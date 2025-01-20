@@ -8,6 +8,7 @@ import {
   HStack,
   Circle,
   Box,
+  Link,
 } from "@chakra-ui/react";
 import {
   UsersIcon,
@@ -189,7 +190,7 @@ const SimpleStepsSection = () => {
                 size={18}
                 color="var(--anyflow-colors-info-500)"
               />
-              <Text color="gray.200">Total earnings: up to $70</Text>
+              <Text color="gray.200">Total earnings: $40</Text>
             </HStack>
           </HStack>
 
@@ -213,6 +214,7 @@ const SimpleStepsSection = () => {
               forceAlignLeft
             />
             <Button
+            as={Link}
               leftIcon={<Share2Icon />}
               variant="outline"
               colorScheme="brand"
@@ -221,11 +223,18 @@ const SimpleStepsSection = () => {
               _hover={{
                 transform: "translateY(-2px)",
               }}
+              href="https://x.com/anyflow_"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               Share on X
             </Button>
             <Button
               leftIcon={<LinkIcon />}
+              as={Link}
+              href="https://app.anyflow.pro/"
+              target="_blank"
+              rel="noopener noreferrer"
               variant="subtle"
               colorScheme="brand"
               size="lg"
@@ -233,10 +242,7 @@ const SimpleStepsSection = () => {
               _hover={{
                 transform: "translateY(-2px)",
               }}
-              onClick={() => {
-                // Add referral link logic here
-                window.location.href = "/app/welcome?ref=xyz";
-              }}
+             
             >
               Copy referral link
             </Button>

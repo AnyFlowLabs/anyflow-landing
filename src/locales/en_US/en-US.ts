@@ -45,7 +45,7 @@ export const en_US = {
     footer: {
       copyright: "© 2024 Anyflow. All rights reserved.",
       backedBy: {
-        text: "Backed by Khiza",
+        text: "Backed by",
         logo: "Khiza logo URL",
       },
     },

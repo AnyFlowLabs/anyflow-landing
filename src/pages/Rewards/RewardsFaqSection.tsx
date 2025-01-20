@@ -24,7 +24,7 @@ export default function RewardsFaqSection() {
             {
               question: "How do I get started with the program?",
               answer:
-                "Getting started is easy! First, follow us on Twitter <a href='https://x.com/anyflow_' target='_blank' rel='noopener noreferrer'>https://x.com/anyflow_</a> and join our Discord <a href='https://discord.gg/TbARmXUXSM' target='_blank' rel='noopener noreferrer'>https://discord.gg/TbARmXUXSM</a>. Then, create an account using your GitHub credentials. Once set up, you can make your first deployment on the XDC network and earn rewards.",
+                "Getting started is easy! First, follow us on Twitter <a style='text-decoration: underline;' href='https://x.com/anyflow_' target='_blank' rel='noopener noreferrer'>https://x.com/anyflow_</a> and join our Discord <a style='text-decoration: underline;' href='https://discord.gg/TbARmXUXSM' target='_blank' rel='noopener noreferrer'>https://discord.gg/TbARmXUXSM</a>. Then, create an account using your GitHub credentials. Once set up, you can make your first deployment on the XDC network and earn rewards.",
             },
             {
               question: "How and when do I receive the rewards?",
@@ -50,12 +50,12 @@ export default function RewardsFaqSection() {
             {
               question: "How does AnyFlow work?",
               answer:
-                "For a detailed technical explanation of how our platform operates, please visit our documentation: <a href='https://docs.anyflow.pro/docs/how_it_works/' target='_blank' rel='noopener noreferrer'>https://docs.anyflow.pro/docs/how_it_works/</a>.",
+                "For a detailed technical explanation of how our platform operates, please visit our documentation: <a style='text-decoration: underline;' href='https://docs.anyflow.pro/docs/how_it_works/' target='_blank' rel='noopener noreferrer'>https://docs.anyflow.pro/docs/how_it_works/</a>.",
             },
             {
               question: "What conditions apply to participation?",
               answer:
-                "This program is designed for developers, tech leads, and CTOs. To ensure we are engaging with real, active individuals in the web3 space, we perform both automated and manual checks. Below are the specific eligibility criteria:<br><br><ul><li><strong>GitHub:</strong> The account must be at least six months old and have at least one public repository with recent activity.</li><li><strong>Twitter/X:</strong> The account must have at least 100 followers, be at least six months old, and show authentic, human-generated content. The account must also follow AnyFlow's account for the duration of the program.</li><li><strong>Discord:</strong> The account must pass our anti-bot system and remain a member of AnyFlow's Discord server until the program concludes.</li></ul><br>Each account and interaction will be manually verified to ensure fair participation. Any suspicious activity may result in disqualification at our discretion.",
+                "This program is designed for developers, tech leads, and CTOs. To ensure we are engaging with real, active individuals in the web3 space, we perform both automated and manual checks. Below are the specific eligibility criteria:<br><br><ul style='padding-left: 20px'><li><strong>GitHub:</strong> The account must be at least six months old and have at least one public repository with recent activity.</li><li><strong>Twitter/X:</strong> The account must have at least 100 followers, be at least six months old, and show authentic, human-generated content. The account must also follow AnyFlow's account for the duration of the program.</li><li><strong>Discord:</strong> The account must pass our anti-bot system and remain a member of AnyFlow's Discord server until the program concludes.</li></ul><br>Each account and interaction will be manually verified to ensure fair participation. Any suspicious activity may result in disqualification at our discretion.",
             },
           ].map((item, index) => (
             <AccordionItem key={index}>

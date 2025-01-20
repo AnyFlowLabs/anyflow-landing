@@ -27,12 +27,12 @@ const CardsSection = () => {
       <Container maxW="container.xl" py={{ base: 4, md: 8 }}>
         <HStack
           w="full"
-          align="center"
-          justify="center"
+          align="stretch"
+          justify="stretch"
           gap={{ base: 4, md: 16 }}
           flexDir={{ base: "column", md: "row" }}
         >
-          <VStack flex={1} gap={{ base: 2, md: 8 }} align="stretch">
+          <VStack flex={1} gap={{ base: 2, md: 8 }} align="stretch" h="full">
             <Heading
               fontSize={{ base: "2xl", md: "4xl" }}
               fontWeight="bold"
@@ -157,7 +157,13 @@ const CardsSection = () => {
             </HStack>
           </VStack>
 
-          <VStack flex={1} gap={{ base: 2, md: 8 }} align="stretch" w="full">
+          <VStack
+            flex={1}
+            gap={{ base: 2, md: 8 }}
+            align="stretch"
+            w="full"
+            h="full"
+          >
             <Heading
               fontSize={{ base: "2xl", md: "4xl" }}
               fontWeight="bold"

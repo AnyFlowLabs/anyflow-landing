@@ -33,7 +33,7 @@ const DeveloperResourcesSection = () => {
         <TitleSection
           pre="Let's start coding"
           title="Developer Resources"
-          description="Everything you need to get started and succeed"
+          // description="Everything you need to get started and succeed"
         />
 
         <SimpleGrid
@@ -91,7 +91,7 @@ const DeveloperResourcesSection = () => {
                 Documentation
               </Heading>
               <Text color={textColor} fontSize="sm">
-                Comprehensive guides and API references to help you build faster
+              Comprehensive guides and API references
               </Text>
               <Button
                 variant="ghost"
@@ -101,7 +101,7 @@ const DeveloperResourcesSection = () => {
                 aria-label="View documentation"
                 fontWeight="medium"
               >
-                View Docs
+                View docs
               </Button>
             </VStack>
           </VStack>
@@ -127,16 +127,16 @@ const DeveloperResourcesSection = () => {
                 <Icon as={CodeIcon} boxSize={6} />
               </Box>
               <Heading size="md" color={headingColor} flex={1} display={{ base: "block", md: "none"}}>
-                Sample Projects
+              Sample projects
+
               </Heading>
             </HStack>
             <VStack align="start" spacing={4}>
               <Heading size="md" color={headingColor} display={{ base: "none", md: "block"}}>
-                Sample Projects
+                Sample projects
               </Heading>
               <Text color={textColor} fontSize="sm">
-                Ready-to-use templates and example implementations to kickstart
-                your development
+              Example implementations and templates
               </Text>
               <Button
                 variant="ghost"
@@ -146,7 +146,7 @@ const DeveloperResourcesSection = () => {
                 aria-label="View templates"
                 fontWeight="medium"
               >
-                View Templates
+                View templates
               </Button>
             </VStack>
           </VStack>
@@ -180,8 +180,8 @@ const DeveloperResourcesSection = () => {
                 Community
               </Heading>
               <Text color={textColor} fontSize="sm">
-                Join our vibrant Discord community for real-time support and
-                discussions
+              Join our Discord for real-time support and discussions
+
               </Text>
               <HStack
                 spacing={{ base: 2, md: 4 }}
