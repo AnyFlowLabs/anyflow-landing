@@ -33,7 +33,7 @@ import { APP_URL } from "@/const";
 const RewardsPage = () => {
   return (
     <Box as="main">
-      {/* <ModalClose /> */}
+      <ModalClose />
       <HeroSection />
 
       <VercelLikeSection />
