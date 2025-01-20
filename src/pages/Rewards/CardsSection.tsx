@@ -1,28 +1,21 @@
 import {
-  Box,
   Button,
   Container,
-  Divider,
   Flex,
   Heading,
   HStack,
-  SimpleGrid,
   Text,
   VStack,
   useMediaQuery,
 } from "@chakra-ui/react";
 import {
-  CogIcon,
   ArrowUpRightIcon,
   ClockAlertIcon,
   ShieldOffIcon,
   EyeOffIcon,
   ShieldCheckIcon,
-  ArrowRightCircleIcon,
-  ArrowRightFromLine,
   ArrowRightIcon,
   RocketIcon,
-  BoltIcon,
   ZapIcon,
 } from "lucide-react";
 
@@ -297,7 +290,7 @@ const CardsSection = () => {
           </VStack>
         </HStack>
         <Flex justify="center" mt={8}>
-          <Button variant="gradient" size="lg" w={{base: "full", md: "auto"}}>
+          <Button variant="gradient" size="lg" w={{ base: "full", md: "auto" }}>
             Start deploying effortlessly
           </Button>
         </Flex>

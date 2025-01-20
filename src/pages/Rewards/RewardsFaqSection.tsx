@@ -2,8 +2,6 @@
 import {
   Box,
   Container,
-  Heading,
-  Text,
   VStack,
   Accordion,
   AccordionItem,

@@ -3,7 +3,6 @@ import LogoFooter from "@/assets/logo-footer.svg";
 import KhizaLogo from "@/assets/khiza.svg";
 import GithubIconSvg from "@/assets/github.svg";
 import LinkedinIcon from "@/assets/linkedin.svg";
-import TwitterIcon from "@/assets/twitter.svg";
 import DiscordIcon from "@/assets/discord.svg";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";

@@ -1,11 +1,9 @@
 import {
-  Button,
   Container,
   Heading,
   SimpleGrid,
   Text,
   VStack,
-  Box,
   HStack,
   Icon,
   Center,
