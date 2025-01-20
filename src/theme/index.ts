@@ -7,6 +7,7 @@ import { fonts } from "./fonts";
 import "@fontsource/red-hat-display";
 import "@fontsource/geist-mono";
 import "@fontsource/geist-sans";
+import { keyframes } from "@emotion/react";
 
 const header = {
   height: "72px",
@@ -89,6 +90,28 @@ const customTheme = extendTheme({
 
       "@keyframes gridAnimation": {
         to: { transform: "translateY(-50%)" },
+      },
+
+      "@keyframes roleSlideDown": {
+        "0%": {
+          transform: "translateY(-100%)",
+          opacity: 0,
+        },
+        "100%": {
+              transform: "translateY(0)",
+          opacity: 1,
+        },
+      },
+
+      "@keyframes roleSlideUp": {
+        "0%": {
+          transform: "translateY(0)",
+          opacity: 1,
+        },
+        "100%": {
+          transform: "translateY(100%)",
+          opacity: 0,
+        },
       },
     },
   },
