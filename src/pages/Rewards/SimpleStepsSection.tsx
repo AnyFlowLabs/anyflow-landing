@@ -26,8 +26,8 @@ import { TitleSection } from "./Components";
 
 const SimpleStepsSection = () => {
   return (
-    <Box w="full" py={{ base: 4, md: 8 }} position="relative" overflow="hidden">
-      {/* <Box
+    <Box w="full" py={{ base: 16, md: 8 }} position="relative" overflow="hidden">
+      <Box
         position="absolute"
         top="0"
         left="50%"
@@ -35,11 +35,11 @@ const SimpleStepsSection = () => {
         bottom="0"
         bgGradient="radial(circle at 50% 0%, transparent 0%, info.600 70%, transparent 100%)"
         filter="blur(100px)"
-        w={{ base: "full", md: "25vw" }}
-        h={{ base: "full", md: "25vh" }}
+        w={{ base: "full", md: "500px" }}
+        h={{ base: "100px", md: "500px" }}
         transform="translate(-50%, -50%)"
         opacity="0.5"
-      /> */}
+      />
 
       <Container maxW="container.xl" position="relative">
         <VStack spacing={{ base: 4, md: 12 }} align="center" w="full">
@@ -200,7 +200,7 @@ const SimpleStepsSection = () => {
             w={{ base: "auto", md: "full" }}
             borderRadius="lg"
             border={{ base: "none", md: "2px solid" }}
-            borderColor="rgba(255, 255, 255, 0.1)"
+            borderColor={{base: "transparent", md: "rgba(255, 255, 255, 0.1)"}}
             backdropFilter="blur(10px)"
             flexDir={{ base: "column", md: "row" }}
             mx={{ base: -8, md: 0 }}

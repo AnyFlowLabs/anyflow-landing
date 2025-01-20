@@ -91,12 +91,10 @@ const DeveloperResourcesSection = () => {
                 Documentation
               </Heading>
               <Text color={textColor} fontSize="sm">
-              Comprehensive guides and API references
+                Comprehensive guides and API references
               </Text>
               <Button
                 variant="ghost"
-                colorScheme="brand"
-                size="sm"
                 rightIcon={<ArrowRightIcon size={16} />}
                 aria-label="View documentation"
                 fontWeight="medium"
@@ -107,7 +105,7 @@ const DeveloperResourcesSection = () => {
           </VStack>
 
           <VStack
-            p={{ base: 4, md: 8 }}    
+            p={{ base: 4, md: 8 }}
             bg={cardBg}
             border="1px solid"
             borderColor={cardBorder}
@@ -122,26 +120,44 @@ const DeveloperResourcesSection = () => {
               borderColor: "brand.500",
             }}
           >
-            <HStack w={{ base: "full", md: "full" }} spacing={{ base: 4, md: 4 }} align="center">
-              <Box p={3} bg={highlightBg} borderRadius="lg" color="brand.500" display="flex" alignItems="center" justifyContent="center">
+            <HStack
+              w={{ base: "full", md: "full" }}
+              spacing={{ base: 4, md: 4 }}
+              align="center"
+            >
+              <Box
+                p={3}
+                bg={highlightBg}
+                borderRadius="lg"
+                color="brand.500"
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+              >
                 <Icon as={CodeIcon} boxSize={6} />
               </Box>
-              <Heading size="md" color={headingColor} flex={1} display={{ base: "block", md: "none"}}>
-              Sample projects
-
+              <Heading
+                size="md"
+                color={headingColor}
+                flex={1}
+                display={{ base: "block", md: "none" }}
+              >
+                Sample projects
               </Heading>
             </HStack>
             <VStack align="start" spacing={4}>
-              <Heading size="md" color={headingColor} display={{ base: "none", md: "block"}}>
+              <Heading
+                size="md"
+                color={headingColor}
+                display={{ base: "none", md: "block" }}
+              >
                 Sample projects
               </Heading>
               <Text color={textColor} fontSize="sm">
-              Example implementations and templates
+                Example implementations and templates
               </Text>
               <Button
                 variant="ghost"
-                colorScheme="brand"
-                size="sm"
                 rightIcon={<ArrowRightIcon size={16} />}
                 aria-label="View templates"
                 fontWeight="medium"
@@ -167,30 +183,70 @@ const DeveloperResourcesSection = () => {
               borderColor: "brand.500",
             }}
           >
-            <HStack w={{ base: "full", md: "full" }} spacing={{ base: 4, md: 4 }} align="center">
-              <Box p={3} bg={highlightBg} borderRadius="lg" color="brand.500" display="flex" alignItems="center" justifyContent="center">
+            <HStack
+              w={{ base: "full", md: "full" }}
+              spacing={{ base: 4, md: 4 }}
+              align="center"
+            >
+              <Box
+                p={3}
+                bg={highlightBg}
+                borderRadius="lg"
+                color="brand.500"
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+              >
                 <Icon as={UsersRoundIcon} boxSize={6} />
               </Box>
-              <Heading size="md" color={headingColor} flex={1} display={{ base: "block", md: "none"}}>
-                Community
-              </Heading>
+              <HStack spacing={{ base: 2, md: 4 }} borderRadius="lg" w="full">
+                <Heading
+                  size="md"
+                  color={headingColor}
+                  flex={1}
+                  display={{ base: "block", md: "none" }}
+                >
+                  Community
+                </Heading>
+                <HStack gap={2} display={{ base: "none", md: "flex" }}>
+                  <Badge
+                    colorScheme="brand"
+                    fontSize="xs"
+                    px={3}
+                    py={1}
+                    borderRadius="full"
+                  >
+                    20+ members
+                  </Badge>
+                  <Badge
+                    colorScheme="green"
+                    fontSize="xs"
+                    px={3}
+                    py={1}
+                    borderRadius="full"
+                  >
+                    24/7 Active
+                  </Badge>
+                </HStack>
+              </HStack>
             </HStack>
             <VStack align="start" spacing={4}>
-              <Heading size="md" color={headingColor} display={{ base: "none", md: "block"}}>
+              <Heading
+                size="md"
+                color={headingColor}
+                display={{ base: "none", md: "block" }}
+              >
                 Community
               </Heading>
-              <Text color={textColor} fontSize="sm">
-              Join our Discord for real-time support and discussions
 
+              <Text color={textColor} fontSize="sm">
+                Join our Discord for real-time support and discussions
               </Text>
-              <HStack
-                spacing={{ base: 2, md: 4 }}
-                borderRadius="lg"
-                w="full"
-              >
+
+              <HStack display={{ base: "flex", md: "none" }} gap={2}>
                 <Badge
                   colorScheme="brand"
-                  fontSize="sm"
+                  fontSize="xs"
                   px={3}
                   py={1}
                   borderRadius="full"
@@ -199,7 +255,7 @@ const DeveloperResourcesSection = () => {
                 </Badge>
                 <Badge
                   colorScheme="green"
-                  fontSize="sm"
+                  fontSize="xs"
                   px={3}
                   py={1}
                   borderRadius="full"
@@ -207,9 +263,8 @@ const DeveloperResourcesSection = () => {
                   24/7 Active
                 </Badge>
               </HStack>
+
               <Button
-                variant="outline"
-                colorScheme="brand"
                 rightIcon={<MessageSquareIcon size={16} />}
                 aria-label="Join Discord community"
                 fontWeight="medium"

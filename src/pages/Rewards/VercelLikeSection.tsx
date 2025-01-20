@@ -3,7 +3,7 @@ import { QuoteIcon } from "lucide-react";
 
 const VercelLikeSection = () => {
   return (
-    <Container maxW="container.xl" py={{ base: 4, md: 8 }}>
+    <Container maxW="container.xl" py={{ base: 16, md: 32 }}>
       <HStack
         w="full"
         align="center"
@@ -12,7 +12,7 @@ const VercelLikeSection = () => {
         flexDir={{ base: "column", md: "row" }}
       >
         <VStack
-          w="full"
+          flex={0.5}
           align="flex-start"
           justify="center"
           spacing={{ base: 0, md: 2 }}
@@ -56,7 +56,7 @@ const VercelLikeSection = () => {
           </HStack>
         </VStack>
 
-        <VStack w="full" align="flex-start" justify="flex-start" spacing={0}>
+        <VStack flex={1.5} align="flex-start" justify="flex-start" spacing={0}>
           <Text
             fontSize={{ base: "md", md: "xl" }}
             bgGradient="linear(to-r, info.400, success.600)"

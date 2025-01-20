@@ -45,7 +45,7 @@ const ProgramRequirementsSection = () => {
           justify="center"
           flexDir={{ base: "column", md: "row" }}
         >
-          <VStack align="start" spacing={8}>
+          <VStack align="start" spacing={{ base: 8, md: 12 }}>
             <Heading size="lg" color="white" letterSpacing="tight">
               Who is it for?
             </Heading>
@@ -157,7 +157,7 @@ const ProgramRequirementsSection = () => {
                       boxSize={{ base: 4, md: 8 }}
                     />
                     <Text fontSize={{ base: "sm", md: "xl" }} flex={1}>
-                    Experience with smart contract developmentt
+                      Experience with smart contract developmentt
                     </Text>
                   </HStack>
                   <HStack w="full" align="center" justify="start">
@@ -177,7 +177,7 @@ const ProgramRequirementsSection = () => {
                       boxSize={{ base: 4, md: 8 }}
                     />
                     <Text fontSize={{ base: "sm", md: "xl" }} flex={1}>
-                    Familiarity with Solidity or similar languages
+                      Familiarity with Solidity or similar languages
                     </Text>
                   </HStack>
                   <HStack w="full" align="center" justify="start">
@@ -187,7 +187,7 @@ const ProgramRequirementsSection = () => {
                       boxSize={{ base: 4, md: 8 }}
                     />
                     <Text fontSize={{ base: "sm", md: "xl" }} flex={1}>
-                    Understanding of blockchain deployment processes
+                      Understanding of blockchain deployment processes
                     </Text>
                   </HStack>
                 </SimpleGrid>
@@ -221,10 +221,11 @@ const ProgramRequirementsSection = () => {
               icon: FileTextIcon,
             },
           ].map((item) => (
-            <VStack key={item.step} spacing={{ base: 2, md: 6 }} align="start">
+            <VStack key={item.step} spacing={{ base: 2, md: 6 }} align={{ base: "center", md: "start" }}>
               <HStack
                 spacing={{ base: 2, md: 4 }}
-                align="start"
+                align={{ base: "center", md: "center" }}
+                justify={{ base: "center", md: "center" }}
                 flexDir={{ base: "column", md: "row" }}
               >
                 <Circle
@@ -283,7 +284,7 @@ const ProgramRequirementsSection = () => {
             color="white"
             letterSpacing="tight"
           >
-           Earn up to $70
+            Earn up to $70
           </Heading>
         </HStack>
       </Flex>

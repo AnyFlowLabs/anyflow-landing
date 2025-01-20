@@ -24,7 +24,7 @@ const GetStartedSection = () => {
 
         <SimpleGrid
           columns={{ base: 1, md: 3 }}
-          spacing={{ base: 4, md: 8 }}
+          spacing={{ base: 6, md: 8 }}
           w="full"
         >
           {[

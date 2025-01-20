@@ -354,7 +354,7 @@ const HeroSection = () => {
         </HStack>
       </Container>
 
-      <Container maxW="container.xl" py={{ base: 4, md: 8 }}>
+      {/* <Container maxW="container.xl" py={{ base: 4, md: 8 }}>
         <SimpleGrid
           columns={{ base: 1, md: 2 }}
           spacing={{ base: 2, md: 8 }}
@@ -495,7 +495,7 @@ const HeroSection = () => {
             </HStack>
           </VStack>
         </SimpleGrid>
-      </Container>
+      </Container> */}
     </>
   );
 };
