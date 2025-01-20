@@ -6,7 +6,6 @@ import {
   Heading,
   HStack,
   Image,
-  SimpleGrid,
   Text,
   VStack,
 } from "@chakra-ui/react";
@@ -23,8 +22,20 @@ import {
 } from "lucide-react";
 import BackedSection from "./Backted";
 import FeaturedSection from "./Featured";
+import { useEffect, useState } from "react";
 
 const HeroSection = () => {
+  const [roleIndex, setRoleIndex] = useState(0);
+  const roles = ["web3 CTO", "web3 tech lead", "web3 developer"];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setRoleIndex((prev) => (prev + 1) % roles.length);
+    }, 2000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <>
       <Container
@@ -49,8 +60,9 @@ const HeroSection = () => {
               letterSpacing={0.5}
               textAlign={{ base: "left", md: "center" }}
               w={{ base: "full", md: "auto" }}
+              transition="all 0.5s ease-in-out"
             >
-              Hey web3 developer, ready to shape the future?
+              Hey {roles[roleIndex]}, ready to shape the future?
             </Text>
 
             <Heading
