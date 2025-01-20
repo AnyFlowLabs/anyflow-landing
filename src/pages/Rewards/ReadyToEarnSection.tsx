@@ -8,7 +8,6 @@ import {
   Box,
   useColorModeValue,
   HStack,
-  Fade,
 } from "@chakra-ui/react";
 import {
   ArrowRightIcon,
@@ -28,22 +27,22 @@ function ReadyToEarnSection() {
   const highlightColor = useColorModeValue("yellow.400", "yellow.300");
   const textColor = useColorModeValue("gray.700", "gray.300");
   const headingColor = useColorModeValue("gray.900", "white");
-  const cardHoverBg = useColorModeValue("gray.50", "gray.700");
 
   return (
     <Box
       maxW="full"
-      mx={{ base: 4, sm: 8, md: 12, lg: 12, xl: 12 }}
-      bg="gray.800"
+      mx={{ base: 0, sm: 8, md: 12, lg: 12, xl: 12 }}
+      my={{ base: 0, md: 12 }}
+      bg={{ base: "transparent", md: "gray.800" }}
       borderRadius="lg"
     >
-      <Container maxW="container.xl" py={{ base: 12, sm: 16, md: 24, lg: 32 }}>
+      <Container maxW="container.xl" py={{ base: 4, sm: 16, md: 24, lg: 32 }}>
         <VStack spacing={4}>
           <HStack
             bg={useColorModeValue("yellow.100", "yellow.900")}
             px={6}
             py={3}
-            borderRadius="full"
+            borderRadius={{ base: "lg", md: "full" }}
             boxShadow="md"
             transition="transform 0.2s"
             _hover={{ transform: "scale(1.02)" }}
@@ -60,16 +59,15 @@ function ReadyToEarnSection() {
             </Text>
           </HStack>
 
-          <Fade in={true}>
-            <TitleSection
-              title="Ready to earn your rewards?"
-              description="Join our community of developers and start earning today"
-            />
-          </Fade>
+          <TitleSection
+            title="Ready to earn your rewards?"
+            description="Join our community of developers and start earning today"
+          />
 
           <SimpleGrid
             columns={{ base: 1, sm: 3 }}
             spacing={{ base: 1, md: 4 }}
+            w={{ base: "full", md: "auto" }}
             maxW="container.md"
             my={{ base: 4, md: 6 }}
           >
@@ -87,7 +85,7 @@ function ReadyToEarnSection() {
             ))}
           </SimpleGrid>
 
-          <VStack spacing={6}>
+          <VStack spacing={{ base: 4, md: 6 }} w="full">
             <Button
               size="lg"
               variant="gradient"
@@ -99,6 +97,7 @@ function ReadyToEarnSection() {
               transition="all 0.2s"
               _hover={{ transform: "translateY(-2px)" }}
               _active={{ transform: "scale(0.98)" }}
+              w={{ base: "full", md: "auto" }}
             >
               Start earning now
             </Button>
@@ -133,15 +132,7 @@ function ReadyToEarnSection() {
                 key={index}
                 variant="outline"
                 leftIcon={item.icon}
-                size="lg"
-                py={6}
                 aria-label={item.label}
-                transition="all 0.2s"
-                _hover={{
-                  bg: cardHoverBg,
-                  transform: "translateY(-2px)",
-                  boxShadow: "md",
-                }}
               >
                 {item.text}
               </Button>
@@ -153,14 +144,14 @@ function ReadyToEarnSection() {
               as="h3"
               size="lg"
               color={headingColor}
-              mb={8}
-              textAlign="center"
+              mb={{ base: 4, md: 8 }}
+              textAlign={{base: "left", md: "center"}}
             >
               Why join now:
             </Heading>
             <SimpleGrid
-              columns={{ base: 1, md: 4 }}
-              spacing={{ base: 2, md: 4 }}
+              columns={{ base: 2, md: 4 }}
+              spacing={{ base: 0, md: 4 }}
             >
               {[
                 {
@@ -191,15 +182,15 @@ function ReadyToEarnSection() {
                     transform: "translateY(-4px)",
                   }}
                 >
-                  <VStack align="start" spacing={4}>
-                    <Text fontSize="2xl" role="img" aria-label={item.title}>
+                  <VStack align="start" spacing={{ base: 2, md: 4 }}>
+                    <Text fontSize={{ base: "lg", md: "2xl" }} role="img" aria-label={item.title}>
                       {<item.icon strokeWidth={1.5} />}
                     </Text>
                     <VStack align="start" spacing={1}>
-                      <Heading size="md" color={headingColor}>
+                      <Heading size={{ base: "sm", md: "lg" }} color={headingColor}>
                         {item.title}
                       </Heading>
-                      <Text color={textColor} fontSize="md">
+                      <Text color={textColor} fontSize={{ base: "xs", md: "sm" }}>
                         {item.text}
                       </Text>
                     </VStack>

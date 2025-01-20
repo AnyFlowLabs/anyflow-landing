@@ -9,6 +9,7 @@ import {
   SimpleGrid,
   Text,
   VStack,
+  useMediaQuery,
 } from "@chakra-ui/react";
 import {
   CogIcon,
@@ -24,10 +25,9 @@ import {
   BoltIcon,
   ZapIcon,
 } from "lucide-react";
-import { useTranslation } from "react-i18next";
 
 const CardsSection = () => {
-  const { t } = useTranslation();
+  const isMobile = useMediaQuery("(max-width: 768px)");
 
   return (
     <>
@@ -37,28 +37,33 @@ const CardsSection = () => {
           align="center"
           justify="center"
           gap={{ base: 4, md: 16 }}
+          flexDir={{ base: "column", md: "row" }}
         >
           <VStack flex={1} gap={{ base: 2, md: 8 }} align="stretch">
-            <Text fontSize="4xl" fontWeight="bold">
+            <Heading
+              fontSize={{ base: "2xl", md: "4xl" }}
+              fontWeight="bold"
+              textAlign={{ base: "left", md: "center" }}
+            >
               Sound familiar?
-            </Text>
+            </Heading>
             <HStack
               w="full"
-              align="start"
+              align={{ base: "center", md: "start" }}
               justify="center"
-              gap={{ base: 2, md: 8 }}
+              gap={{ base: 4, md: 8 }}
             >
               <ShieldOffIcon
-                size={48}
+                size={isMobile ? 32 : 48}
                 strokeWidth={1}
                 color="var(--anyflow-colors-brand-800)"
               />
 
               <VStack w="full" align="start" justify="center" gap={0} flex={1}>
-                <Heading fontSize="xl" mb={1}>
+                <Heading fontSize={{ base: "md", md: "xl" }} mb={1}>
                   Security headaches
                 </Heading>
-                <Text fontSize="md">
+                <Text fontSize={{ base: "xs", md: "md" }}>
                   Managing private keys and securingdeployment <br />
                   processes is risky.
                 </Text>
@@ -92,19 +97,19 @@ const CardsSection = () => {
               w="full"
               align="start"
               justify="center"
-              gap={{ base: 2, md: 8 }}
+              gap={{ base: 4, md: 8 }}
             >
               <EyeOffIcon
-                size={48}
+                size={isMobile ? 32 : 48}
                 strokeWidth={1}
                 color="var(--anyflow-colors-brand-800)"
               />
 
               <VStack w="full" align="start" justify="center" gap={0}>
-                <Heading fontSize="xl" mb={1}>
+                <Heading fontSize={{ base: "md", md: "xl" }} mb={1}>
                   Hidden costs
                 </Heading>
-                <Text fontSize="md">
+                <Text fontSize={{ base: "xs", md: "md" }}>
                   Buying tokens across chains and paying gas fees adds up.
                 </Text>
               </VStack>
@@ -114,19 +119,19 @@ const CardsSection = () => {
               w="full"
               align="start"
               justify="center"
-              gap={{ base: 2, md: 8 }}
+              gap={{ base: 4, md: 8 }}
             >
               <ClockAlertIcon
-                size={48}
+                size={isMobile ? 32 : 48}
                 strokeWidth={1}
                 color="var(--anyflow-colors-brand-800)"
               />
 
               <VStack w="full" align="start" justify="center" gap={0}>
-                <Heading fontSize="xl" mb={1}>
+                <Heading fontSize={{ base: "md", md: "xl" }} mb={1}>
                   Time sink
                 </Heading>
-                <Text fontSize="md">
+                <Text fontSize={{ base: "xs", md: "md" }}>
                   Developers spend 30+ minutes per deployment managing tokens
                   and configurations.
                 </Text>
@@ -142,7 +147,7 @@ const CardsSection = () => {
                   w="auto"
                 >
                   <Text
-                    fontSize="xs"
+                    fontSize={{ base: "xs", md: "md" }}
                     style={{ textDecoration: "underline" }}
                     color="brand.400"
                   >
@@ -151,7 +156,7 @@ const CardsSection = () => {
                     CI/CD and DevOps activities like Github Actions
                   </Text>
                   <ArrowUpRightIcon
-                    size={24}
+                    size={isMobile ? 16 : 24}
                     color="var(--anyflow-colors-brand-400)"
                   />
                 </HStack>
@@ -159,27 +164,31 @@ const CardsSection = () => {
             </HStack>
           </VStack>
 
-          <VStack flex={1} gap={{ base: 2, md: 8 }} align="stretch">
-            <Text fontSize="4xl" fontWeight="bold">
+          <VStack flex={1} gap={{ base: 2, md: 8 }} align="stretch" w="full">
+            <Heading
+              fontSize={{ base: "2xl", md: "4xl" }}
+              fontWeight="bold"
+              textAlign={{ base: "left", md: "center" }}
+            >
               There’s a better way
-            </Text>
+            </Heading>
             <HStack
               w="full"
               align="start"
               justify="center"
-              gap={{ base: 2, md: 8 }}
+              gap={{ base: 4, md: 8 }}
             >
               <ShieldCheckIcon
-                size={48}
+                size={isMobile ? 32 : 48}
                 strokeWidth={1}
                 color="var(--anyflow-colors-success-500)"
               />
 
               <VStack w="full" align="start" justify="center" gap={0} flex={1}>
-                <Heading fontSize="xl" mb={1}>
+                <Heading fontSize={{ base: "md", md: "xl" }} mb={1}>
                   Enterprise-grade security
                 </Heading>
-                <Text fontSize="md">
+                <Text fontSize={{ base: "xs", md: "md" }}>
                   Bank-level encryption and key management are included.
                 </Text>
                 <HStack
@@ -189,38 +198,39 @@ const CardsSection = () => {
                   mt={{ base: 2, md: 4 }}
                   w="full"
                 >
-                   <ArrowRightIcon
-                    size={16}
+                  <ArrowRightIcon
+                    size={isMobile ? 16 : 24}
                     color="var(--anyflow-colors-success-500)"
                   />
-                  <Text fontSize="xs" color="success.500" flex={1}>
+                  <Text
+                    fontSize={{ base: "xs", md: "md" }}
+                    color="success.500"
+                    flex={1}
+                  >
                     Third-party cloud enterprise KMS solution with HSMs
                   </Text>
                 </HStack>
               </VStack>
             </HStack>
 
-           
             <HStack
               w="full"
               align="start"
               justify="center"
-              gap={{ base: 2, md: 8 }}
+              gap={{ base: 4, md: 8 }}
             >
               <ZapIcon
-                size={48}
+                size={isMobile ? 32 : 48}
                 strokeWidth={1}
                 color="var(--anyflow-colors-success-500)"
               />
 
               <VStack w="full" align="start" justify="center" gap={0} flex={1}>
-                <Heading fontSize="xl" mb={1}>
-                Zero setups required
-
+                <Heading fontSize={{ base: "md", md: "xl" }} mb={1}>
+                  Zero setups required
                 </Heading>
-                <Text fontSize="md">
-                We handle all the infrastructure heavy lifting.
-
+                <Text fontSize={{ base: "xs", md: "md" }}>
+                  We handle all the infrastructure heavy lifting.
                 </Text>
                 <HStack
                   align="center"
@@ -230,11 +240,15 @@ const CardsSection = () => {
                   w="full"
                 >
                   <ArrowRightIcon
-                    size={16}
+                    size={isMobile ? 16 : 24}
                     color="var(--anyflow-colors-success-500)"
                   />
-                  <Text fontSize="xs" color="success.500" flex={1}>
-                  Save hours on deployment tasks and configuration.
+                  <Text
+                    fontSize={{ base: "xs", md: "md" }}
+                    color="success.500"
+                    flex={1}
+                  >
+                    Save hours on deployment tasks and configuration.
                   </Text>
                 </HStack>
               </VStack>
@@ -244,22 +258,20 @@ const CardsSection = () => {
               w="full"
               align="start"
               justify="center"
-              gap={{ base: 2, md: 8 }}
+              gap={{ base: 4, md: 8 }}
             >
               <RocketIcon
-                size={48}
+                size={isMobile ? 32 : 48}
                 strokeWidth={1}
                 color="var(--anyflow-colors-success-500)"
               />
 
               <VStack w="full" align="start" justify="center" gap={0} flex={1}>
-                <Heading fontSize="xl" mb={1}>
-                Deploy in seconds
-
+                <Heading fontSize={{ base: "md", md: "xl" }} mb={1}>
+                  Deploy in seconds
                 </Heading>
-                <Text fontSize="md">
-                No token purchases, no config files—just instant deployments.
-
+                <Text fontSize={{ base: "xs", md: "md" }}>
+                  No token purchases, no config files—just instant deployments.
                 </Text>
                 <HStack
                   align="center"
@@ -269,12 +281,15 @@ const CardsSection = () => {
                   w="full"
                 >
                   <ArrowRightIcon
-                    size={16}
+                    size={isMobile ? 16 : 24}
                     color="var(--anyflow-colors-success-500)"
                   />
-                  <Text fontSize="xs" color="success.500" flex={1}>
-                  Average deployment time: 1 minute
-
+                  <Text
+                    fontSize={{ base: "xs", md: "md" }}
+                    color="success.500"
+                    flex={1}
+                  >
+                    Average deployment time: 1 minute
                   </Text>
                 </HStack>
               </VStack>
@@ -282,7 +297,7 @@ const CardsSection = () => {
           </VStack>
         </HStack>
         <Flex justify="center" mt={8}>
-          <Button variant="gradient" size="lg">
+          <Button variant="gradient" size="lg" w={{base: "full", md: "auto"}}>
             Start deploying effortlessly
           </Button>
         </Flex>

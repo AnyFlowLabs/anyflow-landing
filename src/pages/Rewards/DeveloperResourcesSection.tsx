@@ -28,7 +28,7 @@ const DeveloperResourcesSection = () => {
   const highlightBg = useColorModeValue("brand.50", "brand.900");
 
   return (
-    <Container maxW="container.xl" py={{ base: 16, md: 24 }}>
+    <Container maxW="container.xl" py={{ base: 8, md: 24 }}>
       <VStack spacing={{ base: 8, md: 12 }} align="center">
         <TitleSection
           pre="Let's start coding"
@@ -36,9 +36,9 @@ const DeveloperResourcesSection = () => {
           description="Everything you need to get started and succeed"
         />
 
-        <SimpleGrid 
-          columns={{ base: 1, md: 2, lg: 3 }} 
-          spacing={{ base: 6, md: 8 }} 
+        <SimpleGrid
+          columns={{ base: 1, md: 2, lg: 3 }}
+          spacing={{ base: 4, md: 8 }}
           w="full"
         >
           <VStack
@@ -48,7 +48,7 @@ const DeveloperResourcesSection = () => {
             borderColor={cardBorder}
             borderRadius="xl"
             align="start"
-            spacing={6}
+            spacing={{ base: 2, md: 6 }}
             role="group"
             transition="all 0.3s"
             _hover={{
@@ -57,16 +57,37 @@ const DeveloperResourcesSection = () => {
               borderColor: "brand.500",
             }}
           >
-            <Box
-              p={3}
-              bg={highlightBg}
-              borderRadius="lg"
-              color="brand.500"
+            <HStack
+              w={{ base: "full", md: "full" }}
+              spacing={{ base: 4, md: 4 }}
+              align="center"
             >
-              <Icon as={BookOpenIcon} boxSize={6} />
-            </Box>
+              <Box
+                p={3}
+                bg={highlightBg}
+                borderRadius="lg"
+                color="brand.500"
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+              >
+                <Icon as={BookOpenIcon} boxSize={6} />
+              </Box>
+              <Heading
+                size="md"
+                color={headingColor}
+                flex={1}
+                display={{ base: "block", md: "none" }}
+              >
+                Documentation
+              </Heading>
+            </HStack>
             <VStack align="start" spacing={4}>
-              <Heading size="md" color={headingColor}>
+              <Heading
+                size="md"
+                color={headingColor}
+                display={{ base: "none", md: "block" }}
+              >
                 Documentation
               </Heading>
               <Text color={textColor} fontSize="sm">
@@ -86,13 +107,13 @@ const DeveloperResourcesSection = () => {
           </VStack>
 
           <VStack
-            p={{ base: 6, md: 8 }}
+            p={{ base: 4, md: 8 }}    
             bg={cardBg}
             border="1px solid"
             borderColor={cardBorder}
-            borderRadius="xl" 
+            borderRadius="xl"
             align="start"
-            spacing={6}
+            spacing={{ base: 2, md: 6 }}
             role="group"
             transition="all 0.3s"
             _hover={{
@@ -101,20 +122,21 @@ const DeveloperResourcesSection = () => {
               borderColor: "brand.500",
             }}
           >
-            <Box
-              p={3}
-              bg={highlightBg}
-              borderRadius="lg"
-              color="brand.500"
-            >
-              <Icon as={CodeIcon} boxSize={6} />
-            </Box>
+            <HStack w={{ base: "full", md: "full" }} spacing={{ base: 4, md: 4 }} align="center">
+              <Box p={3} bg={highlightBg} borderRadius="lg" color="brand.500" display="flex" alignItems="center" justifyContent="center">
+                <Icon as={CodeIcon} boxSize={6} />
+              </Box>
+              <Heading size="md" color={headingColor} flex={1} display={{ base: "block", md: "none"}}>
+                Sample Projects
+              </Heading>
+            </HStack>
             <VStack align="start" spacing={4}>
-              <Heading size="md" color={headingColor}>
+              <Heading size="md" color={headingColor} display={{ base: "none", md: "block"}}>
                 Sample Projects
               </Heading>
               <Text color={textColor} fontSize="sm">
-                Ready-to-use templates and example implementations to kickstart your development
+                Ready-to-use templates and example implementations to kickstart
+                your development
               </Text>
               <Button
                 variant="ghost"
@@ -130,69 +152,68 @@ const DeveloperResourcesSection = () => {
           </VStack>
 
           <VStack
-            p={{ base: 6, md: 8 }}
+            p={{ base: 4, md: 8 }}
             bg={cardBg}
             border="1px solid"
             borderColor={cardBorder}
             borderRadius="xl"
             align="start"
-            spacing={6}
+            spacing={{ base: 2, md: 6 }}
             role="group"
             transition="all 0.3s"
             _hover={{
-              transform: "translateY(-8px)", 
+              transform: "translateY(-8px)",
               shadow: "2xl",
               borderColor: "brand.500",
             }}
           >
-            <Box
-              p={3}
-              bg={highlightBg}
-              borderRadius="lg"
-              color="brand.500"
-            >
-              <Icon as={UsersRoundIcon} boxSize={6} />
-            </Box>
+            <HStack w={{ base: "full", md: "full" }} spacing={{ base: 4, md: 4 }} align="center">
+              <Box p={3} bg={highlightBg} borderRadius="lg" color="brand.500" display="flex" alignItems="center" justifyContent="center">
+                <Icon as={UsersRoundIcon} boxSize={6} />
+              </Box>
+              <Heading size="md" color={headingColor} flex={1} display={{ base: "block", md: "none"}}>
+                Community
+              </Heading>
+            </HStack>
             <VStack align="start" spacing={4}>
-              <Heading size="md" color={headingColor}>
+              <Heading size="md" color={headingColor} display={{ base: "none", md: "block"}}>
                 Community
               </Heading>
               <Text color={textColor} fontSize="sm">
-                Join our vibrant Discord community for real-time support and discussions
+                Join our vibrant Discord community for real-time support and
+                discussions
               </Text>
-              <HStack 
-                spacing={3} 
-                p={3}
-                bg={useColorModeValue("brand.50", "brand.900")}
+              <HStack
+                spacing={{ base: 2, md: 4 }}
                 borderRadius="lg"
                 w="full"
               >
-                <Badge 
-                  colorScheme="brand" 
-                  fontSize="sm" 
-                  px={3} 
-                  py={1} 
+                <Badge
+                  colorScheme="brand"
+                  fontSize="sm"
+                  px={3}
+                  py={1}
                   borderRadius="full"
                 >
                   20+ members
                 </Badge>
-                <Badge 
-                  colorScheme="green" 
-                  fontSize="sm" 
-                  px={3} 
-                  py={1} 
+                <Badge
+                  colorScheme="green"
+                  fontSize="sm"
+                  px={3}
+                  py={1}
                   borderRadius="full"
                 >
                   24/7 Active
                 </Badge>
               </HStack>
               <Button
-                variant="ghost"
+                variant="outline"
                 colorScheme="brand"
-                size="sm"
                 rightIcon={<MessageSquareIcon size={16} />}
                 aria-label="Join Discord community"
                 fontWeight="medium"
+                w={{ base: "full", md: "auto" }}
               >
                 Join Discord
               </Button>

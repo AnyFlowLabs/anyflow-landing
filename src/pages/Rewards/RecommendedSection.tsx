@@ -13,15 +13,15 @@ import { ArrowRightIcon, CheckIcon, TrophyIcon, XIcon } from "lucide-react";
 
 const RecommendedSection = () => {
   return (
-    <Container maxW="container.xl" py={{ base: 8, md: 16 }}>
-      <VStack spacing={{ base: 4, md: 8 }} align="center" w="full">
+    <Container maxW="container.xl" py={{ base: 4, md: 16 }}>
+      <VStack spacing={{ base: 0, md: 8 }} align="center" w="full">
         <TitleSection
           pre="How it works"
           title="The smart way to deploy smart contracts"
           description="Stop wasting time and money on outdated methods"
         />
 
-        <SimpleGrid columns={{ base: 1, md: 3 }} spacing={8} w="full" pt={8}>
+        <SimpleGrid columns={{ base: 1, md: 3 }} spacing={{ base: 4, md: 8 }} w="full" pt={8}>
           <VStack
             p={{ base: 6, md: 16 }}
             borderRadius="lg"

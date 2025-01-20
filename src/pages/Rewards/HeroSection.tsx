@@ -48,6 +48,7 @@ const HeroSection = () => {
               fontFamily="heading"
               letterSpacing={0.5}
               textAlign={{ base: "left", md: "center" }}
+              w={{ base: "full", md: "auto" }}
             >
               Hey web3 developer, ready to shape the future?
             </Text>
@@ -119,7 +120,7 @@ const HeroSection = () => {
             </Flex>
 
             <Text
-              fontSize="md"
+              fontSize={{ base: "sm", md: "md" }}
               color="gray.100"
               maxW="xl"
               data-aos="fade-up"
@@ -221,7 +222,7 @@ const HeroSection = () => {
             flex={1}
             display={{ base: "block", lg: "block" }}
             position="relative"
-            mt={{base: 8, md: 0}}
+            mt={{ base: 8, md: 0 }}
             w="full"
           >
             <Box
@@ -253,7 +254,10 @@ const HeroSection = () => {
               border="solid 1px"
               boxShadow="2xl"
               bg="rgba(255,255,255,0.1)"
-              animation={{ base: "none", md: "bounce2 8s cubic-bezier(0, 0, 0.2, 1) infinite" }}
+              animation={{
+                base: "none",
+                md: "bounce2 8s cubic-bezier(0, 0, 0.2, 1) infinite",
+              }}
               color="gray.50"
               borderColor="gray.50"
               backdropFilter="blur(5px)"
@@ -265,8 +269,8 @@ const HeroSection = () => {
 
             <HStack
               position="absolute"
-              top={{ base: 6, md: 40}}
-              right={{ base: 0, md: -16}}
+              top={{ base: 6, md: 40 }}
+              right={{ base: 0, md: -16 }}
               align="center"
               justify="center"
               p={{ base: 1, md: 4 }}
@@ -274,7 +278,10 @@ const HeroSection = () => {
               border="solid 1px"
               boxShadow="2xl"
               bg="rgba(255,255,255,0.1)"
-              animation={{ base: "none", md: "bounce2 8s cubic-bezier(0, 0, 0.2, 1) infinite" }}
+              animation={{
+                base: "none",
+                md: "bounce2 8s cubic-bezier(0, 0, 0.2, 1) infinite",
+              }}
               color="gray.50"
               borderColor="gray.50"
               backdropFilter="blur(5px)"
@@ -286,8 +293,8 @@ const HeroSection = () => {
 
             <HStack
               position="absolute"
-              bottom={{ base: 16, md: 20}}
-              right={{ base: -2, md: -24}}
+              bottom={{ base: 16, md: 20 }}
+              right={{ base: -2, md: -24 }}
               align="center"
               justify="center"
               p={{ base: 1, md: 4 }}
@@ -295,7 +302,10 @@ const HeroSection = () => {
               border="solid 1px"
               boxShadow="2xl"
               bg="rgba(255,255,255,0.1)"
-              animation={{ base: "none", md: "bounce2 8s cubic-bezier(0, 0, 0.2, 1) infinite" }}
+              animation={{
+                base: "none",
+                md: "bounce2 8s cubic-bezier(0, 0, 0.2, 1) infinite",
+              }}
               color="gray.50"
               borderColor="gray.50"
               backdropFilter="blur(5px)"
@@ -308,7 +318,7 @@ const HeroSection = () => {
             <HStack
               position="absolute"
               bottom={20}
-              left={{ base: -2, md: -8}}
+              left={{ base: -2, md: -8 }}
               align="center"
               justify="center"
               p={{ base: 1, md: 4 }}
@@ -316,7 +326,10 @@ const HeroSection = () => {
               border="solid 1px"
               boxShadow="2xl"
               bg="rgba(255,255,255,0.1)"
-              animation={{ base: "none", md: "bounce2 8s cubic-bezier(0, 0, 0.2, 1) infinite" }}
+              animation={{
+                base: "none",
+                md: "bounce2 8s cubic-bezier(0, 0, 0.2, 1) infinite",
+              }}
               color="gray.50"
               borderColor="gray.50"
               backdropFilter="blur(5px)"
@@ -329,14 +342,24 @@ const HeroSection = () => {
       </Container>
 
       <Container maxW="container.xl" py={{ base: 4, md: 8 }}>
-        <HStack spacing={{ base: 4, md: 16 }} w="full" align="center" justify="center" flexDir={{base: "column", md: "row"}}>
+        <HStack
+          spacing={{ base: 4, md: 16 }}
+          w="full"
+          align="center"
+          justify="center"
+          flexDir={{ base: "column", md: "row" }}
+        >
           <BackedSection />
           <FeaturedSection />
         </HStack>
       </Container>
 
       <Container maxW="container.xl" py={{ base: 4, md: 8 }}>
-        <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8} w="full">
+        <SimpleGrid
+          columns={{ base: 1, md: 2 }}
+          spacing={{ base: 2, md: 8 }}
+          w="full"
+        >
           <VStack
             flex={1}
             p={{ base: 6, md: 12 }}
@@ -347,6 +370,7 @@ const HeroSection = () => {
             align="start"
             transition="all 0.3s ease-in-out"
             backdropFilter="blur(4px)"
+            flexDir={{ base: "column", md: "row" }}
             _hover={{
               bgGradient:
                 "linear(to-br, gray.600, transparent, transparent, transparent, gray.900)",
@@ -363,9 +387,9 @@ const HeroSection = () => {
             </Flex>
             <Text
               textAlign="left"
-              fontSize="lg"
+              fontSize={{ base: "md", md: "lg" }}
               fontStyle="italic"
-              h="84px"
+              h={{ base: "auto", md: "84px" }}
               color="gray.100"
             >
               "The reward program made testing our smart contracts across chains
@@ -377,7 +401,7 @@ const HeroSection = () => {
               align="center"
               justify="center"
               w="full"
-              gap={{ base: 2, md: 4 }}
+              gap={{ base: 4, md: 6 }}
             >
               <Image
                 src="/rewards/avatar-1.png"
@@ -387,10 +411,18 @@ const HeroSection = () => {
               />
 
               <VStack w="full" align="start" gap={0} flex={1}>
-                <Text fontWeight="medium" color="gray.100">
+                <Text
+                  fontWeight="medium"
+                  color="gray.100"
+                  fontSize={{ base: "sm", md: "md" }}
+                >
                   John D.
                 </Text>
-                <Text fontWeight="medium" color="gray.300" fontSize="sm">
+                <Text
+                  fontWeight="medium"
+                  color="gray.300"
+                  fontSize={{ base: "xs", md: "sm" }}
+                >
                   Senior Smart Contract Engineer @ DeFi Protocol
                 </Text>
               </VStack>
@@ -423,9 +455,9 @@ const HeroSection = () => {
             </Flex>
             <Text
               textAlign="left"
-              fontSize="lg"
+              fontSize={{ base: "md", md: "lg" }}
               fontStyle="italic"
-              h="84px"
+              h={{ base: "auto", md: "84px" }}
               color="gray.100"
             >
               "Setup took literally 5 minutes and I started earning immediately.
@@ -436,7 +468,7 @@ const HeroSection = () => {
               align="center"
               justify="center"
               w="full"
-              gap={{ base: 2, md: 4 }}
+              gap={{ base: 4, md: 6 }}
             >
               <Image
                 src="/rewards/avatar-4.png"
@@ -446,10 +478,18 @@ const HeroSection = () => {
               />
 
               <VStack w="full" align="start" gap={0} flex={1}>
-                <Text fontWeight="medium" color="gray.100">
+                <Text
+                  fontWeight="medium"
+                  color="gray.100"
+                  fontSize={{ base: "sm", md: "md" }}
+                >
                   Sarah Web3.
                 </Text>
-                <Text fontWeight="medium" color="gray.300" fontSize="sm">
+                <Text
+                  fontWeight="medium"
+                  color="gray.300"
+                  fontSize={{ base: "xs", md: "sm" }}
+                >
                   Blockchain Developer @ Web3 Studio
                 </Text>
               </VStack>

@@ -47,7 +47,7 @@ const RewardsPage = () => {
 
       <CardsSection />
 
-      <Container maxW="container.xl" py={{ base: 8, md: 16 }}>
+      <Container maxW="container.xl" py={{ base: 4, md: 16 }}>
         <VStack spacing={{ base: 1, md: 2 }} align="center" w="full">
           <TitleSection
             pre="Benefits"
@@ -55,10 +55,16 @@ const RewardsPage = () => {
             description="Get rewarded while helping shape the future of web3 deployment"
           />
 
-          <SimpleGrid columns={{ base: 1, md: 3 }} spacing={8} w="full" pt={8}>
+          <SimpleGrid
+            columns={{ base: 1, md: 3 }}
+            spacing={{ base: 4, md: 8 }}
+            w="full"
+            pt={{ base: 4, md: 8 }}
+          >
             <VStack
               flex={1}
               p={{ base: 6, md: 12 }}
+              gap={{ base: 4, md: 6 }}
               bgGradient="linear(to-br, gray.600, transparent, transparent, transparent, gray.800)"
               border="solid 1px"
               borderColor="gray.500"
@@ -73,11 +79,11 @@ const RewardsPage = () => {
               }}
             >
               <WalletIcon size={32} color="var(--anyflow-colors-brand-500)" />
-              <VStack align="start" spacing={4}>
+              <VStack align="start" spacing={{ base: 2, md: 4 }}>
                 <Heading size="md" color="white">
                   Earn while testing
                 </Heading>
-                <VStack align="start" spacing={2}>
+                <VStack align="start" spacing={2} gap={{ base: 1, md: 2 }}>
                   <Text color="info.500">Up to $70 per completion</Text>
                   <Text color="info.500">$10 early bird bonus</Text>
                   <Text color="info.500">$10 per referral</Text>
@@ -112,11 +118,12 @@ const RewardsPage = () => {
               }}
             >
               <LayersIcon size={32} color="var(--anyflow-colors-brand-500)" />
-              <VStack align="start" spacing={4}>
+              <VStack align="start" spacing={{ base: 2, md: 4 }}>
                 <Heading size="md" color="white">
                   Shape the future
                 </Heading>
-                <VStack align="start" spacing={2}>
+                <VStack align="start" spacing={2} gap={{ base: 1, md: 2 }}>
+                  <Text color="info.500">Up to $70 per completion</Text>
                   <Text color="info.500">12+ Supported chains</Text>
                   <Text color="info.500">Direct impact on features</Text>
                   <Text color="info.500">Early access to updates</Text>
@@ -148,11 +155,12 @@ const RewardsPage = () => {
               }}
             >
               <UsersIcon size={32} color="var(--anyflow-colors-brand-500)" />
-              <VStack align="start" spacing={4}>
+              <VStack align="start" spacing={{ base: 2, md: 4 }}>
                 <Heading size="md" color="white">
                   Join the community
                 </Heading>
-                <VStack align="start" spacing={2}>
+                <VStack align="start" spacing={2} gap={{ base: 1, md: 2 }}>
+                  <Text color="info.500">Up to $70 per completion</Text>
                   <Text color="info.300">24 active members</Text>
                   <Text color="info.300">24/7 Support</Text>
                 </VStack>
@@ -170,8 +178,9 @@ const RewardsPage = () => {
           <Button
             size="lg"
             variant="gradient"
-            mt={8}
+            mt={{ base: 4, md: 8 }}
             rightIcon={<ArrowRightIcon />}
+            w={{ base: "full", md: "auto" }}
           >
             Start earning now
           </Button>

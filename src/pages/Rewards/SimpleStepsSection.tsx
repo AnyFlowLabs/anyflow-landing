@@ -41,14 +41,18 @@ const SimpleStepsSection = () => {
       /> */}
 
       <Container maxW="container.xl" position="relative">
-        <VStack spacing={12} align="center" w="full">
+        <VStack spacing={{ base: 4, md: 12 }} align="center" w="full">
           <TitleSection
             pre="Reward Program"
             title="3 simple steps to earn rewards"
             description="Complete all steps to earn up to $70 in rewards. Most developers finish in under 2 hours!"
           />
 
-          <SimpleGrid columns={{ base: 1, md: 3 }} spacing={8} w="full">
+          <SimpleGrid
+            columns={{ base: 1, md: 3 }}
+            spacing={{ base: 2, md: 8 }}
+            w="full"
+          >
             {[
               {
                 step: 1,
@@ -83,12 +87,12 @@ const SimpleStepsSection = () => {
             ].map((item, index) => (
               <VStack
                 key={index}
-                p={10}
+                p={{ base: 4, md: 10 }}
                 bgGradient="linear(to-br, transparent, transparent, transparent, transparent, gray.800)"
                 borderRadius="lg"
                 border="2px solid"
                 borderColor="rgba(255, 255, 255, 0.1)"
-                spacing={8}
+                spacing={{ base: 4, md: 8 }}
                 align="start"
                 position="relative"
                 transition="all 0.4s ease-in-out"
@@ -98,9 +102,9 @@ const SimpleStepsSection = () => {
                 }}
                 backdropFilter="blur(10px)"
               >
-                <HStack spacing={4} w="full">
+                <HStack spacing={{ base: 4, md: 6 }} w="full">
                   <Circle
-                    size={12}
+                    size={{ base: 10, md: 12 }}
                     bg="brand.500"
                     color="white"
                     fontSize="2xl"
@@ -108,13 +112,17 @@ const SimpleStepsSection = () => {
                   >
                     {item.step}
                   </Circle>
-                  <Heading size="lg" color="white" letterSpacing="tight">
+                  <Heading
+                    fontSize={{ base: "2xl", md: "2xl" }}
+                    color="white"
+                    letterSpacing="tight"
+                  >
                     {item.title}
                   </Heading>
                 </HStack>
 
-                <VStack align="start" spacing={6} w="full">
-                  <VStack align="start" spacing={4} w="full">
+                <VStack align="start" spacing={{ base: 4, md: 6 }} w="full">
+                  <VStack align="start" spacing={{ base: 2, md: 4 }} w="full">
                     {item.tasks.map((task, i) => (
                       <HStack
                         key={i}
@@ -123,7 +131,9 @@ const SimpleStepsSection = () => {
                         _hover={{ color: "brand.400" }}
                       >
                         <task.icon size={18} />
-                        <Text fontSize="lg">{task.text}</Text>
+                        <Text fontSize={{ base: "sm", md: "lg" }}>
+                          {task.text}
+                        </Text>
                       </HStack>
                     ))}
                   </VStack>
@@ -149,7 +159,13 @@ const SimpleStepsSection = () => {
             ))}
           </SimpleGrid>
 
-          <HStack gap={8} color="gray.400" fontSize="md">
+          <HStack
+            gap={{ base: 4, md: 8 }}
+            color="gray.400"
+            fontSize="md"
+            flexDir={{ base: "column", md: "row" }}
+            w={{ base: "full", md: "auto" }}
+          >
             <Button
               size="lg"
               variant="gradient"
@@ -160,14 +176,15 @@ const SimpleStepsSection = () => {
               _hover={{
                 transform: "translateY(-2px)",
               }}
+              w={{ base: "full", md: "auto" }}
             >
               Start earning now
             </Button>
-            <HStack>
+            <HStack w={{ base: "full", md: "auto" }}>
               <ClockIcon size={18} color="var(--anyflow-colors-info-500)" />
               <Text color="gray.200">Average completion: 1.5 hours</Text>
             </HStack>
-            <HStack>
+            <HStack w={{ base: "full", md: "auto" }}>
               <DollarSignIcon
                 size={18}
                 color="var(--anyflow-colors-info-500)"
@@ -177,14 +194,17 @@ const SimpleStepsSection = () => {
           </HStack>
 
           <HStack
-            spacing={4}
-            p={{ base: 4, sm: 8, md: 16, lg: 24 }}
+            spacing={{ base: 4, md: 8 }}
             bg="gray.800"
-            w="full"
+            w={{ base: "auto", md: "full" }}
             borderRadius="lg"
-            border="2px solid"
+            border={{ base: "none", md: "2px solid" }}
             borderColor="rgba(255, 255, 255, 0.1)"
             backdropFilter="blur(10px)"
+            flexDir={{ base: "column", md: "row" }}
+            mx={{ base: -8, md: 0 }}
+            px={{ base: 8, sm: 12, md: 16, lg: 24 }}
+            py={{ base: 8, sm: 12, md: 16, lg: 24 }}
           >
             <TitleSection
               pre="Referral Program"
@@ -197,6 +217,7 @@ const SimpleStepsSection = () => {
               variant="outline"
               colorScheme="brand"
               size="lg"
+              w={{ base: "full", md: "auto" }}
               _hover={{
                 transform: "translateY(-2px)",
               }}
@@ -208,6 +229,7 @@ const SimpleStepsSection = () => {
               variant="subtle"
               colorScheme="brand"
               size="lg"
+              w={{ base: "full", md: "auto" }}
               _hover={{
                 transform: "translateY(-2px)",
               }}

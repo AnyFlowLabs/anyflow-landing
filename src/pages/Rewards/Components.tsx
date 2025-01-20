@@ -16,12 +16,14 @@ export const TitleSection: FC<{
     >
       {pre && (
         <Text
-          fontSize="xl"
+          fontSize={{ base: "xl", md: "2xl" }}
           bgGradient="linear(to-r, info.400, success.600)"
           bgClip="text"
           fontWeight="bold"
           fontFamily="heading"
           letterSpacing={0.5}
+          textAlign={{ base: "left", md: forceAlignLeft ? "left" : "center" }}
+          w={{ base: "full", md: "auto" }}
         >
           {pre}
         </Text>
@@ -30,16 +32,18 @@ export const TitleSection: FC<{
         as="h2"
         textStyle="title"
         fontSize={{ base: "2xl", md: "5xl" }}
-        textAlign={forceAlignLeft ? "left" : "center"}
+        textAlign={{ base: "left", md: forceAlignLeft ? "left" : "center" }}
+        w={{ base: "full", md: "auto" }}
       >
         {title}
       </Heading>
       {description && (
         <Text
-          fontSize="xl"
-          color="gray.200"
+          fontSize={{ base: "md", md: "xl" }}
+          color="gray.50"
           maxW={{ base: "full", md: "container.sm" }}
-          textAlign={forceAlignLeft ? "left" : "center"}
+          w={{ base: "full", md: "auto" }}
+          textAlign={{ base: "left", md: forceAlignLeft ? "left" : "center" }}
         >
           {description}
         </Text>

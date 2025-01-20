@@ -17,17 +17,11 @@ export default function RewardsFaqSection() {
   return (
     <Container
       maxW={{ base: "container.sm", md: "container.lg" }}
-      my={{ base: 8, md: 16 }}
+      my={{ base: 0, md: 16 }}
     >
-      <VStack spacing={{ base: 6, md: 8 }} align="stretch">
+      <VStack spacing={{ base: 4, md: 8 }} align="stretch">
         <TitleSection title="Frequently Asked Questions" />
-
-        <Accordion
-          allowMultiple
-          variant="custom"
-          data-aos="fade-up"
-          boxShadow="2xl"
-        >
+        <Accordion allowMultiple variant="custom" boxShadow="2xl">
           {[
             {
               question: "How do I get started with the program?",
