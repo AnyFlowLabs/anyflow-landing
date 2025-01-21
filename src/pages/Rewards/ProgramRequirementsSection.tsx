@@ -147,10 +147,11 @@ const ProgramRequirementsSection = () => {
                 </Heading>
                 <SimpleGrid
                   columns={{ base: 1, md: 1 }}
-                  spacing={{ base: 2, md: 0 }}
+                  spacing={{ base: 4, md: 0 }}
                   color="gray.200"
                   fontSize="lg"
                   h="full"
+                  mt={{base: 4, md: 0}}
                 >
                   <HStack w="full" align="center" justify="start">
                     <Icon
@@ -286,7 +287,7 @@ const ProgramRequirementsSection = () => {
         >
           Apply Now
         </Button>
-        <HStack spacing={4} justify={{ base: "flex-start", md: "flex-end" }}>
+        <HStack spacing={4} justify={{ base: "flex-start", md: "flex-end" }} mb={{base: 8, md: 0}}>
           <DollarSignIcon size={32} color="var(--anyflow-colors-green-400)" />
           <Heading
             size={{ base: "sm", md: "lg" }}
