@@ -54,28 +54,7 @@ const HeroSection = () => {
           gap={{ base: 0, md: 16 }}
         >
           <VStack spacing={4} align={{ base: "center", lg: "start" }} flex={1}>
-            <Box
-              flex={1}
-              display={{ base: "block", lg: "none" }}
-              position="relative"
-              w="full"
-            >
-              <Box
-                as="video"
-                src="/hero.mp4"
-                autoPlay
-                loop
-                muted
-                playsInline
-                width="full"
-                height="auto"
-                borderRadius="lg"
-                objectFit="cover"
-                transition="all 0.6s ease-in-out"
-                border="solid 2px"
-                borderColor="rgba(255,255,255,0.1)"
-              />
-            </Box>
+            
 
             <Box overflow="hidden" position="relative" w="full">
               <Text
@@ -186,6 +165,29 @@ const HeroSection = () => {
               deployment across 12+ chains. Share your expertise, earn rewards,
               and shape the future of blockchain development
             </Text>
+
+            <Box
+              flex={1}
+              display={{ base: "block", lg: "none" }}
+              position="relative"
+              w="full"
+            >
+              <Box
+                as="video"
+                src="/hero.mp4"
+                autoPlay
+                loop
+                muted
+                playsInline
+                width="full"
+                height="auto"
+                borderRadius="lg"
+                objectFit="cover"
+                transition="all 0.6s ease-in-out"
+                border="solid 2px"
+                borderColor="rgba(255,255,255,0.1)"
+              />
+            </Box>
 
             <Button
               as={Link}

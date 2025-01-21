@@ -57,8 +57,8 @@ const ModalClose = () => {
         boxShadow="2xl"
         borderRadius="2xl"
       >
-        <ModalBody p={10}>
-          <VStack spacing={6} w="full">
+        <ModalBody p={{ base: 4, md: 10 }}>
+          <VStack spacing={{ base: 4, md: 6 }} w="full">
             <Box
               p={4}
               bg="brand.500"
@@ -90,7 +90,7 @@ const ModalClose = () => {
 
             <Box
               w="full"
-              p={6}
+              p={{ base: 4, md: 6 }}
               bg="whiteAlpha.50"
               borderRadius="xl"
               borderWidth="1px"
@@ -132,7 +132,7 @@ const ModalClose = () => {
             justify="center"
           >
             <Button
-              size="lg"
+              size={{ base: "md", md: "lg" }}
               variant="gradient"
               w={{ base: "full", md: "auto" }}
               onClick={onClose}
@@ -149,9 +149,9 @@ const ModalClose = () => {
               Claim Your Bonus
             </Button>
             <Button
-              variant="ghost"
+              variant="subtle"
               w={{ base: "full", md: "auto" }}
-              size="lg"
+              size={{ base: "md", md: "lg" }}
               onClick={onClose}
               color="gray.400"
               _hover={{ color: "white", bg: "whiteAlpha.100" }}

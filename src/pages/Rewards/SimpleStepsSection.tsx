@@ -264,7 +264,7 @@ const SimpleStepsSection = () => {
               _hover={{
                 transform: "translateY(-2px)",
               }}
-              href={"https://x.com/intent/post?text=Discover%20AnyFlow%3A%20the%20tool%20that%20makes%20multichain%20smart%20contract%20deployment%20fast%2C%20secure%2C%20and%20effortless.%20Join%20the%20rewards%20program%2C%20test%20the%20platform%2C%20and%20earn%20up%20to%20%2470%20for%20your%20feedback!%20%F0%9F%9A%80%0A%0A%F0%9F%91%89%20https%3A%2F%2Fbit.ly%2F40JrcJa"}
+              href={`https://twitter.com/intent/tweet?text=Discover%20%40anyflow_%3A%20the%20tool%20that%20makes%20multichain%20smart%20contract%20deployment%20fast%2C%20secure%2C%20and%20effortless.%20Join%20the%20rewards%20program%2C%20test%20the%20platform%2C%20and%20earn%20up%20to%20%2470%20for%20your%20feedback!%20%F0%9F%9A%80%0A%F0%9F%91%89%20https%3A%2F%2Fbit.ly%2F40JrcJa%0A`}
               target="_blank"
               rel="noopener noreferrer"
             >

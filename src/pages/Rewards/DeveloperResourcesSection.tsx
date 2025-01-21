@@ -10,6 +10,7 @@ import {
   useColorModeValue,
   Badge,
   Box,
+  Link,
 } from "@chakra-ui/react";
 import {
   ArrowRightIcon,
@@ -17,7 +18,6 @@ import {
   BookOpenIcon,
   CodeIcon,
   UsersRoundIcon,
-  Link,
 } from "lucide-react";
 import { TitleSection } from "./Components";
 
@@ -83,7 +83,7 @@ const DeveloperResourcesSection = () => {
                 Documentation
               </Heading>
             </HStack>
-            <VStack align="start" spacing={4}>
+            <VStack align="start" spacing={4} w="full">
               <Heading
                 size="md"
                 color={headingColor}
@@ -102,6 +102,7 @@ const DeveloperResourcesSection = () => {
                 as={Link}
                 href="https://docs.anyflow.pro/"
                 target="_blank"
+                w={{base: "full", md: "auto"}}
               >
                 View docs
               </Button>
@@ -149,7 +150,7 @@ const DeveloperResourcesSection = () => {
                 Sample projects
               </Heading>
             </HStack>
-            <VStack align="start" spacing={4}>
+            <VStack align="start" spacing={4} w="full">
               <Heading
                 size="md"
                 color={headingColor}
@@ -166,6 +167,7 @@ const DeveloperResourcesSection = () => {
                 aria-label="View templates"
                 fontWeight="medium"
                 as={Link}
+                w={{base: "full", md: "auto"}}
                 href="https://github.com/AnyFlowLabs?q=template&type=all&language=&sort=stargazers"
                 target="_blank"
               >
