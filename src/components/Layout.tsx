@@ -15,6 +15,7 @@ import { AOSInit } from "./AOS";
 import { HelmetProvider } from "react-helmet-async";
 import { OptimizedImage } from "./OptimizedImage";
 import ElonMuskIcon from "./Icons/XIcon";
+import { StarIcon } from "@chakra-ui/icons";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const { t } = useTranslation();
@@ -32,7 +33,26 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         gap={{ base: 4, md: 0 }}
         w="full"
       >
-        <Logo />
+        <HStack gap={8}>
+          <Logo />
+          <Box display={{ base: "none", md: "block" }}>
+            <Link
+              to={"/rewards"}
+              style={{
+                color: "var(--anyflow-colors-warning-500)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                alignContent: "center",
+                gap: "8px",
+              }}
+            >
+              <StarIcon w="12px" h="12px" />
+              <Text>Join on our rewards program</Text>
+            </Link>
+          </Box>
+        </HStack>
+
         <nav>
           <HStack gap={{ base: 4, md: 8 }}>
             <a
@@ -55,6 +75,23 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           </HStack>
         </nav>
       </HStack>
+
+      <Box display={{ base: "block", md: "none" }}>
+        <Link
+          to={"/rewards"}
+          style={{
+            color: "var(--anyflow-colors-warning-500)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            alignContent: "center",
+            gap: "8px",
+          }}
+        >
+          <StarIcon w="12px" h="12px" />
+          <Text>Join on our rewards program</Text>
+        </Link>
+      </Box>
 
       <Box as="main" role="main">
         {children}
