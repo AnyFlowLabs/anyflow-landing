@@ -20,9 +20,15 @@ import {
   RocketIcon,
   ZapIcon,
 } from "lucide-react";
+import { tagTwitterConversion } from "./tag";
+import { useCallback } from "react";
 
 const CardsSection = () => {
   const isMobile = useMediaQuery("(max-width: 768px)");
+
+  const handleTwitterConversion = useCallback(() => {
+    tagTwitterConversion();
+  }, []);
 
   return (
     <>
@@ -305,6 +311,7 @@ const CardsSection = () => {
             variant="gradient"
             size="lg"
             w={{ base: "full", md: "auto" }}
+            onClick={handleTwitterConversion}
           >
             Start deploying effortlessly
           </Button>

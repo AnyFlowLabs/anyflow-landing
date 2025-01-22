@@ -24,11 +24,17 @@ import {
 } from "lucide-react";
 import { TitleSection } from "./Components";
 import { APP_URL } from "@/const";
+import { tagTwitterConversion } from "./tag";
+import { useCallback } from "react";
 
 function ReadyToEarnSection() {
   const highlightColor = useColorModeValue("yellow.400", "yellow.300");
   const textColor = useColorModeValue("gray.700", "gray.300");
   const headingColor = useColorModeValue("gray.900", "white");
+
+  const handleTwitterConversion = useCallback(() => {
+    tagTwitterConversion();
+  }, []);
 
   return (
     <Box
@@ -103,6 +109,7 @@ function ReadyToEarnSection() {
               as={Link}
               href={APP_URL + "/rewards"}
               target="_blank"
+              onClick={handleTwitterConversion}
             >
               Start earning now
             </Button>
