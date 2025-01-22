@@ -9,6 +9,7 @@ import {
   Text,
   VStack,
   useMediaQuery,
+  AspectRatio,
 } from "@chakra-ui/react";
 import {
   BoltIcon,
@@ -168,20 +169,19 @@ const HeroSection = () => {
 
             {isMobile && (
               <Box flex={1} position="relative" w="full">
-                <Box
-                  as="video"
-                  src="/rewards/hero.mp4"
-                  autoPlay
-                  loop
-                  playsInline
-                  width="full"
-                  height="auto"
-                  borderRadius="lg"
-                  objectFit="cover"
-                  transition="all 0.6s ease-in-out"
-                  border="solid 2px"
-                  borderColor="rgba(255,255,255,0.1)"
+                <AspectRatio ratio={16 / 9}>
+                <iframe
+                  src="https://www.youtube.com/embed/KBV_zpMm_0Q?autoplay=1&loop=1&mute=0&controls=0&autohide=1&showinfo=0"
+                  title="Hero video"
+                  allowFullScreen
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  style={{
+                    borderRadius: "0.5rem",
+                    border: "solid 2px rgba(255,255,255,0.1)",
+                  }}
                 />
+                </AspectRatio>
               </Box>
             )}
 
@@ -277,20 +277,19 @@ const HeroSection = () => {
 
           {!isMobile && (
             <Box flex={1} position="relative" mt={{ base: 8, md: 0 }} w="full">
-              <Box
-                as="video"
-                src="/rewards/hero.mp4"
-                autoPlay
-                loop
-                playsInline
-                width="full"
-                height="auto"
-                borderRadius="lg"
-                objectFit="cover"
-                transition="all 0.6s ease-in-out"
-                border="solid 2px"
-                borderColor="rgba(255,255,255,0.1)"
-              />
+              <AspectRatio ratio={16 / 9}>
+                <iframe
+                  src="https://www.youtube.com/embed/KBV_zpMm_0Q?autoplay=1&loop=1&mute=0&controls=0&autohide=1&showinfo=0"
+                  title="Hero video"
+                  allowFullScreen
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  style={{
+                    borderRadius: "0.5rem",
+                    border: "solid 2px rgba(255,255,255,0.1)",
+                  }}
+                />
+              </AspectRatio>
             </Box>
           )}
         </Flex>
