@@ -8,6 +8,7 @@ import {
   Link,
   Text,
   VStack,
+  useMediaQuery,
 } from "@chakra-ui/react";
 import {
   BoltIcon,
@@ -22,6 +23,7 @@ import { useEffect, useState } from "react";
 import { APP_URL } from "@/const";
 
 const HeroSection = () => {
+  const [isMobile] = useMediaQuery("(max-width: 768px)");
   const [roleIndex, setRoleIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
   const roles = ["web3 CTO", "web3 tech lead", "web3 developer"];
@@ -54,8 +56,6 @@ const HeroSection = () => {
           gap={{ base: 0, md: 16 }}
         >
           <VStack spacing={4} align={{ base: "center", lg: "start" }} flex={1}>
-            
-
             <Box overflow="hidden" position="relative" w="full">
               <Text
                 fontSize={{ base: "sm", md: "xl" }}
@@ -166,28 +166,24 @@ const HeroSection = () => {
               and shape the future of blockchain development
             </Text>
 
-            <Box
-              flex={1}
-              display={{ base: "block", lg: "none" }}
-              position="relative"
-              w="full"
-            >
-              <Box
-                as="video"
-                src="/hero.mp4"
-                autoPlay
-                loop
-                muted
-                playsInline
-                width="full"
-                height="auto"
-                borderRadius="lg"
-                objectFit="cover"
-                transition="all 0.6s ease-in-out"
-                border="solid 2px"
-                borderColor="rgba(255,255,255,0.1)"
-              />
-            </Box>
+            {isMobile && (
+              <Box flex={1} position="relative" w="full">
+                <Box
+                  as="video"
+                  src="/rewards/hero.mp4"
+                  autoPlay
+                  loop
+                  playsInline
+                  width="full"
+                  height="auto"
+                  borderRadius="lg"
+                  objectFit="cover"
+                  transition="all 0.6s ease-in-out"
+                  border="solid 2px"
+                  borderColor="rgba(255,255,255,0.1)"
+                />
+              </Box>
+            )}
 
             <Button
               as={Link}
@@ -279,30 +275,24 @@ const HeroSection = () => {
             </HStack>
           </VStack>
 
-          {/* Video for desktop */}
-          <Box
-            flex={1}
-            display={{ base: "none", lg: "block" }}
-            position="relative"
-            mt={{ base: 8, md: 0 }}
-            w="full"
-          >
-            <Box
-              as="video"
-              src="/hero.mp4"
-              autoPlay
-              loop
-              muted
-              playsInline
-              width="full"
-              height="auto"
-              borderRadius="lg"
-              objectFit="cover"
-              transition="all 0.6s ease-in-out"
-              border="solid 2px"
-              borderColor="rgba(255,255,255,0.1)"
-            />
-          </Box>
+          {!isMobile && (
+            <Box flex={1} position="relative" mt={{ base: 8, md: 0 }} w="full">
+              <Box
+                as="video"
+                src="/rewards/hero.mp4"
+                autoPlay
+                loop
+                playsInline
+                width="full"
+                height="auto"
+                borderRadius="lg"
+                objectFit="cover"
+                transition="all 0.6s ease-in-out"
+                border="solid 2px"
+                borderColor="rgba(255,255,255,0.1)"
+              />
+            </Box>
+          )}
         </Flex>
       </Container>
 

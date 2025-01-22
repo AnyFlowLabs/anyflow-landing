@@ -7,6 +7,8 @@ import {
   Button,
   Image,
   Stack,
+  // Link,
+  // HStack,
 } from "@chakra-ui/react";
 import { SEO } from "../components/SEO";
 
@@ -20,6 +22,7 @@ import TrustedSection from "@/components/home/Trusted";
 // import TerminalSection from "@/components/home/Terminal";
 import CardsSection from "@/components/home/Cards";
 import { useEffect, useMemo } from "react";
+// import { StarIcon } from "@chakra-ui/icons";
 
 export default function HomePage() {
   const { t } = useTranslation();
@@ -38,7 +41,7 @@ export default function HomePage() {
   const seoTitle = useMemo(() => `AnyFlow - ${t("home.title")}`, [t]);
   const seoDescription = useMemo(
     () => `${t("home.subtitle1")}${t("home.subtitle2")}${t("home.subtitle3")}`,
-    [t]
+    [t],
   );
 
   // Memoize chain slides to prevent unnecessary re-renders
@@ -66,13 +69,17 @@ export default function HomePage() {
                 loading="lazy"
               />
             ) : null}
-            <Text align={{ base: "center" }} fontSize={{ base: "sm", md: "md" }}>
+            <Text
+              align={{ base: "center" }}
+              fontSize={{ base: "sm", md: "md" }}
+            >
               {chain.name}
             </Text>
           </VStack>
         </Slider.Slide>
       )),
-    [chains]
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [chains],
   );
 
   return (
@@ -119,21 +126,40 @@ export default function HomePage() {
             </Text>
           </Heading>
 
-          <Button
-            mt={{ base: 4, md: 6 }}
-            mb={{ base: 8, md: 12 }}
-            data-aos="fade-up"
-            data-aos-anchor-placement="top-bottom"
-            variant="gradient"
-            as="a"
-            size="lg"
-            href={APP_URL}
-            letterSpacing={3}
-            w={{ base: "full", md: "auto" }}
-            aria-label={t("home.cta")}
-          >
-            {t("home.cta")}
-          </Button>
+          {/* <HStack align="center" justify="center" gap={4}> */}
+            <Button
+              mt={{ base: 4, md: 6 }}
+              mb={{ base: 8, md: 12 }}
+              data-aos="fade-up"
+              data-aos-anchor-placement="top-bottom"
+              variant="gradient"
+              as="a"
+              size="lg"
+              href={APP_URL}
+              letterSpacing={3}
+              w={{ base: "full", md: "auto" }}
+              aria-label={t("home.cta")}
+            >
+              {t("home.cta")}
+            </Button>
+
+            {/* <Link
+              to={"/rewards"}
+              style={{
+                color: "var(--anyflow-colors-warning-500)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                alignContent: "center",
+                height: "44px",
+                gap: "8px",
+                marginTop: "-22px",
+              }}
+            >
+              <StarIcon w="12px" h="12px" />
+              <Text>Join on our rewards program</Text>
+            </Link> */}
+          {/* </HStack> */}
         </VStack>
       </Container>
 
@@ -216,7 +242,11 @@ export default function HomePage() {
           justify="space-between"
           spacing={{ base: 4, md: 0 }}
         >
-          <Heading as="h2" textStyle="title" fontSize={{ base: "2xl", md: "3xl" }}>
+          <Heading
+            as="h2"
+            textStyle="title"
+            fontSize={{ base: "2xl", md: "3xl" }}
+          >
             {t("chains", { q: chains.length })}
           </Heading>
           <Button
