@@ -21,19 +21,26 @@ const ModalClose = () => {
 
   useEffect(() => {
     const handleVisibilityChange = () => {
-      if (document.hidden) {
+      // Only trigger if document is hidden and not focused on an iframe
+      if (document.hidden && document.activeElement?.tagName !== "IFRAME") {
         onOpen();
       }
     };
 
-    const handleBlur = () => {
-      onOpen();
+    const handleBlur = (e: FocusEvent) => {
+      // Only trigger if not focusing on an iframe
+      if ((e.relatedTarget as HTMLElement)?.tagName !== "IFRAME") {
+        onOpen();
+      }
     };
 
     const handleBeforeUnload = (e: BeforeUnloadEvent) => {
-      e.preventDefault();
-      onOpen();
-      return (e.returnValue = "");
+      // Only trigger if not interacting with an iframe
+      if (document.activeElement?.tagName !== "IFRAME") {
+        e.preventDefault();
+        onOpen();
+        return (e.returnValue = "");
+      }
     };
 
     document.addEventListener("visibilitychange", handleVisibilityChange);
