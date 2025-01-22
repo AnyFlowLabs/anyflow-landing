@@ -15,6 +15,7 @@ import {
   LayersIcon,
   MessageSquareIcon,
 } from "lucide-react";
+import { useCallback, useEffect } from "react";
 import CardsSection from "./CardsSection";
 import VercelLikeSection from "./VercelLikeSection";
 import { TitleSection } from "./Components";
@@ -29,8 +30,17 @@ import WhyJoinNowSection from "./WhyJoinNowSection";
 import DeveloperResourcesSection from "./DeveloperResourcesSection";
 // import ModalClose from "./ModalClose";
 import { APP_URL } from "@/const";
+import { pageLoad, tagTwitterConversion } from "./tag";
 
 const RewardsPage = () => {
+  const handleTwitterConversion = useCallback(() => {
+    tagTwitterConversion();
+  }, []);
+
+  useEffect(() => {
+    pageLoad();
+  }, []);
+
   return (
     <Box as="main">
       {/* <ModalClose /> */}
@@ -124,7 +134,9 @@ const RewardsPage = () => {
                 <Button
                   variant="link"
                   color="brand.400"
+                  as={Link}
                   rightIcon={<ArrowRightIcon size={16} />}
+                  href="/chains"
                 >
                   Explore supported chains
                 </Button>
@@ -160,6 +172,9 @@ const RewardsPage = () => {
                   variant="link"
                   color="brand.400"
                   rightIcon={<MessageSquareIcon size={16} />}
+                  as={Link}
+                  href="https://discord.gg/aCygGwBWya"
+                  target="_blank"
                 >
                   Join Discord community
                 </Button>
@@ -176,6 +191,7 @@ const RewardsPage = () => {
             as={Link}
             href={APP_URL + "/rewards"}
             target="_blank"
+            onClick={handleTwitterConversion}
           >
             Start earning now
           </Button>

@@ -10,7 +10,13 @@
     <loc>https://anyflow.pro/chains</loc>
     <lastmod>2024-12-10</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+    <priority>0.9</priority>
+  </url>
+   <url>
+    <loc>https://anyflow.pro/rewards</loc>
+    <lastmod>2024-12-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
 </urlset>
 

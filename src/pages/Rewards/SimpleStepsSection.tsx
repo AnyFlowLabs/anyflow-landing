@@ -24,8 +24,15 @@ import {
 } from "lucide-react";
 import { TitleSection } from "./Components";
 import { APP_URL } from "@/const";
+import { tagTwitterConversion } from "./tag";
+import { useCallback } from "react";
 
 const SimpleStepsSection = () => {
+
+  const handleTwitterConversion = useCallback(() => {
+    tagTwitterConversion();
+  }, []);
+
   return (
     <Box
       w="full"
@@ -216,6 +223,7 @@ const SimpleStepsSection = () => {
               as={Link}
               href={APP_URL + "/rewards"}
               target="_blank"
+              onClick={handleTwitterConversion}
             >
               Start earning now
             </Button>
@@ -283,6 +291,7 @@ const SimpleStepsSection = () => {
               _hover={{
                 transform: "translateY(-2px)",
               }}
+              onClick={handleTwitterConversion}
             >
               Copy referral link
             </Button>
