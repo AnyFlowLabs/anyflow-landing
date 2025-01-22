@@ -27,13 +27,13 @@ import RewardsFaqSection from "./RewardsFaqSection";
 import ReadyToEarnSection from "./ReadyToEarnSection";
 import WhyJoinNowSection from "./WhyJoinNowSection";
 import DeveloperResourcesSection from "./DeveloperResourcesSection";
-import ModalClose from "./ModalClose";
+// import ModalClose from "./ModalClose";
 import { APP_URL } from "@/const";
 
 const RewardsPage = () => {
   return (
     <Box as="main">
-      <ModalClose />
+      {/* <ModalClose /> */}
       <HeroSection />
 
       <VercelLikeSection />
