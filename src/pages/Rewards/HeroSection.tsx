@@ -171,7 +171,7 @@ const HeroSection = () => {
               <Box flex={1} position="relative" w="full">
                 <AspectRatio ratio={16 / 9}>
                 <iframe
-                  src="https://www.youtube.com/embed/KBV_zpMm_0Q?autoplay=1&loop=1&mute=0&controls=0&autohide=1&showinfo=0"
+                  src="https://www.youtube.com/embed/N1Dv0E4YoQg?autoplay=1&loop=1&mute=0&controls=0&autohide=1&showinfo=0"
                   title="Hero video"
                   allowFullScreen
                   frameBorder="0"
@@ -279,7 +279,7 @@ const HeroSection = () => {
             <Box flex={1} position="relative" mt={{ base: 8, md: 0 }} w="full">
               <AspectRatio ratio={16 / 9}>
                 <iframe
-                  src="https://www.youtube.com/embed/KBV_zpMm_0Q?autoplay=1&loop=1&mute=0&controls=0&autohide=1&showinfo=0"
+                  src="https://www.youtube.com/embed/N1Dv0E4YoQg?autoplay=1&loop=1&mute=0&controls=0&autohide=1&showinfo=0"
                   title="Hero video"
                   allowFullScreen
                   frameBorder="0"
