@@ -63,9 +63,54 @@ const customTheme = extendTheme({
         "100%": { opacity: 0.6, transform: "scale(0.98)" },
       },
 
+      "@keyframes ping": {
+        "75%, 100%": {
+          transform: "scale(2)",
+          opacity: 0,
+        },
+      },
+
+      "@keyframes bounce2": {
+        "0%, 20%, 50%, 80%, 100%": { transform: "translateY(0)" },
+        "40%": { transform: "translateY(-30px)" },
+        "60%": { transform: "translateY(-15px)" },
+      },
+
+      "@keyframes bounce": {
+        "0%, 20%, 50%, 80%, 100%": { transform: "translateY(0)" },
+        "40%": { transform: "translateY(-20px)" },
+        "60%": { transform: "translateY(-10spx)" },
+      },
+
       "@keyframes twinkle": {
         "0%, 100%": { opacity: 0.3, transform: "scale(1)" },
         "50%": { opacity: 0.8, transform: "scale(5.5)" },
+      },
+
+      "@keyframes gridAnimation": {
+        to: { transform: "translateY(-50%)" },
+      },
+
+      "@keyframes roleSlideDown": {
+        "0%": {
+          transform: "translateY(-100%)",
+          opacity: 0,
+        },
+        "100%": {
+          transform: "translateY(0)",
+          opacity: 1,
+        },
+      },
+
+      "@keyframes roleSlideUp": {
+        "0%": {
+          transform: "translateY(0)",
+          opacity: 1,
+        },
+        "100%": {
+          transform: "translateY(100%)",
+          opacity: 0,
+        },
       },
     },
   },

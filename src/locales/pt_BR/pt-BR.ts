@@ -43,9 +43,9 @@ export const pt_BR = {
       "Try it right now! Click the button to be one of the first users.",
     githubButton: "Log in with Github",
     footer: {
-      copyright: "© 2024 Anyflow. All rights reserved.",
+      copyright: "© 2025 Anyflow. All rights reserved.",
       backedBy: {
-        text: "Backed by Khiza",
+        text: "Backed by",
         logo: "Khiza logo URL",
       },
     },
