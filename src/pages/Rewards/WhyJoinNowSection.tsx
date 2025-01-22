@@ -22,11 +22,17 @@ import {
 import { TitleSection } from "./Components";
 import { APP_URL } from "@/const";
 import { useMemo } from "react";
+import { tagTwitterConversion } from "./tag";
+import { useCallback } from "react";
 
 const WhyJoinNowSection = () => {
   const cardBg = useColorModeValue("white", "gray.800");
   const textColor = useColorModeValue("gray.600", "gray.300");
   const accentColor = useColorModeValue("purple.500", "purple.300");
+
+  const handleTwitterConversion = useCallback(() => {
+    tagTwitterConversion();
+  }, []);
 
   const getDaysLeft = () => {
     const endDate = new Date("2025-01-31");
@@ -172,6 +178,7 @@ const WhyJoinNowSection = () => {
             as={Link}
             href={APP_URL + "/rewards"}
             target="_blank"
+            onClick={handleTwitterConversion}
           >
             Join now
           </Button>

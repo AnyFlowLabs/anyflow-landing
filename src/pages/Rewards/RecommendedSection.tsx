@@ -12,8 +12,14 @@ import {
 import { TitleSection } from "./Components";
 import { ArrowRightIcon, CheckIcon, TrophyIcon, XIcon } from "lucide-react";
 import { APP_URL } from "@/const";
+import { tagTwitterConversion } from "./tag";
+import { useCallback } from "react";
 
 const RecommendedSection = () => {
+  const handleTwitterConversion = useCallback(() => {
+    tagTwitterConversion();
+  }, []);
+
   return (
     <Container maxW="container.xl" py={{ base: 4, md: 16 }}>
       <VStack spacing={{ base: 0, md: 8 }} align="center" w="full">
@@ -186,6 +192,7 @@ const RecommendedSection = () => {
               as={Link}
               href={APP_URL + "/rewards"}
               target="_blank"
+              onClick={handleTwitterConversion}
             >
               Get Started
             </Button>

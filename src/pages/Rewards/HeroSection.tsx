@@ -20,14 +20,19 @@ import {
 } from "lucide-react";
 import BackedSection from "./Backted";
 import FeaturedSection from "./Featured";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { APP_URL } from "@/const";
+import { tagTwitterConversion } from "./tag";
 
 const HeroSection = () => {
   const [isMobile] = useMediaQuery("(max-width: 768px)");
   const [roleIndex, setRoleIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
   const roles = ["web3 CTO", "web3 tech lead", "web3 developer"];
+
+  const handleTwitterConversion = useCallback(() => {
+    tagTwitterConversion();
+  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -170,17 +175,17 @@ const HeroSection = () => {
             {isMobile && (
               <Box flex={1} position="relative" w="full">
                 <AspectRatio ratio={16 / 9}>
-                <iframe
-                  src="https://www.youtube.com/embed/N1Dv0E4YoQg?autoplay=1&loop=1&mute=0&controls=0&autohide=1&showinfo=0"
-                  title="Hero video"
-                  allowFullScreen
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  style={{
-                    borderRadius: "0.5rem",
-                    border: "solid 2px rgba(255,255,255,0.1)",
-                  }}
-                />
+                  <iframe
+                    src="https://www.youtube.com/embed/N1Dv0E4YoQg?autoplay=1&loop=1&mute=0&controls=0&autohide=1&showinfo=0"
+                    title="Hero video"
+                    allowFullScreen
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    style={{
+                      borderRadius: "0.5rem",
+                      border: "solid 2px rgba(255,255,255,0.1)",
+                    }}
+                  />
                 </AspectRatio>
               </Box>
             )}
@@ -198,6 +203,7 @@ const HeroSection = () => {
               data-aos="fade-up"
               data-aos-delay={300}
               w={{ base: "full", md: "auto" }}
+              onClick={handleTwitterConversion}
             >
               Start now
             </Button>
