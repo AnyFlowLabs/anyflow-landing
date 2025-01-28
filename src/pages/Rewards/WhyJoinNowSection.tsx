@@ -20,7 +20,7 @@ import {
   StarIcon,
 } from "lucide-react";
 import { TitleSection } from "./Components";
-import { APP_URL } from "@/const";
+import { API_URL, APP_URL } from "@/const";
 import { useEffect, useMemo, useState } from "react";
 import { tagTwitterConversion } from "./tag";
 import { useCallback } from "react";
@@ -46,9 +46,7 @@ const WhyJoinNowSection = () => {
 
   const getSpotsTaken = async () => {
     try {
-      const response = await fetch(
-        `https://api.anyflow.pro/api/milestones/public-stats`,
-      );
+      const response = await fetch(`${API_URL}/api/milestones/public-stats`);
       const data = await response.json();
       setSpotsTaken(data.total);
     } catch (error) {
