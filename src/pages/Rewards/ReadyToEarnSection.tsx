@@ -69,7 +69,7 @@ function ReadyToEarnSection() {
 
           <TitleSection
             title="Ready to earn your rewards?"
-            // description="Join our community of developers and start earning today"
+          // description="Join our community of developers and start earning today"
           />
 
           <SimpleGrid
@@ -179,7 +179,7 @@ function ReadyToEarnSection() {
                 {
                   icon: WalletIcon,
                   title: "Earn While Testing",
-                  text: "Up to $70 per completion",
+                  text: "Up to $70",
                 },
                 {
                   icon: RocketIcon,

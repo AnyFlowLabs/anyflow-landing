@@ -158,7 +158,7 @@ const RecommendedSection = () => {
                 <VStack align="start" gap={0} flex={1}>
                   <Text color="gray.100">Earn while you test</Text>
                   <Text color="gray.300" fontSize="sm">
-                    Up to $50 + referral bonuses
+                    Up to $40 + referral bonuses
                   </Text>
                 </VStack>
               </HStack>

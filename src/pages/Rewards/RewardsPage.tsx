@@ -87,7 +87,7 @@ const RewardsPage = () => {
                   Earn while testing
                 </Heading>
                 <VStack align="start" spacing={2} gap={{ base: 1, md: 2 }}>
-                  <Text color="info.500">Up to $70 per completion</Text>
+                  <Text color="info.500">Up to $70</Text>
                   <Text color="info.500">$10 early bird bonus</Text>
                   <Text color="info.500">$10 per referral</Text>
                 </VStack>
@@ -126,7 +126,7 @@ const RewardsPage = () => {
                   Shape the future
                 </Heading>
                 <VStack align="start" spacing={2} gap={{ base: 1, md: 2 }}>
-                  <Text color="info.500">Up to $70 per completion</Text>
+                  <Text color="info.500">Up to $70</Text>
                   <Text color="info.500">12+ Supported chains</Text>
                   <Text color="info.500">Direct impact on features</Text>
                   <Text color="info.500">Early access to updates</Text>
