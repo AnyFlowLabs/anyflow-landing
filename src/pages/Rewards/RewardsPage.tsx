@@ -6,7 +6,6 @@ import {
   Link,
   SimpleGrid,
   Text,
-  useColorModeValue,
   VStack,
 } from "@chakra-ui/react";
 import {
@@ -34,7 +33,6 @@ import { API_URL, APP_URL } from "@/const";
 import { pageLoad, tagTwitterConversion } from "./tag";
 
 const RewardsPage = () => {
-
   const [spotsTaken, setSpotsTaken] = useState(0);
 
   const getSpotsTaken = async () => {
