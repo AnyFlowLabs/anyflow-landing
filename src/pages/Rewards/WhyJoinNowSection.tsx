@@ -20,14 +20,14 @@ import {
   StarIcon,
 } from "lucide-react";
 import { TitleSection } from "./Components";
-import { API_URL, APP_URL } from "@/const";
-import { useEffect, useMemo, useState } from "react";
+import { APP_URL } from "@/const";
+import { useMemo } from "react";
 import { tagTwitterConversion } from "./tag";
 import { useCallback } from "react";
 
-const WhyJoinNowSection = () => {
-  const [spotsTaken, setSpotsTaken] = useState(0);
-
+const WhyJoinNowSection: React.FC<{ spotsTaken: number }> = ({
+  spotsTaken,
+}) => {
   const cardBg = useColorModeValue("white", "gray.800");
   const textColor = useColorModeValue("gray.600", "gray.300");
   const accentColor = useColorModeValue("purple.500", "purple.300");
@@ -43,20 +43,6 @@ const WhyJoinNowSection = () => {
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
     return diffDays > 0 ? diffDays : 14;
   };
-
-  const getSpotsTaken = async () => {
-    try {
-      const response = await fetch(`${API_URL}/api/milestones/public-stats`);
-      const data = await response.json();
-      setSpotsTaken(data.total);
-    } catch (error) {
-      console.error("Failed to fetch spots taken:", error);
-    }
-  };
-
-  useEffect(() => {
-    getSpotsTaken();
-  }, []);
 
   const cards = useMemo(
     () => [
