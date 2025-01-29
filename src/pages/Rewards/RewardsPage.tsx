@@ -15,7 +15,7 @@ import {
   LayersIcon,
   MessageSquareIcon,
 } from "lucide-react";
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 import CardsSection from "./CardsSection";
 import VercelLikeSection from "./VercelLikeSection";
 import { TitleSection } from "./Components";
@@ -29,10 +29,26 @@ import ReadyToEarnSection from "./ReadyToEarnSection";
 import WhyJoinNowSection from "./WhyJoinNowSection";
 import DeveloperResourcesSection from "./DeveloperResourcesSection";
 // import ModalClose from "./ModalClose";
-import { APP_URL } from "@/const";
+import { API_URL, APP_URL } from "@/const";
 import { pageLoad, tagTwitterConversion } from "./tag";
 
 const RewardsPage = () => {
+  const [spotsTaken, setSpotsTaken] = useState(0);
+
+  const getSpotsTaken = async () => {
+    try {
+      const response = await fetch(`${API_URL}/api/milestones/public-stats`);
+      const data = await response.json();
+      setSpotsTaken(Number(data.total));
+    } catch (error) {
+      console.error("Failed to fetch spots taken:", error);
+    }
+  };
+
+  useEffect(() => {
+    getSpotsTaken();
+  }, []);
+
   const handleTwitterConversion = useCallback(() => {
     tagTwitterConversion();
   }, []);
@@ -44,7 +60,7 @@ const RewardsPage = () => {
   return (
     <Box as="main">
       {/* <ModalClose /> */}
-      <HeroSection />
+      <HeroSection spotsTaken={spotsTaken} />
 
       <VercelLikeSection />
 
@@ -205,13 +221,13 @@ const RewardsPage = () => {
 
       <ProgramRequirementsSection />
 
-      <WhyJoinNowSection />
+      <WhyJoinNowSection spotsTaken={spotsTaken} />
 
       <DeveloperResourcesSection />
 
       <RewardsFaqSection />
 
-      <ReadyToEarnSection />
+      <ReadyToEarnSection spotsTaken={spotsTaken} />
     </Box>
   );
 };

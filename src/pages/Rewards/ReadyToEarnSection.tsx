@@ -27,7 +27,7 @@ import { APP_URL } from "@/const";
 import { tagTwitterConversion } from "./tag";
 import { useCallback } from "react";
 
-function ReadyToEarnSection() {
+const ReadyToEarnSection: React.FC<{ spotsTaken: number }> = ({ spotsTaken }) => {
   const highlightColor = useColorModeValue("yellow.400", "yellow.300");
   const textColor = useColorModeValue("gray.700", "gray.300");
   const headingColor = useColorModeValue("gray.900", "white");
@@ -63,7 +63,7 @@ function ReadyToEarnSection() {
               role="status"
               aria-live="polite"
             >
-              Only 50 spots remaining - Early Bird Bonus ends in 48h
+              Only {50 - spotsTaken} spots remaining - Early Bird Bonus ends in 48h
             </Text>
           </HStack>
 

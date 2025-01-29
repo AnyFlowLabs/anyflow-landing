@@ -25,7 +25,9 @@ import { useMemo } from "react";
 import { tagTwitterConversion } from "./tag";
 import { useCallback } from "react";
 
-const WhyJoinNowSection = () => {
+const WhyJoinNowSection: React.FC<{ spotsTaken: number }> = ({
+  spotsTaken,
+}) => {
   const cardBg = useColorModeValue("white", "gray.800");
   const textColor = useColorModeValue("gray.600", "gray.300");
   const accentColor = useColorModeValue("purple.500", "purple.300");
@@ -52,9 +54,13 @@ const WhyJoinNowSection = () => {
         description: "Only 50 spots available",
         footer: (
           <Box w="full">
-            <Progress value={0} colorScheme="purple" borderRadius="full" />
+            <Progress
+              value={spotsTaken}
+              colorScheme="purple"
+              borderRadius="full"
+            />
             <Text mt={2} fontSize="sm" color={textColor}>
-              <strong>0</strong> spots taken
+              <strong>{spotsTaken}</strong> spots taken
             </Text>
           </Box>
         ),
@@ -79,7 +85,7 @@ const WhyJoinNowSection = () => {
         description: "Join our exclusive Discord community",
         footer: (
           <Text fontSize="sm" color={accentColor} fontWeight="bold">
-            50 spots remaining
+            {50 - spotsTaken} spots remaining
           </Text>
         ),
       },
@@ -96,7 +102,7 @@ const WhyJoinNowSection = () => {
         ),
       },
     ],
-    [textColor, accentColor],
+    [textColor, accentColor, spotsTaken],
   );
 
   return (
