@@ -20,12 +20,14 @@ import {
   StarIcon,
 } from "lucide-react";
 import { TitleSection } from "./Components";
-import { APP_URL } from "@/const";
-import { useMemo } from "react";
+import { API_URL, APP_URL } from "@/const";
+import { useEffect, useMemo, useState } from "react";
 import { tagTwitterConversion } from "./tag";
 import { useCallback } from "react";
 
 const WhyJoinNowSection = () => {
+  const [spotsTaken, setSpotsTaken] = useState(0);
+
   const cardBg = useColorModeValue("white", "gray.800");
   const textColor = useColorModeValue("gray.600", "gray.300");
   const accentColor = useColorModeValue("purple.500", "purple.300");
@@ -42,6 +44,20 @@ const WhyJoinNowSection = () => {
     return diffDays > 0 ? diffDays : 14;
   };
 
+  const getSpotsTaken = async () => {
+    try {
+      const response = await fetch(`${API_URL}/api/milestones/public-stats`);
+      const data = await response.json();
+      setSpotsTaken(data.total);
+    } catch (error) {
+      console.error("Failed to fetch spots taken:", error);
+    }
+  };
+
+  useEffect(() => {
+    getSpotsTaken();
+  }, []);
+
   const cards = useMemo(
     () => [
       {
@@ -52,9 +68,13 @@ const WhyJoinNowSection = () => {
         description: "Only 50 spots available",
         footer: (
           <Box w="full">
-            <Progress value={0} colorScheme="purple" borderRadius="full" />
+            <Progress
+              value={spotsTaken}
+              colorScheme="purple"
+              borderRadius="full"
+            />
             <Text mt={2} fontSize="sm" color={textColor}>
-              <strong>0</strong> spots taken
+              <strong>{spotsTaken}</strong> spots taken
             </Text>
           </Box>
         ),
@@ -79,7 +99,7 @@ const WhyJoinNowSection = () => {
         description: "Join our exclusive Discord community",
         footer: (
           <Text fontSize="sm" color={accentColor} fontWeight="bold">
-            50 spots remaining
+            {50 - spotsTaken} spots remaining
           </Text>
         ),
       },
@@ -96,7 +116,7 @@ const WhyJoinNowSection = () => {
         ),
       },
     ],
-    [textColor, accentColor],
+    [textColor, accentColor, spotsTaken],
   );
 
   return (
