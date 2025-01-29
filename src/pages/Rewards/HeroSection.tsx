@@ -24,7 +24,7 @@ import { useCallback, useEffect, useState } from "react";
 import { APP_URL } from "@/const";
 import { tagTwitterConversion } from "./tag";
 
-const HeroSection = () => {
+const HeroSection: React.FC<{ spotsTaken: number }> = ({ spotsTaken } ) => {
   const [isMobile] = useMediaQuery("(max-width: 768px)");
   const [roleIndex, setRoleIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
@@ -103,7 +103,7 @@ const HeroSection = () => {
 
             <Heading
               as="h1"
-              fontSize={{ base: "4xl", lg: "6xl" }}
+              fontSize={{ base: "4xl", lg: "4xl" }}
               lineHeight="shorter"
               color="white"
               textAlign={{ base: "left", lg: "left" }}
@@ -155,7 +155,7 @@ const HeroSection = () => {
                 w={{ base: "full", md: "auto" }}
               >
                 <Text fontWeight="light" fontFamily="heading" letterSpacing={1}>
-                  50 spots available
+                  {50 - spotsTaken} spots available
                 </Text>
               </HStack>
             </Flex>
@@ -167,9 +167,7 @@ const HeroSection = () => {
               data-aos="fade-up"
               data-aos-delay={100}
             >
-              Join leading web3 developers in revolutionizing smart contract
-              deployment across 12+ chains. Share your expertise, earn rewards,
-              and shape the future of blockchain development
+              Streamline your deployments in just 4 steps – faster, safer, and powered by cutting-edge technology to keep you ahead.
             </Text>
 
             {isMobile && (
