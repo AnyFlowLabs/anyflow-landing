@@ -32,12 +32,12 @@ export const BackedSection = () => {
         >
           <Image src={KhizaLogo} alt="Khiza logo" h={isMobile ? 6 : 8} />
         </a>
-        <QuickNodeIcon
+        {/* <QuickNodeIcon
           width={isMobile ? "32px" : "40px"}
           height={isMobile ? "32px" : "40px"}
           data-aos="fade-up"
           data-aos-delay="100"
-        />
+        /> */}
 
         <XdcIcon
           width={isMobile ? 80 : 100}

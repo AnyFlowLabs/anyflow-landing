@@ -40,7 +40,7 @@ export default function TrustedSection() {
         mt={{ base: 8, md: 12 }}
       >
         <SimpleGrid
-          columns={{ base: 2, md: 3, lg: 5 }}
+          columns={{ base: 2, md: 2, lg: 4 }}
           spacing={{ base: 4, md: 8 }}
           flex={2}
         >
@@ -64,14 +64,14 @@ export default function TrustedSection() {
             </Text>
           </VStack>
 
-          <VStack layerStyle="section" p={{ base: 4, md: 6 }}>
+          {/* <VStack layerStyle="section" p={{ base: 4, md: 6 }}>
             <Box w="full" h={{ base: "50px", md: "60px" }}>
               <QuickNodeIcon width={200} height={50} />
             </Box>
             <Text fontSize={{ base: "sm", md: "md" }} color="gray.100">
               {t("home.partners.quicknode.description")}
             </Text>
-          </VStack>
+          </VStack> */}
 
           <VStack layerStyle="section" p={{ base: 4, md: 6 }}>
             <Box w="full" h={{ base: "50px", md: "60px" }}>
