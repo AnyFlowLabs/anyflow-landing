@@ -11,7 +11,7 @@ import {
 } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
 import KhizaLogo from "@/assets/khiza.svg";
-import QuickNodeIcon from "@/components/Icons/QuickNode";
+// import QuickNodeIcon from "@/components/Icons/QuickNode";
 import XdcIcon from "@/components/Icons/XDC";
 
 export default function TrustedSection() {

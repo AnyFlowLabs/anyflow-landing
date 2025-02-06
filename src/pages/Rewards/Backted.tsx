@@ -1,6 +1,6 @@
 import { HStack, Image, Text, useMediaQuery } from "@chakra-ui/react";
 
-import QuickNodeIcon from "@/components/Icons/QuickNode";
+// import QuickNodeIcon from "@/components/Icons/QuickNode";
 import XdcIcon from "@/components/Icons/XDC";
 import KhizaLogo from "@/assets/khiza.svg";
 
