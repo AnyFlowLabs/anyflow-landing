@@ -1,6 +1,6 @@
 import { HStack, Image, Text, useMediaQuery } from "@chakra-ui/react";
 
-import QuickNodeIcon from "@/components/Icons/QuickNode";
+// import QuickNodeIcon from "@/components/Icons/QuickNode";
 import XdcIcon from "@/components/Icons/XDC";
 import KhizaLogo from "@/assets/khiza.svg";
 
@@ -32,12 +32,12 @@ export const BackedSection = () => {
         >
           <Image src={KhizaLogo} alt="Khiza logo" h={isMobile ? 6 : 8} />
         </a>
-        <QuickNodeIcon
+        {/* <QuickNodeIcon
           width={isMobile ? "32px" : "40px"}
           height={isMobile ? "32px" : "40px"}
           data-aos="fade-up"
           data-aos-delay="100"
-        />
+        /> */}
 
         <XdcIcon
           width={isMobile ? 80 : 100}
