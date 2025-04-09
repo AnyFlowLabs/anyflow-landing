@@ -5,6 +5,7 @@ import ChainDetails from "@/pages/ChainDetails";
 import Layout from "@/components/Layout";
 import RewardsPage from "@/pages/Rewards/RewardsPage";
 import LandingPageLayout from "@/components/LandingPageLayout";
+import NotFound from "@/pages/not-found";
 
 export const router = createBrowserRouter([
   {
@@ -44,5 +45,9 @@ export const router = createBrowserRouter([
         ),
       },
     ],
+  },
+  {
+    path: "*",
+    element: <NotFound />,
   },
 ]);

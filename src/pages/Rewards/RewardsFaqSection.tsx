@@ -24,7 +24,7 @@ export default function RewardsFaqSection() {
             {
               question: "How do I get started with the program?",
               answer:
-                "Getting started is easy! First, follow us on Twitter <a style='text-decoration: underline;' href='https://x.com/anyflow_' target='_blank' rel='noopener noreferrer'>https://x.com/anyflow_</a> and join our Discord <a style='text-decoration: underline;' href='https://discord.gg/TbARmXUXSM' target='_blank' rel='noopener noreferrer'>https://discord.gg/TbARmXUXSM</a>. Then, create an account using your GitHub credentials. Once set up, you can make your first deployment on the XDC network and earn rewards.",
+                "Getting started is easy! First, follow us on Twitter <a style='text-decoration: underline;' href='https://x.com/anyflow_' target='_blank' rel='noopener noreferrer'>https://x.com/anyflow_</a> and join our Discord <a style='text-decoration: underline;' href='https://discord.gg/aCygGwBWya' target='_blank' rel='noopener noreferrer'>https://discord.gg/aCygGwBWya</a>. Then, create an account using your GitHub credentials. Once set up, you can make your first deployment on the XDC network and earn rewards.",
             },
             {
               question: "How and when do I receive the rewards?",
