@@ -1,4 +1,4 @@
-import React, { Component, ErrorInfo, ReactNode } from 'react';
+import { Component, ErrorInfo, ReactNode } from 'react';
 import {
     Alert,
     AlertIcon,
@@ -10,7 +10,6 @@ import {
     Heading,
     Text,
     VStack,
-    useColorModeValue,
 } from '@chakra-ui/react';
 import { RefreshCwIcon } from 'lucide-react';
 

@@ -8,7 +8,7 @@ interface PaginationProps {
 }
 
 export const Pagination = ({ currentPage, totalPages, onPageChange }: PaginationProps) => {
-    const buttonColor = useColorModeValue('gray.200', 'gray.700');
+    // const buttonColor = useColorModeValue('gray.200', 'gray.700');
     const activeButtonColor = useColorModeValue('blue.500', 'blue.300');
     const textColor = useColorModeValue('gray.600', 'gray.400');
 

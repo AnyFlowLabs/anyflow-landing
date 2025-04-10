@@ -10,7 +10,6 @@ import {
     Icon,
 } from '@chakra-ui/react';
 import { Github, ArrowRight, MessageSquare } from 'lucide-react';
-import { Link } from 'react-router-dom';
 
 export const ActionCTA = () => {
     const bgColor = useColorModeValue('gray.100', 'gray.800');

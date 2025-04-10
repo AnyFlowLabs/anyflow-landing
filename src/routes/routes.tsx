@@ -9,7 +9,6 @@ import NotFound from "@/pages/not-found";
 import BlogIndex from "@/pages/Blog/BlogIndex";
 import BlogDetail from "@/pages/Blog/BlogDetail";
 import ErrorPage from "@/pages/error";
-import ErrorBoundary from "@/components/ErrorBoundary";
 
 export const router = createBrowserRouter([
   {

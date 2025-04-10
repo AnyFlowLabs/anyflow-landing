@@ -1,4 +1,3 @@
-import { useEffect, useRef } from 'react';
 import {
     Box,
     Heading,
@@ -7,8 +6,6 @@ import {
     VStack,
     HStack,
     useColorModeValue,
-    Skeleton,
-    useColorMode,
     Icon,
 } from '@chakra-ui/react';
 import { Twitter } from 'lucide-react';
@@ -32,9 +29,9 @@ declare global {
 export const TwitterFeed = () => {
     const bgColor = useColorModeValue('gray.100', 'gray.800');
     const borderColor = useColorModeValue('gray.200', 'gray.700');
-    const containerRef = useRef<HTMLDivElement>(null);
-    const { colorMode } = useColorMode();
-    const theme = colorMode === 'dark' ? 'dark' : 'light';
+    // const containerRef = useRef<HTMLDivElement>(null);
+    // const { colorMode } = useColorMode();
+    // const theme = colorMode === 'dark' ? 'dark' : 'light';
 
     // useEffect(() => {
     //     // Load Twitter widget script
