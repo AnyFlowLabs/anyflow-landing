@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   Container,
   Heading,
@@ -12,6 +12,8 @@ import {
   Button,
   VStack,
   VisuallyHidden,
+  chakra,
+  Skeleton,
 } from "@chakra-ui/react";
 import { useBlogPosts } from "@/hooks/useBlog";
 import { BlogCard } from "@/components/blog/BlogCard";
@@ -28,9 +30,17 @@ const BlogIndex = () => {
   const { posts, isLoading, error, pagination, handlePageChange } =
     useBlogPosts();
   const mainContentRef = useRef<HTMLDivElement>(null);
+  const [contentLoaded, setContentLoaded] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    
+    // Mark content as loaded after small delay for progressive enhancement
+    const timer = setTimeout(() => {
+      setContentLoaded(true);
+    }, 300);
+
+    return () => clearTimeout(timer);
   }, []);
 
   useEffect(() => {
@@ -41,7 +51,12 @@ const BlogIndex = () => {
   }, [pagination.currentPage]);
 
   if (isLoading) {
-    return <BlogIndexSkeleton />;
+    return (
+      <Layout>
+        <VisuallyHidden>Loading blog posts</VisuallyHidden>
+        <BlogIndexSkeleton />
+      </Layout>
+    );
   }
 
   const featuredPost = posts.length > 0 ? posts[0] : null;
@@ -70,124 +85,150 @@ const BlogIndex = () => {
   return (
     <Layout>
       <Helmet>
-        <html lang="en" />
-        <title>Blog | AnyFlow - Workflow Automation Insights & Tutorials</title>
+        <title>AnyFlow Blog - Insights on Workflow Automation</title>
         <meta
           name="description"
-          content="Discover the latest articles, tutorials, and news from AnyFlow about workflow automation, best practices, and product updates."
+          content="Explore insights, tutorials, and updates from the AnyFlow team about workflow automation and best practices."
         />
-        <link rel="canonical" href="https://anyflow.org/blog" />
+        <meta
+          name="keywords"
+          content="workflow automation, blockchain, web3, AnyFlow, tutorials"
+        />
         <meta name="robots" content="index, follow" />
+        
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="AnyFlow Blog - Insights on Workflow Automation" />
+        <meta
+          property="og:description"
+          content="Explore insights, tutorials, and updates from the AnyFlow team about workflow automation and best practices."
+        />
+        <meta property="og:url" content={window.location.href} />
+        <meta property="og:site_name" content="AnyFlow Blog" />
+        
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="AnyFlow Blog - Insights on Workflow Automation" />
+        <meta
+          name="twitter:description"
+          content="Explore insights, tutorials, and updates from the AnyFlow team about workflow automation and best practices."
+        />
+        
+        {/* Canonical URL */}
+        <link rel="canonical" href={window.location.href} />
+        
+        {/* Structured Data */}
         <script type="application/ld+json">
           {JSON.stringify(structuredData)}
         </script>
       </Helmet>
 
-      <Box as="header" py={{ base: 4, md: 16 }} boxShadow="sm" role="banner">
-        <Container maxW="6xl">
-          <VStack spacing={4} textAlign="center">
-            <Heading as="h1" size={{ base: "xl", md: "2xl" }}>
-              AnyFlow Blog
-            </Heading>
-            <Text
-              fontSize={{ base: "lg", md: "xl" }}
-              color="gray.300"
-              maxW={{ base: "100%", md: "4xl" }}
-            >
-              Insights, tutorials, and updates from the AnyFlow team. We share
-              our knowledge about workflow automation, best practices, and how
-              to get the most out of AnyFlow.
-            </Text>
-          </VStack>
-        </Container>
-      </Box>
-
-      <Container
-        as="main"
-        id="main-content"
+      <chakra.main
         ref={mainContentRef}
-        maxW="6xl"
         tabIndex={-1}
+        outline="none"
+        role="main"
+        aria-label="Blog posts"
+        id="main-content"
       >
-        {error ? (
-          <Alert status="error" borderRadius="md" mb={8} role="alert">
-            <AlertIcon />
-            <Box flex="1">
-              <AlertTitle>Error loading blog posts</AlertTitle>
-              <AlertDescription display="block">
-                {error.message}
-              </AlertDescription>
-            </Box>
-            <Button
-              rightIcon={<RefreshCw size={16} aria-hidden="true" />}
-              onClick={() => window.location.reload()}
-              size="sm"
-              aria-label="Retry loading blog posts"
-            >
-              Retry
-            </Button>
-          </Alert>
-        ) : posts.length === 0 ? (
-          <Box textAlign="center" py={10} role="status">
-            <Text fontSize="lg">No blog posts found.</Text>
+        <VStack spacing={0} align="stretch">
+          {/* Hero Section */}
+          <Box py={16} textAlign="center">
+            <Container maxW="4xl">
+              <Heading as="h1" size="2xl" mb={4}>
+                AnyFlow Blog
+              </Heading>
+              <Text fontSize="xl" opacity={0.8}>
+                Insights, tutorials, and updates from the AnyFlow team
+              </Text>
+            </Container>
           </Box>
-        ) : (
-          <>
-            <VisuallyHidden>
-              <Heading as="h2">Blog contents</Heading>
-            </VisuallyHidden>
 
-            {featuredPost && (
-              <Box
-                as="section"
-                aria-labelledby="featured-article-heading"
-                mb={12}
+          {/* Main Content */}
+          <Container maxW="6xl" py={12}>
+            {error ? (
+              <Alert
+                status="error"
+                borderRadius="md"
+                mb={8}
+                flexDir={{ base: "column", sm: "row" }}
+                role="alert"
               >
-                <Heading as="h2" id="featured-article-heading" size="lg" mb={6}>
-                  Featured Article
-                </Heading>
-                <FeaturedPostCard post={featuredPost} />
-              </Box>
-            )}
+                <AlertIcon />
+                <Box flex="1">
+                  <AlertTitle>Error loading blog posts</AlertTitle>
+                  <AlertDescription display="block">
+                    {error.message}
+                  </AlertDescription>
+                </Box>
+                <Button
+                  rightIcon={<RefreshCw size={16} />}
+                  onClick={() => window.location.reload()}
+                  size="sm"
+                  mt={{ base: 4, sm: 0 }}
+                  aria-label="Retry loading blog posts"
+                >
+                  Retry
+                </Button>
+              </Alert>
+            ) : (
+              <>
+                {/* Featured Post Section */}
+                {featuredPost && (
+                  <Box mb={16}>
+                    <Heading as="h2" size="lg" mb={6} id="featured-post">
+                      Featured Post
+                      <VisuallyHidden>: {featuredPost.title}</VisuallyHidden>
+                    </Heading>
+                    {contentLoaded ? (
+                      <FeaturedPostCard post={featuredPost} />
+                    ) : (
+                      <Skeleton height="400px" borderRadius="xl" />
+                    )}
+                  </Box>
+                )}
 
-            {regularPosts.length > 0 && (
-              <Box
-                as="section"
-                aria-labelledby="latest-articles-heading"
-                mb={12}
-              >
-                <Heading as="h2" id="latest-articles-heading" size="lg" mb={6}>
-                  Latest Articles
-                </Heading>
-                <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={8}>
-                  {regularPosts.map((post) => (
-                    <BlogCard key={post.id} post={post} />
-                  ))}
+                {/* Regular Posts Grid */}
+                <Box mb={16}>
+                  <Heading as="h2" size="lg" mb={6} id="latest-posts">
+                    Latest Posts
+                  </Heading>
+                  {contentLoaded ? (
+                    <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={8}>
+                      {regularPosts.map((post) => (
+                        <BlogCard key={post.id} post={post} />
+                      ))}
+                    </SimpleGrid>
+                  ) : (
+                    <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={8}>
+                      {Array.from({ length: 6 }).map((_, i) => (
+                        <Skeleton key={i} height="320px" borderRadius="lg" />
+                      ))}
+                    </SimpleGrid>
+                  )}
+                </Box>
+
+                {/* Pagination */}
+                {pagination.totalPages > 1 && (
+                  <Box mb={16} textAlign="center">
+                    <Pagination
+                      currentPage={pagination.currentPage}
+                      totalPages={pagination.totalPages}
+                      onPageChange={handlePageChange}
+                    />
+                  </Box>
+                )}
+
+                {/* CTA Section */}
+                <SimpleGrid columns={{ base: 1, lg: 2 }} spacing={10} mb={16}>
+                  <ActionCTA />
+                  <TwitterFeed />
                 </SimpleGrid>
-              </Box>
+              </>
             )}
-
-            <Box as="section" mb={8} pt={8}>
-              <SimpleGrid
-                columns={{ base: 1, lg: 2 }}
-                spacing={10}
-                aria-label="Additional resources"
-              >
-                <ActionCTA />
-                <TwitterFeed />
-              </SimpleGrid>
-            </Box>
-
-            <Box as="nav" aria-label="Pagination">
-              <Pagination
-                currentPage={pagination.currentPage}
-                totalPages={pagination.totalPages}
-                onPageChange={handlePageChange}
-              />
-            </Box>
-          </>
-        )}
-      </Container>
+          </Container>
+        </VStack>
+      </chakra.main>
     </Layout>
   );
 };
