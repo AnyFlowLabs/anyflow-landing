@@ -7,9 +7,7 @@ import {
   AlertIcon,
   AlertTitle,
   AlertDescription,
-  useColorModeValue,
   Container,
-  Divider,
   SimpleGrid,
   VisuallyHidden,
   chakra,
@@ -34,14 +32,12 @@ const BlogDetail = () => {
   const mainContentRef = useRef<HTMLDivElement>(null);
   const [contentLoaded, setContentLoaded] = useState(false);
 
-  const bgColor = useColorModeValue("gray.50", "gray.900");
-
   useEffect(() => {
     // Reset scroll position when slug changes
     window.scrollTo(0, 0);
     setContentLoaded(false);
     setCurrentUrl(window.location.href);
-    
+
     // Focus on main content for better keyboard navigation
     if (mainContentRef.current) {
       mainContentRef.current.focus();
@@ -73,7 +69,7 @@ const BlogDetail = () => {
           <meta name="keywords" content={post.tags} />
           <meta name="author" content={post.author?.name || "AnyFlow Team"} />
           <meta name="language" content="en" />
-          <meta name="robots" content="index, follow" /> 
+          <meta name="robots" content="index, follow" />
 
           {/* Open Graph / Facebook */}
           <meta property="og:type" content="article" />
@@ -83,7 +79,10 @@ const BlogDetail = () => {
           {post.cover?.url && (
             <>
               <meta property="og:image" content={post.cover.url} />
-              <meta property="og:image:alt" content={`Featured image for "${post.title}"`} />
+              <meta
+                property="og:image:alt"
+                content={`Featured image for "${post.title}"`}
+              />
             </>
           )}
 
@@ -94,7 +93,10 @@ const BlogDetail = () => {
           {post.cover?.url && (
             <>
               <meta name="twitter:image" content={post.cover.url} />
-              <meta name="twitter:image:alt" content={`Featured image for "${post.title}"`} />
+              <meta
+                name="twitter:image:alt"
+                content={`Featured image for "${post.title}"`}
+              />
             </>
           )}
 
@@ -106,9 +108,9 @@ const BlogDetail = () => {
       {/* Add Schema.org structured data */}
       {post && currentUrl && <ArticleSchema post={post} url={currentUrl} />}
 
-      <chakra.div 
+      <chakra.div
         as="article"
-        pt={{ base: 2, md: 8 }} 
+        pt={{ base: 2, md: 8 }}
         pb={16}
         ref={mainContentRef}
         tabIndex={-1}

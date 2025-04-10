@@ -94,76 +94,67 @@ export const CTASectionSkeleton = () => {
 };
 
 export const BlogIndexSkeleton = () => {
-  const bgColor = useColorModeValue("gray.50", "gray.900");
-  const headerBgColor = useColorModeValue("white", "gray.800");
-
   return (
-    <Layout>
-      <Box bg={bgColor} minH="100vh">
-        {/* Header Section Skeleton */}
-        <Box bg={headerBgColor} py={16} boxShadow="sm">
-          <Container maxW="6xl">
-            <SkeletonText
-              mt={2}
-              noOfLines={3}
-              spacing={4}
-              skeletonHeight={6}
-              textAlign="center"
-            />
-          </Container>
-        </Box>
-
-        <Container maxW="6xl" py={12}>
-          {/* Featured Post Section Skeleton */}
-          <Box mb={12}>
-            <Skeleton height="40px" width="200px" mb={6} />
-            <FeaturedPostSkeleton />
-          </Box>
-
-          {/* Regular Posts Grid Skeleton */}
-          <Box mb={12}>
-            <Skeleton height="40px" width="200px" mb={6} />
-            <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={8}>
-              {Array.from({ length: 6 }).map((_, index) => (
-                <BlogCardSkeleton key={index} />
-              ))}
-            </SimpleGrid>
-          </Box>
-
-          {/* CTA Section Skeleton */}
-          <Box mb={8} pt={8}>
-            <Divider mb={12} />
-            <CTASectionSkeleton />
-          </Box>
-
-          {/* Pagination Skeleton */}
-          <Skeleton height="40px" width="200px" mx="auto" mt={8} />
+    <Box>
+      {/* Header Section Skeleton */}
+      <Box py={16} boxShadow="sm">
+        <Container maxW="6xl">
+          <SkeletonText
+            mt={2}
+            noOfLines={3}
+            spacing={4}
+            skeletonHeight={6}
+            textAlign="center"
+          />
         </Container>
       </Box>
-    </Layout>
+
+      <Container maxW="6xl" py={12}>
+        {/* Featured Post Section Skeleton */}
+        <Box mb={12}>
+          <Skeleton height="40px" width="200px" mb={6} />
+          <FeaturedPostSkeleton />
+        </Box>
+
+        {/* Regular Posts Grid Skeleton */}
+        <Box mb={12}>
+          <Skeleton height="40px" width="200px" mb={6} />
+          <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={8}>
+            {Array.from({ length: 6 }).map((_, index) => (
+              <BlogCardSkeleton key={index} />
+            ))}
+          </SimpleGrid>
+        </Box>
+
+        {/* CTA Section Skeleton */}
+        <Box mb={8} pt={8}>
+          <Divider mb={12} />
+          <CTASectionSkeleton />
+        </Box>
+
+        {/* Pagination Skeleton */}
+        <Skeleton height="40px" width="200px" mx="auto" mt={8} />
+      </Container>
+    </Box>
   );
 };
 
 export const BlogPostSkeleton = () => {
-  const bgColor = useColorModeValue("white", "gray.800");
-
   return (
-    <Container maxW="4xl" py={8}>
-      <Box bg={bgColor} borderRadius="lg" overflow="hidden" p={6} shadow="md">
-        <Skeleton height="50px" width="70%" mb={6} />
+    <Container maxW="6xl">
+      <Skeleton height="50px" width="70%" mb={6} />
 
-        <Box display="flex" alignItems="center" mb={6}>
-          <Skeleton borderRadius="full" height="50px" width="50px" mr={3} />
-          <Box>
-            <Skeleton height="20px" width="120px" mb={2} />
-            <Skeleton height="16px" width="90px" />
-          </Box>
+      <Box display="flex" alignItems="center" mb={6}>
+        <Skeleton borderRadius="full" height="50px" width="50px" mr={3} />
+        <Box>
+          <Skeleton height="20px" width="120px" mb={2} />
+          <Skeleton height="16px" width="90px" />
         </Box>
-
-        <Skeleton height="400px" mb={6} borderRadius="md" />
-
-        <SkeletonText mt={4} noOfLines={15} spacing={4} skeletonHeight={4} />
       </Box>
+
+      <Skeleton height="400px" mb={6} borderRadius="md" />
+
+      <SkeletonText mt={4} noOfLines={15} spacing={4} skeletonHeight={4} />
     </Container>
   );
 };

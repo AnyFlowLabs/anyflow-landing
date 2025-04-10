@@ -33,7 +33,7 @@ import {
 } from "@chakra-ui/react";
 import { TableOfContents } from "./TableOfContents";
 import { PostMetadata } from "./PostMetadata";
-import { useMemo, memo, ReactNode } from "react";
+import { memo, ReactNode } from "react";
 import type { Components } from "react-markdown";
 
 interface BlogContentProps {
@@ -67,7 +67,6 @@ export const BlogContent = memo(({ post }: BlogContentProps) => {
     day: "numeric",
   });
 
-  const bgColor = useColorModeValue("white", "gray.800");
   const textColor = useColorModeValue("gray.700", "gray.200");
   const codeColor = useColorModeValue("gray.800", "gray.50");
   const codeBg = useColorModeValue("gray.100", "gray.700");
@@ -165,14 +164,7 @@ export const BlogContent = memo(({ post }: BlogContentProps) => {
     h6: ({ children }) => {
       const id = createHeadingId(children);
       return (
-        <Heading
-          as="h6"
-          id={id}
-          size="xs"
-          fontWeight="medium"
-          mt={4}
-          mb={2}
-        >
+        <Heading as="h6" id={id} size="xs" fontWeight="medium" mt={4} mb={2}>
           {children}
         </Heading>
       );
@@ -190,7 +182,9 @@ export const BlogContent = memo(({ post }: BlogContentProps) => {
         href={href}
         isExternal
         rel="noopener noreferrer"
-        aria-label={typeof children === 'string' ? `Link to ${children}` : undefined}
+        aria-label={
+          typeof children === "string" ? `Link to ${children}` : undefined
+        }
       >
         {children}
       </Link>
@@ -205,11 +199,7 @@ export const BlogContent = memo(({ post }: BlogContentProps) => {
         {children}
       </OrderedList>
     ),
-    li: ({ children }) => (
-      <ListItem mb={2}>
-        {children}
-      </ListItem>
-    ),
+    li: ({ children }) => <ListItem mb={2}>{children}</ListItem>,
     blockquote: ({ children }) => (
       <Box
         as="blockquote"
@@ -227,6 +217,8 @@ export const BlogContent = memo(({ post }: BlogContentProps) => {
         {children}
       </Box>
     ),
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     code: ({ inline, className, children }) => {
       const match = /language-(\w+)/.exec(className || "");
       return !inline ? (
@@ -268,22 +260,14 @@ export const BlogContent = memo(({ post }: BlogContentProps) => {
         {children}
       </Thead>
     ),
-    tbody: ({ children }) => (
-      <Tbody>{children}</Tbody>
-    ),
+    tbody: ({ children }) => <Tbody>{children}</Tbody>,
     tr: ({ children }) => (
       <Tr borderBottomWidth="1px" borderColor={borderColor}>
         {children}
       </Tr>
     ),
     th: ({ children }) => (
-      <Th
-        py={2}
-        px={4}
-        fontWeight="semibold"
-        textAlign="start"
-        scope="col"
-      >
+      <Th py={2} px={4} fontWeight="semibold" textAlign="start" scope="col">
         {children}
       </Th>
     ),
@@ -292,9 +276,7 @@ export const BlogContent = memo(({ post }: BlogContentProps) => {
         {children}
       </Td>
     ),
-    hr: () => (
-      <Divider my={8} borderColor={borderColor} />
-    ),
+    hr: () => <Divider my={8} borderColor={borderColor} />,
     img: ({ src, alt }) => (
       <Box my={6}>
         <Image
@@ -308,14 +290,16 @@ export const BlogContent = memo(({ post }: BlogContentProps) => {
           alt={alt || "Blog post image"}
           width="100%"
           height="auto"
-          aria-describedby={alt ? `img-desc-${alt.replace(/\s+/g, '-')}` : undefined}
+          aria-describedby={
+            alt ? `img-desc-${alt.replace(/\s+/g, "-")}` : undefined
+          }
         />
         {alt && alt.length > 10 && (
-          <Text 
-            id={`img-desc-${alt.replace(/\s+/g, '-')}`}
-            fontSize="sm" 
-            color="gray.500" 
-            textAlign="center" 
+          <Text
+            id={`img-desc-${alt.replace(/\s+/g, "-")}`}
+            fontSize="sm"
+            color="gray.500"
+            textAlign="center"
             mt={2}
           >
             {alt}
@@ -330,8 +314,7 @@ export const BlogContent = memo(({ post }: BlogContentProps) => {
     <Container maxW="6xl" py={{ base: 2, md: 4 }}>
       <Grid templateColumns={{ base: "1fr", xl: "3fr 1fr" }} gap={8}>
         <GridItem>
-          <Box
-          >
+          <Box>
             <Heading as="h1" size="2xl" mb={4}>
               {post.title}
             </Heading>
@@ -379,7 +362,7 @@ export const BlogContent = memo(({ post }: BlogContentProps) => {
               </Box>
             )}
 
-            <Divider mb={6} />
+            <Divider mb={3} />
 
             <Box
               className="blog-content"
