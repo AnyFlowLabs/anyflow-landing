@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, memo } from "react";
 import {
   Box,
   Heading,
@@ -7,6 +7,7 @@ import {
   Link,
   BoxProps,
   useColorModeValue,
+  VisuallyHidden,
 } from "@chakra-ui/react";
 
 interface Heading {
@@ -19,7 +20,7 @@ interface TableOfContentsProps extends BoxProps {
   content: string;
 }
 
-export const TableOfContents = ({ content, ...rest }: TableOfContentsProps) => {
+export const TableOfContents = memo(({ content, ...rest }: TableOfContentsProps) => {
   const [headings, setHeadings] = useState<Heading[]>([]);
   const [activeId, setActiveId] = useState<string>("");
   const tocRef = useRef<HTMLDivElement>(null);
@@ -31,21 +32,22 @@ export const TableOfContents = ({ content, ...rest }: TableOfContentsProps) => {
 
   // Extract headings from content
   useEffect(() => {
+    if (!content) return;
+    
     const extractHeadings = () => {
       // Match only lines beginning with 1-3 hash characters followed by a space
-      // This ensures we only get actual markdown headers, not text with # in the middle
       const headingRegex = /^(#{1,3})\s+(.+)$/gm;
       const matches = Array.from(content.matchAll(headingRegex));
 
       const result = matches.map((match) => {
         const level = match[1].length;
-        // Clean up the heading text - remove markdown formatting like asterisks
+        // Clean up the heading text - remove markdown formatting
         const rawText = match[2];
         const cleanText = rawText
-          .replace(/\*\*(.+?)\*\*/g, "$1") // Remove bold markers **text**
-          .replace(/\*(.+?)\*/g, "$1") // Remove italic markers *text*
-          .replace(/`(.+?)`/g, "$1") // Remove code markers `text`
-          .replace(/~~(.+?)~~/g, "$1") // Remove strikethrough ~~text~~
+          .replace(/\*\*(.+?)\*\*/g, "$1") // Remove bold
+          .replace(/\*(.+?)\*/g, "$1") // Remove italic
+          .replace(/`(.+?)`/g, "$1") // Remove code
+          .replace(/~~(.+?)~~/g, "$1") // Remove strikethrough
           .trim();
 
         const id = cleanText
@@ -59,9 +61,7 @@ export const TableOfContents = ({ content, ...rest }: TableOfContentsProps) => {
       setHeadings(result);
     };
 
-    if (content) {
-      extractHeadings();
-    }
+    extractHeadings();
   }, [content]);
 
   // Set up intersection observer to highlight active heading
@@ -70,11 +70,11 @@ export const TableOfContents = ({ content, ...rest }: TableOfContentsProps) => {
 
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveId(entry.target.id);
-          }
-        });
+        // Find the first heading that is intersecting
+        const intersectingEntry = entries.find(entry => entry.isIntersecting);
+        if (intersectingEntry) {
+          setActiveId(intersectingEntry.target.id);
+        }
       },
       { rootMargin: "0px 0px -80% 0px" },
     );
@@ -86,43 +86,28 @@ export const TableOfContents = ({ content, ...rest }: TableOfContentsProps) => {
     });
 
     return () => {
-      headings.forEach(({ id }) => {
-        const element = document.getElementById(id);
-        if (element) observer.unobserve(element);
-      });
+      observer.disconnect();
     };
   }, [headings]);
 
-  // Scroll to active item within the table of contents
+  // Scroll active item into view
   useEffect(() => {
-    if (activeItemRef.current && tocRef.current) {
-      const activeElement = activeItemRef.current;
-      const container = tocRef.current;
+    if (!activeItemRef.current || !tocRef.current) return;
+    
+    const activeElement = activeItemRef.current;
+    const container = tocRef.current;
+    const activeRect = activeElement.getBoundingClientRect();
+    const containerRect = container.getBoundingClientRect();
 
-      // Calculate positions
-      const activeRect = activeElement.getBoundingClientRect();
-      const containerRect = container.getBoundingClientRect();
+    // Check if active element is not visible
+    const isAbove = activeRect.top < containerRect.top;
+    const isBelow = activeRect.bottom > containerRect.bottom;
 
-      // Check if active element is not visible in the viewport
-      const isAbove = activeRect.top < containerRect.top;
-      const isBelow = activeRect.bottom > containerRect.bottom;
-
-      if (isAbove || isBelow) {
-        // Scroll the active element into view with some padding
-        const scrollOptions = {
-          behavior: "smooth" as ScrollBehavior,
-          block: "nearest" as ScrollLogicalPosition,
-        };
-
-        activeElement.scrollIntoView(scrollOptions);
-
-        // Add a small offset to avoid the element being right at the edge
-        // if (isAbove) {
-        //     container.scrollTop -= 20;
-        // } else if (isBelow) {
-        //     container.scrollTop += 20;
-        // }
-      }
+    if (isAbove || isBelow) {
+      activeElement.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+      });
     }
   }, [activeId]);
 
@@ -142,12 +127,13 @@ export const TableOfContents = ({ content, ...rest }: TableOfContentsProps) => {
       maxHeight="calc(100vh - 200px)"
       overflowY="auto"
       ref={tocRef}
+      aria-labelledby="toc-heading"
       {...rest}
     >
-      <Heading as="h2" size="sm" mb={4}>
+      <Heading as="h2" size="sm" mb={4} id="toc-heading">
         Table of Contents
       </Heading>
-      <List spacing={2}>
+      <List spacing={2} aria-label="Table of contents navigation">
         {headings.map((heading) => (
           <ListItem key={heading.id} ml={(heading.level - 1) * 4}>
             <Link
@@ -161,18 +147,26 @@ export const TableOfContents = ({ content, ...rest }: TableOfContentsProps) => {
               fontWeight={activeId === heading.id ? "medium" : "normal"}
               onClick={(e) => {
                 e.preventDefault();
-                document.getElementById(heading.id)?.scrollIntoView({
-                  behavior: "smooth",
-                });
-                setActiveId(heading.id);
+                const element = document.getElementById(heading.id);
+                if (element) {
+                  element.scrollIntoView({
+                    behavior: "smooth",
+                  });
+                  element.focus({ preventScroll: true });
+                  setActiveId(heading.id);
+                }
               }}
               ref={activeId === heading.id ? activeItemRef : null}
+              aria-current={activeId === heading.id ? "true" : undefined}
             >
               {heading.text}
+              {activeId === heading.id && (
+                <VisuallyHidden> (current section)</VisuallyHidden>
+              )}
             </Link>
           </ListItem>
         ))}
       </List>
     </Box>
   );
-};
+});

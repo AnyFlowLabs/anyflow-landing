@@ -108,7 +108,7 @@ const BlogDetail = () => {
 
       <chakra.div 
         as="article"
-        pt={8} 
+        pt={{ base: 2, md: 8 }} 
         pb={16}
         ref={mainContentRef}
         tabIndex={-1}
@@ -116,7 +116,7 @@ const BlogDetail = () => {
         role="region"
         aria-label={post ? post.title : "Blog post"}
       >
-        <Box maxW="6xl" mx="auto" px={{ base: 4, md: 8 }}>
+        <Box maxW="6xl" mx="auto">
           <Button
             as={RouterLink}
             to="/blog"

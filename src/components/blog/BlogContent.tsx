@@ -34,15 +34,10 @@ import {
 import { TableOfContents } from "./TableOfContents";
 import { PostMetadata } from "./PostMetadata";
 import { useMemo, memo, ReactNode } from "react";
+import type { Components } from "react-markdown";
 
 interface BlogContentProps {
   post: BlogPostContent | BlogPost;
-}
-
-interface MarkdownComponentProps {
-  node?: unknown;
-  children: ReactNode;
-  [key: string]: unknown;
 }
 
 interface ChildProps {
@@ -126,204 +121,216 @@ export const BlogContent = memo(({ post }: BlogContentProps) => {
   };
 
   // Define custom component mapping for react-markdown
-  const components = useMemo(
-    () => ({
-      h1: ({ children, ...props }: MarkdownComponentProps) => {
-        // Remove console.log statement that impacts performance
-        const id = createHeadingId(children);
-        return (
-          <Heading as="h1" id={id} size="xl" mt={8} mb={4} {...props}>
-            {children}
-          </Heading>
-        );
-      },
-      h2: ({ children, ...props }: MarkdownComponentProps) => {
-        const id = createHeadingId(children);
-        return (
-          <Heading as="h2" id={id} size="lg" mt={6} mb={3} {...props}>
-            {children}
-          </Heading>
-        );
-      },
-      h3: ({ children, ...props }: MarkdownComponentProps) => {
-        const id = createHeadingId(children);
-        return (
-          <Heading as="h3" id={id} size="md" mt={5} mb={2} {...props}>
-            {children}
-          </Heading>
-        );
-      },
-      h4: ({ children, ...props }: MarkdownComponentProps) => {
-        const id = createHeadingId(children);
-        return (
-          <Heading as="h4" id={id} size="sm" mt={4} mb={2} {...props}>
-            {children}
-          </Heading>
-        );
-      },
-      h5: ({ children, ...props }: MarkdownComponentProps) => {
-        const id = createHeadingId(children);
-        return (
-          <Heading as="h5" id={id} size="xs" mt={4} mb={2} {...props}>
-            {children}
-          </Heading>
-        );
-      },
-      h6: ({ children, ...props }: MarkdownComponentProps) => {
-        const id = createHeadingId(children);
-        return (
-          <Heading
-            as="h6"
-            id={id}
-            size="xs"
-            fontWeight="medium"
-            mt={4}
-            mb={2}
-            {...props}
+  const components: Components = {
+    h1: ({ children }) => {
+      const id = createHeadingId(children);
+      return (
+        <Heading as="h1" id={id} size="xl" mt={8} mb={4}>
+          {children}
+        </Heading>
+      );
+    },
+    h2: ({ children }) => {
+      const id = createHeadingId(children);
+      return (
+        <Heading as="h2" id={id} size="lg" mt={6} mb={3}>
+          {children}
+        </Heading>
+      );
+    },
+    h3: ({ children }) => {
+      const id = createHeadingId(children);
+      return (
+        <Heading as="h3" id={id} size="md" mt={5} mb={2}>
+          {children}
+        </Heading>
+      );
+    },
+    h4: ({ children }) => {
+      const id = createHeadingId(children);
+      return (
+        <Heading as="h4" id={id} size="sm" mt={4} mb={2}>
+          {children}
+        </Heading>
+      );
+    },
+    h5: ({ children }) => {
+      const id = createHeadingId(children);
+      return (
+        <Heading as="h5" id={id} size="xs" mt={4} mb={2}>
+          {children}
+        </Heading>
+      );
+    },
+    h6: ({ children }) => {
+      const id = createHeadingId(children);
+      return (
+        <Heading
+          as="h6"
+          id={id}
+          size="xs"
+          fontWeight="medium"
+          mt={4}
+          mb={2}
+        >
+          {children}
+        </Heading>
+      );
+    },
+    p: ({ children }) => (
+      <Text mt={4} mb={4} lineHeight="1.8">
+        {children}
+      </Text>
+    ),
+    a: ({ href, children }) => (
+      <Link
+        color={linkColor}
+        textDecoration="underline"
+        _hover={{ opacity: 0.8 }}
+        href={href}
+        isExternal
+        rel="noopener noreferrer"
+        aria-label={typeof children === 'string' ? `Link to ${children}` : undefined}
+      >
+        {children}
+      </Link>
+    ),
+    ul: ({ children }) => (
+      <UnorderedList pl={4} mt={4} mb={4} spacing={2}>
+        {children}
+      </UnorderedList>
+    ),
+    ol: ({ children }) => (
+      <OrderedList pl={4} mt={4} mb={4} spacing={2}>
+        {children}
+      </OrderedList>
+    ),
+    li: ({ children }) => (
+      <ListItem mb={2}>
+        {children}
+      </ListItem>
+    ),
+    blockquote: ({ children }) => (
+      <Box
+        as="blockquote"
+        borderLeftWidth="4px"
+        borderLeftColor={blockquoteBorder}
+        bg={blockquoteBg}
+        px={4}
+        py={3}
+        my={4}
+        borderRadius="md"
+        fontStyle="italic"
+        role="region"
+        aria-label="Blockquote"
+      >
+        {children}
+      </Box>
+    ),
+    code: ({ inline, className, children }) => {
+      const match = /language-(\w+)/.exec(className || "");
+      return !inline ? (
+        <Box as="pre" overflowX="auto" borderRadius="md" my={4}>
+          <SyntaxHighlighter
+            language={match ? match[1] : ""}
+            style={syntaxTheme}
+            customStyle={{
+              borderRadius: "0.375rem",
+              fontSize: "0.9em",
+              margin: 0,
+            }}
+            showLineNumbers
           >
-            {children}
-          </Heading>
-        );
-      },
-      p: (props: MarkdownComponentProps) => (
-        <Text mt={4} mb={4} lineHeight="1.8" {...props} />
-      ),
-      a: (props: MarkdownComponentProps) => (
-        <Link
-          color={linkColor}
-          textDecoration="underline"
-          _hover={{ opacity: 0.8 }}
-          isExternal
-          rel="noopener noreferrer"
-          {...props}
-        />
-      ),
-      ul: (props: MarkdownComponentProps) => (
-        <UnorderedList pl={4} mt={4} mb={4} {...props} />
-      ),
-      ol: (props: MarkdownComponentProps) => (
-        <OrderedList pl={4} mt={4} mb={4} {...props} />
-      ),
-      li: (props: MarkdownComponentProps) => <ListItem mb={2} {...props} />,
-      blockquote: (props: MarkdownComponentProps) => (
-        <Box
-          as="blockquote"
-          borderLeftWidth="4px"
-          borderLeftColor={blockquoteBorder}
-          bg={blockquoteBg}
-          px={4}
-          py={3}
-          my={4}
+            {String(children).replace(/\n$/, "")}
+          </SyntaxHighlighter>
+        </Box>
+      ) : (
+        <Code
+          bg={codeBg}
+          color={codeColor}
+          px={1}
+          borderRadius="sm"
+          fontSize="0.9em"
+        >
+          {children}
+        </Code>
+      );
+    },
+    table: ({ children }) => (
+      <Box overflowX="auto" my={8} role="region" aria-label="Table">
+        <Table variant="simple" size="sm">
+          {children}
+        </Table>
+      </Box>
+    ),
+    thead: ({ children }) => (
+      <Thead borderBottomWidth="2px" borderColor={borderColor}>
+        {children}
+      </Thead>
+    ),
+    tbody: ({ children }) => (
+      <Tbody>{children}</Tbody>
+    ),
+    tr: ({ children }) => (
+      <Tr borderBottomWidth="1px" borderColor={borderColor}>
+        {children}
+      </Tr>
+    ),
+    th: ({ children }) => (
+      <Th
+        py={2}
+        px={4}
+        fontWeight="semibold"
+        textAlign="start"
+        scope="col"
+      >
+        {children}
+      </Th>
+    ),
+    td: ({ children }) => (
+      <Td py={2} px={4}>
+        {children}
+      </Td>
+    ),
+    hr: () => (
+      <Divider my={8} borderColor={borderColor} />
+    ),
+    img: ({ src, alt }) => (
+      <Box my={6}>
+        <Image
           borderRadius="md"
-          fontStyle="italic"
-          role="region"
-          aria-label="Blockquote"
-          {...props}
+          mx="auto"
+          objectFit="cover"
+          fallbackSrc="https://via.placeholder.com/800x400?text=Image+Not+Found"
+          loading="lazy"
+          decoding="async"
+          src={src}
+          alt={alt || "Blog post image"}
+          width="100%"
+          height="auto"
+          aria-describedby={alt ? `img-desc-${alt.replace(/\s+/g, '-')}` : undefined}
         />
-      ),
-      code: ({
-        node,
-        inline,
-        className,
-        children,
-        ...props
-      }: MarkdownComponentProps & { inline?: boolean; className?: string }) => {
-        const match = /language-(\w+)/.exec(className || "");
-        // TEMP: only inline code for now
-        const _inline = true;
-        return !_inline ? (
-          <Box as="pre" overflowX="auto" borderRadius="md" my={4}>
-            <SyntaxHighlighter
-              language={match ? match[1] : ""}
-              style={syntaxTheme}
-              customStyle={{
-                borderRadius: "0.375rem",
-                fontSize: "0.9em",
-                margin: 0,
-              }}
-              showLineNumbers={true}
-              {...props}
-            >
-              {String(children).replace(/\n$/, "")}
-            </SyntaxHighlighter>
-          </Box>
-        ) : (
-          <Code
-            bg={codeBg}
-            color={codeColor}
-            px={1}
-            borderRadius="sm"
-            fontSize="0.9em"
-            {...props}
+        {alt && alt.length > 10 && (
+          <Text 
+            id={`img-desc-${alt.replace(/\s+/g, '-')}`}
+            fontSize="sm" 
+            color="gray.500" 
+            textAlign="center" 
+            mt={2}
           >
-            {children}
-          </Code>
-        );
-      },
-      table: (props: MarkdownComponentProps) => (
-        <Box overflowX="auto" my={8} role="region" aria-label="Table">
-          <Table variant="simple" size="sm" {...props} />
-        </Box>
-      ),
-      thead: (props: MarkdownComponentProps) => (
-        <Thead borderBottomWidth="2px" borderColor={borderColor} {...props} />
-      ),
-      tbody: (props: MarkdownComponentProps) => <Tbody {...props} />,
-      tr: (props: MarkdownComponentProps) => (
-        <Tr borderBottomWidth="1px" borderColor={borderColor} {...props} />
-      ),
-      th: (props: MarkdownComponentProps) => (
-        <Th
-          py={2}
-          px={4}
-          fontWeight="semibold"
-          textAlign="start"
-          scope="col"
-          {...props}
-        />
-      ),
-      td: (props: MarkdownComponentProps) => <Td py={2} px={4} {...props} />,
-      hr: (props: MarkdownComponentProps) => (
-        <Divider my={8} borderColor={borderColor} {...props} />
-      ),
-      img: ({
-        src,
-        alt,
-        ...props
-      }: MarkdownComponentProps & { src?: string; alt?: string }) => (
-        <Box my={6}>
-          <Image
-            borderRadius="md"
-            mx="auto"
-            objectFit="cover"
-            fallbackSrc="https://via.placeholder.com/800x400?text=Image+Not+Found"
-            loading="lazy"
-            decoding="async"
-            src={src}
-            alt={alt || "Blog post image"}
-            {...props}
-          />
-        </Box>
-      ),
-      kbd: (props: MarkdownComponentProps) => <Kbd {...props} />,
-    }),
-    [
-      linkColor,
-      blockquoteBorder,
-      blockquoteBg,
-      codeBg,
-      codeColor,
-      borderColor,
-      syntaxTheme,
-    ],
-  );
+            {alt}
+          </Text>
+        )}
+      </Box>
+    ),
+    kbd: ({ children }) => <Kbd>{children}</Kbd>,
+  };
 
   return (
-    <Container maxW="6xl" py={8}>
+    <Container maxW="6xl" py={{ base: 2, md: 4 }}>
       <Grid templateColumns={{ base: "1fr", xl: "3fr 1fr" }} gap={8}>
         <GridItem>
           <Box
-           
           >
             <Heading as="h1" size="2xl" mb={4}>
               {post.title}
@@ -347,7 +354,9 @@ export const BlogContent = memo(({ post }: BlogContentProps) => {
                   fontSize="sm"
                   color={useColorModeValue("gray.600", "gray.400")}
                 >
-                  {publishDate}
+                  <time dateTime={new Date(post.publishedAt).toISOString()}>
+                    {publishDate}
+                  </time>
                 </Text>
               </Box>
             </Flex>
@@ -356,7 +365,7 @@ export const BlogContent = memo(({ post }: BlogContentProps) => {
             <PostMetadata post={post} />
 
             {coverImageUrl && (
-              <Box borderRadius="md" overflow="hidden" mb={6} maxH="500px">
+              <Box borderRadius="lg" overflow="hidden" mb={6} maxH="500px">
                 <Image
                   src={coverImageUrl}
                   alt={`Featured image for ${post.title}`}
