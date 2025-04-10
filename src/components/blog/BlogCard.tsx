@@ -31,9 +31,10 @@ export const BlogCard = ({ post }: BlogCardProps) => {
     });
 
     // Calculate reading time (simple estimation)
-    const getReadingTime = (content: string | undefined) => {
+    const getReadingTime = (_content: string | undefined) => {
         // Simple estimation: average reading speed is 200-250 words per minute
         // For demonstration, we'll create a random time between 3-10 minutes
+        // [TODO]
         return Math.floor(Math.random() * 8) + 3;
     };
 

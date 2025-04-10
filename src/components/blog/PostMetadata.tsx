@@ -16,7 +16,7 @@ interface PostMetadataProps {
 }
 
 export const PostMetadata = ({ post }: PostMetadataProps) => {
-    const bgColor = useColorModeValue('gray.50', 'gray.700');
+    // const bgColor = useColorModeValue('gray.50', 'gray.700');
     const textColor = useColorModeValue('gray.600', 'gray.400');
     const tagBgColor = useColorModeValue('gray.100', 'gray.600');
 
