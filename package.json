@@ -19,6 +19,7 @@
     "@fontsource/geist-sans": "^5.1.0",
     "@fontsource/red-hat-display": "^5.1.0",
     "aos": "^2.3.4",
+    "axios": "^1.8.4",
     "framer-motion": "^11.11.10",
     "i18next": "^23.11.3",
     "lucide-react": "^0.454.0",
@@ -28,6 +29,8 @@
     "react-helmet-async": "^2.0.5",
     "react-i18next": "^14.1.1",
     "react-router-dom": "^6.27.0",
+    "react-markdown": "^10.0.0",
+    "remark-gfm": "^4.0.1",
     "vite-tsconfig-paths": "^4.3.2"
   },
   "devDependencies": {

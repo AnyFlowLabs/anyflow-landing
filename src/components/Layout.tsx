@@ -64,6 +64,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               Docs
             </a>
             <Link to={"/chains"}>Chains</Link>
+            <Link to={"/blog"}>Blog</Link>
 
             <Button
               as="a"

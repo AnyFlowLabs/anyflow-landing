@@ -6,6 +6,8 @@ import Layout from "@/components/Layout";
 import RewardsPage from "@/pages/Rewards/RewardsPage";
 import LandingPageLayout from "@/components/LandingPageLayout";
 import NotFound from "@/pages/not-found";
+import BlogIndex from "@/pages/Blog/BlogIndex";
+import BlogDetail from "@/pages/Blog/BlogDetail";
 
 export const router = createBrowserRouter([
   {
@@ -43,6 +45,19 @@ export const router = createBrowserRouter([
             <ChainDetails />
           </Layout>
         ),
+      },
+    ],
+  },
+  {
+    path: "/blog",
+    children: [
+      {
+        index: true,
+        element: <BlogIndex />,
+      },
+      {
+        path: ":slug",
+        element: <BlogDetail />,
       },
     ],
   },
