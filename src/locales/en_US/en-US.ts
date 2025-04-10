@@ -3,6 +3,7 @@ export const en_US = {
     header: {
       docs: "Check our docs",
       button_github: "Log in with Github",
+      button_github_short: "Log in",
     },
     secondSection: {
       info: "Making any deployment flow like water",

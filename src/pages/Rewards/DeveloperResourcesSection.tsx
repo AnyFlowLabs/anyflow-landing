@@ -20,6 +20,7 @@ import {
   UsersRoundIcon,
 } from "lucide-react";
 import { TitleSection } from "./Components";
+import { DISCORD_URL } from "@/const";
 
 const DeveloperResourcesSection = () => {
   const cardBg = useColorModeValue("gray.50", "gray.800");
@@ -34,7 +35,7 @@ const DeveloperResourcesSection = () => {
         <TitleSection
           pre="Let's start coding"
           title="Developer Resources"
-          // description="Everything you need to get started and succeed"
+        // description="Everything you need to get started and succeed"
         />
 
         <SimpleGrid
@@ -102,7 +103,7 @@ const DeveloperResourcesSection = () => {
                 as={Link}
                 href="https://docs.anyflow.pro/"
                 target="_blank"
-                w={{base: "full", md: "auto"}}
+                w={{ base: "full", md: "auto" }}
               >
                 View docs
               </Button>
@@ -167,7 +168,7 @@ const DeveloperResourcesSection = () => {
                 aria-label="View templates"
                 fontWeight="medium"
                 as={Link}
-                w={{base: "full", md: "auto"}}
+                w={{ base: "full", md: "auto" }}
                 href="https://github.com/AnyFlowLabs?q=template&type=all&language=&sort=stargazers"
                 target="_blank"
               >
@@ -279,7 +280,7 @@ const DeveloperResourcesSection = () => {
                 fontWeight="medium"
                 w={{ base: "full", md: "auto" }}
                 as={Link}
-                href="https://discord.gg/aCygGwBWya"
+                href={DISCORD_URL}
                 target="_blank"
               >
                 Join Discord

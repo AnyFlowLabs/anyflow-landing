@@ -23,7 +23,7 @@ import {
   RocketIcon,
 } from "lucide-react";
 import { TitleSection } from "./Components";
-import { APP_URL } from "@/const";
+import { APP_URL, X_URL } from "@/const";
 import { tagTwitterConversion } from "./tag";
 import { useCallback } from "react";
 
@@ -133,13 +133,13 @@ const ReadyToEarnSection: React.FC<{ spotsTaken: number }> = ({ spotsTaken }) =>
                 icon: <MessageSquareIcon />,
                 text: "Follow updates",
                 label: "Follow our updates",
-                href: "https://x.com/anyflow_",
+                href: X_URL,
               },
               {
                 icon: <CodeIcon />,
                 text: "Start project",
                 label: "Start your project",
-                href: "https://app.anyflow.pro/",
+                href: APP_URL,
               },
             ].map((item, index) => (
               <Button
