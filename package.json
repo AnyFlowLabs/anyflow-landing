@@ -18,6 +18,7 @@
     "@fontsource/geist-mono": "^5.1.0",
     "@fontsource/geist-sans": "^5.1.0",
     "@fontsource/red-hat-display": "^5.1.0",
+    "@types/react-syntax-highlighter": "^15.5.13",
     "aos": "^2.3.4",
     "axios": "^1.8.4",
     "framer-motion": "^11.11.10",
@@ -28,8 +29,9 @@
     "react-helmet": "^6.1.0",
     "react-helmet-async": "^2.0.5",
     "react-i18next": "^14.1.1",
-    "react-router-dom": "^6.27.0",
     "react-markdown": "^10.0.0",
+    "react-router-dom": "^6.27.0",
+    "react-syntax-highlighter": "^15.6.1",
     "remark-gfm": "^4.0.1",
     "vite-tsconfig-paths": "^4.3.2"
   },

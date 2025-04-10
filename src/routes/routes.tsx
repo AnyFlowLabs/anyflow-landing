@@ -8,6 +8,8 @@ import LandingPageLayout from "@/components/LandingPageLayout";
 import NotFound from "@/pages/not-found";
 import BlogIndex from "@/pages/Blog/BlogIndex";
 import BlogDetail from "@/pages/Blog/BlogDetail";
+import ErrorPage from "@/pages/error";
+import ErrorBoundary from "@/components/ErrorBoundary";
 
 export const router = createBrowserRouter([
   {
@@ -17,6 +19,7 @@ export const router = createBrowserRouter([
         <HomePage />
       </Layout>
     ),
+    errorElement: <ErrorPage />,
   },
   {
     path: "/rewards",
@@ -25,10 +28,11 @@ export const router = createBrowserRouter([
         <RewardsPage />
       </LandingPageLayout>
     ),
+    errorElement: <ErrorPage />,
   },
   {
     path: "/chains",
-
+    errorElement: <ErrorPage />,
     children: [
       {
         index: true,
@@ -50,6 +54,7 @@ export const router = createBrowserRouter([
   },
   {
     path: "/blog",
+    errorElement: <ErrorPage />,
     children: [
       {
         index: true,
