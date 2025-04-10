@@ -1,21 +1,18 @@
-import { VStack, Text, HStack, Flex, Box, Button } from "@chakra-ui/react";
+import { VStack, Text, HStack, Box } from "@chakra-ui/react";
 import LogoFooter from "@/assets/logo-footer.svg";
 import KhizaLogo from "@/assets/khiza.svg";
 import GithubIconSvg from "@/assets/github.svg";
 import LinkedinIcon from "@/assets/linkedin.svg";
 import DiscordIcon from "@/assets/discord.svg";
-import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { APP_URL, DOCS_URL } from "@/const";
+import { DISCORD_URL, X_URL } from "@/const";
 import LinkIcon from "@/components/LinkIcon";
-import { Logo } from "./Logo";
-import GithubIcon from "./Icons/Github";
 import { ChangeLanguageMenu } from "./ChangeLanguageMenu";
 import { AOSInit } from "./AOS";
 import { HelmetProvider } from "react-helmet-async";
 import { OptimizedImage } from "./OptimizedImage";
 import ElonMuskIcon from "./Icons/XIcon";
-import { StarIcon } from "@chakra-ui/icons";
+import { Navbar } from "./Navbar";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const { t } = useTranslation();
@@ -23,76 +20,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <HelmetProvider>
       <AOSInit />
-      <HStack
-        as="header"
-        role="banner"
-        flexDir={{ base: "column", md: "row" }}
-        bg="transparent"
-        justify="space-between"
-        p={4}
-        gap={{ base: 4, md: 0 }}
-        w="full"
-      >
-        <HStack gap={8}>
-          <Logo />
-          <Box display={{ base: "none", md: "block" }}>
-            <Link
-              to={"/rewards"}
-              style={{
-                color: "var(--anyflow-colors-warning-500)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                alignContent: "center",
-                gap: "8px",
-              }}
-            >
-              <StarIcon w="12px" h="12px" />
-              <Text>Join on our rewards program</Text>
-            </Link>
-          </Box>
-        </HStack>
-
-        <nav>
-          <HStack gap={{ base: 4, md: 8 }}>
-            <a
-              target="_blank"
-              className="hidden text-white lg:inline"
-              href={DOCS_URL}
-              referrerPolicy="no-referrer"
-            >
-              Docs
-            </a>
-            <Link to={"/chains"}>Chains</Link>
-            <Link to={"/blog"}>Blog</Link>
-
-            <Button
-              as="a"
-              href={APP_URL}
-              leftIcon={<GithubIcon width={18} height={18} />}
-            >
-              {t("header.button_github")}
-            </Button>
-          </HStack>
-        </nav>
-      </HStack>
-
-      <Box display={{ base: "block", md: "none" }}>
-        <Link
-          to={"/rewards"}
-          style={{
-            color: "var(--anyflow-colors-warning-500)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            alignContent: "center",
-            gap: "8px",
-          }}
-        >
-          <StarIcon w="12px" h="12px" />
-          <Text>Join on our rewards program</Text>
-        </Link>
-      </Box>
+      <Navbar />
 
       <Box as="main" role="main">
         {children}
@@ -109,7 +37,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         pt={32}
       >
         <OptimizedImage src={LogoFooter} alt="Anyflow" cacheKey="logo-footer" />
-        <Flex alignItems="center" justifyContent="center" gap={4}>
+        <HStack alignItems="center" justifyContent="center" gap={4}>
           <Text color="gray.300" fontSize="sm">
             {t("footer.backedBy.text")}
           </Text>
@@ -126,7 +54,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               cacheKey="khiza-logo"
             />
           </a>
-        </Flex>
+        </HStack>
         <HStack
           w="full"
           gap={6}
@@ -154,12 +82,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               <LinkIcon
                 src={DiscordIcon}
                 alt="Discord"
-                url={"https://discord.gg/aCygGwBWya"}
+                url={DISCORD_URL}
                 style={{ width: 24, height: 24 }}
               />
               <Box
                 as="a"
-                href="https://x.com/anyflow_"
+                href={X_URL}
                 target="_blank"
                 rel="noopener noreferrer"
               >

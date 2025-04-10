@@ -1,4 +1,4 @@
-import { BlogPostContent } from '@/types/blog';
+import { BlogPost, BlogPostContent } from '@/types/blog';
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
@@ -25,10 +25,15 @@ import {
     Th,
     Td,
     Kbd,
+    Grid,
+    GridItem,
 } from '@chakra-ui/react';
+import { TableOfContents } from './TableOfContents';
+import { PostMetadata } from './PostMetadata';
+import { useMemo } from 'react';
 
 interface BlogContentProps {
-    post: BlogPostContent;
+    post: BlogPostContent | BlogPost;
 }
 
 export const BlogContent = ({ post }: BlogContentProps) => {
@@ -36,7 +41,13 @@ export const BlogContent = ({ post }: BlogContentProps) => {
     const authorName = post.author?.name;
     const authorAvatarUrl = post.author?.avatar?.url;
 
-    const content = post.blocks[0].body;
+    // Get content based on post type
+    let content: string = '';
+    if ('blocks' in post && post.blocks && post.blocks.length > 0) {
+        content = post.blocks[0].body;
+    } else if (post.content) {
+        content = post.content;
+    }
 
     // Format date
     const publishDate = new Date(post.publishedAt).toLocaleDateString('en-US', {
@@ -55,14 +66,58 @@ export const BlogContent = ({ post }: BlogContentProps) => {
     const blockquoteBorder = useColorModeValue('gray.200', 'gray.500');
     const syntaxTheme = useColorModeValue(vs, vscDarkPlus);
 
+    // Create an ID generator for headings
+    const createHeadingId = (children: any) => {
+
+        // Extract the text from the children (can be strong, em, code, etc)
+        const text = typeof children.props.children === 'string' ? children.props.children : children.props.children.map((child: any) => {
+            if (child.props && child.props.children) {
+                return child.props.children;
+            }
+            return child;
+        }).join('');
+
+        // Clean up the heading text to match TableOfContents logic
+        const cleanText = text
+            .replace(/\*\*(.+?)\*\*/g, '$1') // Remove bold markers **text**
+            .replace(/\*(.+?)\*/g, '$1')     // Remove italic markers *text*
+            .replace(/`(.+?)`/g, '$1')       // Remove code markers `text`
+            .replace(/~~(.+?)~~/g, '$1')     // Remove strikethrough ~~text~~
+            .trim();
+
+        return cleanText
+            .toLowerCase()
+            .replace(/[^\w\s-]/g, '')
+            .replace(/\s+/g, '-');
+    };
+
     // Define custom component mapping for react-markdown
-    const components = {
-        h1: (props: any) => <Heading as="h1" size="xl" mt={8} mb={4} {...props} />,
-        h2: (props: any) => <Heading as="h2" size="lg" mt={6} mb={3} {...props} />,
-        h3: (props: any) => <Heading as="h3" size="md" mt={5} mb={2} {...props} />,
-        h4: (props: any) => <Heading as="h4" size="sm" mt={4} mb={2} {...props} />,
-        h5: (props: any) => <Heading as="h5" size="xs" mt={4} mb={2} {...props} />,
-        h6: (props: any) => <Heading as="h6" size="xs" fontWeight="medium" mt={4} mb={2} {...props} />,
+    const components = useMemo(() => ({
+        h1: ({ node, children, ...props }: any) => {
+            console.log(node, children);
+            const id = createHeadingId(children);
+            return <Heading as="h1" id={id} size="xl" mt={8} mb={4} {...props}>{children}</Heading>;
+        },
+        h2: ({ node, children, ...props }: any) => {
+            const id = createHeadingId(children);
+            return <Heading as="h2" id={id} size="lg" mt={6} mb={3} {...props}>{children}</Heading>;
+        },
+        h3: ({ node, children, ...props }: any) => {
+            const id = createHeadingId(children);
+            return <Heading as="h3" id={id} size="md" mt={5} mb={2} {...props}>{children}</Heading>;
+        },
+        h4: ({ node, children, ...props }: any) => {
+            const id = createHeadingId(children);
+            return <Heading as="h4" id={id} size="sm" mt={4} mb={2} {...props}>{children}</Heading>;
+        },
+        h5: ({ node, children, ...props }: any) => {
+            const id = createHeadingId(children);
+            return <Heading as="h5" id={id} size="xs" mt={4} mb={2} {...props}>{children}</Heading>;
+        },
+        h6: ({ node, children, ...props }: any) => {
+            const id = createHeadingId(children);
+            return <Heading as="h6" id={id} size="xs" fontWeight="medium" mt={4} mb={2} {...props}>{children}</Heading>;
+        },
         p: (props: any) => <Text mt={4} mb={4} lineHeight="1.8" {...props} />,
         a: (props: any) => <Link color={linkColor} textDecoration="underline" _hover={{ opacity: 0.8 }} isExternal {...props} />,
         ul: (props: any) => <UnorderedList pl={4} mt={4} mb={4} {...props} />,
@@ -84,7 +139,9 @@ export const BlogContent = ({ post }: BlogContentProps) => {
         ),
         code: ({ node, inline, className, children, ...props }: any) => {
             const match = /language-(\w+)/.exec(className || '');
-            return !inline ? (
+            // TEMP: only inline code for now
+            const _inline = true;
+            return !_inline ? (
                 <Box
                     as="pre"
                     overflowX="auto"
@@ -141,73 +198,87 @@ export const BlogContent = ({ post }: BlogContentProps) => {
             </Box>
         ),
         kbd: (props: any) => <Kbd {...props} />
-    };
+    }), [linkColor, blockquoteBorder, blockquoteBg, codeBg, codeColor, borderColor, syntaxTheme]);
 
     return (
-        <Container maxW="4xl" py={8}>
-            <Box bg={bgColor} borderRadius="lg" overflow="hidden" p={6} shadow="md">
-                <Heading as="h1" size="2xl" mb={4}>
-                    {post.title}
-                </Heading>
+        <Container maxW="6xl" py={8}>
+            <Grid
+                templateColumns={{ base: '1fr', xl: '3fr 1fr' }}
+                gap={8}
+            >
+                <GridItem>
+                    <Box bg={bgColor} borderRadius="lg" overflow="hidden" p={6} shadow="md">
+                        <Heading as="h1" size="2xl" mb={4}>
+                            {post.title}
+                        </Heading>
 
-                <Flex alignItems="center" mb={6}>
-                    {authorAvatarUrl && (
-                        <Avatar
-                            size="md"
-                            src={authorAvatarUrl}
-                            name={authorName || 'Author'}
-                            mr={3}
-                        />
-                    )}
-                    <Box>
-                        {authorName && (
-                            <Text fontWeight="bold">
-                                {authorName}
-                            </Text>
+                        <Flex alignItems="center" mb={6}>
+                            {authorAvatarUrl && (
+                                <Avatar
+                                    size="md"
+                                    src={authorAvatarUrl}
+                                    name={authorName || 'Author'}
+                                    mr={3}
+                                />
+                            )}
+                            <Box>
+                                {authorName && (
+                                    <Text fontWeight="bold">
+                                        {authorName}
+                                    </Text>
+                                )}
+                                <Text fontSize="sm" color={useColorModeValue('gray.600', 'gray.400')}>
+                                    {publishDate}
+                                </Text>
+                            </Box>
+                        </Flex>
+
+                        {/* Post metadata - tags, reading time, view count */}
+                        <PostMetadata post={post} />
+
+                        {coverImageUrl && (
+                            <Box
+                                borderRadius="md"
+                                overflow="hidden"
+                                mb={6}
+                                maxH="500px"
+                            >
+                                <Image
+                                    src={coverImageUrl}
+                                    alt={post.title}
+                                    objectFit="cover"
+                                    width="100%"
+                                    mx="auto"
+                                />
+                            </Box>
                         )}
-                        <Text fontSize="sm" color={useColorModeValue('gray.600', 'gray.400')}>
-                            {publishDate}
-                        </Text>
-                    </Box>
-                </Flex>
 
-                {coverImageUrl && (
-                    <Box
-                        borderRadius="md"
-                        overflow="hidden"
-                        mb={6}
-                        maxH="500px"
-                    >
-                        <Image
-                            src={coverImageUrl}
-                            alt={post.title}
-                            objectFit="cover"
-                            width="100%"
-                            mx="auto"
-                        />
-                    </Box>
-                )}
+                        <Divider mb={6} />
 
-                <Divider mb={6} />
-
-                <Box
-                    className="blog-content"
-                    color={textColor}
-                    sx={{
-                        width: "100%",
-                        maxWidth: "100%"
-                    }}
-                >
-                    <article>
-                        <Markdown
-                            remarkPlugins={[remarkGfm]}
-                            components={components}
+                        <Box
+                            className="blog-content"
+                            color={textColor}
+                            sx={{
+                                width: "100%",
+                                maxWidth: "100%"
+                            }}
                         >
-                            {content}
-                        </Markdown>
-                    </article>
-                </Box>
-            </Box>
+                            <article>
+                                <Markdown
+                                    remarkPlugins={[remarkGfm]}
+                                    components={components}
+                                >
+                                    {content}
+                                </Markdown>
+                            </article>
+                        </Box>
+                    </Box>
+                </GridItem>
+
+                <GridItem display={{ base: 'none', xl: 'block' }}>
+                    <TableOfContents content={content} />
+                </GridItem>
+            </Grid>
         </Container>
     );
 };
