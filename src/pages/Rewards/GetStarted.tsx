@@ -12,6 +12,7 @@ import {
 import { ArrowRightIcon, GithubIcon, MessageCircleIcon } from "lucide-react";
 import { TitleSection } from "./Components";
 import ElonMuskIcon from "@/components/Icons/XIcon";
+import { DISCORD_URL, X_URL } from "@/const";
 
 const GetStartedSection = () => {
   return (
@@ -35,7 +36,7 @@ const GetStartedSection = () => {
               description: "Stay updated with latest news and announcements",
               icon: ElonMuskIcon,
               gradient: "linear(to-br, blue.600, blue.400)",
-              href: "https://x.com/anyflow_pro",
+              href: X_URL,
             },
             {
               step: 2,
@@ -43,7 +44,7 @@ const GetStartedSection = () => {
               description: "Connect with community and get 24/7 support",
               icon: MessageCircleIcon,
               gradient: "linear(to-br, purple.600, purple.400)",
-              href: "https://discord.gg/aCygGwBWya",
+              href: DISCORD_URL,
             },
             {
               step: 3,
@@ -51,7 +52,7 @@ const GetStartedSection = () => {
               description: "Required for program participation and rewards",
               icon: GithubIcon,
               gradient: "linear(to-br, gray.600, gray.400)",
-              href: "https://github.com/anyflow-pro",
+              href: "https://app.anyflow.pro/login",
             },
           ].map((item, index) => (
             <HStack

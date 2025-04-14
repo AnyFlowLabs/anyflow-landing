@@ -29,7 +29,7 @@ import ReadyToEarnSection from "./ReadyToEarnSection";
 import WhyJoinNowSection from "./WhyJoinNowSection";
 import DeveloperResourcesSection from "./DeveloperResourcesSection";
 // import ModalClose from "./ModalClose";
-import { API_URL, APP_URL } from "@/const";
+import { API_URL, APP_URL, DISCORD_URL } from "@/const";
 import { pageLoad, tagTwitterConversion } from "./tag";
 
 const RewardsPage = () => {
@@ -189,7 +189,7 @@ const RewardsPage = () => {
                   color="brand.400"
                   rightIcon={<MessageSquareIcon size={16} />}
                   as={Link}
-                  href="https://discord.gg/aCygGwBWya"
+                  href={DISCORD_URL}
                   target="_blank"
                 >
                   Join Discord community

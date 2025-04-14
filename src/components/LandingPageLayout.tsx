@@ -10,6 +10,7 @@ import { AOSInit } from "./AOS";
 import { HelmetProvider } from "react-helmet-async";
 import { OptimizedImage } from "./OptimizedImage";
 import ElonMuskIcon from "@/components/Icons/XIcon";
+import { DISCORD_URL, X_URL } from "@/const";
 
 export default function LandingPageLayout({
   children,
@@ -82,12 +83,12 @@ export default function LandingPageLayout({
               <LinkIcon
                 src={DiscordIcon}
                 alt="Discord"
-                url={"https://discord.gg/aCygGwBWya"}
+                url={DISCORD_URL}
                 style={{ width: 24, height: 24 }}
               />
               <Box
                 as="a"
-                href="https://x.com/anyflow_"
+                href={X_URL}
                 target="_blank"
                 rel="noopener noreferrer"
               >
