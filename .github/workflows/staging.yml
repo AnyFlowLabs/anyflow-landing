@@ -26,6 +26,9 @@ jobs:
 
       - name: Build app
         run: npm run build
+        env:
+          VITE_STRAPI_API_URL: ${{ vars.VITE_STRAPI_API_URL }}
+          VITE_STRAPI_API_TOKEN: ${{ secrets.VITE_STRAPI_API_TOKEN }}
 
       - name: Deploy to S3
         uses: jakejarvis/s3-sync-action@v0.5.1
